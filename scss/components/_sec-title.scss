@@ -1,0 +1,39 @@
+.sec-title {
+  --title-color: var(--white);
+  --title-mb: 40px;
+  --title-position: left;
+  margin-top: 0;
+  margin-bottom: var(--title-mb);
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 52px;
+  line-height: 100%;
+  text-align: var(--title-position);
+  color: var(--title-color);
+
+  @include mobile {
+    font-size: 30px;
+  }
+
+  @include mobile-xs {
+    --title-mb: 34px;
+    font-size: 24px;
+  }
+
+  &--center {
+    --title-position: center;
+  }
+
+  &--pink {
+    --title-color: var(--accent-pink);
+  }
+
+  &--blue {
+    --title-color: var(--accent-blue);
+  }
+
+  & b {
+    font-weight: 400;
+    color: var(--white);
+  }
+}

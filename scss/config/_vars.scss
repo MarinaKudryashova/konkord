@@ -1,0 +1,26 @@
+:root {
+  /* Fonts */
+  /* ------------------------------------ */
+  --font-family: "Manrope", sans-serif;
+
+  /* Colors */
+  /* ------------------------------------ */
+  --accent-green: #82be3c; //--cvet
+  --accent-dark-green: #407253; //--dop
+  --accent-light-green: #accb4a; //--dop-2
+  --black: #232924; //--chernyy
+  --white: #fff; //--belyy
+  --bg-main: #303030; //--fon
+  --bg-dark-grey: #3b3b3b; //--plashka-chernaya
+  --bg-light: #f6f6f6; //--plashka-belaya
+  --grey-1: #969696; //--seryy-na-chernom
+  --grey-2: #898989; //--seryy-na-belom
+
+  --body-bg: var(--black);
+  --text: var(--white);
+
+  /* Animaition */
+  /* ------------------------------------ */
+  --transition-300: 0.3s ease-in-out;
+  --transition-500: 0.5s linear;
+}

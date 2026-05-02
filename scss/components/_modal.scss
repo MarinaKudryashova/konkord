@@ -1,0 +1,92 @@
+.graph-modal {
+  padding: 1.111vw 0; //16px для media 1440;
+  background-color: rgba(0, 0, 0, 0.64);
+
+  @include desktop {
+    padding: 16px 0;
+  }
+
+  &__close {
+    position: fixed;
+    top: 1.111vw; //16px для media 1440;
+    right: 1.111vw; //16px для media 1440;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--red);
+    width: 3.056vw; //44px для media 1440;
+    height: 3.056vw; //44px для media 1440;
+    color: var(--white);
+    background-image: none;
+    background-color: var(--white);
+    transition: background-color var(--transition-300);
+
+    @include desktop {
+      top: 16px;
+      right: 16px;
+      width: 44px;
+      height: 44px;
+    }
+
+    @include small-tablet {
+      width: 40px;
+      height: 40px;
+    }
+
+    @include mobile {
+      position: absolute;
+      top: -46px;
+      right: -1px;
+      top: 5px;
+      right: 5px;
+    }
+
+    & svg {
+      width: 1.389vw; //20px для media 1400;
+      height: 1.389vw; //20px для media 1440;
+      stroke: var(--red);
+      stroke-width: 2px;
+      transition: stroke var(--transition-300);
+
+      @include desktop {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    @include hover {
+      background-color: var(--red);
+
+      & svg {
+        stroke: var(--white);
+      }
+    }
+
+    &:focus-visible,
+    &:active {
+      background-color: var(--red);
+
+      & svg {
+        stroke: var(--white);
+      }
+    }
+  }
+
+  &__container {
+    border-radius: 0;
+    padding: 2.222vw; //32px для media 1400;
+    max-width: 34.722vw; //500px для media 1400;
+    background-color: var(--white);
+
+    @include desktop{
+      padding: 32px;
+      max-width: 500px;
+    }
+
+    @include mobile {
+      padding: 20px 16px 20px;
+      max-width: 420px;
+      width: calc(100% - 2 * var(--container-offset));
+    }
+  }
+}

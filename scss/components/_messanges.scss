@@ -1,0 +1,39 @@
+.messanges {
+  --messanges-size: 56;
+  --messanges-link-bg: var(--bg-dark-grey);
+  --messanges-link-bg-hover: var(--accent-green);
+
+  @include list-reset;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  @media (max-width: (1300px)) {
+    gap: 8px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    width: var(--messanges-size);
+    height: var(--messanges-size);
+    background-color: var(--messanges-link-bg);
+    transition: box-shadow var(--transition-300);
+
+    &:focus-visible,
+    &:active {
+      outline: none;
+    }
+
+    @include hover {
+    }
+
+    & img {
+      flex-shrink: 0;
+    }
+  }
+}

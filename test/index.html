@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Баннер "Запросить расчет" - Верстка</title>
+
+  <link rel="stylesheet" href="../css/main.css" />
+  <link rel="stylesheet" href="../css/vendor.css" />
+
+  <style>
+    body {
+      background-color: #161616;
+      margin: 0;
+      padding: 50px 0;
+      font-family: var(--font-family, "Discovery", sans-serif);
+    }
+
+    :root {
+      --font-family: "Discovery", sans-serif;
+      --second-family: "Banana Brick", sans-serif;
+      --accent-blue: #5aa7b9;
+      --accent-pink: #c64994;
+      --black: #161616;
+      --white: #fff;
+      --white-60: rgba(255, 255, 255, 0.6);
+      --transition-300: 0.3s ease-in-out;
+    }
+
+    .banner-quote-form {
+      position: relative;
+    }
+
+    .banner-quote-form__wrap {
+      border: 1px solid #ffffff;
+      box-shadow: 0px 0px 21.8px 0px var(--accent-pink);
+      border-radius: 20px;
+      padding: 35px 1px 45px;
+      background-color: var(--accent-pink);
+    }
+
+    @media (max-width: 576px) {
+      .banner-quote-form__wrap {
+        min-height: 606px;
+      }
+    }
+
+    /* Фон только для заголовка - на всю ширину блока */
+    .banner-quote-form__title-wrapper {
+      background-color: black;
+      margin-bottom: 37px;
+    }
+
+    .banner-quote-form__title {
+      /* font-weight: 400; */
+      /* font-size: 60px; */
+      /* line-height: 100%; */
+      /* color: var(--white); */
+      max-width: 943px;
+      z-index: 1;
+      padding: 12px 35px 16px;
+      margin: 0;
+      text-align: start;
+    }
+
+    @media (max-width: 576px) {
+      .banner-quote-form__title {
+        padding: 20px 10px 20px 20px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .banner-quote-form__title-wrapper {
+        margin-bottom: 20px;
+      }
+    }
+
+    .banner-quote-form__form {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      flex-wrap: wrap;
+      max-width: 753px;
+      margin-left: 36px;
+    }
+
+    @media (max-width: 992px) {
+      .banner-quote-form__form {
+        flex-direction: column;
+        max-width: 380px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .banner-quote-form__form {
+        max-width: 100%;
+        margin: 20px;
+      }
+    }
+
+    .banner-quote-form__field {
+      min-width: 233px;
+    }
+
+    @media (max-width: 576px) {
+      .banner-quote-form__field {
+        min-width: 100%;
+      }
+    }
+
+    .banner-quote-form__field input {
+      width: 100%;
+      padding: 13px 20px;
+      border: 1px solid #5aa7b933;
+      border-radius: 15px;
+      background: rgba(22, 22, 22, 0.6);
+      font-family: var(--font-family);
+      font-size: 15px;
+      color: var(--white);
+      transition: border-color var(--transition-300);
+    }
+
+    @media (max-width: 576px) {
+      .banner-quote-form__field input {
+        font-size: 13px;
+      }
+    }
+
+    .banner-quote-form__field input:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+    }
+
+    .banner-quote-form__field input::placeholder {
+      color: var(--white-60);
+    }
+
+    .banner-quote-form__btn {
+      /* display: flex; */
+      /* align-items: center; */
+      /* justify-content: center; */
+      /* gap: 10px; */
+      padding: 13px 60px;
+      /* border: none; */
+      /* border-radius: 15px; */
+      /* background-color: var(--accent-blue); */
+      /* font-family: var(--font-family); */
+      /* font-weight: 400; */
+      /* font-size: 15px; */
+      /* color: var(--white); */
+      /* cursor: pointer; */
+      transition:
+        background-color var(--transition-300),
+        transform var(--transition-300),
+        box-shadow var(--transition-300);
+    }
+
+    @media (max-width: 576px) {
+      .banner-quote-form__btn {
+        font-size: 13px;
+        padding: 13px 63px;
+        width: 100%;
+      }
+    }
+
+    .banner-quote-form__btn:hover {
+      background-color: var(--accent-pink);
+      box-shadow: 0 0 0 2px #ffffff;
+    }
+
+    .banner-quote-form__checkbox {
+      margin-top: 11px;
+      /* display: flex;
+        align-items: center;
+        gap: 10px;
+           cursor: pointer; */
+    }
+
+    .banner-quote-form__checkbox label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+
+    /* Полностью скрываем стандартный чекбокс */
+    .banner-quote-form__checkbox input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+      cursor: pointer;
+    }
+
+    /* Создаём кастомный чекбокс через псевдоэлемент label */
+    .banner-quote-form__checkbox label::before {
+      content: "";
+      flex-shrink: 0;
+      width: 17px;
+      height: 17px;
+      border: 1px solid #ffffff;
+      border-radius: 5px;
+      background-color: transparent;
+      transition: all var(--transition-300);
+      display: block;
+      margin-top: 2px;
+    }
+
+    /* Галочка при checked */
+    .banner-quote-form__checkbox input:checked+.banner-quote-form__checkbox-text::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 4px;
+      width: 5px;
+      height: 9px;
+      border: solid white;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .banner-quote-form__checkbox-text {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--white);
+    }
+
+    @media (max-width: 576px) {
+      .banner-quote-form__checkbox-text {
+        font-size: 10px;
+        max-width: 143px;
+      }
+    }
+
+    .banner-quote-form__checkbox-link {
+      color: var(--white);
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .banner-quote-form__checkbox input {
+      flex-shrink: 0;
+      margin-top: 2px;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    .banner-quote-form__img {
+      position: absolute;
+      top: -70px;
+      right: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="banner-quote-form sec-offset">
+    <div class="container">
+      <div class="banner-quote-form__wrap">
+        <!-- <div class="banner-quote-form__block"> -->
+        <!-- Левая часть с формой -->
+        <div class="banner-quote-form__content">
+          <!-- Обёртка для заголовка с фоном на всю ширину -->
+          <div class="banner-quote-form__title-wrapper">
+            <h2 class="banner-quote-form__title sec-title" data-aos="fade-up">
+              Рассчитаем стоимость вашего автомобиля
+            </h2>
+          </div>
+
+          <form class="banner-quote-form__form">
+            <div class="banner-quote-form__field">
+              <input type="tel" placeholder="Телефон" required />
+            </div>
+
+            <div class="banner-quote-form__field">
+              <input type="text" placeholder="Комментарий" />
+            </div>
+            <button type="button" class="banner-quote-form__btn ui-btn ui-btn--blue" data-graph-path="modal-leadform">
+              Получить расчет
+            </button>
+            <div class="banner-quote-form__checkbox">
+              <label>
+                <input type="checkbox" required />
+                <span class="banner-quote-form__checkbox-text">
+                  Нажимая на кнопку, вы даёте
+                  <a class="banner-quote-form__checkbox-link" href="#">согласие на обработку персональных данных</a>
+                </span>
+              </label>
+            </div>
+          </form>
+        </div>
+
+        <!-- Правая часть с картинкой -->
+        <div class="banner-quote-form__image">
+          <img class="banner-quote-form__img" src="banner-image.png" alt="Мужчина с деньгами" width="412" height="405"
+            loading="lazy" />
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

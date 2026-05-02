@@ -1,0 +1,37 @@
+// Конфигурация
+@import "config/vars";
+@import "config/mixins";
+@import "config/functions";
+@import "config/settings";
+@import "config/fonts";
+
+// Глобальные стили
+@import "global/visually-hidden";
+@import "global/container";
+
+// Компоненты
+@import "components/nav";
+@import "components/burger";
+@import "components/ui-btn";
+@import "components/ui-link";
+@import "components/messanges";
+@import "components/sec-offset";
+@import "components/sec-title";
+@import "components/ui-card";
+@import "components/contacts";
+// @import "components/topbtn";
+// @import "components/social";
+// @import "components/textcontent";
+@import "components/cookie-notice";
+
+// Секции
+@import "section/header";
+@import "section/promo";
+
+@import "section/sec-slider";
+@import "section/why-benefits";
+@import "section/faq";
+@import "section/banner-form";
+
+// @import "components/footer-menu";
+// @import "section/footer";

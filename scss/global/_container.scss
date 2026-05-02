@@ -1,0 +1,16 @@
+.container {
+  --content-width: 1360px;
+  --container-offset: 40px;
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+  margin: 0 auto;
+  padding: 0 var(--container-offset);
+  max-width: var(--container-width);
+
+  @include desktop {
+    --container-offset-md: 20px;
+    --container-width: calc(var(--content-width) + (var(--container-offset-md) * 2));
+    max-width: var(--container-width);
+    padding: 0 var(--container-offset-md);
+  }
+}

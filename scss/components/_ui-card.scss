@@ -1,0 +1,21 @@
+.ui-card {
+  --card-bg: var(--black);
+  --card-color: var(--white);
+  --card-br: 20px;
+  --card-px: 20px;
+  --card-py: 18px;
+  --card-border-width: 2px;
+  --card-border-style: solid;
+  --card-border-color: var(--white);
+  --card-shadow: 0 0 11px 0 var(--accent-blue);
+
+  border-width: var(--card-border-width);
+  border-style: var(--card-border-style);
+  border-color: var(--card-border-color);
+  border-radius: var(--card-br);
+  padding-block: var(--card-py);
+  padding-inline: var(--card-px);
+  color: var(--card-color);
+  background-color: var(--card-bg);
+  box-shadow: var(--card-shadow);
+}

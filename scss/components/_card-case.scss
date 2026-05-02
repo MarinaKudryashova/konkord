@@ -1,0 +1,107 @@
+.card-case {
+  --card-bg: transparent;
+  --card-py: 20px;
+
+  --card-shadow: 0;
+  transition: box-shadow var(--transition-300);
+
+  @include mobile {
+    --card-py: 15px;
+    --card-px: 15px;
+  }
+
+  .swiper-slide-prev &__title {
+    transform: scale(0.9) rotate(7.28deg);
+  }
+  .swiper-slide-active &,
+  .swiper-slide-next & {
+    --card-shadow: 0 0 12px 0 var(--accent-pink);
+  }
+
+  &__heading {
+    position: relative;
+    margin-bottom: 28px;
+  }
+
+  &__title {
+    position: absolute;
+    top: -8px;
+    right: -32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    padding: 15px;
+    width: 411px;
+    margin: 0;
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 110%;
+    text-align: center;
+    color: inherit;
+    background-color: var(--accent-pink);
+    transform: rotate(7.28deg);
+    transition: transform var(--transition-300);
+
+    @include mobile {
+      top: -11px;
+      right: -26px;
+      font-size: 20px;
+    }
+
+    span {
+      max-width: 320px;
+
+      @include mobile {
+        max-width: 270px;
+      }
+    }
+  }
+
+  &__img {
+    display: flex;
+
+    & img {
+      border-width: var(--card-border-width);
+      border-style: var(--card-border-style);
+      border-color: var(--card-border-color);
+      border-radius: var(--card-br);
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      aspect-ratio: 630 / 350;
+      overflow: clip;
+
+      @include mobile {
+        aspect-ratio: 305 / 350;
+      }
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  &__text {
+    margin: 0;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 130%;
+    color: inherit;
+
+    @include mobile {
+      font-size: 12px;
+    }
+
+    & p {
+      margin: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 22px;
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# Зависимости
+node_modules/
+
+
+# Результаты сборки CSS
+css/*.css
+css/*.css.map
+
+# Результаты сборки JS (вся папка js, кроме .gitkeep)
+js/*.min.js
+js/*.min.js.map
+js/*.bundle.js
+js/*.bundle.js.map
+
+# Результаты сборки SVG
+img/sprite.svg
+
+# Системные файлы
+.DS_Store
+*.log
+.idea/
+.vscode/
+
+# Временные файлы
+*.tmp
+*.swp

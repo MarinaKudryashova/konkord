@@ -1,0 +1,8 @@
+.sec-offset {
+  --sec-mb: 140px;
+  margin-bottom: var(--sec-mb);
+
+  @include mobile {
+    --sec-mb: 70px;
+  }
+}

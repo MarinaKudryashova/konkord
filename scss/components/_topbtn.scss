@@ -1,0 +1,76 @@
+.topbtn {
+  --topbtn-pr: 10px;
+  --topbtn-pb: 10px;
+
+  --topbtn-border-width: 1px;
+  --topbtn-border-style: solid;
+  --topbtn-border-color: var(--accent-pink);
+  --topbtn-border-radius: 15px;
+  --topbtn-padding-size: 12px;
+
+  --topbtn-size: 45px;
+  --topbtn-bg: var(--black);
+  --topbtn-bg-hover: var(--accent-pink);
+  --topbtn-color: var(--white);
+  --topbtn-icon-width: 21px;
+  --topbtn-icon-height: 13px;
+  --topbtn-icon-thickness: 3px;
+
+  @include btn-reset;
+  position: fixed;
+  right: var(--topbtn-pr);
+  bottom: var(--topbtn-pb);
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--topbtn-border-radius);
+  border-width: var(--topbtn-border-width);
+  border-style: var(--topbtn-border-style);
+  border-color: var(--topbtn-border-color);
+  padding: var(--topbtn-padding-size);
+  width: var(--topbtn-size);
+  height: var(--topbtn-size);
+  color: var(--topbtn-color);
+  background-color: var(--topbtn-bg);
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition:
+    opacity var(--transition-300),
+    transform var(--transition-300),
+    visibility var(--transition-300),
+    background-color var(--transition-300);
+
+  &.is-visible {
+    pointer-events: auto;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+
+    &:focus {
+      outline: none;
+    }
+
+    @include hover {
+      background-color: var(--topbtn-bg-hover);
+    }
+
+    &:focus-visible,
+    &:active {
+      background-color: var(--topbtn-bg-hover);
+    }
+  }
+
+  &__icon {
+    flex: none;
+    width: var(--topbtn-icon-width);
+    height: var(--topbtn-icon-height);
+    fill: none;
+    stroke-width: var(--topbtn-icon-thickness);
+    stroke: currentColor;
+    user-select: none;
+  }
+}

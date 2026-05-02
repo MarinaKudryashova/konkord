@@ -1,0 +1,139 @@
+.footer {
+  padding-top: 40px;
+  padding-bottom: 20px;
+
+  @include tablet {
+    padding-top: 20px;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+
+    @include tablet {
+      grid-template-columns: repeat(6, 1fr);
+    }
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__logo {
+    display: inline-block;
+
+    img {
+      aspect-ratio: 242 / 80;
+
+      @include mobile {
+        aspect-ratio: 365 / 120;
+        width: 100%;
+      }
+    }
+
+    &--desktop {
+      margin-bottom: 32px;
+
+      @include mobile {
+        display: none;
+      }
+    }
+
+    &--mobile {
+      display: none;
+
+      @include mobile {
+        grid-column: 2 span;
+        display: inline-block;
+      }
+    }
+  }
+
+  &__info {
+    grid-column: 3 span;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include mobile {
+      grid-column: 2 span;
+      order: 2;
+      flex-direction: column-reverse;
+      gap: 30px;
+    }
+  }
+
+  &__copyright {
+    margin: 0;
+    max-width: 200px;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 105%;
+    color: var(--white-60);
+  }
+
+  &__policies {
+    margin-top: auto;
+    max-width: 240px;
+
+    @include mobile {
+      max-width: 100%;
+    }
+
+    &.footer-menu {
+      gap: 10px;
+    }
+
+    & .footer-menu__link {
+      --link-color: var(--white-60);
+
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 105%;
+    }
+  }
+
+  &__menu {
+    grid-column: 3 span;
+    padding-top: 23px;
+
+    @include mobile {
+      grid-column: 2 span;
+      padding-top: 0;
+    }
+  }
+
+  &__contacts {
+    grid-column: 6 span;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    padding-top: 23px;
+
+    @include desktop {
+      gap: 40px 20px;
+    }
+    @include tablet {
+      gap: 30px 20px;
+      padding-top: 0;
+    }
+    @include mobile {
+      grid-column: 2 span;
+    }
+
+    & .contacts {
+      width: calc(50% - 40px / 2);
+
+      @include desktop {
+        width: calc(50% - 20px / 2);
+      }
+      @include mobile {
+        width: 100%;
+      }
+    }
+    & .contacts__value {
+      max-width: 260px;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+.ui-link {
+  --link-color: var(--white);
+  --link-color-hover: var(--accent-pink);
+
+  color: var(--link-color);
+  cursor: pointer;
+  transition: color var(--transition-300);
+
+  @include hover {
+    color: var(--link-color-hover);
+  }
+
+  &:focus-visible,
+  &:active {
+    outline: none;
+    color: var(--link-color-hover);
+  }
+}

@@ -1,0 +1,19 @@
+.why-benefits {
+  &__list {
+    @include list-reset;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__item {
+    width: calc(100% / 4 - 20px * 3 / 4);
+
+    @include desktop {
+      width: calc(100% / 2 - 20px * 1 / 2);
+    }
+    @include mobile {
+      width: 100%;
+    }
+  }
+}
