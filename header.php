@@ -95,9 +95,11 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 					<?php if($messanges) : ?>
 						<ul class="header__messanges messanges" title="messanges">
 							<?php foreach($messanges as $li) : ?>
-								<li class="messanges__item"><a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="messanges__link" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
-									<img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="40" height="40" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
-								</a></li>
+								<li class="messanges__item">
+								<a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="messanges__link" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
+									<img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="16" height="16" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
+								</a>
+							</li>
 							<?php endforeach;	?>
 						</ul>
 					<?php endif; ?>
@@ -134,6 +136,7 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 						?>
 					</nav>
 				</div>
+								
 				<?php /*-- Поиск --*/ ?>
 				<div class="header__searchbar searchbar">
 					<button class="searchbar__btn searchbar__btn--open ui-btn ui-btn--icon" type="button" aria-label="открыть форму поиска">
