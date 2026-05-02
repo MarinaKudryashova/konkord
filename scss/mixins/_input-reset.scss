@@ -1,0 +1,34 @@
+@mixin input-reset {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  background-color: transparent;
+  outline: none; // Добавьте сброс outline
+
+  // Убираем крестик в IE
+  // &::-ms-clear,
+  // &::-ms-reveal {
+  //   display: none;
+  //   width: 0;
+  //   height: 0;
+  // }
+
+  // Убираем крестик в Chrome/Safari
+  // &::-webkit-search-decoration,
+  // &::-webkit-search-cancel-button,
+  // &::-webkit-search-results-button,
+  // &::-webkit-search-results-decoration {
+  //   display: none;
+  //   -webkit-appearance: none;
+  // }
+
+  // Убираем стрелки в number input (если нужно)
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    display: none;
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

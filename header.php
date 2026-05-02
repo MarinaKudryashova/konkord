@@ -139,11 +139,11 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 								
 				<?php /*-- Поиск --*/ ?>
 				<div class="header__searchbar searchbar">
-					<button class="searchbar__btn searchbar__btn--open ui-btn ui-btn--icon" type="button" aria-label="открыть форму поиска">
+					<!-- <button class="searchbar__btn searchbar__btn--open ui-btn ui-btn--icon" type="button" aria-label="открыть форму поиска">
 						<svg class="ui-btn__icon">
-							<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#search"></use>
+							<use xlink:href="<?php //echo get_template_directory_uri();?>/img/sprite.svg#search"></use>
 						</svg>
-					</button>
+					</button> -->
 					<?php get_search_form(); ?>
 				</div>
   		</div>

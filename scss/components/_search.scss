@@ -1,37 +1,75 @@
-.searchbar {
-  // .searchbar__form
+.search {
+  --search-size: 56px;
+  --search-size-icon: 16px;
+  --search-link-bg: var(--bg-dark-grey);
+  --search-link-bg-hover: var(--accent-dark-green);
+  --search-br: 5px;
+  --search-padding: 20px;
+  --search-fw: 600;
+  --search-fs: 14px;
+  --search-lh: 1;
+  --search-color: var(--white);
+  --search-color-placeholder: var(--grey-1);
 
-  &__form {
+  &__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: var(--search-br);
+    padding: 1.1em var(--search-padding);
+    padding-right: var(--search-size);
+    background-color: var(--search-link-bg);
   }
 
-  // .searchbar__btn
+  &__field {
+    @include input-reset;
+    width: 100%;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+    font-weight: var(--search-fw);
+    font-size: var(--search-fs);
+    line-height: var(--search-lh);
+    letter-spacing: 0;
+    color: var(--search-color);
+
+    &::placeholder {
+      font-weight: inherit;
+      font-size: inherit;
+      color: var(--search-color-placeholder);
+      opacity: 1;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
 
   &__btn {
+    @include btn-reset;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--search-br);
+    width: var(--search-size);
+    height: var(--search-size);
+    background-color: var(--search-link-bg);
+    cursor: pointer;
+    transition: background-color var(--transition-300);
   }
-
-  // .searchbar__btn--close
-
-  &__btn--close {
-  }
-
-  // .searchbar__icon-close
-
-  &__icon-close {
-  }
-}
-.search {
-  // .search__input
-
-  &__input {
-  }
-
-  // .search__icon
 
   &__icon {
-  }
-
-  // .search__btn-clear
-
-  &__btn-clear {
+    flex: none;
+    width: var(--search-size-icon);
+    height: var(--search-size-icon);
+    fill: none;
+    stroke-width: 1.3px;
+    stroke: var(--search-color);
+    stroke-linecap: "round";
+    stroke-linejoin: "round";
+    user-select: none;
   }
 }
