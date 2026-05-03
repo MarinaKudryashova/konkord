@@ -163,6 +163,17 @@ function konkord_styles_and_scripts() {
 add_action( 'wp_enqueue_scripts', 'konkord_styles_and_scripts' );
 
 /**
+ * Заглушкка для изображений
+ */
+function get_placeholder_image() {
+    return [
+				'original_1x' => get_template_directory_uri() . '/img/placeholder.png',
+				'webp_1x' => get_template_directory_uri() . '/img/placeholder.webp',
+				'alt' => 'Изображение отсутствует',
+    ];
+}
+
+/**
  * THEME EXTRAS
  */
 require_once get_template_directory() . '/inc/thumbnail.php'; // Подключаем функционал управления миниатюрами записей из общего списка записей в админ-панели WordPress
