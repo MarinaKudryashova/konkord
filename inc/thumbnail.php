@@ -31,7 +31,7 @@ class WPSL_Thumb {
 	 */
 	public function post_types() {
 		$post_types = get_post_types( array( 'public' => true ) );
-		// $post_types = array( 'post', 'page' );
+		$post_types = array( 'post', 'services', 'employees');
 		return $post_types;
 	}
 

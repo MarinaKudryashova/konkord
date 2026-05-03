@@ -1,0 +1,52 @@
+.card-news {
+  --card-news-br: 10px;
+  --card-news-padding: 30px;
+  --card-news-bg: var(--bg-main);
+  --card-news-color: var(--white);
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: var(--card-news-br);
+  padding: var(--card-news-padding);
+  color: var(--card-news-color);
+  background-color: var(--card-news-bg);
+
+  &__img {
+    display: flex;
+
+    & img {
+      border-radius: 5px;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+      aspect-ratio: 313 / 261;
+      overflow: clip;
+      background-color: var(--card-news-color);
+
+      @include mobile {
+        aspect-ratio: 178 / 148;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 130%;
+  }
+
+  &__excerpt {
+    margin: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+  }
+}
