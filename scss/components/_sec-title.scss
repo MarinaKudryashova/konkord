@@ -4,9 +4,9 @@
   --title-position: left;
   margin-top: 0;
   margin-bottom: var(--title-mb);
-  font-family: var(--second-family);
-  font-weight: 400;
-  font-size: 52px;
+  font-family: var(--font-family);
+  font-weight: 700;
+  font-size: 58px;
   line-height: 100%;
   text-align: var(--title-position);
   color: var(--title-color);
@@ -22,18 +22,5 @@
 
   &--center {
     --title-position: center;
-  }
-
-  &--pink {
-    --title-color: var(--accent-pink);
-  }
-
-  &--blue {
-    --title-color: var(--accent-blue);
-  }
-
-  & b {
-    font-weight: 400;
-    color: var(--white);
   }
 }

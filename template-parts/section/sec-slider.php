@@ -1,8 +1,11 @@
-
-
 <?php 
   $page_id = $args["id"];
   $sec_name = $args["name"];
+  $sec_bg = $args["bg"] ?? 'light';
+  $slider_class = 'sec-slider sec-offset';
+  if ($sec_bg) {
+      $slider_class .= ' sec-slider--' . esc_attr($sec_bg);
+  }
 
   $title_field = $sec_name . '_title';
   $list_field  = $sec_name . '_list';
@@ -14,7 +17,7 @@
 
 <?php if(is_array($slider_list)) : ?>
 
-<section class="sec-slider sec-offset" data-id="<?php echo $sec_name; ?>">
+<section class="<?php echo esc_attr($slider_class); ?>" data-id="<?php echo $sec_name; ?>">
   <div class="container">
 
     <div class="sec-slider__heading">
@@ -26,12 +29,12 @@
       <div class="sec-slider__nav">
         <button class="sec-slider__btn-prev">
           <svg class="sec-slider__icon">
-            <use xlink:href="<?php echo esc_url(get_template_directory_uri()); ?>/img/sprite.svg#icon-chevron-left"></use>
+            <use xlink:href="<?php echo esc_url(get_template_directory_uri()); ?>/img/sprite.svg#arrow-left"></use>
           </svg>
         </button>
         <button class="sec-slider__btn-next">
           <svg class="sec-slider__icon">
-            <use xlink:href="<?php echo esc_url(get_template_directory_uri()); ?>/img/sprite.svg#icon-chevron-right"></use>
+            <use xlink:href="<?php echo esc_url(get_template_directory_uri()); ?>/img/sprite.svg#arrow-right"></use>
           </svg>
         </button>
       </div>

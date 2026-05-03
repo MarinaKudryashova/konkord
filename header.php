@@ -67,7 +67,7 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 				</a>
 				<?php /*-- Адрес с переключением городов --*/ ?>
 				<div class="header__address">
-					<div class="header__address-text"></div>
+					<div class="header__address-text"><?php echo get_field('company_main_office_address-local', 'option') ?></div>
 					<div class="header__switcher">
 						<span class="header__city is-active" data-city="dz">Дзержинск</span>
 						<span class="header__city" data-city="nn">Нижний Новгород</span>
@@ -81,15 +81,24 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 					$phone_href = preg_replace('![^0-9]+!', '', $phone);
 				?>
 				<div class="header__action">
-					<?php /*-- Телефон --*/ ?>
-					<?php if(!empty($phone[0]) && is_array($phone)) : ?>
-					<a href="tel:<?php echo $phone_href[0]; ?>" class="header__phone" aria-label="Позвонить нам">
-						<svg>
-							<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#icon-phone"></use>
-						</svg>
-						<span><?php echo $phone[0]; ?></span>
-					</a>
-					<?php endif; ?>
+					<?php /*-- Электронная почта --*/ ?>
+					<div class="header__contacts">
+						<a class="header__link ui-link" href="mailto:<?php echo get_field('company_mail', 'option') ?>"><?php echo get_field('company_mail', 'option') ?></a>
+					</div>
+					<div class="header__contacts">
+						<?php /*-- Телефон --*/ ?>
+						<?php if(!empty($phone[0]) && is_array($phone)) : ?>
+						<a href="tel:<?php echo $phone_href[0]; ?>" class="header__link header__phone ui-link" aria-label="Позвонить нам">
+							<svg>
+								<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#icon-phone"></use>
+							</svg>
+							<span><?php echo $phone[0]; ?></span>
+						</a>
+						<?php endif; ?>
+						
+						<?php /*-- Время работы --*/ ?>
+						<span class="header__timework"><?php echo get_field('company_main_office_timework', 'option') ?></span>
+					</div>
 
 					<?php /*-- Мессенджеры --*/ ?>
 					<?php if($messanges) : ?>
@@ -103,16 +112,14 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 							<?php endforeach;	?>
 						</ul>
 					<?php endif; ?>
-
-					
-					<?php /*-- Кнопка бургер --*/ ?>
-					<div class="header__burger">
-						<button class="burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
-							<span class="burger__line"></span>
-						</button>
-					</div>
 				</div>
-
+				
+				<?php /*-- Кнопка бургер --*/ ?>
+				<div class="header__burger">
+					<button class="burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
+						<span class="burger__line"></span>
+					</button>
+				</div>
 				<?php /*-- Навигация --*/ ?>
 				<div class="header__nav">
 					<nav class="nav" title="main navigation" data-menu>
@@ -139,11 +146,11 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 								
 				<?php /*-- Поиск --*/ ?>
 				<div class="header__searchbar searchbar">
-					<button class="searchbar__btn searchbar__btn--open ui-btn ui-btn--icon" type="button" aria-label="открыть форму поиска">
+					<!-- <button class="searchbar__btn searchbar__btn--open ui-btn ui-btn--icon" type="button" aria-label="открыть форму поиска">
 						<svg class="ui-btn__icon">
-							<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#search"></use>
+							<use xlink:href="<?php //echo get_template_directory_uri();?>/img/sprite.svg#search"></use>
 						</svg>
-					</button>
+					</button> -->
 					<?php get_search_form(); ?>
 				</div>
   		</div>
