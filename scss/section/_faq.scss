@@ -49,20 +49,6 @@
     color: inherit;
     transition: padding-bottom var(--transition-300);
 
-<<<<<<< HEAD
-=======
-    // @include small-desktop {
-    //   padding: 24px 32px;
-    // }
-    // @include tablet {
-    //   padding: 16px 24px;
-    // }
-    @include mobile {
-      gap: 8px;
-      padding: 10px 10px 10px 20px;
-    }
-
->>>>>>> c8a93dc456ac61651153eddaf70350f56f4dddc6
     &:focus {
       outline: none;
     }
@@ -129,37 +115,9 @@
     box-sizing: content-box;
     transition: all var(--transition-300);
 
-<<<<<<< HEAD
     .is-open & {
       padding-bottom: 40px;
       opacity: 1;
-=======
-    // @include small-desktop {
-    //   padding: 0 32px;
-    // }
-    // @include tablet {
-    //   padding: 0 24px;
-    // }
-
-      @include mobile {
-        padding: 0 20px;
-      }
-
-    .is-open & {
-      padding-bottom: 40px;
-      opacity: 1;
-
-      // @include small-desktop {
-      //   padding-bottom: 24px;
-      // }
-      // @include tablet {
-      //   padding-bottom: 16px;
-      // }
-
-      @include mobile {
-        margin-bottom: 20px;
-      }
->>>>>>> c8a93dc456ac61651153eddaf70350f56f4dddc6
     }
   }
 
