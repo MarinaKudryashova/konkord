@@ -8,3 +8,19 @@ Version: 1.0.0
 Text Domain: konkord
 Plugins: Contact Form 7, Yoast SEO, Cyr-To-Lat, Converter for Media, WP Super Cache, All-In-One Security (AIOS).
  */
+
+/* Для компьютеров и планшетов (высота панели 32px) */
+body.admin-bar .fixed-header,
+body.admin-bar .site-header,
+body.admin-bar header {
+  top: 32px !important;
+}
+
+/* Для телефонов (ширина экрана меньше 782px, высота панели становится 46px) */
+@media screen and (max-width: 782px) {
+  body.admin-bar .fixed-header,
+  body.admin-bar .site-header,
+  body.admin-bar header {
+    top: 46px !important;
+  }
+}
