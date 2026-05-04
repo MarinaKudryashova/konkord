@@ -10,16 +10,20 @@
   <div class="promo__container container">
     <div class="promo__content">
       <?php if(!empty($promo_title)) : ?>
-      <h1 class="promo__title"><?php echo esc_html($promo_title) ?></h1>
+      <h1 class="promo__title"><?php echo wp_kses_post($promo_title); ?></h1>
       <?php endif; ?>
   
       <?php if(!empty($promo_descr)) : ?>
-      <p class="promo__descr"><?php echo esc_html($promo_descr) ?></p>
+      <p class="promo__descr"><?php echo esc_html($promo_descr); ?></p>
       <?php endif; ?>
+      
+      <!-- <picture>
+        <source srcset=".webp" type="image/webp">
+        <img loading="lazy" src="." class="image" width="" height="" alt="">
+      </picture> -->
 
       <?php /*-- Кнопка с формой --*/ ?>
 			<button type="button" class="promo__callback ui-btn" data-graph-path="modal-leadform">Узнать стоимость</button>
-
     </div>
   </div>
 </section>
