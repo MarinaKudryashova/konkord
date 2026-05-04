@@ -78,7 +78,7 @@ class BEM_Walker_Nav_Menu extends Walker_Nav_Menu {
         if ($has_children) {
             $item_output .= $n . $indent . "\t" . '<button data-dropdown-open aria-expanded="false" aria-label="Открыть подменю">' . $n;
             $item_output .= $indent . "\t\t" . '<svg>' . $n;
-            $item_output .= $indent . "\t\t\t" . '<use xlink:href="'. get_template_directory_uri() .'/img/sprite.svg#icon-caret-down"></use>' . $n;
+            $item_output .= $indent . "\t\t\t" . '<use xlink:href="'. get_template_directory_uri() .'/img/sprite.svg#shevron-down"></use>' . $n;
             $item_output .= $indent . "\t\t" . '</svg>' . $n;
             $item_output .= $indent . "\t" . '</button>' . $n;
         }
