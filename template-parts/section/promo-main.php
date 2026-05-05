@@ -5,7 +5,7 @@
   $promo_descr = get_field('promo_descr', $page_id);
 ?>
 
-<section class="promo sec-offset">
+<section class="promo sec-offset sec-light">
 
   <div class="promo__container container">
     <div class="promo__content">
