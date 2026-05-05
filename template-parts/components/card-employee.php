@@ -5,7 +5,7 @@
 <div class="card-employee">
    <div class="card-employee__view">
       <picture class="card-employee__img">
-         <img loading="lazy" src="../img/employees/employee-1.jpg" alt="Фото сотрудника" width="272" height="360" aria-hidden="true">
+         <img loading="lazy" src="../img/employees/kozlova_anna.jpg" alt="Фото сотрудника" width="272" height="360" aria-hidden="true">
       </picture>
    </div>
    <div class="card-employee__info">

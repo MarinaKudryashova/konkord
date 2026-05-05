@@ -1,8 +1,6 @@
 .promo {
   --header-height: 144px;
   height: calc(100vh - var(--header-height));
-  padding: 120px 0;
-  background-color: var(--bg-light);
   border-radius: 40px;
 
   @include mobile {
