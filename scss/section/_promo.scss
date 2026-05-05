@@ -1,5 +1,7 @@
 .promo {
   --header-height: 144px;
+  border-radius: 40px;
+  // padding: 120px 0;
   height: calc(100vh - var(--header-height));
   border-radius: 40px;
 

@@ -1,8 +1,14 @@
 <?php 
   $page_id = $args["id"];
   $sec_name = $args["name"];
-  $sec_bg = $args["bg"] ?? 'light';
-  $slider_class = 'sec-slider sec-offset';
+  $sec_bg = $args["bg"] ?? '';
+  $sec_is_last = $args["lastblock"];
+
+  // $slider_class = 'sec-slider sec-offset';
+  $slider_class = 'sec-slider';
+  if($sec_is_last != 1) {
+    $slider_class .= ' sec-offset';
+  }
   if ($sec_bg) {
       $slider_class .= ' sec-slider--' . esc_attr($sec_bg);
   }
@@ -12,7 +18,6 @@
 
   $slider_title = get_field($title_field, $page_id);
   $slider_list  = get_field($list_field, $page_id);
-
 ?>
 
 <?php if(is_array($slider_list)) : ?>
