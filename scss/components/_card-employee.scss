@@ -1,0 +1,83 @@
+.card-employee {
+   // временно
+   width: 272px;
+   height: 564px;
+
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   // width: 100%;
+   border-radius: 8px;
+   overflow: hidden;
+
+   &__img img {
+      aspect-ratio: 272 / 360;
+   }
+
+   &__info {
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background-color: var(--white);
+   }
+
+   &__title {
+      margin: 0 0 16px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 130%;
+      color: var(--black);
+   }
+
+   &__email {
+      margin: 0 0 8px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      color: var(--black);
+   }
+
+   &__phone {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin: 0 0 30px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      color: var(--black);
+
+      & svg {
+         width: 14px;
+         height: 14px;
+         color: var(--accent-green);
+      }
+   }
+
+   &__position {
+      margin: 0;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      color: var(--grey-2);
+   }
+
+   &__messanges.messanges {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      & .messanges__link {
+         width: 40px;
+         height: 40px;
+         background-color: var(--accent-dark-green);
+
+         &__accent {
+            background-color: var(--accent-green);
+         }
+      }
+   }
+}

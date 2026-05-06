@@ -1,6 +1,7 @@
 <?php
   $page_id = $args["id"];
   $sec_name = $args["name"]["value"];
+  $sec_is_last = $args["lastblock"];
   
   $field_title = $sec_name . "_title";
   $field_list = $sec_name;
@@ -9,7 +10,7 @@
   $sec_why_list = get_field($field_list, $page_id);
 
 ?>
-<section class="why-benefits sec-offset">
+<section class="why-benefits <?php if($sec_is_last != 1) : ?>sec-offset"<?php endif; ?>>
   <div class="container">
     <?php if($sec_why_title) : ?>
       <h2 class="sec-title" data-aos="fade-up"><?php echo $sec_why_title; ?></h2>

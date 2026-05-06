@@ -27,6 +27,7 @@ function employees_register_post_types(){
 		'description'           => __( 'Список сотрудников компании', 'konkord' ),
 		'public'                => true,
 		'publicly_queryable'    => false,  // Не показываем на сайте отдельно
+        'exclude_from_search'   => true,  // Явно исключаем из поиска
 		'show_ui'               => true,
 		'show_in_menu'          => true,
 		'show_in_admin_bar'     => true,
@@ -35,7 +36,7 @@ function employees_register_post_types(){
 		'menu_position'         => 5,      // Позиция в меню (после лицензий)
 		'menu_icon'             => 'dashicons-businessperson', // Иконка для сотрудников
 		'capability_type'       => 'post',
-		'supports'              => array('title', 'thumbnail', 'excerpt', 'editor', 'page-attributes'),
+		'supports'              => array('title', 'thumbnail', 'page-attributes'),
 		'taxonomies'            => array(),
 		'has_archive'           => false,
 		'can_export'            => true,
@@ -90,31 +91,5 @@ function employees_show_position_column( $column_name, $post_id ) {
         // Получаем должность из произвольного поля (если используете ACF)
         $position = get_post_meta( $post_id, 'employee_position', true );
         echo !empty( $position ) ? esc_html( $position ) : '—';
-    }
-}
-
-/* Добавляем колонку с фото (миниатюрой) */
-add_filter( 'manage_employees_posts_columns', 'employees_add_thumbnail_column', 10 );
-function employees_add_thumbnail_column( $columns ) {
-    $new_columns = array();
-    foreach ( $columns as $key => $value ) {
-        if ( $key === 'cb' ) {
-            $new_columns[$key] = $value;
-            $new_columns['thumbnail'] = __( 'Фото', 'konkord' );
-        } else {
-            $new_columns[$key] = $value;
-        }
-    }
-    return $new_columns;
-}
-
-add_action( 'manage_employees_posts_custom_column', 'employees_show_thumbnail_column', 10, 2 );
-function employees_show_thumbnail_column( $column_name, $post_id ) {
-    if ( $column_name === 'thumbnail' ) {
-        if ( has_post_thumbnail( $post_id ) ) {
-            echo get_the_post_thumbnail( $post_id, array( 50, 50 ) );
-        } else {
-            echo '—';
-        }
     }
 }

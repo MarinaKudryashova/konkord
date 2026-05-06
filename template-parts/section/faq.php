@@ -1,5 +1,13 @@
 <?php
   $page_id = $args["id"];
+  $sec_name = $args["name"]["value"];
+  $sec_is_last = $args["lastblock"];
+
+  $faq_class = 'faq';
+  if($sec_is_last != 1) {
+    $faq_class .= ' sec-offset';
+  }
+
   $block_title = get_field('faq_title_main');
   $block_list = get_field('faq_list_main');
 ?>
