@@ -17,10 +17,10 @@
       <p class="promo__descr"><?php echo esc_html($promo_descr); ?></p>
       <?php endif; ?>
       
-      <!-- <picture>
-        <source srcset=".webp" type="image/webp">
-        <img loading="lazy" src="." class="image" width="" height="" alt="">
-      </picture> -->
+      <picture class="promo__picture">
+        <!-- <source srcset="<?php echo get_template_directory_uri(); ?>/img/promo/promo-picture.webp" type="image/webp"> -->
+        <img src="<?php echo get_template_directory_uri(); ?>/img/promo/promo-picture.png" class="image" width="651" height="545" alt="">
+      </picture>
 
       <?php /*-- Кнопка с формой --*/ ?>
 			<button type="button" class="promo__callback ui-btn" data-graph-path="modal-leadform">Узнать стоимость</button>
