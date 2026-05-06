@@ -51,18 +51,18 @@ if (employeesSectionSliders) {
       },
       breakpoints: {
         360: {
-          slidesPerView: 1,
+          slidesPerView: 1.3,
         },
         576: {
           slidesPerView: 2,
         },
         768: {
-          slidesPerView: 2,
+          slidesPerView: 2.3,
         },
         992: {
-          slidesPerView: 3,
+          slidesPerView: 3.3,
         },
-        1440: {
+        1400: {
           slidesPerView: 4,
         },
       },

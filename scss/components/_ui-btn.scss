@@ -31,6 +31,10 @@
     background-color var(--transition-300),
     transform var(--transition-300);
 
+    @include mobile {
+      --btn-fz: 16px;
+    }
+
   &:focus {
     outline: none;
   }

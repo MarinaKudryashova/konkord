@@ -46,7 +46,7 @@
     }
 
     & .swiper-slide {
-      width: calc(100% / 3 - 20px * 2 / 3);
+      width: calc(100% / 4 - 20px * 2 / 4);
 
       @include tablet {
         width: auto;
@@ -63,7 +63,9 @@
     margin-bottom: 40px;
 
     @include mobile {
-      margin-bottom: 32px;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 16px;
     }
 
     #sec-case & {
@@ -72,8 +74,13 @@
   }
 
   &__title {
+    max-width: 810px;
     margin-bottom: 0;
     color: var(--sec-color);
+
+    @include mobile {
+      line-height: 110%;
+    }
   }
 
   &__nav {
@@ -100,6 +107,11 @@
     transition:
       background-color var(--transition-300),
       transform var(--transition-300);
+
+    @include mobile {
+      width: 40px;
+      height: 40px;
+    }
 
     &:focus {
       outline: none;
