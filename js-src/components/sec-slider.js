@@ -22,10 +22,13 @@ if (fotogallerySectionSliders) {
           slidesPerView: 1,
         },
         768: {
-          slidesPerView: 2,
+          slidesPerView: 2.3,
         },
         1440: {
-          slidesPerView: 2,
+          slidesPerView: 2.2,
+        },
+        1560: {
+          slidesPerView: 3,
         },
       },
     });
@@ -62,9 +65,9 @@ if (employeesSectionSliders) {
         992: {
           slidesPerView: 3.3,
         },
-        1400: {
+        1190: {
           slidesPerView: 4,
-        },
+        }
       },
     });
   });

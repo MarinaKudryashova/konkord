@@ -31,7 +31,7 @@
     background-color var(--transition-300),
     transform var(--transition-300);
 
-    @include mobile {
+    @include tablet-md {
       --btn-fz: 16px;
     }
 

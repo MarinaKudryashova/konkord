@@ -62,7 +62,7 @@
     gap: 8px;
     margin-bottom: 40px;
 
-    @include mobile {
+    @media (max-width: 630px) {
       flex-direction: column;
       gap: 16px;
       margin-bottom: 16px;
@@ -78,7 +78,16 @@
     margin-bottom: 0;
     color: var(--sec-color);
 
-    @include mobile {
+    @include tablet {
+      max-width: 750px;
+    }
+
+    @include tablet-lg {
+      max-width: 75%;
+    }
+
+    @media (max-width: 630px) {
+      max-width: 100%;
       line-height: 110%;
     }
   }
@@ -107,6 +116,21 @@
     transition:
       background-color var(--transition-300),
       transform var(--transition-300);
+
+    @include desktop {
+      width: 68px;
+      height: 68px;
+    }
+
+    @include tablet {
+      width: 64px;
+      height: 64px;
+    }
+
+    @include tablet-md {
+      width: 54px;
+      height: 54px;
+    }
 
     @include mobile {
       width: 40px;
