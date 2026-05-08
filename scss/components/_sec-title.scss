@@ -11,6 +11,10 @@
   text-align: var(--title-position);
   color: var(--title-color);
 
+  &--column {
+    flex-direction: column;
+  }
+
   @include desktop {
     font-size: 54px;
   }
