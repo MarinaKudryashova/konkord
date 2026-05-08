@@ -24,8 +24,8 @@
         ?>
         <li class="why-benefits__item">
           <div class="card-benefits">
-            <span class="card-benefits__name"><?php echo esc_html($benefit_title); ?></span>
-            <span class="card-benefits__text"><?php echo esc_html($benefit_text); ?></span>
+            <span class="card-benefits__name"><?php echo wp_kses_post($benefit_title); ?></span>
+            <span class="card-benefits__text"><?php echo wp_kses_post($benefit_text); ?></span>
           </div>
         </li>
       <?php endforeach; ?>
