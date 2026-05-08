@@ -1,6 +1,7 @@
 .sec-slider {
   --sec-bg: var(--bg-main);
   --sec-color: var(--white);
+  overflow: clip;
 
   &--light {
     --sec-bg: var(--bg-light);

@@ -10,7 +10,7 @@ if (fotogallerySectionSliders) {
     const swiper_currentSlider = new Swiper(slider, {
       loop: true,
       lazy: true,
-      spaceBetween: 20,
+      spaceBetween: 8,
       slidesPerView: 1,
       slidesPerGroup: 1,
       navigation: {
@@ -19,16 +19,24 @@ if (fotogallerySectionSliders) {
       },
       breakpoints: {
         360: {
-          slidesPerView: 1,
+          slidesPerView: 1.5,
+          spaceBetween: 8,
+        },
+        576: {
+          slidesPerView: 2,
+          spaceBetween: 8,
         },
         768: {
-          slidesPerView: 2.3,
+          slidesPerView: 2,
+          spaceBetween: 20,
         },
-        1440: {
-          slidesPerView: 2.2,
+        1200: {
+          slidesPerView: 2.1,
+          spaceBetween: 20,
         },
         1560: {
           slidesPerView: 3,
+          spaceBetween: 20,
         },
       },
     });
@@ -45,7 +53,7 @@ if (employeesSectionSliders) {
     const swiper_currentSlider = new Swiper(slider, {
       loop: true,
       lazy: true,
-      spaceBetween: 20,
+      spaceBetween: 8,
       slidesPerView: 1,
       slidesPerGroup: 1,
       navigation: {
@@ -55,19 +63,24 @@ if (employeesSectionSliders) {
       breakpoints: {
         360: {
           slidesPerView: 1.3,
+          spaceBetween: 8,
         },
         576: {
           slidesPerView: 2,
+          spaceBetween: 8,
         },
         768: {
           slidesPerView: 2.3,
+          spaceBetween: 20,
         },
         992: {
           slidesPerView: 3.3,
+          spaceBetween: 20,
         },
         1190: {
           slidesPerView: 4,
-        }
+          spaceBetween: 20,
+        },
       },
     });
   });
@@ -83,7 +96,7 @@ if (newsSectionSliders) {
     const swiper_currentSlider = new Swiper(slider, {
       loop: true,
       lazy: true,
-      spaceBetween: 20,
+      spaceBetween: 8,
       slidesPerView: 1,
       slidesPerGroup: 1,
       navigation: {
@@ -93,18 +106,23 @@ if (newsSectionSliders) {
       breakpoints: {
         360: {
           slidesPerView: 1,
+          spaceBetween: 8,
         },
         576: {
           slidesPerView: 2,
+          spaceBetween: 8,
         },
         768: {
           slidesPerView: 2,
+          spaceBetween: 20,
         },
         992: {
           slidesPerView: 3,
+          spaceBetween: 20,
         },
         1440: {
           slidesPerView: 3,
+          spaceBetween: 20,
         },
       },
     });
