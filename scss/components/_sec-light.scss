@@ -2,6 +2,10 @@
   padding: 120px 0;
   background-color: var(--bg-light);
 
+  @include desktop {
+    padding: 100px 0;
+  }
+
   @include tablet {
     padding: 60px 0;
   }

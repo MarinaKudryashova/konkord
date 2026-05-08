@@ -19,7 +19,7 @@
       <p class="promo__descr"><?php echo esc_html($promo_descr); ?></p>
       <?php endif; ?>
       
-      <picture>
+      <picture class="promo__picture">
         <?php if($promo_img["webp_1x"]) : ?>
           <source srcset="<?php echo esc_url($promo_img["webp_1x"]); ?>" type="image/webp">
         <?php endif; ?>
