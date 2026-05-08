@@ -22,7 +22,7 @@
 
 <?php if(is_array($slider_list)) : ?>
 
-<section class="<?php echo esc_attr($slider_class); ?>" data-id="<?php echo $sec_name; ?>">
+<section class="<?php echo esc_attr($slider_class); ?>" data-id="<?php echo $sec_name; ?>" id="<?php echo $sec_name; ?>">
   <div class="container">
 
     <div class="sec-slider__heading">
