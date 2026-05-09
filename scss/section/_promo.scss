@@ -1,31 +1,28 @@
 .promo {
-  --header-height: 144px;
   position: relative;
-  border-radius: 40px;
-  // padding: 120px 0;
-  height: calc(100vh - var(--header-height));
-  border-radius: 40px;
+  display: flex;
+  min-height: 698px;
 
   @include tablet {
-    height: auto;
+    min-height: 645px;
   }
 
   @include mobile {
-    --header-height: 128px;
-    height: calc(100vh - var(--header-height));
-    border-radius: 24px;
+    min-height: unset;
     padding: 24px 0 16px;
+    border-radius: 24px;
   }
 
   &__container {
     display: flex;
-    height: 100%;
+    flex: 1;
   }
 
   &__content {
     display: flex;
     flex-direction: column;
     gap: 32px;
+    height: 100%;
     max-width: 720px;
     z-index: 2;
 
@@ -33,7 +30,7 @@
       max-width: 660px;
     }
 
-    @include tablet {
+    @include tablet-md {
       max-width: 100%;
     }
 
@@ -65,14 +62,6 @@
     & b {
       white-space: nowrap;
       color: var(--accent-green);
-
-      @media (max-width: 1330px) {
-        white-space: unset;
-      }
-
-      @include tablet {
-        white-space: nowrap;
-      }
     }
   }
 
@@ -85,7 +74,6 @@
     color: var(--grey-2);
 
     @include tablet {
-      max-width: 100%;
       font-size: 18px;
     }
 
@@ -99,12 +87,10 @@
     padding: 33.5px;
     max-width: 351px;
 
-    @include tablet {
-      max-width: 100%;
-    }
-
     @include tablet-md {
       padding: 26px;
+      max-width: 100%;
+      width: 100%;
     }
 
     @include mobile {
@@ -123,7 +109,16 @@
       right: 0;
     }
 
+    @media (max-width: 1330px) {
+      top: auto;
+      bottom: 75px;
+    }
+
     @include tablet {
+      bottom: 25px;
+    }
+
+    @include tablet-md {
       position: static;
     }
 
@@ -131,7 +126,17 @@
       max-width: 622px;
       aspect-ratio: 623 / 545;
 
-      @include tablet {
+      @media (max-width: 1330px) {
+        max-width: 530px;
+      }
+
+      
+
+      @media (max-width: 930px) {
+        max-width: 450px;
+      }
+
+      @include tablet-md {
         width: 100%;
         max-width: unset;
       }

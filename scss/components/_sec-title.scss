@@ -23,7 +23,12 @@
     font-size: 48px;
   }
 
+  @include tablet-lg {
+    font-size: 44px;
+  }
+
   @include tablet-md {
+    margin-bottom: 32px;
     font-size: 40px;
   }
 

@@ -162,6 +162,11 @@
     padding: 15px;
     margin: -15px;
 
+    @media (max-width: 359px) {
+      padding: 0;
+      margin: 0;
+    }
+
     & .swiper-slide {
       display: flex;
       height: auto;

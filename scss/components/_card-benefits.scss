@@ -8,7 +8,12 @@
    background-color: var(--white);
    color: var(--black);
 
-   @include mobile {
+   @include tablet {
+      padding: 24px;
+      gap: 20px;
+   }
+
+   @include tablet-md {
       gap: 16px;
       padding: 24px 16px;
    }
@@ -17,6 +22,14 @@
       font-weight: 700;
       font-size: 32px;
       line-height: 100%;
+
+      @include tablet {
+         font-size: 26px;
+      }
+
+      @include tablet-md {
+         font-size: 22px;
+      }
 
       @include mobile {
          font-size: 20px;
@@ -28,28 +41,16 @@
       font-size: 20px;
       line-height: 130%;
 
-      @include mobile {
+      @include tablet {
+         font-size: 18px;
+      }
+
+      @include tablet-md {
          font-size: 16px;
       }
 
       & b {
          font-weight: 700;
       }
-   }
-
-   // Черная карточка
-   &--black {
-      background-color: var(--bg-main);
-      color: var(--white);
-   }
-
-   // Карточка без фона
-   &--transparent {
-      padding: 17px 0 0;
-      background-color: transparent;
-   }
-
-   &--row2 {
-      grid-row: span 2;
    }
 }

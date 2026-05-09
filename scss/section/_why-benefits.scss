@@ -42,12 +42,29 @@
     grid-auto-flow: dense;
     gap: 23px 20px;
     // column-gap: 20px;
+
+    @include tablet {
+      gap: 20px 18px;
+    }
+
+    @include tablet-md {
+      gap: 16px;
+    }
   }
+
   &__item {
     grid-column: 1/4 span;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    @media (max-width: 920px) {
+      grid-column: 1/5 span;
+    }
+
+    @media (max-width: 645px) {
+      grid-column: 1/12 span;
+    }
 
     .card-benefits {
       height: 100%;
@@ -56,6 +73,14 @@
   &__item:first-child,
   &__item:last-child {
     grid-column: 5/8 span;
+
+    @media (max-width: 920px) {
+      grid-column: 6/8 span;
+    }
+
+    @media (max-width: 645px) {
+      grid-column: 1/12 span;
+    }
   }
   &__item:last-child {
     justify-content: flex-end;
@@ -64,11 +89,52 @@
     }
   }
 
-  &__link {
-    margin-top: 30px;
+  &__item:nth-child(2) .card-benefits {
+    min-height: 429px;
+
+    @include tablet {
+      min-height: 370px;
+    }
+
+    @media (max-width: 645px) {
+      min-height: unset;
+    }
+  }
+
+  &__item:nth-child(3) .card-benefits {
+    background-color: var(--black);
+    color: var(--white);
+  }
+
+  &__item:nth-child(4) .card-benefits {
+    max-width: 515px;
+    padding: 17px 0 0;
+    background-color: transparent;
+
+    @include tablet {
+      max-width: 60%;
+    }
 
     @include mobile {
+      max-width: unset;
+    }
+
+    & .card-benefits__name {
+      @include mobile {
+        max-width: 45%;
+      }
+    }
+  }
+
+  &__link {
+    min-width: 421px;
+    margin-top: 30px;
+    padding: 33.5px;
+
+    @media (max-width: 645px) {
+      min-width: unset;
       width: 100%;
+      padding: 24px;
     }
   }
 }

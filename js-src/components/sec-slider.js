@@ -18,6 +18,10 @@ if (fotogallerySectionSliders) {
         prevEl: btnPrevSectionSlider,
       },
       breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 8,
+        },
         360: {
           slidesPerView: 1.5,
           spaceBetween: 8,
@@ -61,6 +65,10 @@ if (employeesSectionSliders) {
         prevEl: btnPrevSectionSlider,
       },
       breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 8,
+        },
         360: {
           slidesPerView: 1.3,
           spaceBetween: 8,
