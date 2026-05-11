@@ -1,0 +1,35 @@
+.steps {
+  // --sec-bg: var(--bg-light);
+  // --sec-color: var(--black);
+
+  &__title {
+    color: currentColor;
+  }
+  &__list {
+    @include list-reset;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    color: currentColor;
+  }
+
+  &__item {
+    display: flex;
+    width: calc(100% / 3 - 20px * 2 / 3);
+  }
+  &__img {
+    display: flex;
+    border-radius: 10px;
+    overflow: clip;
+
+    & img {
+      .steps__item:nth-child(odd) & {
+        aspect-ratio: 250 / 344;
+      }
+      .steps__item:nth-child(even) & {
+        aspect-ratio: 465 / 366;
+      }
+    }
+  }
+}
+
