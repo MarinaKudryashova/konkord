@@ -21,9 +21,10 @@
 @import "components/sec-light";
 @import "components/ui-card";
 @import "components/contacts";
+@import "components/card-benefits";
 @import "components/card-employee"; //карточка сотрудника
 @import "components/card-fotogallery";
-@import "components/card-benefits";
+@import "components/card-news";
 // @import "components/topbtn";
 // @import "components/social";
 // @import "components/textcontent";
@@ -33,10 +34,10 @@
 @import "section/header";
 @import "section/promo";
 
-@import "section/sec-slider";
-@import "components/card-news";
-
 @import "section/why-benefits";
+@import "section/sec-slider";
+@import "section/steps";
+
 @import "section/faq";
 @import "section/banner-form";
 

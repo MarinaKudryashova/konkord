@@ -85,7 +85,7 @@
     }
   }
   &__item:last-child {
-    justify-content: flex-end;
+    justify-content: space-between;
     .card-benefits {
       height: fit-content;
     }

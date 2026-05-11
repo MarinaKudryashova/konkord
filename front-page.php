@@ -30,6 +30,7 @@ $page_id = get_the_ID();
         foreach ($arBlock as $index => $block) {
             $section_name = $block['value'];
             $is_light_section = in_array($section_name, $light_sections);
+            // var_dump($section_name);
             
             if ($is_light_section) {
                 $light_group[] = $block;
