@@ -11,6 +11,12 @@
 
 ?>
 <section class="why-benefits <?php if($sec_is_last != 1) : ?>sec-offset"<?php endif; ?>>
+  <!-- Самолетик -->
+  <div class="why-benefits__decor-img" aria-hidden="true">
+    <img class="why-benefits__plane" src="<?php echo get_template_directory_uri();?>/img/svg/plane.svg" alt="" width="198" height="103">
+    <img class="why-benefits__plane-trail" src="<?php echo get_template_directory_uri();?>/img/svg/plane-trail.svg" alt="" width="341" height="296">
+  </div>
+
   <div class="why-benefits__container container">
     <!-- <?php //if($sec_why_title) : ?>
       <h2 class="sec-title" data-aos="fade-up"><?php //echo $sec_why_title; ?></h2>

@@ -1,4 +1,6 @@
 .why-benefits {
+  position: relative;
+
   & .sec-title {
     grid-column: 2 / 3;
     color: var(--accent-green);
@@ -104,6 +106,14 @@
   &__item:nth-child(3) .card-benefits {
     background-color: var(--black);
     color: var(--white);
+
+    @include mobile {
+      margin-bottom: 48px;
+
+      & .card-benefits__name {
+        font-size: 16px;
+      }
+    }
   }
 
   &__item:nth-child(4) .card-benefits {
@@ -116,10 +126,22 @@
     }
 
     @include mobile {
+      & .card-benefits__name {
+        font-size: 16px;
+      }
+    }
+
+    @include mobile {
       max-width: unset;
+      padding: 0;
     }
 
     & .card-benefits__name {
+      max-width: 435px;
+
+      @include tablet {
+        max-width: 350px;
+      }
       @include mobile {
         max-width: 45%;
       }
@@ -129,12 +151,64 @@
   &__link {
     min-width: 421px;
     margin-top: 30px;
-    padding: 33.5px;
 
-    @media (max-width: 645px) {
+    @include tablet-md {
       min-width: unset;
       width: 100%;
-      padding: 24px;
+    }
+  }
+
+  &__decor-img {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &__plane-trail {
+    position: absolute;
+    right: 0;
+    bottom: 17px;
+
+    @include desktop {
+      bottom: 35px;
+      right: -72px;
+    }
+
+    @include tablet {
+      bottom: 7px;
+      right: -111px;
+    }
+
+    @include mobile {
+      transform: rotate(327deg);
+      filter: brightness(0.7);
+    }
+  }
+
+  &__plane {
+    position: absolute;
+    width: 198px;
+    bottom: 305px;
+    right: 261px;
+
+    @include desktop {
+      width: 170px;
+      bottom: 325px;
+      right: 200px;
+    }
+
+    @include tablet {
+      width: 125px;
+      bottom: 300px;
+      right: 170px;
+    }
+
+    @include mobile {
+      right: auto;
+      left: 110px;
+      bottom: 265px;
+      width: 100px;
+      transform: rotate(340deg);
     }
   }
 }
