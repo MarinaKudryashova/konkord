@@ -1,5 +1,6 @@
 .sec-title {
-  --title-color: var(--white);
+  --title-color: currentColor;
+  // --title-color: var(--white);
   --title-mb: 40px;
   --title-position: left;
   margin-top: 0;

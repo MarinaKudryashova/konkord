@@ -1,6 +1,10 @@
 .sec-light {
+  --sec-bg: var(--bg-light);
+  --sec-color: var(--black);
+
   padding: 120px 0;
-  background-color: var(--bg-light);
+  color: var(--sec-color);
+  background-color: var(--sec-bg);
   border-radius: 40px;
 
   @include desktop {

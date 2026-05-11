@@ -1,56 +1,59 @@
 .card-benefits {
-   display: flex;
-   flex-direction: column;
-   gap: 30px;
-   width: 100%;
-   padding: 30px;
-   border-radius: 16px;
-   background-color: var(--white);
-   color: var(--black);
+  --benefits-bg: var(--white);
+  --benefits-color: var(--black);
 
-   @include tablet {
-      padding: 24px;
-      gap: 20px;
-   }
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 16px;
+  background-color: var(--benefits-bg);
+  color: var(--benefits-color);
 
-   @include tablet-md {
-      gap: 16px;
-      padding: 24px 16px;
-   }
+  @include tablet {
+    padding: 24px;
+    gap: 20px;
+  }
 
-   &__name {
-      font-weight: 700;
-      font-size: 32px;
-      line-height: 100%;
+  @include tablet-md {
+    gap: 16px;
+    padding: 24px 16px;
+  }
 
-      @include tablet {
-         font-size: 26px;
-      }
+  &__name {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 100%;
 
-      @include tablet-md {
-         font-size: 22px;
-      }
+    @include tablet {
+      font-size: 26px;
+    }
 
-      @include mobile {
-         font-size: 20px;
-      }
-   }
+    @include tablet-md {
+      font-size: 22px;
+    }
 
-   &__text {
-      font-weight: 400;
+    @include mobile {
       font-size: 20px;
-      line-height: 130%;
+    }
+  }
 
-      @include tablet {
-         font-size: 18px;
-      }
+  &__text {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 130%;
 
-      @include tablet-md {
-         font-size: 16px;
-      }
+    @include tablet {
+      font-size: 18px;
+    }
 
-      & b {
-         font-weight: 700;
-      }
-   }
+    @include tablet-md {
+      font-size: 16px;
+    }
+
+    & b {
+      font-weight: 700;
+    }
+  }
 }

@@ -18,10 +18,6 @@
   </div>
 
   <div class="why-benefits__container container">
-    <!-- <?php //if($sec_why_title) : ?>
-      <h2 class="sec-title" data-aos="fade-up"><?php //echo $sec_why_title; ?></h2>
-    <?php //endif; ?> -->
-
     <?php if(!empty($sec_why_list) && is_array($sec_why_list)) : ?>
     <ul class="why-benefits__list">
       <?php foreach($sec_why_list as $ids => $benefit) : 
