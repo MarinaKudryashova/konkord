@@ -21,6 +21,7 @@
 @import "components/sec-light";
 @import "components/ui-card";
 @import "components/contacts";
+@import "components/card-services-cat";
 @import "components/card-benefits";
 @import "components/card-fotogallery";
 @import "components/card-employee"; //карточка сотрудника
@@ -34,7 +35,7 @@
 // Секции
 @import "section/header";
 @import "section/promo";
-
+@import "section/sec-services-cat";
 @import "section/why-benefits";
 @import "section/sec-slider";
 @import "section/steps";

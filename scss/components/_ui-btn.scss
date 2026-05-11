@@ -1,8 +1,10 @@
 .ui-btn {
   --btn-bg: var(--accent-green);
-  --btn-bg-hover: var(--accent-dark-green);
+  --btn-bg-hover: var(--accent-light-green);
+  --btn-bg-active: var(--accent-dark-green);
+  --btn-outline-offset: 4px;
+  --btn-outline-color: var(--outline-color);
   --btn-border-radius: 5px;
-  --btn-border-color-hover: var(--btn-bg-hover);
   --btn-ff: var(--font-family);
   --btn-fw: 800;
   --btn-fz: 18px;
@@ -15,7 +17,7 @@
   justify-content: center;
   gap: 8px;
   border-radius: var(--btn-border-radius);
-  padding: 33.5px;
+  padding: 1.725em 4.145em;
   font-family: var(--btn-ff);
   font-weight: var(--btn-fw);
   font-size: var(--btn-fz);
@@ -28,30 +30,33 @@
   background-color: var(--btn-bg);
   cursor: pointer;
   transition:
+    outline var(--transition-300),
     background-color var(--transition-300),
     transform var(--transition-300);
 
-    @include tablet {
-      padding: 28px;
-    }
+  @include tablet {
+    padding: 28px;
+  }
 
-    @include tablet-md {
-      padding: 24px;
-      --btn-fz: 16px;
-    }
+  @include tablet-md {
+    padding: 24px;
+    --btn-fz: 16px;
+  }
 
   &:focus {
     outline: none;
   }
 
   &:focus-visible {
-    background-color: var(--btn-bg-hover);
+    outline-offset: var(--outline-offset);
+    outline: 2px solid var(--outline-color);
   }
   @include hover {
     background-color: var(--btn-bg-hover);
   }
   &:active {
-    transform: scale(99%);
+    background-color: var(--btn-bg-active);
+    transform: scale(99.5%);
   }
 
   & svg {
@@ -62,33 +67,5 @@
     user-select: none;
   }
 
-  // &--pink {
-  //   --btn-bg: var(--accent-pink);
-  //   --btn-bg-hover: var(--accent-blue);
-
-  //   @include mobile {
-  //     --btn-fz: 18px;
-  //   }
-  // }
-
-  // &--blue {
-  //   --btn-bg: var(--accent-blue);
-  //   --btn-bg-hover: var(--accent-pink);
-  // }
-
-  // &--ghost {
-  //   --btn-bg: transparent;
-  //   --btn-bg-hover: var(--accent-blue);
-  //   --btn-lh: 1.3;
-  //   padding: 0.67em 1.33em 0.62em;
-
-  //   @include mobile {
-  //     --btn-fz: 12px;
-  //     padding: 0.67em 1em 0.62em;
-  //   }
-  // }
-
-  // &--icon {
-
-  // }
+  // &--icon {}
 }
