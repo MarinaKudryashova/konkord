@@ -1,0 +1,20 @@
+.sec-services-cat {
+  &__list {
+    @include list-reset;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  &__item {
+    grid-column: 4 span;
+
+    &:nth-child(10n + 4),
+    &:nth-child(10n + 10) {
+      grid-column: 8 span;
+
+      & .card-services-cat__img img {
+        aspect-ratio: 770 / 354;
+      }
+    }
+  }
+}

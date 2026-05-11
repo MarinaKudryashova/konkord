@@ -3,21 +3,33 @@
   $employee_id = $args["slide"] ?? null;
 
   $employee_name = get_the_title($employee_id);
+
   $employee_thumbnail_url = get_the_post_thumbnail_url($employee_id);
   $employee_img = $employee_thumbnail_url 
       ? get_image_versions($employee_thumbnail_url)
       : get_placeholder_image();
+
+  $employee_thumbnail_url_mobile = get_field('employee_img_mobile', $employee_id);
+  $employee_img_mobile = $employee_thumbnail_url_mobile 
+      ? get_image_versions($employee_thumbnail_url_mobile)
+      : $employee_img;
+
   $employee_position = get_field('employee_position', $employee_id);
   $employee_email = get_field('employee_email', $employee_id);
 
   $employee_phone = get_field('employee_phone', $employee_id);
-  $employee_phone = explode(PHP_EOL, $employee_phone);
   $employee_phone_href = preg_replace('![^0-9]+!', '', $employee_phone);
 ?>
 
 <div class="card-employee">
   <div class="card-employee__view">
     <picture class="card-employee__img">
+      <?php if (!empty( $employee_img_mobile['webp_1x'])): ?>
+        <source media="(max-width: 576px)" srcset="<?php echo esc_url( $employee_img_mobile['webp_1x']); ?>" type="image/webp">
+      <?php endif; ?>
+      <?php if (!empty( $employee_img_mobile['original_1x'])): ?>
+        <source media="(max-width: 576px)" srcset="<?php echo esc_url( $employee_img_mobile['original_1x']); ?>" type="image/jpg">
+      <?php endif; ?>
       <source srcset="<?php echo esc_url($employee_img["webp_1x"]); ?>" type="image/webp">
       <img loading="lazy" src="<?php echo esc_url($employee_img["original_1x"]); ?>" alt="Фото сотрудника" width="272" height="360" aria-hidden="true">
     </picture>
