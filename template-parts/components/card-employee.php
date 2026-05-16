@@ -44,12 +44,12 @@
     <a href="mailto:<?php echo esc_attr($employee_email); ?>" class="card-employee__email"><?php echo esc_html($employee_email); ?></a>
     <?php endif; ?>
 
-    <?php if(!empty($employee_phone[0]) && is_array($employee_phone)) : ?>
-    <a href="tel:<?php echo $employee_phone_href[0]; ?>" class="card-employee__phone">
+    <?php if(!empty($employee_phone)) : ?>
+    <a href="tel:<?php echo $employee_phone_href; ?>" class="card-employee__phone">
         <svg width="14" height="14">
           <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
         </svg>
-        <span><?php echo $employee_phone[0]; ?></span>
+        <span><?php echo $employee_phone; ?></span>
     </a>
     <?php endif; ?>
 
