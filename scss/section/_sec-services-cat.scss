@@ -4,16 +4,38 @@
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 20px;
+
+    @include tablet-md {
+      gap: 12px;
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+    }
   }
+
   &__item {
     grid-column: 4 span;
+
+    @include mobile {
+      grid-column: 1 span;
+    }
 
     &:nth-child(10n + 4),
     &:nth-child(10n + 10) {
       grid-column: 8 span;
 
+      @include mobile {
+        grid-column: 1 span;
+      }
+
       & .card-services-cat__img img {
         aspect-ratio: 770 / 354;
+
+        @include mobile {
+          aspect-ratio: 168 / 162;
+        }
       }
     }
   }

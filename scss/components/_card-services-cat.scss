@@ -11,6 +11,12 @@
   transition:
     background-color var(--transition-300),
     color var(--transition-300);
+  
+
+  @include mobile {
+    gap: 5px;
+    border-radius: 5px;
+  }
 
   &::after {
     content: "";
@@ -44,6 +50,20 @@
     color: currentColor;
     pointer-events: none;
     transition: color var(--transition-300);
+
+    @include tablet-md {
+      padding: 20px 20px 0 20px;
+      font-size: 20px;
+    }
+
+    @include mobile {
+      font-size: 18px;
+    }
+
+    @include mobile-xs {
+      padding: 13.5px 13.5px 0 13.5px;
+      font-size: 16px;
+    }
   }
   &__img {
     position: relative;

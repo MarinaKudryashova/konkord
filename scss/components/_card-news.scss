@@ -12,6 +12,11 @@
   color: var(--card-news-color);
   background-color: var(--card-news-bg);
 
+  @include mobile {
+    --card-news-padding: 16px;
+    gap: 16px;
+  }
+
   &__img {
     display: flex;
 
@@ -34,6 +39,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include mobile {
+      gap: 8px;
+    }
   }
 
   &__title {
@@ -41,6 +50,10 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 130%;
+
+    @include mobile {
+      font-size: 16px;
+    }
   }
 
   &__excerpt {
@@ -48,5 +61,9 @@
     font-weight: 400;
     font-size: 16px;
     line-height: 130%;
+
+    @include mobile {
+      font-size: 12px;
+    }
   }
 }
