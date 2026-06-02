@@ -10,11 +10,8 @@
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 4px;
 
-  @include mobile {
-    gap: 4px;
-  }
 
   &__link {
     display: flex;

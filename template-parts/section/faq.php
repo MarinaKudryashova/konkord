@@ -39,6 +39,12 @@
       <?php if($faq_img) : ?>
         <picture class="faq__img">
           <?php if($faq_img["webp_1x"]) : ?>
+            <?php if (!empty( $faq_img_mobile['webp_1x'])): ?>
+          <source media="(max-width: 576px)" srcset="<?php echo esc_url( $faq_img_mobile['webp_1x']); ?>" type="image/webp">
+          <?php endif; ?>
+          <?php if (!empty( $faq_img_mobile['original_1x'])): ?>
+            <source media="(max-width: 576px)" srcset="<?php echo esc_url( $faq_img_mobile['original_1x']); ?>" type="image/jpg">
+          <?php endif; ?>
             <source srcset="<?php echo esc_url($faq_img["webp_1x"]); ?>" type="image/webp">
           <?php endif; ?>
           <img src="<?php echo esc_url($faq_img["original_1x"]); ?>" width="550" height="1035" alt="" aria-hidden="true">

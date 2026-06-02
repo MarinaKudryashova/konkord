@@ -19,6 +19,10 @@
     padding: 1.1em var(--search-padding);
     padding-right: var(--search-size);
     background-color: var(--search-bg);
+
+    @include mobile {
+      padding-right: 0
+    }
   }
 
   &__field {
@@ -42,6 +46,10 @@
 
     &:focus {
       outline: none;
+    }
+
+    @include mobile {
+      display: none;
     }
 
     // Стили для автозаполнения
@@ -115,6 +123,11 @@
     @include hover {
       outline: none;
       background-color: var(--search-bg-hover);
+    }
+
+    @include mobile {
+      width: 40px;
+      height: 40px;
     }
   }
 

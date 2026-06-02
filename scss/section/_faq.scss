@@ -47,6 +47,10 @@
       aspect-ratio: 550 / 1035;
       object-position: right;
       filter: brightness(0.8) contrast(1);
+
+      @include mobile {
+        aspect-ratio: 343 / 148;
+      }
     }
   }
 }
