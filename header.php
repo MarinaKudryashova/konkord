@@ -82,7 +82,7 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 				?>
 				<div class="header__action">
 					<?php /*-- Электронная почта --*/ ?>
-					<div class="header__contacts">
+					<div class="header__contacts header__contacts--email">
 						<a class="header__link ui-link" href="mailto:<?php echo get_field('company_mail', 'option') ?>"><?php echo get_field('company_mail', 'option') ?></a>
 					</div>
 					<div class="header__contacts">

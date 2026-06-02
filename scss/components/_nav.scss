@@ -6,7 +6,7 @@
 
   color: var(--white);
 
-  @include desktop {
+  @include tablet-lg {
     padding: 52px 0 26px;
     width: 375px;
     height: 100%;
@@ -44,7 +44,7 @@
       gap: 8px;
     }
 
-    @include desktop {
+    @include tablet-lg {
       flex-direction: column;
       align-items: stretch;
       justify-content: flex-start;
@@ -65,7 +65,7 @@
     align-items: center;
     gap: 4px;
 
-    @include desktop {
+    @include tablet-lg {
       position: relative;
       flex-wrap: wrap;
       // webkit-box-pack: justify;
@@ -99,7 +99,7 @@
     transition: color var(--transition-300);
     white-space: nowrap;
 
-    @include desktop {
+    @include tablet-lg {
       // font-size: 14px;
     }
 
@@ -178,7 +178,7 @@
       transform var(--transition-300),
       visibility var(--transition-300);
 
-    @include desktop {
+    @include tablet-lg {
       position: static;
       top: auto;
       left: auto;
@@ -207,7 +207,7 @@
   }
 
   & .sub-menu .ui-link {
-    @include desktop {
+    @include tablet-lg {
       color: var(--white-60);
       transition: color ar(--transition-300);
 
@@ -227,7 +227,7 @@
     min-height: 172px;
     transform: translateY(0);
 
-    @include desktop {
+    @include tablet-lg {
       padding-top: 10px;
       max-height: 1000px;
       min-height: auto;

@@ -134,6 +134,9 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
+
+    animation: plane-enter 0.7s ease-out forwards;
+    opacity: 0;
   }
 
   &__plane-trail {
@@ -141,7 +144,6 @@
     right: -104px;
     bottom: 17px;
 
-    animation: trailMove 1.2s ease forwards;
 
     @include desktop {
       bottom: 35px;
@@ -171,14 +173,6 @@
     @media (max-width: 645px) {
       display: none;
     }
-
-    // @include mobile {
-    //   transform: rotate(327deg);
-    //   filter: brightness(0.7);
-    //   bottom: 68px;
-    //   right: auto;
-    //   left: 248px;
-    // }
 
     &--mobile {
       display: none;
@@ -254,14 +248,14 @@
   }
 }
 
-@keyframes trailMove {
+@keyframes plane-enter {
   from {
-    clip-path: inset(100% 0 0 100%);
-    transform: translate(-25px, 25px);
+    opacity: 0;
+    transform: translateX(120px);
   }
 
   to {
-    clip-path: inset(0 0 0 0);
-    transform: translate(0, 0);
+    opacity: 1;
+    transform: translateX(0);
   }
 }
