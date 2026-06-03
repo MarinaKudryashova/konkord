@@ -5,7 +5,43 @@
   &__title {
     color: currentColor;
   }
-  
+  // &__list {
+  //   @include list-reset;
+  //   display: grid;
+  //   grid-template-columns: repeat(10, 1fr);
+  //   gap: 20px;
+  //   color: currentColor;
+  // }
+  // &__item {
+  //   grid-column: 3 span;
+  //   display: flex;
+
+  //   &:first-child {
+  //     grid-column: 4 span;
+  //   }
+  //   &:nth-child(4) {
+  //     grid-column: 4 span;
+  //   }
+  // }
+
+  // &__list {
+  //   @include list-reset;
+  //   display: grid;
+  //   grid-template-columns: repeat(12, 1fr);
+  //   gap: 20px;
+  //   color: currentColor;
+  // }
+  // &__item {
+  //   grid-column: 4 span;
+  //   display: flex;
+  //   &:first-child {
+  //     grid-column: 5 span;
+  //   }
+  //   &:nth-child(3) {
+  //     grid-column: 3 span;
+  //   }
+  // }
+
   &__list {
     @include list-reset;
     display: flex;
@@ -21,13 +57,35 @@
       flex-direction: column;
     }
   }
-
   &__item {
     display: flex;
     width: calc(100% / 3 - 20px * 2 / 3);
 
-    @include tablet-md {
-      width: 100%;
+    &:nth-child(6n + 1),
+    &:nth-child(6n + 4) {
+      width: 36%;
+
+      @include desktop {
+        width: calc(100% / 3 - 20px * 2 / 3);
+      }
+    }
+    &:nth-child(6n + 3),
+    &:nth-child(6n + 6) {
+      width: calc(100% - 36% - (100% / 3 - 20px * 2 / 3) - 20px * 2);
+
+      @include desktop {
+        width: calc(100% / 3 - 20px * 2 / 3);
+      }
+    }
+    @include tablet {
+      &:nth-child(n) {
+        width: calc(100% / 2 - 20px * 1 / 2);
+      }
+    }
+    @include mobile {
+      &:nth-child(n) {
+        width: 100%;
+      }
     }
   }
 
@@ -38,12 +96,22 @@
 
     & img {
       .steps__item:nth-child(odd) & {
-        aspect-ratio: 250 / 344;
+        width: 100%;
+        // aspect-ratio: 250 / 344;
+        aspect-ratio: 1 / 1;
+
+        @include tablet {
+          aspect-ratio: 4 / 3;
+        }
       }
       .steps__item:nth-child(even) & {
+        width: 100%;
         aspect-ratio: 465 / 366;
+
+        @include tablet {
+          aspect-ratio: 4 / 3;
+        }
       }
     }
   }
 }
-
