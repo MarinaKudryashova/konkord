@@ -5,18 +5,32 @@
   &__title {
     color: currentColor;
   }
+  
   &__list {
     @include list-reset;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     color: currentColor;
+
+    @include tablet {
+      gap: 16px;
+    }
+
+    @include tablet-md {
+      flex-direction: column;
+    }
   }
 
   &__item {
     display: flex;
     width: calc(100% / 3 - 20px * 2 / 3);
+
+    @include tablet-md {
+      width: 100%;
+    }
   }
+
   &__img {
     display: flex;
     border-radius: 10px;

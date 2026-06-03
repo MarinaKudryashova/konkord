@@ -9,6 +9,14 @@
   color: var(--black);
   background-color: var(--white);
 
+  @include tablet {
+    padding: 24px;
+  }
+
+  @include mobile {
+    padding: 16px;
+  }
+
   &::after {
     position: absolute;
     right: 0;
@@ -19,6 +27,10 @@
     line-height: 0.8;
     color: var(--accent-green);
     opacity: 0.5;
+
+    @include mobile {
+      font-size: 70px;
+    }
   }
 
   &__title {
@@ -28,7 +40,13 @@
     font-size: 32px;
     line-height: 100%;
     color: currentColor;
+
+    @include mobile {
+      margin-bottom: 18px;
+      font-size: 20px;
+    }
   }
+
   &__text {
     margin: 0;
     font-weight: 400;

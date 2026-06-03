@@ -11,6 +11,10 @@
   --search-color: var(--white);
   --search-color-placeholder: var(--grey-1);
 
+  @include mobile {
+    --search-size-icon: 12px;
+  }
+
   &__inner {
     position: relative;
     display: flex;
@@ -19,6 +23,16 @@
     padding: 1.1em var(--search-padding);
     padding-right: var(--search-size);
     background-color: var(--search-bg);
+
+    @include mobile {
+      padding: 8.5px var(--search-padding);
+      padding-right: 0;
+    }
+
+    @media (max-width: 510px) {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   &__field {
@@ -42,6 +56,10 @@
 
     &:focus {
       outline: none;
+    }
+
+    @media (max-width: 510px) {
+      display: none;
     }
 
     // Стили для автозаполнения
@@ -115,6 +133,11 @@
     @include hover {
       outline: none;
       background-color: var(--search-bg-hover);
+    }
+
+    @include mobile {
+      width: 40px;
+      height: 40px;
     }
   }
 

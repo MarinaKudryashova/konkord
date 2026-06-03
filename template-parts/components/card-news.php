@@ -19,7 +19,7 @@
       <h3 class="card-news__title"><?php echo esc_html($card_title); ?></h3>
     <?php endif; ?>
     <?php if($card_excerpt) : ?>
-    <div class="card-news__excerpt"><?php echo esc_html($card_excerpt); ?></div>
+    <div class="card-news__excerpt is-clamp" style="--lines:8;"><?php echo esc_html($card_excerpt); ?></div>
     <?php endif; ?>
   </div>
 </a>

@@ -1,5 +1,8 @@
 .why-benefits {
-  position: relative;
+
+  &__container {
+    position: relative;
+  }
 
   & .sec-title {
     grid-column: 2 / 3;
@@ -86,7 +89,7 @@
           max-width: 350px;
         }
         @include mobile {
-          max-width: 45%;
+          max-width: 160px;
         }
       }
     }
@@ -131,16 +134,25 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
+
+    animation: plane-enter 0.7s ease-out forwards;
+    opacity: 0;
   }
 
   &__plane-trail {
     position: absolute;
-    right: 0;
+    right: -104px;
     bottom: 17px;
+
 
     @include desktop {
       bottom: 35px;
       right: -72px;
+    }
+
+    @media (max-width: 1094px) {
+      bottom: 60px;
+      right: -112px;
     }
 
     @include tablet {
@@ -148,9 +160,38 @@
       right: -111px;
     }
 
-    @include mobile {
-      transform: rotate(327deg);
-      filter: brightness(0.7);
+    @media (max-width: 885px) {
+      bottom: 30px;
+      right: -155px;
+    }
+
+    @include tablet-md {
+      bottom: 7px;
+      right: -175px;
+    }
+
+    @media (max-width: 645px) {
+      display: none;
+    }
+
+    &--mobile {
+      display: none;
+
+      @media (max-width: 645px) {
+        position: absolute;
+        display: block;
+        right: -34px;
+        bottom: 189px;
+      }
+
+      @media (max-width: 445px) {
+        right: -10px;
+        bottom: 218px;
+      }
+
+      @media (max-width: 351px) {
+        bottom: 244px;
+      }
     }
   }
 
@@ -158,12 +199,17 @@
     position: absolute;
     width: 198px;
     bottom: 305px;
-    right: 261px;
+    right: 160px;
 
     @include desktop {
       width: 170px;
       bottom: 325px;
       right: 200px;
+    }
+
+    @media (max-width: 1094px) {
+      bottom: 350px;
+      right: 160px;
     }
 
     @include tablet {
@@ -172,12 +218,44 @@
       right: 170px;
     }
 
-    @include mobile {
-      right: auto;
-      left: 110px;
-      bottom: 265px;
+    @media (max-width: 885px) {
+      bottom: 325px;
+      right: 130px;
+    }
+
+    @include tablet-md {
+      width: 90px;
+      bottom: 305px;
+      right: 120px;
+    }
+
+    @media (max-width: 645px) {
+      right: 155px;
+      bottom: 220px;
       width: 100px;
       transform: rotate(340deg);
     }
+
+    @media (max-width: 445px) {
+      right: 180px;
+      bottom: 250px;
+    }
+
+    @media (max-width: 351px) {
+      bottom: 278px;
+      width: 90px;
+    }
+  }
+}
+
+@keyframes plane-enter {
+  from {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
