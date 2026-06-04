@@ -11,10 +11,12 @@
 
   @include tablet {
     padding: 24px;
+    padding-bottom: 64px;
   }
 
   @include mobile {
     padding: 16px;
+    padding-bottom: 60px;
   }
 
   &::after {
