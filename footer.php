@@ -13,104 +13,119 @@
 
 		<footer class="footer">
 			<div class="footer__container container">
-				<!-- <a href="<?php //bloginfo('url'); ?>" class="footer__logo footer__logo--mobile" itemprop="url">
-					<img src="<?php //cho get_field('site_logo', 'option') ?>" alt="Logo <?php //bloginfo('name'); ?>" width="242" height="80" itemprop="logo image">
-				</a>
-				<div class="footer__info">
-					<a href="<?php //bloginfo('url'); ?>" class="footer__logo footer__logo--desktop" itemprop="url">
-						<img src="<?php //echo get_field('site_logo', 'option') ?>" alt="Logo <?php //bloginfo('name'); ?>" width="242" height="80" itemprop="logo image">
+
+				<div class="footer__company">
+					<a href="<?php bloginfo('url'); ?>" class="footer__logo footer__logo--mobile" itemprop="url">
+						<img src="<?php echo get_field('site_logo', 'option') ?>" alt="Logo <?php bloginfo('name'); ?>" width="214" height="40" itemprop="logo image">
 					</a>
-					<p class="footer__copyright">&copy; <?php //echo get_bloginfo('name') . ' ' . date('Y') . ' г.'; ?> Все права защищены.</p>
-					<?php    
-						// wp_nav_menu( [
-						// 	'theme_location'  => 'footer_policies',
-						// 	'menu'            => 'footer_policies',
-						// 	'container'       => false,
-						// 	'menu_class'      => false,
-						// 	'menu_id'         => '',
-						// 	'echo'            => true,
-						// 	'fallback_cb'     => 'wp_page_menu',
-						// 	'before'          => '',
-						// 	'after'           => '',
-						// 	'link_before'     => '',
-						// 	'link_after'      => '',
-						// 	'items_wrap'      => '<ul class="%2$s footer-menu footer__policies">%3$s</ul>',
-						// 	'depth'           => 1,
-						// 	'walker'          => new Footer_Menu_Walker(),
-						// ] );
-					?>
+					<p class="footer__descr">Полиграфия «под ключ» – от макета до доставки</p>
 				</div>
+
+				<div class="footer__contacts footer-contacts">
+					<?php /*-- Адреса --*/ ?>
+					<div class="footer-contacts__item">
+						<?php /*-- Центральный офис --*/ ?>
+						<?php 
+						$main_office_address = get_field('company_main_office_address-local', 'option');
+						$main_office_city = get_field('company_main_office_city', 'option');
+						$main_address_parts = array();
+						if(!empty($main_office_city)) $main_address_parts[] = $main_office_city;
+						if(!empty($main_office_address)) $main_address_parts[] = $main_office_address;
+
+						$full_main_office_address = implode(', ', $main_address_parts);
+						?>
+						<div class="contacts">
+							<span class="contacts__title"><?php esc_html_e( 'Центральный офис:', 'konkord' ); ?></span>
+							<p class="contacts__value"><?php echo esc_html($full_main_office_address) ; ?></p>
+						</div>
+
+						<?php /*-- Производство --*/ ?>
+						<?php
+						$manufacture_office_address = get_field('company_manufacture_address-local', 'option');
+						$manufacture_office_city = get_field('company_manufacture_city', 'option');
+						$manufacture_address_parts = array();
+						if(!empty($manufacture_office_city)) $manufacture_address_parts[] = $manufacture_office_city;
+						if(!empty($manufacture_office_address)) $manufacture_address_parts[] = $manufacture_office_address;
+
+						$full_manufacture_office_address = implode(', ', $manufacture_address_parts);
+						?>
+						<div class="contacts">
+							<span class="contacts__title"><?php esc_html_e( 'Производство:', 'konkord' ); ?></span>
+							<p class="contacts__value"><?php echo esc_html($full_manufacture_office_address) ; ?></p>
+						</div>
+					</div>
+
+					<?php /*-- Время работы --*/ ?>
+					<div class="footer-contacts__item contacts">
+						<span class="contacts__title"><?php esc_html_e( 'Режим работы:', 'konkord' ); ?></span>
+						<p class="contacts__value"><?php echo get_field('company_main_office_timework', 'option') ?></p>
+					</div>
+
+
+					<?php /*-- Мессенджеры --*/ ?>
+					<?php $messanges = get_field('messengers_list', 'options'); /*-- Мессенджеры --*/ ?>
+					<?php if($messanges) : ?>
+						<ul class="footer-contacts__messanges messanges" title="messanges">
+							<?php foreach($messanges as $li) : ?>
+								<li class="messanges__item">
+								<a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="messanges__link" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
+									<img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="16" height="16" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
+								</a>
+							</li>
+							<?php endforeach;	?>
+						</ul>
+					<?php endif; ?>
+
+					<a href="#" class="footer-contacts__linK">Яндекс Карты</a>
+				</div>
+
+				<?php /*-- Отдел продаж --*/ ?>
+
+				<?php /*-- Отдел корпоративных продаж --*/ ?>
+
+				<?php /*-- Меню --*/ ?>
 				<div class="footer__menu">
 					<?php    
-						// wp_nav_menu( [
-						// 	'theme_location'  => 'footer',
-						// 	'menu'            => 'footer',
-						// 	'container'       => false,
-						// 	'menu_class'      => false,
-						// 	'menu_id'         => '',
-						// 	'echo'            => true,
-						// 	'fallback_cb'     => 'wp_page_menu',
-						// 	'before'          => '',
-						// 	'after'           => '',
-						// 	'link_before'     => '',
-						// 	'link_after'      => '',
-						// 	'items_wrap'      => '<ul class="%2$s footer-menu">%3$s</ul>',
-						// 	'depth'           => 2,
-						// 	'walker'          => new Footer_Menu_Walker(),
-						// ] );
+						wp_nav_menu( [
+							'theme_location'  => 'footer',
+							'menu'            => 'footer',
+							'container'       => false,
+							'menu_class'      => false,
+							'menu_id'         => '',
+							'echo'            => true,
+							'fallback_cb'     => 'wp_page_menu',
+							'before'          => '',
+							'after'           => '',
+							'link_before'     => '',
+							'link_after'      => '',
+							'items_wrap'      => '<ul class="%2$s footer-menu">%3$s</ul>',
+							'depth'           => 1,
+							'walker'          => new Footer_Menu_Walker(),
+						] );
 					?>
 				</div>
-				<div class="footer__contacts">
-					<?php /*-- Наименование --*/ ?>
-					<div class="contacts">
-						<span class="contacts__title"><?php //esc_html_e( 'Наименование', 'konkord' ); ?></span>
-						<span class="contacts__value"><?php //echo get_field('company_requisite_shortname', 'option') ?></span>
-					</div>
-					<?php /*-- ИНН --*/ ?>
-					<div class="contacts">
-						<span class="contacts__title"><?php //esc_html_e( 'ИНН', 'konkord' ); ?></span>
-						<span class="contacts__value"><?php //echo get_field('company_requisite_inn', 'option') ?></span>
-					</div>
 
-					<?php /*-- Юридический адрес --*/ ?>
-					<div class="contacts">
-						<?php
-
-							?>
-						<span class="contacts__title"><?php //esc_html_e( 'Юридический адрес', 'konkord' ); ?></span>
-						<p class="contacts__value"><?php //echo esc_html($address_law_string); ?></p>
-					</div>
-					<?php /*-- Головной офис продаж --*/ ?>
-					<div class="contacts">
-						<?php
-
-							?>
-						<span class="contacts__title"><?php //esc_html_e( 'Головной офис продаж', 'konkord' ); ?></span>
-						<p class="contacts__value">
-							<span><?php //echo get_field('company_office_timework', 'option') ?></span>
-							<span><?php //echo esc_html($address_string); ?></span>
-						</p>
-
-					</div>
-					
-					<?php /*-- Телефон --*/ ?>
-					<?php
-						// $phone = get_field('company_tel', 'options');
-						// $phone = explode(PHP_EOL, $phone);
-						// $phone_href = preg_replace('![^0-9]+!', '', $phone);
+				<div class="footer__policies">
+					<?php    
+						wp_nav_menu( [
+							'theme_location'  => 'footer_policies',
+							'menu'            => 'footer_policies',
+							'container'       => false,
+							'menu_class'      => false,
+							'menu_id'         => '',
+							'echo'            => true,
+							'fallback_cb'     => 'wp_page_menu',
+							'before'          => '',
+							'after'           => '',
+							'link_before'     => '',
+							'link_after'      => '',
+							'items_wrap'      => '<ul class="%2$s footer-menu footer__policies">%3$s</ul>',
+							'depth'           => 1,
+							'walker'          => new Footer_Menu_Walker(),
+						] );
 					?>
-					<div class="contacts">
-						<span class="contacts__title"><?php //esc_html_e( 'Телефон', 'konkord' ); ?></span>
-						<a class="contacts__value ui-link" href="tel:<?php //echo $phone_href[0]; ?>"
-							data-text="<?php //echo $phone[0]; ?>"><?php //echo $phone[0]; ?></a>
-					</div>
-					<?php /*-- Электронная почта --*/ ?>
-					<div class="contacts">
-						<span class="contacts__title"><?php //esc_html_e( 'Электронная почта', 'konkord' ); ?></span>
-						<a class="contacts__value ui-link" href="mailto:<?php //echo get_field('company_mail', 'option') ?>"
-							data-text="<?php //echo get_field('company_mail', 'option') ?>"><?php //echo get_field('company_mail', 'option') ?></a>
-					</div>
-				</div> -->
+				</div>
+				
 			</div>
 		</footer>
 		

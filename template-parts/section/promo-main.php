@@ -1,5 +1,9 @@
 <?php
-  $page_id = $args["id"];
+  /* 
+  * Section: Промо блок на главной странице
+  */
+  
+  $page_id = $args["page_id"];
   
   $promo_title = get_field('promo_title', $page_id);
   $promo_descr = get_field('promo_descr', $page_id);

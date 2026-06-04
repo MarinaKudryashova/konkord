@@ -1,5 +1,5 @@
 <?php 
-  $page_id = $args["id"]  ?? 0;
+  $page_id = $args["page_id"]  ?? 0;
   $card_id = $args["slide"] ?? null;
   $card_title = get_the_title($card_id);
   $card_url = get_permalink($card_id) ?: '#';
