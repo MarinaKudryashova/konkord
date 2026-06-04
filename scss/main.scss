@@ -28,6 +28,8 @@
 @import "components/card-employee"; //карточка сотрудника
 @import "components/card-steps";
 @import "components/card-news";
+@import "components/contacts";
+@import "components/department";
 // @import "components/topbtn";
 // @import "components/social";
 // @import "components/textcontent";
@@ -40,9 +42,10 @@
 @import "section/why-benefits";
 @import "section/sec-slider";
 @import "section/steps";
-
+@import "section/videoblock";
 @import "section/faq";
 @import "section/banner-form";
 
-// @import "components/footer-menu";
-// @import "section/footer";
+@import "components/footer-contacts";
+@import "components/footer-menu";
+@import "section/footer";

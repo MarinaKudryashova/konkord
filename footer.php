@@ -76,12 +76,111 @@
 						</ul>
 					<?php endif; ?>
 
-					<a href="#" class="footer-contacts__linK">Яндекс Карты</a>
+					<a href="#" class="footer-contacts__link">Яндекс Карты</a>
 				</div>
 
 				<?php /*-- Отдел продаж --*/ ?>
+				<div class="department">
+					<span class="department__title">Отдел продаж</span>
+					<ul class="department__list">
+						<li class="department__item">
+							<a href="tel:+78313230406" class="department__phone">
+								<svg>
+									<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
+								</svg>
+								<span>+7 (8313) 23-04-06</span>
+							</a>
+						</li>
+						<li class="department__item">
+							<a href="tel:+78313230121" class="department__phone">
+								<svg>
+									<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
+								</svg>
+								<span>+7 (8313) 23-01-21</span>
+							</a>
+						</li>
+						<li class="department__item">
+							<a href="tel:+78313232005" class="department__phone">
+								<svg>
+									<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
+								</svg>
+								<span>+7 (8313) 23-20-05</span>
+							</a>
+						</li>
+						<li class="department__item">
+							<a href="tel:+79601651717" class="department__phone">
+								<svg>
+									<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
+								</svg>
+								<span>+7 (960) 165-17-17</span>
+							</a>
+						</li>
+					</ul>
+					<a href="emailto:247089@mail.ru" class="department__email">247089@mail.ru</a>
+				</div>
 
 				<?php /*-- Отдел корпоративных продаж --*/ ?>
+				<div class="department department--corporate">
+					<span class="department__title">Отдел корпоративных продаж</span>
+					<div class="department__worker">
+						<span class="department__name">Дарина</span>
+						<ul class="department__list">
+							<li class="department__item">
+								<a href="tel:+79302598835" class="department__phone">
+									<svg>
+										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
+									</svg>
+									<span>+7 (930) 259-88-35</span>
+								</a>
+							</li>
+							<li class="department__item">
+								<a href="tel:+79911916262" class="department__phone">
+									<svg>
+										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
+									</svg>
+									<span>+7 (991) 191-62-62</span>
+								</a>
+							</li>
+							<li class="department__item">
+								<a href="emailto:89302598835@konkord52.ru" class="department__phone">
+									<svg>
+										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#email"></use>
+									</svg>
+									<span>89302598835@konkord52.ru</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="department__worker">
+						<span class="department__name">Ольга</span>
+						<ul class="department__list">
+							<li class="department__item">
+								<a href="tel:+78133247089" class="department__phone">
+									<svg>
+										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
+									</svg>
+									<span>+7 (8313) 24-70-89</span>
+								</a>
+							</li>
+							<li class="department__item">
+								<a href="tel:+79588378526" class="department__phone">
+									<svg>
+										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
+									</svg>
+									<span>+7 (958) 837-85-26</span>
+								</a>
+							</li>
+							<li class="department__item">
+								<a href="emailto:89588378526@konkord52.ru" class="department__phone">
+									<svg>
+										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#email"></use>
+									</svg>
+									<span>89588378526@konkord52.ru</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
 
 				<?php /*-- Меню --*/ ?>
 				<div class="footer__menu">

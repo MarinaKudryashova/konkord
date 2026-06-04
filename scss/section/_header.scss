@@ -355,6 +355,16 @@
     color: var(--white);
     background-color: var(--bg-dark-grey);
     cursor: pointer;
+    transition: background-color var(--transition-300);
+
+    &:hover {
+      background-color: var(--accent-green);
+    }
+
+    &:focus {
+      outline: none;
+      background-color: var(--accent-green);
+    }
 
     @include tablet-lg {
       display: flex;

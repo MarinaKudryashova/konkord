@@ -82,7 +82,7 @@
         width: calc(100% / 2 - 20px * 1 / 2);
       }
     }
-    @include mobile {
+    @include tablet-md {
       &:nth-child(n) {
         width: 100%;
       }
@@ -103,6 +103,10 @@
         @include tablet {
           aspect-ratio: 4 / 3;
         }
+
+        @include tablet-md {
+          aspect-ratio: 343 / 210;
+        }
       }
       .steps__item:nth-child(even) & {
         width: 100%;
@@ -110,6 +114,10 @@
 
         @include tablet {
           aspect-ratio: 4 / 3;
+        }
+
+        @include tablet-md {
+          aspect-ratio: 343 / 210;
         }
       }
     }
