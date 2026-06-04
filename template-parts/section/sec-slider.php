@@ -1,5 +1,5 @@
 <?php 
-  $page_id = $args["id"];
+  $page_id = $args["page_id"];
   $sec_name = $args["name"];
   $sec_bg = $args["bg"] ?? '';
   $sec_is_last = $args["lastblock"];
@@ -52,13 +52,13 @@
           <?php
             switch ($sec_name) {
               case 'sec-fotogallery':
-                get_template_part('template-parts/components/card-fotogallery', null, ['id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
+                get_template_part('template-parts/components/card-fotogallery', null, ['page_id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
                 break;
               case 'sec-employees':
-                get_template_part('template-parts/components/card-employee', null, ['id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
+                get_template_part('template-parts/components/card-employee', null, ['page_id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
                 break;
               case 'sec-news':
-                get_template_part('template-parts/components/card-news', null, ['id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
+                get_template_part('template-parts/components/card-news', null, ['page_id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
                 break;
             }
           ?>

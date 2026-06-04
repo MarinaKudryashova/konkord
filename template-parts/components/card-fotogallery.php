@@ -1,5 +1,5 @@
 <?php 
-  $page_id = $args["id"]  ?? 0;
+  $page_id = $args["page_id"]  ?? 0;
   $fotogallery_url = $args["slide"] ?? null;
 
   if (!$fotogallery_url) {

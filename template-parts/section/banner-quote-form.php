@@ -1,5 +1,5 @@
 <?php 
-  $page_id = $args["id"];
+  $page_id = $args["page_id"];
   $sec_name = $args["name"]["value"];
 
   // Получаем поля из админки

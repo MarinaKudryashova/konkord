@@ -9,7 +9,7 @@
  * @package konkord
  */
 
-$messanges = get_field('messengers_list', 'options'); /*-- Мессенджеры --*/
+$messanges = get_field('header_messengers_list', 'options'); /*-- Мессенджеры --*/
 
 ?>
 <!doctype html>

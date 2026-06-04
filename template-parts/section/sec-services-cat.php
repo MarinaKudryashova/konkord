@@ -1,5 +1,5 @@
 <?php 
-  $page_id = $args["id"];
+  $page_id = $args["page_id"];
 
   $sec_services_cat_title = get_field('services-cat_title', $page_id);
   $sec_services_cat_list  = get_field('services-cat_list', $page_id);
@@ -13,7 +13,7 @@
     <ul class="sec-services-cat__list">
       <?php foreach($sec_services_cat_list as $index => $services_cat) : ?>
         <li class="sec-services-cat__item">
-          <?php get_template_part('template-parts/components/card-services-cat', null, ['id' => $page_id, 'services-cat-id' => $services_cat, 'services-cat-index' => $index]); ?>
+          <?php get_template_part('template-parts/components/card-services-cat', null, ['page_id' => $page_id, 'services-cat-id' => $services_cat, 'services-cat-index' => $index]); ?>
         </li>
       <?php endforeach; ?>
     </ul>
