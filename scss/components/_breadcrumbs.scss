@@ -5,6 +5,14 @@
    align-items: center;
    gap: 15px;
 
+   @include tablet-md {
+      margin-bottom: 48px;
+   }
+
+   @include mobile {
+      margin-bottom: 8px;
+   }
+
    &__item {
       position: relative;
       font-size: 14px;
