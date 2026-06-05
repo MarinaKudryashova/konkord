@@ -1,0 +1,40 @@
+.layout {
+   &__container {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+   }
+
+   &__title {
+      margin-bottom: 0;
+   }
+
+   &__subtitle {
+      margin: 0 0 40px;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 100%;
+      color: var(--accent-green);
+   }
+
+   &__list {
+      columns: 2;
+      margin: 0;
+      gap: 62px;
+      padding-left: 30px;
+   }
+
+   &__item {
+      margin-bottom: 14px;
+   }
+
+   &__text {
+      margin: 0;
+      font-size: 20px;
+      line-height: 130%;
+
+      & b {
+         font-weight: 700;
+      }
+   }
+}

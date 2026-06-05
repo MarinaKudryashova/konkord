@@ -1,0 +1,29 @@
+.breadcrumbs {
+   margin-bottom: 70px;
+   list-style: none;
+   display: flex;
+   align-items: center;
+   gap: 15px;
+
+   &__item {
+      position: relative;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--grey-1);
+
+      &--current {
+         color: var(--accent-green);
+      }
+
+      &:not(.breadcrumbs__item--current)::after {
+         position: absolute;
+         content: "/";
+         right: -11px;
+         top: 0;
+      }
+   }
+
+   &__link {
+      color: inherit;
+   }
+}

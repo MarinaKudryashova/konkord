@@ -118,6 +118,7 @@
     height: var(--search-size);
     background-color: var(--search-bg);
     cursor: pointer;
+    pointer-events: none;
     transition: background-color var(--transition-300);
 
     &:focus {
@@ -138,6 +139,7 @@
     @include mobile {
       width: 40px;
       height: 40px;
+      pointer-events: all;
     }
   }
 
