@@ -7,12 +7,33 @@
    background-color: var(--white);
    border-radius: 16px;
 
+   @include desktop {
+      padding: 24px;
+   }
+
+   @include tablet-md {
+      padding: 24px 16px;
+   }
+
    &__name {
       margin: 0 0 26px;
       font-weight: 700;
       font-size: 32px;
       line-height: 100%;
       color: var(--accent-green);
+
+      @include desktop {
+         font-size: 28px;
+      }
+
+      @include tablet {
+         font-size: 24px;
+      }
+
+      @include tablet-md {
+         margin: 0 0 16px;
+         font-size: 20px;
+      }
    }
 
    &__text {
@@ -20,5 +41,13 @@
       font-weight: 400;
       font-size: 20px;
       line-height: 130%;
+
+      @include desktop {
+         font-size: 18px;
+      }
+
+      @include tablet {
+         font-size: 16px;
+      }
    }
 }

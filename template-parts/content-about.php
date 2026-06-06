@@ -1,4 +1,4 @@
-<div class="about">
+<section class="about">
    <div class="about__container container">
       <div class="about__heading">
          <picture class="about__bgimg">
@@ -84,4 +84,4 @@
          </li>
       </ul>
    </div>
-</div>
+</section>
