@@ -13,4 +13,8 @@
   @include tablet-md {
     --sec-mb: 70px;
   }
+
+  @include mobile {
+    --sec-mb: 60px;
+  }
 }
