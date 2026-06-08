@@ -2,6 +2,7 @@
    <div class="about__container container">
       <div class="about__heading">
          <picture class="about__bgimg">
+            <!-- Добавить картинку для мобилки -->
             <!-- <source srcset="<?php echo get_template_directory_uri(); ?>/img/about/bgimg.webp" type="image/webp"> -->
             <img src="<?php echo get_template_directory_uri(); ?>/img/about/bgimg.jpg" alt="" width="1160" height="476">
          </picture>

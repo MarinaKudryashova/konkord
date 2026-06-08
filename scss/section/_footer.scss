@@ -9,6 +9,15 @@
     display: grid;
     grid-template-columns: repeat(5, auto);
     gap: 4px;
+
+    @media (max-width: 1006px) {
+      grid-template-columns: repeat(2, auto);
+    }
+
+    @media (max-width: 800px) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   &__company {
@@ -17,15 +26,32 @@
     gap: 40px;
     margin-bottom: 28px;
     grid-column: span 2;
+
+    @media (max-width: 1110px) {
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 1006px) {
+      margin-bottom: 35px;
+      grid-column: span 3;
+    }
   }
 
   &__logo {
     height: 40px;
+    flex-shrink: 0;
   }
 
   &__contacts {
     grid-row: 2 / 3;
     grid-column: span 2;
+
+    @media (max-width: 1006px) {
+      grid-row: 2 / 4;
+      grid-column: span 3;
+    }
   }
 
   &__descr {
@@ -33,16 +59,49 @@
     margin: 0;
     font-size: 14px;
     line-height: 100%;
+
+    @media (max-width: 1110px) {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    @include mobile {
+      font-weight: 600;
+      text-transform: uppercase;
+      color: var(--accent-green);
+    }
   }
 
   &__menu {
+    grid-column: span 4;
+    align-self: baseline;
     margin-right: 25px;
     padding: 30px;
     border-radius: 6px;
     background-color: var(--bg-dark-grey);
     color: var(--white);
 
-    grid-column: span 4;
+    @media (max-width: 1106px) {
+      padding: 24px;
+      grid-column: span 3;
+    }
+
+    @media (max-width: 1006px) {
+      margin-right: 0;
+    }
+
+    @media (max-width: 900px) {
+      grid-column: span 5;
+    }
+
+    @include tablet-md {
+      margin-right: 0;
+      margin-bottom: 12px;
+    }
+
+    @include mobile {
+      padding: 16px;
+    }
   }
 
   &__policies {
@@ -52,6 +111,27 @@
     gap: 2px;
     max-width: 231px;
 
+    @media (max-width: 1106px) {
+      grid-column: span 2;
+      max-width: unset;
+    }
+
+    @media (max-width: 1106px) {
+      margin-left: 20px;
+    }
+
+    @media (max-width: 900px) {
+      margin-left: 0;
+      grid-column: span 5;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      align-items: center;
+      display: flex;
+    }
+
     & .footer-menu__link {
     font-weight: 600;
     font-size: 14px;
@@ -59,6 +139,10 @@
     color: var(--grey-1);
     text-decoration: underline;
     transition: color var(--transition-300);
+
+    @include mobile {
+      font-size: 12px;
+    }
 
     &:hover {
       color: var(--white);
