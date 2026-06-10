@@ -39,6 +39,7 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
-    "fslightbox": "^3.7.5"
+    "fslightbox": "^3.7.5",
+    "tabs": "^0.2.0"
   }
 }

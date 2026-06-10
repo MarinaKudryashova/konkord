@@ -13,7 +13,7 @@
   @include list-reset;
   display: flex;
   flex-wrap: nowrap;
-  align-items: center;
+  align-items: center; 
   justify-content: center;
   gap: 4px;
 
@@ -53,6 +53,11 @@
       width: var(--messanges-size-icon);
       height: var(--messanges-size-icon);
       user-select: none;
+    }
+
+    &--vk {
+      width: 22px;
+      height: 14px;
     }
   }
 }

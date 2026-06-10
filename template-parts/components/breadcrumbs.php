@@ -10,7 +10,7 @@ if (function_exists('yoast_breadcrumb')) {
   $page_main_url = get_permalink($page_main_id);
   $page_current_id = get_the_ID();
 ?>
-  <ul class="breadcrumbs" itemscope itemtype="https://schema.org/BreadcrumbList">
+  <ul class="breadcrumbs container" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
       <a class="breadcrumbs__link" href="<?php echo esc_url($page_main_url); ?>" title="Главная" itemprop="item">
         <span itemprop="name"><?php echo esc_html(get_the_title($page_main_id)); ?></span>
