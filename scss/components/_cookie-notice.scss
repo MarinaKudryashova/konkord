@@ -1,34 +1,41 @@
 .cookie-notice {
-  --cookie-bg: var(--black);
-  --cookie-width: 370px;
-  --cookie-offset: 18px;
+  --cookie-bg: var(--bg-dark-grey);
+  --cookie-width: 500px;
+  --cookie-offset: 40px;
   --cookie-pr: 20px;
   --cookie-pb: 20px;
 
   --cookie-fw: 400;
-  --cookie-fz: 13px;
-  --cookie-lh: 105%;
+  --cookie-fz: 20px;
+  --cookie-lh: 130%;
   --cookie-color: var(--white);
-  --cookie-link: var(--accent-pink);
+  --cookie-link: var(--accent-green);
 
-  --cookie-border-radius: 20px;
-  --cookie-border-widht: 1px;
-  --cookie-border-style: solid;
-  --cookie-border-color: var(--cookie-color);
+  --cookie-border-radius: 40px;
 
-  --cookie-padding: 30px;
-  --cookie-btn-width: 122px;
+  --cookie-padding: 40px;
+  --cookie-btn-width: 100%;
+
+  @include tablet-md {
+    --cookie-width: 400px;
+    --cookie-offset: 16px;
+    --cookie-padding: 24px 16px;
+    --cookie-fz: 16px;
+    --cookie-border-radius: 24px;
+  }
+
+  @include mobile {
+    --cookie-pr: 0;
+    --cookie-pb: 0;
+  }
 
   display: none;
   position: fixed;
   right: var(--cookie-pr);
   bottom: var(--cookie-pb);
   z-index: 100;
-  border-width: var((--cookie-border-style));
-  border-style: var(--cookie-border-style);
-  border-color: var(--cookie-border-color);
   border-radius: var(--cookie-border-radius);
-  padding: var(--cookie-padding) var(--cookie-padding) 23px;
+  padding: var(--cookie-padding);
   max-width: var(--cookie-width);
   color: var(--cookie-color);
   background-color: var(--cookie-bg);
@@ -57,6 +64,16 @@
       font-size: var(--cookie-fz);
       line-height: var(--cookie-lh);
       color: currentColor;
+
+      & strong {
+        display: inline-block;
+        margin: 0 0 16px;
+        font-weight: 600;
+
+        @include mobile {
+          margin: 0 0 8px;
+        }
+      }
     }
 
     & a {
@@ -71,9 +88,6 @@
   }
 
   &__btn {
-    --btn-border-radius: 12px;
-
-    padding: 0.85em 0.8em 0.75em;
-    min-width: var(--cookie-btn-width);
+    width: 100%;
   }
 }
