@@ -1,0 +1,130 @@
+.card-contact {
+   display: flex;
+   flex-direction: column;
+   gap: 24px;
+   padding: 32px;
+   color: var(--white);
+   background-color: var(--bg-dark-grey);
+   border-radius: 8px;
+
+   @include tablet-lg {
+      padding: 20px;
+      gap: 16px;
+   }
+
+   &__img img {
+      display: block;
+      width: 100%;
+      border-radius: 8px;
+      aspect-ratio: 336 / 214;
+   }
+
+   &__title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 16px;
+      color: var(--accent-green);
+      font-size: 16px;
+      line-height: 100%;
+   }
+
+   &__workHours {
+      & .card-contact__title {
+         margin-bottom: 8px;
+      }
+   }
+
+   &__value {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 100%;
+   }
+
+   &__city {
+      display: flex;
+      align-items: start;
+      gap: 40px;
+
+      &:not(:last-child) {
+         padding-bottom: 16px;
+         border-bottom: 1px solid var(--accent-dark-green);
+      }
+
+      &:last-child {
+         padding: 16px 0;
+      }
+   }
+
+   &__phone-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      & a {
+         display: flex;
+         align-items: center;
+         gap: 8px;
+         color: inherit;
+         font-weight: 400;
+         font-size: 12px;
+
+         & svg {
+            width: 9px;
+            height: 9px;
+            stroke: var(--accent-green);
+            fill: var(--accent-green);
+         }
+      }
+   }
+
+   &__gallery {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+   }
+
+   &__link {
+      width: 100%;
+      padding: 24px;
+      font-size: 16px;
+   }
+
+   &__heading {
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 130%;
+   }
+
+   &__btn {
+      width: 100%;
+      padding: 16px;
+      background-color: transparent;
+      border: none;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 120%;
+      color: var(--white);
+   }
+
+   &__requisities {
+      margin: 0;
+      font-size: 12px;
+      line-height: 130%;
+   }
+
+   & .tabs__nav {
+      display: flex;
+      align-items: center;
+      padding: 2px;
+      background-color: var(--accent-green);
+      border-radius: 8px;
+   }
+
+   & .tabs__nav-btn.tabs__nav-btn--active {
+      background-color: var(--bg-dark-grey);
+      border-radius: 6px;
+      color: var(--accent-green);
+   }
+}

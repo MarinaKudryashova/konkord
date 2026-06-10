@@ -29,11 +29,13 @@
 @import "components/card-employee"; //карточка сотрудника
 @import "components/card-steps";
 @import "components/card-news";
+@import "components/card-contact";
 @import "components/gallery-card";
 @import "components/contacts";
 @import "components/department";
 @import "components/layout-catalog";
 @import "components/error-404";
+@import "components/tabs";
 // @import "components/topbtn";
 // @import "components/social";
 // @import "components/textcontent";
@@ -51,6 +53,7 @@
 @import "section/banner-form";
 @import "section/about";
 @import "section/layout";
+@import "section/sec-contacts";
 
 @import "components/footer-contacts";
 @import "components/footer-menu";

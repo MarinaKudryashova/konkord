@@ -1,0 +1,32 @@
+// стили для переключений
+.tabs {
+  &__nav {
+    @include list-reset;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  &__nav-item {
+    flex: 1;
+  }
+
+  &__nav-btn {
+    cursor: pointer;
+  }
+
+  &__content {
+    display: grid;
+    gap: 16px;
+  }
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    display: none;
+
+    &--active {
+      display: flex;
+    }
+  }
+}
