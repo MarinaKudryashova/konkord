@@ -4,7 +4,7 @@ import "./components/init-slider"; // инициализация Swiper
 import "./components/sec-slider";
 import "./components/fslightbox-img";
 import "./components/tabs";
-// import "./components/video";
+import "./components/video";
 
 // import "./components/message";
 // import "./components/showmore";
