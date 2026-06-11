@@ -9,27 +9,12 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( sprintf( '<h2 class="entry-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta">
-			<?php
-			konkord_posted_on();
-			konkord_posted_by();
-			?>
-		</div><!-- .entry-meta -->
-		<?php endif; ?>
-	</header><!-- .entry-header -->
-
-	<?php konkord_post_thumbnail(); ?>
-
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-
-	<footer class="entry-footer">
-		<?php konkord_entry_footer(); ?>
-	</footer><!-- .entry-footer -->
-</article><!-- #post-<?php the_ID(); ?> -->
+<a href="<?php echo esc_url(get_permalink()); ?>" class="search-result" rel="bookmark">
+	<div class="search-result__content">
+		<span class="search-result__title"><?php the_title(); ?></span>
+		<p class="search-result__summary"><?php the_excerpt(); ?></p>
+	</div>
+	<svg class="search-result__icon">
+		<use xlink:href="<?php echo get_template_directory_uri(); ?>/img/sprite.svg#arrow-right"></use>
+	</svg>
+</a>

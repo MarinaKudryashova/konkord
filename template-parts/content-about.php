@@ -30,7 +30,7 @@
             <source srcset="<?php echo esc_url($about_img["webp_1x"]); ?>" type="image/webp">
             <img src="<?php echo esc_url($about_img["original_1x"]); ?>" alt="Фотофон страницы" width="1160" height="476" aria-hidden="true">
          </picture>
-         <h2 class="about__title"><?php echo $about_title; ?><br> Конкорд</h2>
+         <h1 class="about__title"><?php echo $about_title; ?><br> Конкорд</h1>
          <?php /* == Краткое описание == */ ?>
           <?php if (!empty( $about_short_descr)): ?>
             <p class="about__descr"><?php echo $about_short_descr; ?></p>

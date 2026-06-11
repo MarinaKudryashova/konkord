@@ -17,11 +17,20 @@ if (function_exists('yoast_breadcrumb')) {
         <meta itemprop="position" content="1">
       </a>
     </li>
+
+    <?php if (is_search()) : ?>
+    <li class="breadcrumbs__item breadcrumbs__item--current" aria-current="page" itemprop="itemListElement"
+      itemscope itemtype="https://schema.org/ListItem">
+      <span itemprop="name">Поиск</span>
+      <meta itemprop="position" content="2">
+    </li>
+    <?php else : ?>
     <li class="breadcrumbs__item breadcrumbs__item--current" aria-current="page" itemprop="itemListElement"
       itemscope itemtype="https://schema.org/ListItem">
       <span itemprop="name"><?php echo esc_html(get_the_title($page_current_id)); ?></span>
       <meta itemprop="position" content="2">
     </li>
+    <?php endif; ?>
   </ul>
 <?php
 }

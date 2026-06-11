@@ -9,7 +9,7 @@
 
 <section class="layout sec-offset">
    <div class="layout__container container">
-      <h2 class="layout__title sec-title"><?php echo $layout_title; ?></h2>
+      <h1 class="layout__title sec-title"><?php echo $layout_title; ?></h1>
 
       <?php /* == Общие требования == */ ?>
       <?php if (!empty($layout_requirements_list)) : ?>
