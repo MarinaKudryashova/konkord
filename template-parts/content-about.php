@@ -1,88 +1,85 @@
+<?php 
+  $page_id = $args["page_id"];
+  
+  $about_title = get_the_title($page_id);
+  $about_img_url = get_the_post_thumbnail_url($page_id, 'full');
+  $about_img = $about_img_url 
+    ? get_image_versions($about_img_url)
+    : get_placeholder_image();
+
+  $about_img_mobile_url = get_field('page_img_mobile', $page_id);
+  $about_img_mobile = $about_img_mobile_url 
+    ? get_image_versions($about_img_mobile_url)
+    : $about_img;
+  $about_short_descr = get_field('about_short_descr', $page_id);
+  $about_qoute = get_field('about_qoute', $page_id);
+  $about_gallery_steps = get_field('about_gallery_steps', $page_id);
+
+?>
+
 <section class="about">
    <div class="about__container container">
       <div class="about__heading">
          <picture class="about__bgimg">
-            <!-- Добавить картинку для мобилки -->
-            <!-- <source srcset="<?php echo get_template_directory_uri(); ?>/img/about/bgimg.webp" type="image/webp"> -->
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/bgimg.jpg" alt="" width="1160" height="476">
+            <?php if (!empty( $about_img_mobile['webp_1x'])): ?>
+            <source media="(max-width: 576px)" srcset="<?php echo esc_url( $about_img_mobile['webp_1x']); ?>" type="image/webp">
+            <?php endif; ?>
+            <?php if (!empty( $about_img_mobile['original_1x'])): ?>
+            <source media="(max-width: 576px)" srcset="<?php echo esc_url( $about_img_mobile['original_1x']); ?>" type="image/jpg">
+            <?php endif; ?>
+            <source srcset="<?php echo esc_url($about_img["webp_1x"]); ?>" type="image/webp">
+            <img src="<?php echo esc_url($about_img["original_1x"]); ?>" alt="Фотофон страницы" width="1160" height="476" aria-hidden="true">
          </picture>
-         <h2 class="about__title">О компании<br> Конкорд</h2>
-         <p class="about__descr">Тут может быть короткий текст или описание</p>
+         <h2 class="about__title"><?php echo $about_title; ?><br> Конкорд</h2>
+         <?php /* == Краткое описание == */ ?>
+          <?php if (!empty( $about_short_descr)): ?>
+            <p class="about__descr"><?php echo $about_short_descr; ?></p>
+          <?php endif; ?>
       </div>
+
+      <?php /* == Цитата == */ ?>
+      <?php if (!empty($about_qoute)): ?>
       <div class="about__quote">
-         <blockquote>
-            Наша главная цель — выстраивать долгосрочные отношения с клиентами и оперативно выпускать качественную полиграфию. 
-            Берём на себя полный цикл полиграфических работ — от идеи и дизайна до печати и доставки. 
-            Мы держим под контролем весь процесс и отвечаем за результат. 26 лет на рынке — это тысячи выполненных проектов и клиенты, 
-            которые остаются с нами надолго.
-         </blockquote>
+         <blockquote><?php echo $about_qoute; ?></blockquote>
          <img class="about__icon" loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/quotation.svg" width="88" height="57" alt="" aria-hidden="true">
          <img class="about__icon about__icon--right" loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/quotation.svg" width="88" height="57" alt="" aria-hidden="true">
       </div>
+      <?php endif; ?>
+
+      <?php /* == Галерея с этапами == */ ?>
+      <?php if(!empty($about_gallery_steps) && is_array($about_gallery_steps)) : ?>
       <ul class="about__gallery">
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-1.jpg" alt="" width="374" height="374">
+      <?php foreach($about_gallery_steps as $ids => $step) : 
+        $step_type = $step["type"];
+        $step_title = $step["title"];
+        $step_text = $step["text"];
+        $step_img_url = $step["img"];
+        $step_img = $step_img_url 
+        ? get_image_versions($step_img_url)
+        : get_placeholder_image();
+        ?>
+         <li class="about__gallery-item about-gallery">
+           <?php if($step_type === 'img') : ?>
+               <?php /*-- Изображение --*/ ?>
+            <a data-fslightbox="about-gallery-<?php echo $page_id ?>" data-caption="" href="<?php echo $step_img_url ?>" class="about-gallery__link">
+              <picture class="about-gallery__img">
+                <?php if($step_img["webp_1x"]) : ?>
+                  <source srcset="<?php echo esc_url($step_img["webp_1x"]); ?>" type="image/webp">
+                <?php endif; ?>
+                <img loading="lazy" src="<?php echo esc_url($step_img["original_1x"]); ?>" width="374" height="374" alt="" aria-hidden="true">
+              </picture>
+            </a>
+            <?php endif; ?>
+            
+            <?php if($step_type === 'text') : ?>
+             <div class="gallery-card">
+                <span class="gallery-card__name"><?php echo wp_kses_post($step_title); ?></span>
+                <p class="gallery-card__text"><?php echo wp_kses_post($step_text); ?></p>
+             </div>
+             <?php endif; ?>
          </li>
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-2.jpg" alt="" width="374" height="374">
-         </li>
-         <li class="about__gallery-item">
-            <div class="gallery-card">
-               <span class="gallery-card__name">20+ лет опыта. 40+ экспертов профессионалов</span>
-               <p class="gallery-card__text">
-                  С 2003 года мы растим команду специалистов — от дизайнеров до технологов. Отлаженные процессы, 
-                  грамотное CRM-управление, <b>никаких «сюрпризов» для клиента.</b>
-               </p>
-            </div>
-         </li>
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-3.jpg" alt="" width="374" height="374">
-         </li>
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-4.jpg" alt="" width="374" height="374">
-         </li>
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-5.jpg" alt="" width="374" height="374">
-         </li>
-         <li class="about__gallery-item">
-            <div class="gallery-card">
-               <span class="gallery-card__name">Собственное производство —  контроль качества</span>
-               <p class="gallery-card__text">
-                  Мы не передаем заказы подрядчикам, поэтому соблюдаем сроки, 
-                  гарантируем стабильный результат и можем оперативно вносить изменения.
-               </p>
-            </div>
-         </li>
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-6.jpg" alt="" width="374" height="374">
-         </li>
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-7.jpg" alt="" width="374" height="374">
-         </li>
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-8.jpg" alt="" width="374" height="374">
-         </li>
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-12.jpg" alt="" width="374" height="374">
-         </li>
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-9.jpg" alt="" width="374" height="374">
-         </li>
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-10.jpg" alt="" width="374" height="374">
-         </li>
-         <li class="about__gallery-item">
-            <img src="<?php echo get_template_directory_uri(); ?>/img/about/about-gallery-11.jpg" alt="" width="374" height="374">
-         </li>
-         <li class="about__gallery-item">
-            <div class="gallery-card">
-               <span class="gallery-card__name">Срочная печать — это про нас</span>
-               <p class="gallery-card__text">
-                  <b>Запрос — расчёт — макет — печать — отгрузка.</b> Нужно «вчера»? Сообщите нам о срочности, найдём выход из любой ситуации. 
-                  Менеджер на связи с понедельника по пятницу.
-               </p>
-            </div>
-         </li>
+         <?php endforeach; ?>
       </ul>
+      <?php endif; ?>
    </div>
 </section>
