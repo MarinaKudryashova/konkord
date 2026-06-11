@@ -10,6 +10,33 @@
    @include tablet-lg {
       padding: 20px;
       gap: 16px;
+
+      display: grid;
+      grid-template-columns: minmax(250px, 395px) auto;
+      grid-template-areas: "photo address"
+                           "photo workHours"
+                           "photo phones"
+                           "button phones";
+      column-gap: 32px;
+   }
+
+   @media (max-width: 800px) {
+      grid-template-areas: "photo address"
+                           "photo workHours"
+                           "photo phones"
+                           "button phones"
+                           "auto phones";
+      column-gap: 16px;
+   }
+
+   @media (max-width: 680px) {
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+   }
+   
+   &__img {
+      grid-area: photo;
    }
 
    &__img img {
@@ -17,6 +44,14 @@
       width: 100%;
       border-radius: 8px;
       aspect-ratio: 336 / 214;
+
+      @include mobile {
+         aspect-ratio: 311 / 198;
+      }
+   }
+
+   &__address {
+      grid-area: address;
    }
 
    &__title {
@@ -27,18 +62,46 @@
       color: var(--accent-green);
       font-size: 16px;
       line-height: 100%;
+
+      @include tablet-md {
+         gap: 8px;
+         margin: 0 0 12px;
+         font-size: 12px;
+      }
+
+      & img {
+         @include tablet-md {
+            width: 16px;
+            height: 16px;
+         }
+      }
    }
 
    &__workHours {
+      grid-area: workHours;
+
       & .card-contact__title {
          margin-bottom: 8px;
+
+         @include tablet-md {
+            margin-bottom: 12px;
+         }
       }
    }
 
    &__value {
+      display: block;
       font-weight: 700;
       font-size: 20px;
       line-height: 100%;
+
+      @include tablet-md {
+         font-size: 16px;
+      }
+
+      @media (max-width: 380px) {
+         max-width: 260px;
+      }
    }
 
    &__city {
@@ -46,20 +109,47 @@
       align-items: start;
       gap: 40px;
 
+      @include mobile-xs {
+         gap: 24px;
+      }
+
       &:not(:last-child) {
          padding-bottom: 16px;
          border-bottom: 1px solid var(--accent-dark-green);
+
+         @include tablet-md {
+            padding-bottom: 12px;
+         }
       }
 
       &:last-child {
          padding: 16px 0;
+
+         @include tablet-md {
+            padding: 12px 0;
+         }
       }
+   }
+
+   &__phones {
+      grid-area: phones;
    }
 
    &__phone-list {
       list-style: none;
       margin: 0;
       padding: 0;
+
+      @media (max-width: 680px) {
+         columns: 2;
+         gap: 16px;
+      }
+
+      @media (max-width: 485px) {
+         display: flex;
+         flex-direction: column;
+         gap: 4px;
+      }
 
       & a {
          display: flex;
@@ -83,9 +173,38 @@
       align-items: center;
       justify-content: space-between;
       gap: 8px;
+
+      & .card-contact__img {
+         flex: 1;
+      }
+
+      & img {
+         aspect-ratio: 164 / 101;
+         
+         @include tablet-lg {
+            height: 125px;
+         }
+
+         @media (max-width: 850px) {
+            height: 110px;
+         }
+
+         @media (max-width: 680px) {
+            height: 180px;
+         }
+
+         @include mobile {
+            height: 130px;
+         }
+
+         @media (max-width: 375px) {
+            height: 100px;
+         }
+      }
    }
 
    &__link {
+      grid-area: button;
       width: 100%;
       padding: 24px;
       font-size: 16px;
@@ -102,10 +221,26 @@
       padding: 16px;
       background-color: transparent;
       border: none;
-      font-weight: 700;
+      font-family: var(--font-family);
+      font-weight: 600;
       font-size: 14px;
       line-height: 120%;
       color: var(--white);
+
+      @include tablet-md {
+         padding: 10px;
+         font-size: 13px;
+      }
+
+      @media (max-width: 680px) {
+         padding: 15px;
+         font-size: 14px;
+      }
+
+      @include mobile-xs {
+         padding: 10px;
+         font-size: 12px;
+      }
    }
 
    &__requisities {
