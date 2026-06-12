@@ -33,9 +33,14 @@
       gap: 12px 8px;
     }
 
+    // @include tablet-md {
+    //   grid-template-columns: repeat(12, 1fr);
+    //   gap: 12px 4px;
+    // }
+
     @include tablet-md {
-      grid-template-columns: repeat(12, 1fr);
-      gap: 12px 4px;
+      display: flex;
+      gap: 4px;
     }
 
     @media (max-width: 400px) {
@@ -173,8 +178,12 @@
       grid-column: 8 / 16;
     }
 
+    // @include tablet-md {
+    //   grid-column: span 7;
+    // }
+
     @include tablet-md {
-      grid-column: span 7;
+      margin-left: 0;
     }
 
     @include mobile {
@@ -182,8 +191,12 @@
       grid-column: span 6;
     }
 
+    // @media (max-width: 510px) {
+    //   grid-column: span 10;
+    // }
+
     @media (max-width: 510px) {
-      grid-column: span 10;
+      flex: 1;
     }
 
     @media (max-width: 400px) {
@@ -192,6 +205,8 @@
 
     @include mobile-xs {
       order: 2;
+      margin-left: auto;
+      flex: unset;
     }
   }
 
@@ -209,6 +224,11 @@
     color: var(--white);
     background: var(--bg-dark-grey);
 
+    @media (max-width: 510px) {
+      flex: 1;
+      align-items: center;
+    }
+
     @media (max-width: 400px) {
       width: 156px;
     }
@@ -217,6 +237,7 @@
       width: 40px;
       height: 40px;
       padding: 0;
+      flex: unset;
     }
 
     &--email {
@@ -320,8 +341,12 @@
       text-align: right;
     }
 
+    // @include tablet-md {
+    //   grid-column: span 7;
+    // }
+
     @include tablet-md {
-      grid-column: span 7;
+      margin-left: auto;
     }
 
     @include mobile {
@@ -375,6 +400,10 @@
       grid-row: 2 / 3;
     }
 
+    @include tablet-md {
+      order: 7;
+    }
+
     @include mobile {
       width: 40px;
       height: 40px;
@@ -413,8 +442,18 @@
       grid-row: 2 / 3;
       width: 100%;
 
+      // @include tablet-md {
+      //   grid-column: span 4;
+      // }
+
       @include tablet-md {
-        grid-column: span 4;
+        width: auto;
+        flex-grow: 1;
+        order: 6;
+      }
+
+      @media (max-width: 510px) {
+        flex-grow: unset;
       }
 
       @include mobile {

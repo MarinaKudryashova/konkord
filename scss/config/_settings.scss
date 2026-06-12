@@ -45,7 +45,11 @@ a {
 
 .main {
   flex: 1 0 auto;
-  padding-top: 144px;
+  padding-top: 145px;
+
+  @include tablet-md {
+    padding-top: 152px;
+  }
 
   @include mobile {
     padding-top: 128px;
