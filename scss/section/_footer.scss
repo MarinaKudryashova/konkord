@@ -42,6 +42,17 @@
   &__logo {
     height: 40px;
     flex-shrink: 0;
+
+    @media (max-width: 425px) {
+      height: auto;
+      width: 100%;
+    }
+
+    & img {
+      @media (max-width: 425px) {
+        width: 100%;
+      }
+    }
   }
 
   &__contacts {
@@ -66,9 +77,15 @@
     }
 
     @include mobile {
-      font-weight: 600;
+      font-weight: 800;
       text-transform: uppercase;
       color: var(--accent-green);
+      font-size: 12px;
+      letter-spacing: 0.2px;
+    }
+
+    @media (max-width: 425px) {
+      font-size: 11px;
     }
   }
 

@@ -29,7 +29,7 @@
     --cookie-pb: 0;
   }
 
-  display: none;
+  // display: none;
   position: fixed;
   right: var(--cookie-pr);
   bottom: var(--cookie-pb);
@@ -39,8 +39,8 @@
   max-width: var(--cookie-width);
   color: var(--cookie-color);
   background-color: var(--cookie-bg);
-  transform: translateY(100%);
-  opacity: 0;
+  // transform: translateY(100%);
+  // opacity: 0;
   transition:
     opacity var(--transition-300),
     transform var(--transition-300);
@@ -68,7 +68,7 @@
       & strong {
         display: inline-block;
         margin: 0 0 16px;
-        font-weight: 600;
+        font-weight: 700;
 
         @include mobile {
           margin: 0 0 8px;

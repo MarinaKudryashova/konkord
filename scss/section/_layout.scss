@@ -77,6 +77,10 @@
          font-size: 16px;
       }
 
+      @include mobile-xs {
+         word-break: break-all;
+      }
+
       & b {
          font-weight: 700;
       }

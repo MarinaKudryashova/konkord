@@ -65,6 +65,17 @@
       align-items: center;
       gap: 8px;
 
+      &:focus {
+         outline: none;
+      }
+
+      &:hover span {
+         color: var(--accent-green);
+      }  
+      &:focus span {
+         color: var(--accent-green);
+      }
+
       @include mobile {
          gap: 4px;
       }
@@ -74,6 +85,7 @@
          font-size: 12px;
          line-height: 100%;
          color: var(--black);
+         transition: color var(--transition-300);
 
          @include mobile {
             font-size: 10px;
@@ -101,6 +113,16 @@
       color: var(--white);
       background-color: var(--accent-green);
       border-radius: 6px;
+      transition: background-color var(--transition-300);
+
+      &:hover {
+         background-color: var(--accent-light-green);
+      }
+
+      &:focus {
+         outline: none;
+         background-color: var(--accent-light-green);
+      }
 
       @include mobile {
          font-size: 12px;
