@@ -53,8 +53,10 @@
       width: var(--messanges-size-icon);
       height: var(--messanges-size-icon);
       user-select: none;
+    }
 
-      &--vk {
+    &--vk {
+      img {
         width: 22px;
         height: 14px;
       }

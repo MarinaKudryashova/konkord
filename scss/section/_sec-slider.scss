@@ -192,10 +192,15 @@
   &__content {
     padding: 15px;
     margin: -15px;
+    visibility: hidden;
 
     @media (max-width: 359px) {
       padding: 0;
       margin: 0;
+    }
+
+    &.swiper-initialized {
+      visibility: visible;
     }
 
     & .swiper-slide {
@@ -204,3 +209,4 @@
     }
   }
 }
+

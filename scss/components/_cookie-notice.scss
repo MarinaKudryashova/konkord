@@ -29,7 +29,7 @@
     --cookie-pb: 0;
   }
 
-  // display: none;
+  display: none;
   position: fixed;
   right: var(--cookie-pr);
   bottom: var(--cookie-pb);
@@ -39,8 +39,8 @@
   max-width: var(--cookie-width);
   color: var(--cookie-color);
   background-color: var(--cookie-bg);
-  // transform: translateY(100%);
-  // opacity: 0;
+  transform: translateY(100%);
+  opacity: 0;
   transition:
     opacity var(--transition-300),
     transform var(--transition-300);
@@ -84,6 +84,16 @@
       text-underline-offset: 2px;
       color: var(--cookie-link);
       cursor: pointer;
+      transition: color var(--transition-300);
+
+      &:hover {
+        color: var(--accent-dark-green);
+      }
+
+      &:hover {
+        outline: none;
+        color: var(--accent-dark-green);
+      }
     }
   }
 
