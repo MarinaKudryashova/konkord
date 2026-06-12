@@ -4,12 +4,20 @@
  */
 ?>
 
-<form class="header__search search"  id="searchform" role="search" data-search action="<?php echo home_url( '/' ) ?>" method="get" aria-label="форма поиска по сайту">
+<form class="header__search search" id="searchform" role="search" action="<?php echo home_url('/'); ?>" method="get" aria-label="форма поиска по сайту">
   <div class="search__inner">
-    <input class="search__field" data-search-input type="search" value="<?php echo get_search_query() ?>" id="s" name="search" placeholder="Поиск" aria-label="поиск по сайту">
+    <input 
+      class="search__field" 
+      type="search" 
+      name="s" 
+      value="<?php echo get_search_query(); ?>" 
+      placeholder="Поиск" 
+      aria-label="поиск по сайту"
+      data-search-input
+    >
     <button aria-label="Поиск" class="search__btn" type="submit">
       <svg class="search__icon">
-        <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#search"></use>
+        <use xlink:href="<?php echo get_template_directory_uri(); ?>/img/sprite.svg#search"></use>
       </svg>
     </button>
   </div>
