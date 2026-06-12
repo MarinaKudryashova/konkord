@@ -42,13 +42,18 @@
     width: 100%;
     border-radius: 10px;
 
+    @include tablet-md {
+      max-width: 100%;
+    }
+
     img {
       border-radius: inherit;
       aspect-ratio: 550 / 1035;
       object-position: right;
       filter: brightness(0.8) contrast(1);
 
-      @include mobile {
+      @include tablet-md {
+        width: 100%;
         aspect-ratio: 343 / 148;
       }
     }
