@@ -1,3 +1,20 @@
+<?php 
+  $page_id = $args["page_id"];
+  
+  $contacts_title = get_the_title($page_id);
+//   $about_img_url = get_the_post_thumbnail_url($page_id, 'full');
+//   $about_img = $about_img_url 
+//     ? get_image_versions($about_img_url)
+//     : get_placeholder_image();
+
+//   $about_img_mobile_url = get_field('page_img_mobile', $page_id);
+//   $about_img_mobile = $about_img_mobile_url 
+//     ? get_image_versions($about_img_mobile_url)
+//     : $about_img;
+//   $about_short_descr = get_field('about_short_descr', $page_id);
+//   $about_qoute = get_field('about_qoute', $page_id);
+//   $about_gallery_steps = get_field('about_gallery_steps', $page_id);
+?>
 <section class="sec-contacts">
    <div class="sec-contacts__container container">
       <h1 class="sec-contacts__title sec-title"><?php echo get_the_title($page_id); ?></h1>
