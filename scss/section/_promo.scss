@@ -59,6 +59,14 @@
       line-height: 110%;
     }
 
+    @media (max-width: 375px) {
+      font-size: 26px;
+    }
+
+    @include mobile-xs {
+      font-size: 24px;
+    }
+
     & b {
       white-space: nowrap;
       color: var(--accent-green);
@@ -121,6 +129,10 @@
 
     @include tablet-md {
       position: static;
+    }
+
+    @include mobile {
+      margin: 0 -12px;
     }
 
     & img {
