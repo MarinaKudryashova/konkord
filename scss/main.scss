@@ -17,8 +17,9 @@
 @import "components/ui-btn";
 @import "components/ui-link";
 @import "components/messanges";
-@import "components/search";
+@import "components/searchform";
 @import "components/searchbar";
+@import "components/search-result";
 @import "components/sec-offset";
 @import "components/sec-title";
 @import "components/sec-light";
@@ -56,6 +57,7 @@
 @import "section/banner-form";
 @import "section/about";
 @import "section/layout";
+@import "section/page-search";
 @import "section/sec-contacts";
 
 @import "components/footer-contacts";
