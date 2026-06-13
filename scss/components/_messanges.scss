@@ -17,14 +17,6 @@
   justify-content: center;
   gap: 4px;
 
-  @media (max-width: 400px) {
-    gap: 7px;
-  }
-
-  @media (max-width: 374px) {
-    gap: 4px;
-  }
-
   &__link {
     display: flex;
     align-items: center;
