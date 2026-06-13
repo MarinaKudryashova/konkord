@@ -26,14 +26,14 @@ function theme_register_services_category(){
 		'labels'                => $labels,
 		'description'           => '', 
 		'public'                => true,
-		'hierarchical'					=> true, // Включаем иерархичность
-		'show_in'     		      => true,
+		'hierarchical'			=> true,
+		'show_in'     		    => true,
 		'show_in_menu'          => true,
 		'show_in_nav_menus'     => true,
 		'show_admin_column'     => true,
-		'show_in_quick_edit'		=> true,
+		'show_in_quick_edit'	=> true,
 		'rewrite'               => array(
-				'slug' => 'services', 
+				'slug' => 'services-category', // ИЗМЕНЕНО: уникальный slug для таксономии
 				'with_front' => false,
 				'hierarchical' => true
 		),
@@ -75,6 +75,10 @@ function register_services_features_taxonomy() {
 		'show_tagcloud'         => true,
 		'show_in_quick_edit'    => true,
 		'show_admin_column'     => true,
+		'rewrite'               => array(
+			'slug' => 'services-feature', // уникальный slug для характеристик
+			'with_front' => false,
+		),
 	);
 
 	register_taxonomy( 'services_feature', array( 'services' ), $args );
@@ -97,12 +101,12 @@ function services_register_post_types(){
 		'search_items'          => __( 'Поиск услуги', 'konkord' ),
 		'not_found'             => __( 'Не найдено', 'konkord' ),
 		'not_found_in_trash'    => __( 'В корзине не найдено', 'konkord' ),
-		'uploaded_to_this_item'    => __( 'Загружено изображение услуги', 'konkord' ),
-		'featured_image'           => __( 'Изображение услуги', 'konkord' ),
-		'set_featured_image'       => __( 'Установить изображение услуги', 'konkord' ),
-		'remove_featured_image'    => __( 'Удалить изображение услуги', 'konkord' ),
-		'use_featured_image'       => __( 'Использовать как изображение услуги', 'konkord' ),
-  );
+		'uploaded_to_this_item' => __( 'Загружено изображение услуги', 'konkord' ),
+		'featured_image'        => __( 'Изображение услуги', 'konkord' ),
+		'set_featured_image'    => __( 'Установить изображение услуги', 'konkord' ),
+		'remove_featured_image' => __( 'Удалить изображение услуги', 'konkord' ),
+		'use_featured_image'    => __( 'Использовать как изображение услуги', 'konkord' ),
+	);
   
 	$args = array(
 		'label'                 => __( 'Услуги', 'konkord' ),
@@ -110,20 +114,20 @@ function services_register_post_types(){
 		'description'           => __( 'Все услуги', 'konkord' ),
 		'public'                => true,
 		'publicly_queryable'    => true,
-		'rewrite' 							=> array(
+		'rewrite' 				=> array(
 			'slug' => 'services',
 			'with_front' => false,
-			'pages' => true
+			'pages' => true,
 		),
 		'show_ui'               => true,
 		'show_in_menu'          => true,
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'menu_position'         => 4,
-		'menu_icon'             => 'dashicons-book', // иконка для услуг
+		'menu_icon'             => 'dashicons-book',
 		'supports'              => array('title', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes', 'editor'),
 		'taxonomies'            => array('services_category', 'services_feature'),
-		'has_archive'           => true,
+		'has_archive'           => 'services',
 	);
 	
 	register_post_type( 'services', $args );
@@ -131,10 +135,10 @@ function services_register_post_types(){
 
 // Добавление фильтра по категориям в админке
 function services_true_taxonomy_filter() {
-	global $typenow; // тип поста
+	global $typenow;
 	
-	if( $typenow == 'services' ) { // для услуг
-		$taxes = array('services_category'); // таксономии через запятую
+	if( $typenow == 'services' ) {
+		$taxes = array('services_category');
 		
 		foreach ($taxes as $tax) {
 			$current_tax = isset( $_GET[$tax] ) ? $_GET[$tax] : '';
