@@ -11,6 +11,7 @@ $light_sections = array(
     'content-layout',
     'content-news',
     'content-contacts',
+    'content-catalog',
     'why-benefits',
     'sec-fotogallery',
     'steps',
