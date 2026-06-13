@@ -1,6 +1,6 @@
 const searchOpenBtn = document.querySelector('.searchbar__btn');
-const searchForm = document.querySelector('.search');
-const searchClose = document.querySelector('.search__close-btn');
+const searchForm = document.querySelector('.searchform');
+const searchClose = document.querySelector('.searchform__close-btn');
 
 if (searchOpenBtn && searchForm && searchClose) {
    searchOpenBtn.addEventListener('click', () => {
