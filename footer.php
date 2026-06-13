@@ -18,7 +18,9 @@
 					<a href="<?php bloginfo('url'); ?>" class="footer__logo footer__logo--mobile" itemprop="url">
 						<img src="<?php echo get_field('site_logo', 'option') ?>" alt="Logo <?php bloginfo('name'); ?>" width="214" height="40" itemprop="logo image">
 					</a>
-					<p class="footer__descr">Полиграфия «под ключ» – от макета до доставки</p>
+					<?php if(get_field('site_logo_text', 'option')):?>
+					<p class="footer__descr"><?php echo get_field('site_logo_text', 'option'); ?></p>
+					<?php endif; ?>
 				</div>
 
 				<div class="footer__contacts footer-contacts">
@@ -63,12 +65,11 @@
 
 
 					<?php /*-- Мессенджеры --*/ ?>
-					<?php $messanges = get_field('messengers_list', 'options'); /*-- Мессенджеры --*/ ?>
+					<?php $messanges = get_field('messengers_list', 'options'); ?>
 					<?php if($messanges) : ?>
 						<ul class="footer-contacts__messanges messanges" title="messanges">
 							<?php foreach($messanges as $li) : ?>
-								<li class="messanges__item">
-								<a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="messanges__link" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
+								<a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="messanges__link <?php if($li["value"] == 'vk') : ?>messanges__link--vk<?php endif; ?>" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
 									<img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="16" height="16" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
 								</a>
 							</li>
@@ -76,111 +77,97 @@
 						</ul>
 					<?php endif; ?>
 
-					<a href="#" class="footer-contacts__link">Яндекс Карты</a>
+					<?php $company_link_map = get_field('company_map_link', 'option') ? get_field('company_map_link', 'option') : '#';?>
+					<a href="<?php echo esc_url($company_link_map); ?>" class="footer-contacts__link" target="_blank" rel="noopener noreferrer">Яндекс Карты</a>
 				</div>
 
 				<?php /*-- Отдел продаж --*/ ?>
+				<?php 
+					$department_sales = get_field('department_sales', 'option');
+					$department_phones = $department_sales["phone"];
+					$department_tel_arr = explode(PHP_EOL, $department_phones);
+					$department_tel_arr_href = preg_replace('![^0-9]+!', '', $department_tel_arr);
+
+					// var_dump($department_tel_arr_href);
+				?>
 				<div class="department">
-					<span class="department__title">Отдел продаж</span>
+					<?php if($department_sales["name"]): ?>
+					<span class="department__title"><?php echo esc_html($department_sales["name"]); ?></span>
+					<?php endif; ?>
+ 
+          <?php if($department_tel_arr && is_array($department_tel_arr)) : ?>
 					<ul class="department__list">
+						<?php foreach($department_tel_arr as $ind => $tel) : ?>
 						<li class="department__item">
-							<a href="tel:+78313230406" class="department__phone">
+							<a href="tel:<?php echo $department_tel_arr_href[$ind] ?>" class="department__phone">
 								<svg>
 									<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
 								</svg>
-								<span>+7 (8313) 23-04-06</span>
+								<span><?php echo esc_html($department_tel_arr[$ind]); ?></span>
 							</a>
 						</li>
-						<li class="department__item">
-							<a href="tel:+78313230121" class="department__phone">
-								<svg>
-									<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
-								</svg>
-								<span>+7 (8313) 23-01-21</span>
-							</a>
-						</li>
-						<li class="department__item">
-							<a href="tel:+78313232005" class="department__phone">
-								<svg>
-									<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
-								</svg>
-								<span>+7 (8313) 23-20-05</span>
-							</a>
-						</li>
-						<li class="department__item">
-							<a href="tel:+79601651717" class="department__phone">
-								<svg>
-									<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
-								</svg>
-								<span>+7 (960) 165-17-17</span>
-							</a>
-						</li>
+						<?php endforeach; ?>
 					</ul>
-					<a href="emailto:247089@mail.ru" class="department__email">247089@mail.ru</a>
+					<?php endif; ?>
+
+					<?php if($department_sales["email"]): ?>
+					<a href="emailto:<?php echo $department_sales["email"]; ?>" class="department__email"><?php echo $department_sales["email"]; ?></a>
+					<?php endif; ?>
 				</div>
 
 				<?php /*-- Отдел корпоративных продаж --*/ ?>
+				<?php 
+					$department_corporate = get_field('department_corporate', 'option');
+					$department_corporate_employees_ids = $department_corporate["employees"];
+				?>
+				<?php if($department_corporate_employees_ids && is_array($department_corporate_employees_ids)): ?>
 				<div class="department department--corporate">
-					<span class="department__title">Отдел корпоративных продаж</span>
+					<?php if($department_corporate["name"]): ?>
+					<span class="department__title"><?php echo esc_html($department_corporate["name"]); ?></span>
+					<?php endif; ?>
+
+					<?php foreach($department_corporate_employees_ids as $employee_id) :
+						$employee_full_name = get_the_title($employee_id);
+						if(!empty($employee_full_name)) {
+							$employee_name_parts = explode(' ', $employee_full_name);
+							$employee_name = end($employee_name_parts);
+						}
+
+						$employee_email = get_field('employee_email', $employee_id);
+						
+						$employee_phones = get_field('employee_phone', $employee_id);
+						$employee_phone_arr = explode(PHP_EOL, $employee_phones);
+						$employee_phone_href = preg_replace('![^0-9]+!', '', $employee_phone_arr);
+						?>
 					<div class="department__worker">
-						<span class="department__name">Дарина</span>
+						<span class="department__name"><?php echo esc_html($employee_name); ?></span>
+
+						<?php if($employee_phone_arr && $employee_email && is_array($employee_phone_arr)) : ?>
 						<ul class="department__list">
+							<?php foreach($employee_phone_arr as $ind => $tel) : ?>
 							<li class="department__item">
-								<a href="tel:+79302598835" class="department__phone">
+								<a href="tel:<?php echo esc_html($employee_phone_href[$ind]); ?>" class="department__phone">
 									<svg>
 										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
 									</svg>
-									<span>+7 (930) 259-88-35</span>
+									<span><?php echo esc_html($employee_phone_arr[$ind]); ?></span>
 								</a>
 							</li>
+							<?php endforeach; ?>
 							<li class="department__item">
-								<a href="tel:+79911916262" class="department__phone">
-									<svg>
-										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
-									</svg>
-									<span>+7 (991) 191-62-62</span>
-								</a>
-							</li>
-							<li class="department__item">
-								<a href="emailto:89302598835@konkord52.ru" class="department__phone">
+								<a href="emailto:<?php echo esc_html($employee_email); ?>" class="department__phone">
 									<svg>
 										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#email"></use>
 									</svg>
-									<span>89302598835@konkord52.ru</span>
+									<span><?php echo esc_html($employee_email); ?></span>
 								</a>
 							</li>
 						</ul>
+						<?php endif; ?>
 					</div>
-					<div class="department__worker">
-						<span class="department__name">Ольга</span>
-						<ul class="department__list">
-							<li class="department__item">
-								<a href="tel:+78133247089" class="department__phone">
-									<svg>
-										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
-									</svg>
-									<span>+7 (8313) 24-70-89</span>
-								</a>
-							</li>
-							<li class="department__item">
-								<a href="tel:+79588378526" class="department__phone">
-									<svg>
-										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
-									</svg>
-									<span>+7 (958) 837-85-26</span>
-								</a>
-							</li>
-							<li class="department__item">
-								<a href="emailto:89588378526@konkord52.ru" class="department__phone">
-									<svg>
-										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#email"></use>
-									</svg>
-									<span>89588378526@konkord52.ru</span>
-								</a>
-							</li>
-						</ul>
-					</div>
+					<?php endforeach; ?>
 				</div>
+				<?php endif; ?>
 
 				<?php /*-- Меню --*/ ?>
 				<div class="footer__menu">

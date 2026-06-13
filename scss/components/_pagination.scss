@@ -1,0 +1,40 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin: 40px auto 0;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    width: 40px;
+    aspect-ratio: 1 / 1;
+    font-weight: 800;
+    font-size: 16px;
+    text-transform: uppercase;
+    color: var(--grey-2);
+    background-color: var(--grey-3);
+    transition: background-color var(--transition-300);
+  }
+  &__link.current {
+    color: var(--white);
+    background-color: var(--accent-green);
+  }
+  &__link.next,
+  &__link.prev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      fill: none;
+      stroke-width: 1.5px;
+      stroke: var(--grey-2);
+    }
+  }
+}

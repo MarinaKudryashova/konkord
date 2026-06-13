@@ -70,10 +70,10 @@ add_action( 'init', 'konkord_load_textdomain' );
  *
  * @global int $content_width
  */
-// function konkord_content_width() {
-// 	$GLOBALS['content_width'] = apply_filters( 'konkord_content_width', 640 );
-// }
-// add_action( 'after_setup_theme', 'konkord_content_width', 0 );
+function konkord_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'konkord_content_width', 800 );
+}
+add_action( 'after_setup_theme', 'konkord_content_width', 0 );
 
 /**
  * Register widget area.

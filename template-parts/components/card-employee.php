@@ -18,6 +18,7 @@
   $employee_email = get_field('employee_email', $employee_id);
 
   $employee_phone = get_field('employee_phone', $employee_id);
+  $employee_phone = explode(PHP_EOL, $employee_phone);
   $employee_phone_href = preg_replace('![^0-9]+!', '', $employee_phone);
 ?>
 
@@ -44,13 +45,16 @@
     <a href="mailto:<?php echo esc_attr($employee_email); ?>" class="card-employee__email"><?php echo esc_html($employee_email); ?></a>
     <?php endif; ?>
 
-    <?php if(!empty($employee_phone)) : ?>
-    <a href="tel:<?php echo $employee_phone_href; ?>" class="card-employee__phone">
+    <?php if(!empty($employee_phone) && is_array($employee_phone)) : ?>
+    <?php foreach($employee_phone as $ind => $phone) : ?>
+    <a href="tel:<?php echo $employee_phone_href[$ind]; ?>" class="card-employee__phone">
         <svg width="14" height="14">
           <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
         </svg>
-        <span><?php echo $employee_phone; ?></span>
+        <span><?php echo $employee_phone[$ind]; ?></span>
     </a>
+    <?php endforeach; ?>
+
     <?php endif; ?>
 
     <?php if($employee_position) : ?>
