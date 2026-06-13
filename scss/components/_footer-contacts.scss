@@ -4,20 +4,24 @@
    gap: 4px;
    grid-template-rows: auto 56px;
 
-   @media (max-width: 1106px) {
-      grid-template-columns: 176px auto;
+   @include desktop {
+      grid-template-columns: 176px auto auto;
    }
 
-   @media (max-width: 1006px) {
-      grid-template-rows: auto auto 56px;
-   }
+   // @media (max-width: 1106px) {
+   //    grid-template-columns: 176px auto;
+   // }
+
+   // @media (max-width: 1006px) {
+   //    grid-template-rows: auto auto 56px;
+   // }
 
    @media (max-width: 800px) {
       grid-template-columns: 176px auto auto;
       grid-template-rows: auto 56px;
    }
 
-   @include tablet-md {
+   @include mobile {
       grid-template-columns: auto 176px;
       grid-template-rows: auto 56px 56px;
    }
@@ -48,12 +52,16 @@
          max-width: 130px;
          align-items: start;
 
-         @media (max-width: 1106px) {
-            grid-column: span 2;
+         @include desktop {
             max-width: 100%;
-            flex-direction: row;
-            align-items: center;
          }
+
+         // @media (max-width: 1106px) {
+         //    grid-column: span 2;
+         //    max-width: 100%;
+         //    flex-direction: row;
+         //    align-items: center;
+         // }
 
          @media (max-width: 800px) {
             grid-column: span 1;
@@ -86,10 +94,10 @@
       color: var(--white);
       transition: color var(--transition-300);
 
-      @media (max-width: 1106px) {
-         grid-row: unset;
-         grid-column: span 1;
-      }
+      // @media (max-width: 1106px) {
+      //    grid-row: unset;
+      //    grid-column: span 1;
+      // }
 
       @media (max-width: 800px) {
          grid-column: span 2;
@@ -97,6 +105,10 @@
 
       @include tablet-md {
          grid-column: span 2;
+      }
+
+      @include mobile {
+         grid-row: 3 / 4;
       }
 
       &:hover {
@@ -114,19 +126,23 @@
       grid-row: 2 / 3;
       justify-content: start;
       
-      @media (max-width: 1106px) {
-         grid-row: unset;
-      }
+      // @media (max-width: 1106px) {
+      //    grid-row: unset;
+      // }
 
       @include tablet-md {
          gap: 4px;
+      }
+
+      @include mobile {
+         grid-row: auto;
       }
 
       & .messanges__link {
          width: 56px;
          height: 56px;
 
-         & svg {
+         & img {
             width: 16px;
             height: 16px;
 

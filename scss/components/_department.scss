@@ -9,9 +9,14 @@
    grid-column: 3 / 4;
    grid-row: 1 / 3;
 
-   @media (max-width: 1200px) {
+   @include desktop {
       grid-column:  span 2;
-      grid-row: 1 / 3;
+      grid-row: 2 / 3;
+   }
+
+   @include tablet-lg {
+      grid-column: span 1;
+      grid-row: auto;
    }
 
    @include mobile {
@@ -38,25 +43,40 @@
       list-style: none;
       gap: 12px;
 
-      @media (max-width: 1006px) {
-         display: grid;
-         grid-template-columns: repeat(2, 1fr);
+      @include desktop {
+         columns: 2;
+         display: block;
+         gap: 16px;
+      }
+
+      // @media (max-width: 1006px) {
+      //    display: grid;
+      //    grid-template-columns: repeat(2, 1fr);
+      // }
+
+      @media (max-width: 900px) {
+         display: flex;
+         flex-direction: column;
       }
 
       @include tablet-md {
          columns: 2;
          display: block;
-         gap: 16px;
+         margin-bottom: -12px;
       }
    }
 
    &__item {
-      @include tablet-md {
+      @include desktop {
          margin-bottom: 12px;
       }
 
-      @include mobile {
-         margin-bottom: 10px;
+      @media (max-width: 900px) {
+         margin-bottom: 0;
+      }
+
+      @include tablet-md {
+         margin-bottom: 12px;
       }
    }
 
@@ -163,14 +183,25 @@
       @include desktop {
          min-width: unset;
          gap: 12px 20px;
+         grid-column: span 3;
+         grid-row: 2 / 3;
       }
 
-      @media (max-width: 1006px) {
-         grid-row: 3 / 4;
+      @include tablet-lg {
+         grid-column: span 1;
+         grid-row: auto;
       }
+
+      // @media (max-width: 1006px) {
+      //    grid-row: 3 / 4;
+      // }
 
       @include mobile {
          gap: 16px;
+      }
+
+      @include mobile-xs {
+         display: flex;
       }
 
       & .department__title {
@@ -180,7 +211,7 @@
       & .department__list {
          gap: 8px;
 
-         @media (max-width: 1006px) {
+         @include desktop {
             display: flex;
             flex-direction: column;
          }
@@ -188,11 +219,12 @@
          @include tablet-md {
             display: flex;
             flex-direction: column;
+            margin-bottom: 0;
          }
       }
 
       & .department__item {
-         @include tablet-md {
+         @include desktop {
             margin-bottom: 0;
          }
       }

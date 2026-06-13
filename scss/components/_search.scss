@@ -24,7 +24,7 @@
     padding-right: var(--search-size);
     background-color: var(--search-bg);
 
-    @include mobile {
+    @media (max-width: 640px) {
       padding: 8.5px var(--search-padding);
       padding-right: 0;
     }
@@ -136,7 +136,7 @@
       background-color: var(--search-bg-hover);
     }
 
-    @include mobile {
+    @media (max-width: 640px) {
       width: 40px;
       height: 40px;
       pointer-events: all;

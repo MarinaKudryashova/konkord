@@ -5,7 +5,7 @@
   --messanges-link-bg-hover: var(--accent-green);
   --messanges-br: 5px;
 
-  @include mobile {
+  @media (max-width: 640px) {
     --messanges-size: 40px;
     --messanges-size-icon: 12px;
   }
