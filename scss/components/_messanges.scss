@@ -13,7 +13,7 @@
   @include list-reset;
   display: flex;
   flex-wrap: nowrap;
-  align-items: center; 
+  align-items: center;
   justify-content: center;
   gap: 4px;
 
@@ -24,7 +24,6 @@
   @media (max-width: 374px) {
     gap: 4px;
   }
-
 
   &__link {
     display: flex;
