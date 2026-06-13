@@ -2,8 +2,9 @@
    margin-bottom: 70px;
    list-style: none;
    display: flex;
+   flex-wrap: wrap;
    align-items: center;
-   gap: 15px;
+   gap: 0 15px;
 
    @include desktop {
       margin-bottom: 50px;
