@@ -29,11 +29,11 @@
     --cookie-pb: 0;
   }
 
-  display: none;
   position: fixed;
   right: var(--cookie-pr);
   bottom: var(--cookie-pb);
   z-index: 100;
+  display: none;
   border-radius: var(--cookie-border-radius);
   padding: var(--cookie-padding);
   max-width: var(--cookie-width);
@@ -46,6 +46,7 @@
     transform var(--transition-300);
 
   &.is-visible {
+    display: block;
     transform: translateY(0);
     opacity: 1;
   }

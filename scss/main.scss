@@ -41,6 +41,8 @@
 // @import "components/social";
 // @import "components/textcontent";
 @import "components/cookie-notice";
+@import "components/pagination";
+@import "components/post-news";
 
 // Секции
 @import "section/header";
@@ -59,3 +61,5 @@
 @import "components/footer-contacts";
 @import "components/footer-menu";
 @import "section/footer";
+// Новости
+@import "section/news";
