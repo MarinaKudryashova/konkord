@@ -5,6 +5,7 @@ import "./components/sec-slider";
 import "./components/fslightbox-img";
 import "./components/tabs";
 import "./components/video";
+import "./components/search";
 
 // import "./components/message";
 // import "./components/showmore";
