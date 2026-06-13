@@ -1,0 +1,45 @@
+.page-search {
+   &__list {
+      display: flex;
+      flex-direction: column;
+      @include list-reset;
+   }
+
+   &__item {
+      padding: 20px 0;
+
+      &:first-child {
+         padding: 0 0 20px;
+      }
+
+      &:not(:last-child) {
+         border-bottom: 1px solid var(--grey-2);
+      }
+   }
+
+   &__none {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: start;
+      gap: 16px;
+
+      @include tablet-md {
+         display: flex;
+         flex-direction: column;
+      }
+
+      & p {
+         grid-column: span 2;
+         margin: 0 0 16px;
+         font-size: 20px;
+      }
+   }
+
+   &__link {
+      width: 315px;
+
+      @include mobile {
+         width: 100%;
+      }
+   }
+}

@@ -138,6 +138,11 @@
       grid-row: auto;
     }
 
+    & .messanges__link {
+      width: 56px;
+      height: 56px;
+    }
+
     & .messanges__link:not(.messanges__link--vk) {
       width: 56px;
       height: 56px;
