@@ -1,0 +1,36 @@
+.categories-nav {
+  &__list {
+    @include list-reset;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__item {
+    display: flex;
+  }
+
+  &__link {
+    display: block;
+    border-radius: 4px;
+    padding: 15px 16px;
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 130%;
+    text-decoration: none;
+    color: var(--black);
+    background-color: var(--grey-3);
+    transition:
+      background-color var(--transition-300),
+      color var(--transition-300);
+
+    &:hover,
+    &:focus-visible,
+    &.is-active {
+      background-color: var(--accent-green);
+      color: var(--white);
+    }
+  }
+}

@@ -1,0 +1,36 @@
+.benefits {
+  @include list-reset;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 30px;
+    width: calc(100% / 4 - 20px * 3 / 4);
+    color: var(--black);
+    background-color: var(--white);
+  }
+
+  &__icon {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 130%;
+  }
+
+  &__text {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 130%;
+  }
+}

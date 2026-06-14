@@ -63,5 +63,15 @@
 @import "components/footer-contacts";
 @import "components/footer-menu";
 @import "section/footer";
+
 // Новости
 @import "section/news";
+
+// Каталог
+@import "section/sec-services";
+@import "components/categories-nav";
+@import "components/service-card";
+
+// Услуга
+@import "section/single-services";
+@import "components/benefits";

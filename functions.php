@@ -173,6 +173,7 @@ function get_placeholder_image() {
     ];
 }
 
+
 /**
  * THEME EXTRAS
  */
