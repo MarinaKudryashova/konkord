@@ -6,11 +6,13 @@
 
   color: var(--white);
 
-  @include tablet-lg {
-    padding: 52px 0 26px;
+  @include tablet {
+    position: relative;
+    padding: 10px 16px 24px;
     width: 375px;
     height: 100%;
-    background-color: var(--black);
+    background-color: var(--bg-main);
+    border-radius: 0 0 24px 24px;
     opacity: 0;
     visibility: hidden;
     transform: translateX(100%);
@@ -21,6 +23,7 @@
 
     @include mobile {
       min-width: 100%;
+      padding-top: 0;
     }
 
     &.is-open {
@@ -44,12 +47,12 @@
       gap: 8px;
     }
 
-    @include tablet-lg {
+    @include tablet {
       flex-direction: column;
       align-items: stretch;
       justify-content: flex-start;
-      gap: 30px;
-      padding: 0 50px;
+      gap: 15px;
+      padding: 0;
       width: 100%;
       min-width: 375px;
     }
@@ -65,7 +68,7 @@
     align-items: center;
     gap: 4px;
 
-    @include tablet-lg {
+    @include tablet {
       position: relative;
       flex-wrap: wrap;
       // webkit-box-pack: justify;
@@ -89,6 +92,11 @@
       user-select: none;
       pointer-events: none;
       transition: transform var(--transition-300);
+
+      @include tablet {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 
@@ -99,8 +107,9 @@
     transition: color var(--transition-300);
     white-space: nowrap;
 
-    @include tablet-lg {
-      // font-size: 14px;
+    @include tablet {
+      font-size: 20px;
+      font-weight: 700;
     }
 
     @include hover {
@@ -178,13 +187,13 @@
       transform var(--transition-300),
       visibility var(--transition-300);
 
-    @include tablet-lg {
+    @include tablet {
       position: static;
       top: auto;
       left: auto;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 6px;
       margin: 0;
       border: none;
       border-radius: 0;
@@ -207,7 +216,9 @@
   }
 
   & .sub-menu .ui-link {
-    @include tablet-lg {
+    @include tablet {
+      font-size: 16px;
+      font-weight: 400;
       color: var(--white-60);
       transition: color ar(--transition-300);
 
@@ -227,13 +238,49 @@
     min-height: 172px;
     transform: translateY(0);
 
-    @include tablet-lg {
-      padding-top: 10px;
+    @include tablet {
       max-height: 1000px;
       min-height: auto;
       transform: translateY(0);
       opacity: 1;
       visibility: visible;
+    }
+  }
+
+  // Кнопка закрытия бургера
+  &__close-btn {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: var(--bg-dark-grey);
+    border: none;
+    cursor: pointer;
+    transition: background-color var(--transition-300);
+    
+    &:hover {
+      background-color: var(--accent-green);
+    }
+
+    &:focus {
+      outline: none;
+      background-color: var(--accent-green);
+    }
+
+    @include mobile {
+      top: 4px;
+    }
+
+    & svg {
+      width: 17px;
+      height: 17px;
+      stroke: var(--white);
+      stroke-width: 1.43px;
     }
   }
 }

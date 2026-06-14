@@ -115,7 +115,7 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 				</div>
 				
 				<?php /*-- Кнопка бургер --*/ ?>
-				<button class="header__burger">
+				<button class="header__burger" data-burger>
 					<!-- <button class="burger" aria-label="Открыть меню" aria-expanded="false" data-burger> -->
 						<!-- <span class="burger__line"></span> -->
 						<svg>
@@ -144,6 +144,11 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 								'walker'          => new BEM_Walker_Nav_Menu(),
 							] );
 						?>
+						<button class="nav__close-btn" data-close-burger type="button">
+							<svg class="ui-btn__icon">
+								<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#close"></use>
+							</svg>
+						</button>
 					</nav>
 				</div>
 								

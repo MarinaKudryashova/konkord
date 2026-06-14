@@ -6,6 +6,7 @@ import "./components/fslightbox-img";
 import "./components/tabs";
 import "./components/video";
 import "./components/search";
+import "./components/burger";
 
 // import "./components/message";
 // import "./components/showmore";
