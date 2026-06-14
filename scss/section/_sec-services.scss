@@ -1,0 +1,18 @@
+.sec-services {
+  padding-top: 24px;
+
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    @include list-reset;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  &__item {
+    width: calc(100% / 3 - 20px * 2 / 3);
+  }
+}
