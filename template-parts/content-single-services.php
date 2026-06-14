@@ -19,10 +19,9 @@
   $ss_special_title = get_field('special_title', $page_id);
   $ss_special_descr = get_field('special_descr', $page_id);
 
-  // var_dump($ss_benefit);
 ?>
 
-<section class="single-services">
+<section class="single-services sec-offset">
   <div class="single-services__container container">
     <div class="single-services__heading sec-offset">
       <div class="single-services__content">
@@ -105,7 +104,7 @@
           <div class="special__title"><?php echo esc_html($ss_special_title); ?></div>
           <span class="accordion__icon">
             <svg>
-              <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#shevron-down"></use>
+              <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#shevron-down-2"></use>
             </svg>
           </span>
         </button>

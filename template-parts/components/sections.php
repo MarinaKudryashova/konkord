@@ -12,6 +12,7 @@ $light_sections = array(
     'content-news',
     'content-contacts',
     'content-catalog',
+    'content-single-services', 
     'why-benefits',
     'sec-fotogallery',
     'steps',
@@ -41,6 +42,7 @@ if (!empty($arBlock) && is_array($arBlock)) {
         $all_blocks[] = $block;
     }
 }
+
 
 // Обработка блоков с группировкой
 $light_group = array();
