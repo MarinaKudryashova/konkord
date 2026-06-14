@@ -14,3 +14,4 @@ import "./components/burger";
 // import "./components/modal";
 // import "./components/topbtn";
 import "./components/cookie-notice";
+import "./components/slider-thumbs";

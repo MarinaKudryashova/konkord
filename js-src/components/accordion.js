@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
   const accordions = document.querySelectorAll(".accordion__item");
+  const specialAccordions = document.querySelectorAll(".accordion__item.special");
 
   const close = function () {
     accordions.forEach((el) => {
