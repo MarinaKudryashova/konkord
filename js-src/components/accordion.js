@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
   const accordions = document.querySelectorAll(".accordion__item");
-  const specialAccordions = document.querySelectorAll(".accordion__item.special");
 
   const close = function () {
     accordions.forEach((el) => {
@@ -23,7 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   if (accordions.length > 0) {
-    open(accordions[0]);
+    const firstAccordion = accordions[0];
+    const isInsideSpecial = firstAccordion.closest(".special") !== null;
+
+    if (!isInsideSpecial) {
+      open(firstAccordion);
+    }
   }
 
   accordions.forEach((el) => {

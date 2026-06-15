@@ -1,5 +1,11 @@
 <?php 
   $page_id = $args["page_id"];
+  $sec_is_last = (int) $args["lastblock"] ?? 0;
+
+  $sec_class = 'about';
+  if($sec_is_last != 1) {
+    $sec_class .= ' sec-offset';
+  }
   
   $about_title = get_the_title($page_id);
   $about_img_url = get_the_post_thumbnail_url($page_id, 'full');
@@ -17,7 +23,7 @@
 
 ?>
 
-<section class="about">
+<section class="<?php echo esc_attr($sec_class); ?>">
    <div class="about__container container">
       <div class="about__heading">
          <picture class="about__bgimg">

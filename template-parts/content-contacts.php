@@ -1,5 +1,11 @@
 <?php 
   $page_id = $args["page_id"];
+  $sec_is_last = (int) $args["lastblock"] ?? 0;
+
+  $sec_class = 'sec-contacts';
+  if($sec_is_last != 1) {
+    $sec_class .= ' sec-offset';
+  }
   
   $contacts_title = get_the_title($page_id);
 //   $about_img_url = get_the_post_thumbnail_url($page_id, 'full');
@@ -15,7 +21,7 @@
 //   $about_qoute = get_field('about_qoute', $page_id);
 //   $about_gallery_steps = get_field('about_gallery_steps', $page_id);
 ?>
-<section class="sec-contacts">
+<section class="<?php echo esc_attr($sec_class); ?>">
    <div class="sec-contacts__container container">
       <h1 class="sec-contacts__title sec-title"><?php echo get_the_title($page_id); ?></h1>
       <div class="sec-contacts__content">

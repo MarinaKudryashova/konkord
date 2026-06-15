@@ -1,8 +1,12 @@
 <?php 
   $page_id = $args["page_id"];
   $sec_name = $args["name"]["value"];
-  $sec_bg = 'light';
-  $sec_is_last = $args["lastblock"];
+  $sec_is_last = (int) $args["lastblock"] ?? 0;
+
+  $sec_class = 'steps';
+  if($sec_is_last != 1) {
+    $sec_class .= ' sec-offset';
+  }
 
   $title_field = $sec_name . '_title';
   $list_field  = $sec_name;
@@ -11,7 +15,7 @@
   $steps_list  = get_field($list_field, $page_id);
   $step_count = 1;
 ?>
-<section class="steps <?php if($sec_is_last != 1) : ?>sec-offset<?php endif; ?>">
+<section class="<?php echo esc_attr($sec_class); ?>">
   <div class="steps__container container">
     <?php if($steps_title) : ?>
       <h2 class="steps__title sec-title" data-aos="fade-up"><?php echo $steps_title; ?></h2>

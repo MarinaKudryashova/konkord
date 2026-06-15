@@ -1,5 +1,11 @@
 <?php 
   $page_id = $args["page_id"];
+  $sec_is_last = (int) $args["lastblock"] ?? 0;
+
+  $sec_class = 'single-services';
+  if($sec_is_last != 1) {
+    $sec_class .= ' sec-offset';
+  }
   
   $service_title = get_the_title($page_id);
   $service_shortdescr = get_the_content($page_id);
@@ -19,10 +25,9 @@
   $ss_special_title = get_field('special_title', $page_id);
   $ss_special_descr = get_field('special_descr', $page_id);
 
-  // var_dump($ss_benefit);
 ?>
 
-<section class="single-services">
+<section class="<?php echo esc_attr($sec_class); ?>">
   <div class="single-services__container container">
     <div class="single-services__heading sec-offset">
       <div class="single-services__content">
@@ -105,7 +110,7 @@
           <div class="special__title"><?php echo esc_html($ss_special_title); ?></div>
           <span class="accordion__icon">
             <svg>
-              <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#shevron-down"></use>
+              <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#shevron-down-2"></use>
             </svg>
           </span>
         </button>
