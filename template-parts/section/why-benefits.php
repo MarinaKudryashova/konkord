@@ -2,7 +2,7 @@
   $page_id = $args["page_id"];
   $sec_name = $args["name"]["value"];
   $sec_is_last = $args["lastblock"];
-  $sec_is_last = (int) ($args['lastblock'] ?? 0);
+  $sec_is_last = (int) $args["lastblock"] ?? 0;
 
   $sec_class = 'why-benefits';
   if($sec_is_last != 1) {
