@@ -1,5 +1,11 @@
 <?php 
   $page_id = $args["page_id"];
+  $sec_is_last = (int)$args["lastblock"] ?? 0;
+
+  $sec_class = 'layout';
+  if($sec_is_last != 1) {
+    $sec_class .= ' sec-offset';
+  }
   
   $layout_title = get_the_title($page_id);
   $layout_requirements_title = get_field('layout_requirements_title', $page_id);
@@ -7,7 +13,7 @@
   $layout_catalog = get_field('layout_catalog', $page_id);
 ?>
 
-<section class="layout sec-offset">
+<section class="<?php echo esc_attr($sec_class); ?>">
    <div class="layout__container container">
       <h1 class="layout__title sec-title"><?php echo $layout_title; ?></h1>
 

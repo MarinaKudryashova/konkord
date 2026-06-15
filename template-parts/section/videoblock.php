@@ -5,8 +5,12 @@
   
   $page_id = $args["page_id"];
   $sec_name = $args["name"]["value"];
-  $sec_bg = 'light';
-  $sec_is_last = $args["lastblock"];
+  $sec_is_last = (int) $args["lastblock"] ?? 0;
+
+  $sec_class = 'videoblock';
+  if($sec_is_last != 1) {
+    $sec_class .= ' sec-offset';
+  }
 
   $field_title = $sec_name . "_title";
   $field_descr = $sec_name . "_descr";
@@ -21,7 +25,7 @@
 ?>
 
 <?php $post_id = $args ?>
-<div class="videoblock sec-offset">
+<div class="<?php echo esc_attr($sec_class); ?>">
   <div class="container">
     <?php if($videoblock_title) :?>
     <h2 class="videoblock__title sec-title" data-aos="fade-up"><?php echo esc_html($videoblock_title); ?></h2>

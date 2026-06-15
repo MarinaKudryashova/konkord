@@ -2,6 +2,12 @@
   $page_id = $args["page_id"];
   $sec_name = $args["name"]["value"];
   $sec_is_last = $args["lastblock"];
+  $sec_is_last = (int) ($args['lastblock'] ?? 0);
+
+  $sec_class = 'why-benefits';
+  if($sec_is_last != 1) {
+    $sec_class .= ' sec-offset';
+  }
   
   $field_title = $sec_name . "_title";
   $field_list = $sec_name;
@@ -10,7 +16,7 @@
   $sec_why_list = get_field($field_list, $page_id);
 
 ?>
-<section class="why-benefits <?php if($sec_is_last != 1) : ?>sec-offset"<?php endif; ?>>
+<section class="<?php echo esc_attr($sec_class); ?>">
 
   <div class="why-benefits__container container">
       <!-- Самолетик -->

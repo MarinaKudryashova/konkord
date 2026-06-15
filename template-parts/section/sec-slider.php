@@ -4,7 +4,6 @@
   $sec_bg = $args["bg"] ?? '';
   $sec_is_last = $args["lastblock"];
 
-  // $slider_class = 'sec-slider sec-offset';
   $slider_class = 'sec-slider';
   if($sec_is_last != 1) {
     $slider_class .= ' sec-offset';
@@ -59,6 +58,9 @@
                 break;
               case 'sec-news':
                 get_template_part('template-parts/components/card-news', null, ['page_id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
+                break;
+              case 'sec-category':
+                get_template_part('template-parts/components/card-category', null, ['page_id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
                 break;
             }
           ?>

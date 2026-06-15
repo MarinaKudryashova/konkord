@@ -1,5 +1,11 @@
 <?php 
   $page_id = $args["page_id"];
+  $sec_is_last = (int) $args["lastblock"] ?? 0;
+
+  $sec_class = 'single-services';
+  if($sec_is_last != 1) {
+    $sec_class .= ' sec-offset';
+  }
   
   $service_title = get_the_title($page_id);
   $service_shortdescr = get_the_content($page_id);
@@ -21,7 +27,7 @@
 
 ?>
 
-<section class="single-services sec-offset">
+<section class="<?php echo esc_attr($sec_class); ?>">
   <div class="single-services__container container">
     <div class="single-services__heading sec-offset">
       <div class="single-services__content">

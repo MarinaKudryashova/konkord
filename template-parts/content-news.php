@@ -1,9 +1,16 @@
 <?php 
   $page_id = $args["page_id"];
+  $sec_is_last = (int) $args["lastblock"] ?? 0;
+
+  $sec_class = 'news';
+  if($sec_is_last != 1) {
+    $sec_class .= ' sec-offset';
+  }
+
   $news_title = get_the_title($page_id);
 ?>
 
-<section class="news">
+<section class="<?php echo esc_attr($sec_class); ?>">
   <div class="news__container container">
     <h1 class="news__title sec-title"><?php echo $news_title; ?></h1>
     <?php if ( have_posts() ) : ?>

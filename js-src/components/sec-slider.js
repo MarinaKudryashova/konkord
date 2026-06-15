@@ -136,3 +136,50 @@ if (newsSectionSliders) {
     });
   });
 }
+
+const categorySectionSliders = document.querySelectorAll("[data-id='sec-category'] .sec-slider__content");
+
+if (categorySectionSliders) {
+  categorySectionSliders.forEach((slider) => {
+    const btnNextSectionSlider = slider.parentNode.querySelector(".sec-slider__btn-next");
+    const btnPrevSectionSlider = slider.parentNode.querySelector(".sec-slider__btn-prev");
+
+    const swiper_currentSlider = new Swiper(slider, {
+      loop: true,
+      lazy: true,
+      spaceBetween: 8,
+      slidesPerView: 1,
+      slidesPerGroup: 1,
+      navigation: {
+        nextEl: btnNextSectionSlider,
+        prevEl: btnPrevSectionSlider,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 8,
+        },
+        360: {
+          slidesPerView: 1.5,
+          spaceBetween: 8,
+        },
+        576: {
+          slidesPerView: 2,
+          spaceBetween: 8,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1200: {
+          slidesPerView: 2.1,
+          spaceBetween: 20,
+        },
+        1560: {
+          slidesPerView: 3,
+          spaceBetween: 20,
+        },
+      },
+    });
+  });
+}
