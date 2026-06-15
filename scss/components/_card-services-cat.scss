@@ -50,6 +50,10 @@
     pointer-events: none;
     transition: color var(--transition-300);
 
+    @include tablet-lg {
+      font-size: 24px;
+    }
+
     @include tablet-md {
       padding: 20px 20px 0 20px;
       font-size: 20px;

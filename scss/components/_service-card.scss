@@ -50,16 +50,17 @@
     pointer-events: none;
     transition: color var(--transition-300);
 
+    @include tablet-lg {
+      padding: 24px 24px 0 24px;
+      font-size: 22px;
+    }
+
     @include tablet-md {
       padding: 20px 20px 0 20px;
       font-size: 20px;
     }
 
     @include mobile {
-      font-size: 18px;
-    }
-
-    @include mobile-xs {
       padding: 13.5px 13.5px 0 13.5px;
       font-size: 16px;
     }
@@ -74,6 +75,10 @@
     img {
       mix-blend-mode: multiply;
       aspect-ratio: 374 / 354;
+
+      @include mobile {
+        aspect-ratio: 169 / 160;
+      }
     }
   }
 }

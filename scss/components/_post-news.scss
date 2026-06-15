@@ -128,9 +128,6 @@
     }
 
     ol > li {
-      display: flex;
-      align-items: center;
-      gap: 24px;
       padding: 24px 0;
       counter-increment: list-counter;
       font-weight: inherit;
@@ -148,6 +145,7 @@
       }
 
       &::before {
+        margin-right: 12px;
         font-weight: 700;
         content: counter(list-counter, decimal-leading-zero);
         color: var(--accent-green);

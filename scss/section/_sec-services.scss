@@ -10,9 +10,25 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+
+    @include tablet-lg {
+      gap: 16px;
+    }
+
+    @include tablet-md {
+      gap: 7px;
+    }
   }
 
   &__item {
     width: calc(100% / 3 - 20px * 2 / 3);
+
+    @include tablet-lg {
+      width: calc(100% / 3 - 16px * 2 / 3);
+    }
+
+    @include tablet-md {
+      width: calc(100% / 2 - 7px * 1 / 2);
+    }
   }
 }

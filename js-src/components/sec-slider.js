@@ -165,20 +165,16 @@ if (categorySectionSliders) {
         },
         576: {
           slidesPerView: 2,
-          spaceBetween: 8,
+          spaceBetween: 12,
         },
         768: {
-          slidesPerView: 2,
+          slidesPerView: 2.5,
           spaceBetween: 20,
         },
-        1200: {
-          slidesPerView: 2.1,
-          spaceBetween: 20,
-        },
-        1560: {
+        1024: {
           slidesPerView: 3,
           spaceBetween: 20,
-        },
+        }
       },
     });
   });
