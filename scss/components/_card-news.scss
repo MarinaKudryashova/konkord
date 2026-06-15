@@ -12,6 +12,28 @@
   color: var(--card-news-color);
   background-color: var(--card-news-bg);
 
+  &:hover {
+    .card-news__img img {
+      transform: scale(1.05);
+    }
+
+    .card-news__title {
+      color: var(--accent-green);
+    }
+  }
+
+  &:focus {
+    outline: none;
+
+    .card-news__img img {
+      transform: scale(1.05);
+    }
+
+    .card-news__title {
+      color: var(--accent-green);
+    }
+  }
+
   @include mobile {
     --card-news-padding: 16px;
     gap: 16px;
@@ -19,6 +41,7 @@
 
   &__img {
     display: flex;
+    overflow: hidden;
 
     & img {
       border-radius: 5px;
@@ -28,6 +51,7 @@
       aspect-ratio: 313 / 261;
       overflow: clip;
       background-color: var(--card-news-color);
+      transition: transform var(--transition-500);
 
       @include mobile {
         aspect-ratio: 178 / 148;
@@ -50,6 +74,8 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 130%;
+
+    transition: color var(--transition-300);
 
     @include mobile {
       font-size: 16px;
