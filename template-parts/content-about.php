@@ -25,7 +25,7 @@
 
 <section class="<?php echo esc_attr($sec_class); ?>">
    <div class="about__container container">
-      <div class="about__heading">
+      <div class="about__heading" data-aos="fade-up">
          <picture class="about__bgimg">
             <?php if (!empty( $about_img_mobile['webp_1x'])): ?>
             <source media="(max-width: 576px)" srcset="<?php echo esc_url( $about_img_mobile['webp_1x']); ?>" type="image/webp">
@@ -45,7 +45,7 @@
 
       <?php /* == Цитата == */ ?>
       <?php if (!empty($about_qoute)): ?>
-      <div class="about__quote">
+      <div class="about__quote" data-aos="fade-up">
          <blockquote><?php echo $about_qoute; ?></blockquote>
          <img class="about__icon" loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/quotation.svg" width="88" height="57" alt="" aria-hidden="true">
          <img class="about__icon about__icon--right" loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/quotation.svg" width="88" height="57" alt="" aria-hidden="true">
@@ -54,7 +54,7 @@
 
       <?php /* == Галерея с этапами == */ ?>
       <?php if(!empty($about_gallery_steps) && is_array($about_gallery_steps)) : ?>
-      <ul class="about__gallery">
+      <ul class="about__gallery" data-aos="fade-up">
       <?php foreach($about_gallery_steps as $ids => $step) : 
         $step_type = $step["type"];
         $step_title = $step["title"];
@@ -64,7 +64,7 @@
         ? get_image_versions($step_img_url)
         : get_placeholder_image();
         ?>
-         <li class="about__gallery-item about-gallery">
+         <li class="about__gallery-item about-gallery" data-aos="fade-up" data-aos-once="false" data-aos-duration="600" data-aos-delay="<?php echo $ids*100 + 50; ?>">
            <?php if($step_type === 'img') : ?>
                <?php /*-- Изображение --*/ ?>
             <a data-fslightbox="about-gallery-<?php echo $page_id ?>" data-caption="" href="<?php echo $step_img_url ?>" class="about-gallery__link">

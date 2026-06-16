@@ -34,12 +34,12 @@ $page_slug = get_post_field('post_name', $page_id);
   <?php get_template_part('template-parts/components/breadcrumbs'); ?>
   
   <div class="sec-services__container container">
-    <h1 class="sec-services__title sec-title"><?php echo esc_html($page_title); ?></h1>
+    <h1 class="sec-services__title sec-title" data-aos="fade-up"><?php echo esc_html($page_title); ?></h1>
 
     <div class="sec-services__content">
       <?php if($services_query->have_posts()) : ?>
       <!-- Навигация по категориям с ЧПУ ссылками -->
-      <div class="sec-services__nav categories-nav">
+      <div class="sec-services__nav categories-nav" data-aos="fade-up" data-aos-delay="200">
         <ul class="categories-nav__list">
           <li class="categories-nav__item">
             <a href="<?php echo get_permalink($page_id); ?>" class="categories-nav__link <?php echo empty($current_cat) ? 'is-active' : ''; ?>">
@@ -67,7 +67,8 @@ $page_slug = get_post_field('post_name', $page_id);
       </div>
       
       <!-- Список услуг -->
-      <ul class="sec-services__list">
+      <ul class="sec-services__list" data-aos="fade-up" data-aos-delay="400">
+        <?php $index = 0; ?>
         <?php while($services_query->have_posts()) : $services_query->the_post(); ?>
         <?php 
           $service_card_title = get_the_title();
@@ -77,7 +78,7 @@ $page_slug = get_post_field('post_name', $page_id);
               ? get_image_versions($service_card_thumbnail_url)
               : get_placeholder_image();
           ?>
-          <li class="sec-services__item"> 
+          <li class="sec-services__item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?php echo $index++*100 + 50; ?>"> 
           <a class="service-card" href="<?php echo esc_url($service_card_url); ?>"
             aria-label="Перейти в услугу «<?php echo esc_html($service_card_title); ?>»">
             <h3 class="service-card__title"><?php echo esc_html($service_card_title); ?></h3>

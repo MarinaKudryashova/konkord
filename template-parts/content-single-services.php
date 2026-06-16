@@ -31,16 +31,16 @@
   <div class="single-services__container container">
     <div class="single-services__heading sec-offset">
       <div class="single-services__content">
-        <h1 class="single-services__title sec-title"><?php echo $service_title; ?></h1>
-        <div class="single-services__shortdescr"><?php echo wp_kses_post($service_shortdescr); ?></div>
+        <h1 class="single-services__title sec-title" data-aos="fade-up"><?php echo $service_title; ?></h1>
+        <div class="single-services__shortdescr" data-aos="fade-up" data-aos-delay="200"><?php echo wp_kses_post($service_shortdescr); ?></div>
         <!-- Картинка на мобильных -->
         <picture class="single-services__bgimg single-services__bgimg--mobile">
           <source srcset="<?php echo esc_url($service_img["webp_1x"]); ?>" type="image/webp">
           <img src="<?php echo esc_url($service_img["original_1x"]); ?>" alt="Услуга: <?php echo $service_title; ?>" width="620" height="504">
         </picture>
-        <button type="button" class="single-services__callback ui-btn" data-graph-path="modal-leadform">Заказать печать</button>
+        <button type="button" class="single-services__callback ui-btn" data-graph-path="modal-leadform" data-aos="fade-up" data-aos-delay="200">Заказать печать</button>
       </div>
-      <picture class="single-services__bgimg">
+      <picture class="single-services__bgimg" data-aos="fade-up" data-aos-delay="200">
           <source srcset="<?php echo esc_url($service_img["webp_1x"]); ?>" type="image/webp">
           <img src="<?php echo esc_url($service_img["original_1x"]); ?>" alt="Услуга: <?php echo $service_title; ?>" width="620" height="504">
       </picture>
@@ -48,7 +48,7 @@
 
     <?php /* Варианты изготовления */ ?>
      <?php if($ss_variant_title || $ss_variant_descr || $ss_variant_gallery) : ?>
-    <div class="ss-variant sec-offset">
+    <div class="ss-variant sec-offset" data-aos="fade-up">
       <?php if ($ss_variant_gallery && is_array($ss_variant_gallery)) : ?>
         <div class="ss-variant__gallery slider-thumbs">
           <div class="swiper slider-thumbs-main slider">
@@ -97,7 +97,7 @@
       <div class="single-services__benefits sec-offset">
         <ul class="benefits">
           <?php foreach($ss_benefit as $key => $value): ?>
-          <li class="benefits__item">
+          <li class="benefits__item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?php echo $key*100 + 50; ?>">
             <img loading="lazy" src="<?php echo esc_url($value['icon']); ?>" class="benefits__icon" width="80" height="80" alt="<?php echo $value['title']; ?>" aria-hidden="true">
             <span class="benefits__title" ><?php echo $value['title']; ?></span>
             <span class="benefits__text" ><?php echo $value['text']; ?></span>

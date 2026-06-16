@@ -31,10 +31,10 @@
       <?php endif; ?>
 
       <?php /*-- Кнопка с формой --*/ ?>
-			<button type="button" class="faq__callback ui-btn" data-graph-path="modal-leadform">Задать вопрос</button>
+			<button type="button" class="faq__callback ui-btn" data-graph-path="modal-leadform" data-aos="fade-up">Задать вопрос</button>
     </div>
 
-    <div class="faq__inner">
+    <div class="faq__inner" data-aos="fade-up">
 
       <?php if($faq_img) : ?>
         <picture class="faq__img">
@@ -61,7 +61,7 @@
               }
             ?>
             <div class="<?php echo $item_class; ?>" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
-              <button class="accordion__control" aria-expanded="false">
+              <button class="accordion__control">
                 <span class="accordion__title" itemprop="name"><?php echo esc_html($faq->post_title); ?></span>
                 <span class="accordion__icon">
                   <svg>

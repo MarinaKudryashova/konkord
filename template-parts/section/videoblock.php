@@ -30,12 +30,12 @@
     <?php if($videoblock_title) :?>
     <h2 class="videoblock__title sec-title" data-aos="fade-up"><?php echo esc_html($videoblock_title); ?></h2>
       <?php if(!empty($videoblock_descr)) : ?>
-      <div class="videoblock__descr"><?php echo wp_kses_post($videoblock_descr); ?></div>
+      <div class="videoblock__descr" data-aos="fade-up" data-aos-delay><?php echo wp_kses_post($videoblock_descr); ?></div>
       <?php endif; ?>
     <?php endif; ?>
     <?php if($videoblock_video_url || $videoblock_preview) :?>
 
-    <div class="videoblock__content" data-aos="fade-up">
+    <div class="videoblock__content" data-aos="fade-up" data-aos-delay="400">
       <button class="btn-reset videoblock__play" aria-label="Play video">
         <svg>
           <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg?v=2.0#play"></use>
