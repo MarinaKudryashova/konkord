@@ -130,18 +130,17 @@
   }
 
   &__menu {
-    grid-column: span 4;
+    grid-column: span 5;
     align-self: baseline;
-    margin-right: 25px;
     padding: 30px;
     border-radius: 6px;
     background-color: var(--bg-dark-grey);
     color: var(--white);
 
-    @include desktop {
-      grid-column: span 5;
-      margin-right: 0;
-    }
+    // @include desktop {
+    //   grid-column: span 5;
+    //   margin-right: 0;
+    // }
 
     @include tablet-lg {
       grid-column: span 2;
@@ -174,16 +173,13 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 2px;
-    max-width: 231px;
-
-    @include desktop {
-      max-width: 100%;
+    // gap: 2px;
+    // max-width: 231px;
+    max-width: 100%;
       flex-direction: row;
       gap: 4px 16px;
       grid-column: span 5;
       margin-top: 5px;
-    }
 
     @include tablet-lg {
       grid-column: span 2;
