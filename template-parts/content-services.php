@@ -67,7 +67,7 @@ $page_slug = get_post_field('post_name', $page_id);
       </div>
       
       <!-- Список услуг -->
-      <ul class="sec-services__list" data-aos="fade-up" data-aos-delay="400">
+      <ul class="sec-services__list">
         <?php $index = 0; ?>
         <?php while($services_query->have_posts()) : $services_query->the_post(); ?>
         <?php 
@@ -78,7 +78,7 @@ $page_slug = get_post_field('post_name', $page_id);
               ? get_image_versions($service_card_thumbnail_url)
               : get_placeholder_image();
           ?>
-          <li class="sec-services__item" data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?php echo $index++*100 + 50; ?>"> 
+          <li class="sec-services__item" data-aos="fade-up" data-aos-anchor=".sec-services__nav" data-aos-delay="<?php echo 400 + $index++ * 100; ?>"> 
           <a class="service-card" href="<?php echo esc_url($service_card_url); ?>"
             aria-label="Перейти в услугу «<?php echo esc_html($service_card_title); ?>»">
             <h3 class="service-card__title"><?php echo esc_html($service_card_title); ?></h3>

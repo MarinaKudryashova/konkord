@@ -25,7 +25,7 @@
 
 <section class="<?php echo esc_attr($sec_class); ?>">
    <div class="about__container container">
-      <div class="about__heading" data-aos="fade-up">
+      <div class="about__heading">
          <picture class="about__bgimg">
             <?php if (!empty( $about_img_mobile['webp_1x'])): ?>
             <source media="(max-width: 576px)" srcset="<?php echo esc_url( $about_img_mobile['webp_1x']); ?>" type="image/webp">
@@ -36,10 +36,10 @@
             <source srcset="<?php echo esc_url($about_img["webp_1x"]); ?>" type="image/webp">
             <img src="<?php echo esc_url($about_img["original_1x"]); ?>" alt="Фотофон страницы" width="1160" height="476" aria-hidden="true">
          </picture>
-         <h1 class="about__title"><?php echo $about_title; ?><br> Конкорд</h1>
+         <h1 class="about__title" data-aos="fade-up"><?php echo $about_title; ?><br> Конкорд</h1>
          <?php /* == Краткое описание == */ ?>
           <?php if (!empty( $about_short_descr)): ?>
-            <p class="about__descr"><?php echo $about_short_descr; ?></p>
+            <p class="about__descr" data-aos="fade-up" data-aos-delay="200"><?php echo $about_short_descr; ?></p>
           <?php endif; ?>
       </div>
 

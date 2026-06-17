@@ -47,7 +47,7 @@
       <div class="swiper-wrapper">
   
         <?php foreach($slider_list as $index => $slide) : ?>
-        <div class="swiper-slide" data-aos="fade-up" data-aos-once="false" data-aos-duration="600" data-aos-delay="<?php echo $index*100 + 50; ?>">
+        <div class="swiper-slide" data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?php echo $index*100 + 50; ?>">
           <?php
             switch ($sec_name) {
               case 'sec-fotogallery':
