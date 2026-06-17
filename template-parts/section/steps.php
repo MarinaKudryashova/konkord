@@ -31,7 +31,7 @@
         ? get_image_versions($step_img_url)
         : get_placeholder_image();
         ?>
-        <li class="steps__item">
+        <li class="steps__item" data-aos="fade-up" data-aos-offset="0" data-aos-duration="500" data-aos-delay="<?php echo $ids*100 + 50; ?>">
           <?php if($step_type === 'text') : ?>
           <div class="card-steps" <?php if($step_type === 'text') : ?>data-step = "<?php echo $step_count++; ?>"<?php endif; ?>>
             <span class="card-steps__title"><?php echo wp_kses_post($step_title); ?></span>

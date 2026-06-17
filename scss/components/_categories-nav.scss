@@ -1,10 +1,31 @@
 .categories-nav {
+  @include tablet-md {
+    margin-bottom: 32px;
+  }
+
+  @include mobile {
+    overflow-y: hidden;
+    overflow-x: auto;
+    margin: 0 -16px 24px;
+    padding: 0 16px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   &__list {
     @include list-reset;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
+
+    @include mobile {
+      gap: 8px;
+      flex-wrap: nowrap;
+      width: max-content;
+    }
   }
 
   &__item {
@@ -31,6 +52,19 @@
     &.is-active {
       background-color: var(--accent-green);
       color: var(--white);
+    }
+
+    @include tablet-lg {
+      font-size: 18px;
+    }
+
+    @include tablet-md {
+      padding: 9.5px 12px;
+      font-size: 16px;
+    }
+
+    @include mobile {
+      flex-shrink: 0;
     }
   }
 }

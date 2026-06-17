@@ -24,7 +24,7 @@
 <section class="<?php echo esc_attr($slider_class); ?>" data-id="<?php echo $sec_name; ?>" id="<?php echo $sec_name; ?>">
   <div class="container">
 
-    <div class="sec-slider__heading">
+    <div class="sec-slider__heading" data-aos="fade-up">
 
       <?php if ($slider_title) : ?>
       <h2 class="sec-slider__title sec-title"><?php echo esc_html($slider_title) ?></h2>
@@ -47,7 +47,7 @@
       <div class="swiper-wrapper">
   
         <?php foreach($slider_list as $index => $slide) : ?>
-        <div class="swiper-slide">
+        <div class="swiper-slide" data-aos="fade-up" data-aos-once="false" data-aos-duration="600" data-aos-delay="<?php echo $index*100 + 50; ?>">
           <?php
             switch ($sec_name) {
               case 'sec-fotogallery':

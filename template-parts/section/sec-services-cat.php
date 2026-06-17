@@ -12,7 +12,7 @@
     <?php if(!empty($sec_services_cat_list) && is_array($sec_services_cat_list)) : ?>
     <ul class="sec-services-cat__list">
       <?php foreach($sec_services_cat_list as $index => $services_cat) : ?>
-        <li class="sec-services-cat__item">
+        <li class="sec-services-cat__item" data-aos="fade-up" data-aos-offset="0" data-aos-duration="500" data-aos-delay="<?php echo $index*100 + 50; ?>">
           <?php get_template_part('template-parts/components/card-services-cat', null, ['page_id' => $page_id, 'services-cat-id' => $services_cat, 'services-cat-index' => $index]); ?>
         </li>
       <?php endforeach; ?>

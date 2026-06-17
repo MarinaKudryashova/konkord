@@ -8,9 +8,11 @@
 
   @include tablet {
     position: relative;
+    display: flex;
+    flex-direction: column;
     padding: 10px 16px 24px;
     width: 375px;
-    height: 100%;
+    height: calc(100vh - 140px);
     background-color: var(--bg-main);
     border-radius: 0 0 24px 24px;
     opacity: 0;
@@ -21,8 +23,13 @@
       visibility var(--transition-500),
       transform var(--transition-500);
 
+    @media (max-width: 640px) {
+      height: calc(100vh - 125px);
+    }
+
     @include mobile {
       min-width: 100%;
+      height: calc(100vh - 107px);
       padding-top: 0;
     }
 
@@ -31,8 +38,6 @@
       visibility: visible;
       // transform: scaleY(1);
       transform: translateX(0);
-      overflow-x: hidden;
-      overflow-y: auto;
     }
   }
 
@@ -55,6 +60,7 @@
       padding: 0;
       width: 100%;
       min-width: 375px;
+      overflow-y: auto;
     }
 
     // @include mobile {
@@ -256,6 +262,7 @@
     height: 40px;
     display: none;
     justify-content: center;
+    align-items: center;
     border-radius: 4px;
     background-color: var(--bg-dark-grey);
     border: none;

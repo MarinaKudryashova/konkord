@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Закрытие по клику на ссылку
   menuLinks.forEach((link) => {
     link.addEventListener("click", () => {
+      e.preventDefault();
       closeBurger();
     });
   });

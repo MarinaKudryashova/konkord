@@ -59,9 +59,13 @@ a {
 .not-found {
   font-family: var(--font-family);
   font-weight: 400;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 130%;
-  color: var(--black);
+  color: var(--white);
+
+  @include mobile {
+    font-size: 16px;
+  }
 }
 
 .dis-scroll {

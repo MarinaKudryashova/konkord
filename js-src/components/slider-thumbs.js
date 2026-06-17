@@ -15,17 +15,22 @@ function initThumbsSlider(slider) {
     spaceBetween: 15,
     slidesPerView: "auto",
     watchSlidesProgress: true,
-    // breakpoints: {
-    //   320: {
-    //     slidesPerView: 3,
-    //   },
-    //   480: {
-    //     slidesPerView: 4,
-    //   },
-    //   768: {
-    //     slidesPerView: 5,
-    //   },
-    // },
+    breakpoints: {
+      320: {
+        direction: "horizontal",
+        spaceBetween: 4,
+      },
+      576: {
+        direction: "vertical",
+      },
+      768: {
+        direction: "horizontal",
+      },
+      992: {
+        direction: "vertical",
+        spaceBetween: 8,
+      },
+    },
   });
 
   const mainSlider = new Swiper(mainThumbsSlider, {

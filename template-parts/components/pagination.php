@@ -47,7 +47,7 @@ if (!$paginate_links || $wp_query->max_num_pages <= 1) {
 }
 ?>
 
-<div class="news__pagination <?php echo esc_attr($pagination_args['wrapper_class']); ?>" 
+<div class="news__pagination <?php echo esc_attr($pagination_args['wrapper_class']); ?>" data-aos="fade-up"
      <?php echo $pagination_args['show_aria_labels'] ? 'aria-label="Постраничная навигация"' : ''; ?>>
     
     <?php foreach ($paginate_links as $link) : 

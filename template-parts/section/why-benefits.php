@@ -2,7 +2,7 @@
   $page_id = $args["page_id"];
   $sec_name = $args["name"]["value"];
   $sec_is_last = $args["lastblock"];
-  $sec_is_last = (int) ($args['lastblock'] ?? 0);
+  $sec_is_last = (int) $args["lastblock"] ?? 0;
 
   $sec_class = 'why-benefits';
   if($sec_is_last != 1) {
@@ -20,7 +20,7 @@
 
   <div class="why-benefits__container container">
       <!-- Самолетик -->
-    <div class="why-benefits__decor-img" aria-hidden="true">
+    <div class="why-benefits__decor-img" aria-hidden="true" data-aos="fade-left" data-aos-duration="600" data-aos-delay="600">
       <img class="why-benefits__plane" src="<?php echo get_template_directory_uri();?>/img/svg/plane.svg" alt="" width="198" height="103">
       <img class="why-benefits__plane-trail" src="<?php echo get_template_directory_uri();?>/img/svg/plane-trail.svg" alt="" width="341" height="296">
       <img class="why-benefits__plane-trail why-benefits__plane-trail--mobile" src="<?php echo get_template_directory_uri();?>/img/svg/plane-trail-mobile.svg" alt="" width="212" height="45">
@@ -39,7 +39,7 @@
             default => 'middle'
         };
         ?>
-        <li class="why-benefits__item">
+        <li class="why-benefits__item" data-aos="fade-up" data-aos-offset="0" data-aos-duration="500" data-aos-delay="<?php echo $ids*100 + 50; ?>">
           <?php if($item_type === 'first' && $sec_why_title) : ?>
             <h2 class="sec-title" data-aos="fade-up"><?php echo $sec_why_title; ?></h2>
           <?php endif; ?>

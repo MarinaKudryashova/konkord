@@ -23,10 +23,10 @@
 ?>
 <section class="<?php echo esc_attr($sec_class); ?>">
    <div class="sec-contacts__container container">
-      <h1 class="sec-contacts__title sec-title"><?php echo get_the_title($page_id); ?></h1>
+      <h1 class="sec-contacts__title sec-title" data-aos="fade-up"><?php echo get_the_title($page_id); ?></h1>
       <div class="sec-contacts__content">
          <!-- Офис -->
-         <div class="sec-contacts__address">
+         <div class="sec-contacts__address" data-aos="fade-up" data-aos-once="false" data-aos-delay="400">
             <div class="card-contact">
                <picture class="card-contact__img">
                   <img src="<?php echo get_template_directory_uri(); ?>/img/contacts/office.jpg" alt="Фотография офиса" width="336" height="214">
@@ -108,7 +108,7 @@
          </div>
 
          <!-- Производство -->
-         <div class="sec-contacts__address sec-contacts__address--production">
+         <div class="sec-contacts__address sec-contacts__address--production" data-aos="fade-up" data-aos-once="false">
             <div class="card-contact">
                <div class="card-contact__address">
                   <span class="card-contact__title">
