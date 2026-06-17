@@ -1,10 +1,102 @@
 .form-field {
+  --input-color-hover: var(--accent-green);
+
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
   border-radius: 5px;
+  border: 2px solid var(--white);
   padding: 24px 16px;
+  margin-bottom: 8px;
   font-weight: 400;
   font-size: 16px;
   line-height: 130%;
   color: #7b7b7b;
   background: var(--white);
+
+    &:hover {
+      border-color: var(--input-color-hover);
+    }
+
+    &:focus-visible {
+      outline: none;
+      border-color: var(--input-color-hover);
+    }
+
+    &:active {
+      border-color: var(--input-color-hover);
+    }
+
+    &:has(.wpcf7-not-valid-tip) {
+      border-color: #C54A4A; 
+    }
+
+  &--file {
+    margin: 24px 0;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+  }
+
+  &__label {
+    display: none;
+  }
+
+  &__input {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    color: var(--bg-main);
+    border: none;
+
+    &::placeholder {
+      font-family: var(--font-family);
+      font-size: 16;
+      line-height: 130%;
+      color: 7B7B7B;
+    }
+
+    &:focus-visible {
+      outline: none;
+
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+
+    &--textarea {
+      height: 20px;
+      overflow: hidden;
+    }
+  }
+
+  &__file {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: start;
+    cursor: pointer;
+
+    & .form-field__label {
+      display: block;
+      flex-shrink: 0;
+      order: 2;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 130%;
+      color: var(--white);
+      cursor: pointer;
+    }
+
+    & .wpcf7-form-control-wrap {
+      visibility: hidden;
+      order: 3;
+    }
+  }
+
+  & .wpcf7-not-valid-tip {
+    font-size: 12px;
+  }
 }

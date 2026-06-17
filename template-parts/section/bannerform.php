@@ -38,7 +38,7 @@
       <img class="bannerform__img" src="<?php echo esc_url($bannerform_img['original_1x']); ?>" width="1443" height="534" alt="Фото" aria-hidden="true" loading="lazy">
     </picture>
   </div>
-  <div class="bannerform__container container">
+  <div class="bannerform__container container" data-aos="fade-up">
     <div class="bannerform__content">
       <?php if (!empty($bannerform_title)) : ?>
       <h2 class="bannerform__title"><?php echo esc_html($bannerform_title); ?></h2>
@@ -47,6 +47,8 @@
       <?php if (!empty($bannerform_descr)) : ?>
       <p class="bannerform__descr"><?php echo esc_html($bannerform_descr); ?></p>
       <?php endif; ?>
+
+      <!-- Мессенджеры тут-->
     </div>
 
 
