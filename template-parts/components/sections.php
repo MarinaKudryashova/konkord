@@ -7,7 +7,7 @@ $content_template = $args['content_template'] ?? 'page'; // page, about, contact
 $not_light_sections = array(
     'sec-category',
     'sec-employees',
-    'banner-form',
+    'bannerform',
 );
 
 // Собираем все блоки
@@ -39,6 +39,10 @@ function is_light_section($section_name, $not_light_sections) {
     return !in_array($section_name, $not_light_sections);
 }
 
+function is_bannerform_section($section_name) {
+    return $section_name === 'bannerform';
+}
+
 // Обработка блоков с группировкой
 $light_group = array();
 
@@ -54,7 +58,13 @@ foreach ($all_blocks as $index => $block) {
         
         if (!$next_is_light) {
             $group_count = count($light_group);
-            echo '<div class="sec-light sec-offset">';
+            $next_is_bannerform = $next_block && is_bannerform_section($next_section_name);
+
+            $wrapper_classes = 'sec-light';
+            if (!$next_is_bannerform) {
+                $wrapper_classes .= ' sec-offset';
+            }
+            echo '<div class="' . $wrapper_classes . '">';
             
             foreach ($light_group as $group_index => $group_block) {
                 // Флаг lastblock: 1 - если это последний блок в группе, иначе 0
