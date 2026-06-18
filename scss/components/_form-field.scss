@@ -15,6 +15,25 @@
   color: #7b7b7b;
   background: var(--white);
 
+  @include tablet-lg {
+    padding: 20px 16px;
+  }
+
+  @include mobile {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+    & img {
+      width: 16px;
+      height: 16px;
+
+      @include mobile {
+        width: 12px;
+        height: 12px;
+      }
+    }
+
     &:hover {
       border-color: var(--input-color-hover);
     }
@@ -37,6 +56,10 @@
     padding: 0;
     border: none;
     background-color: transparent;
+
+    @include mobile {
+      margin: 16px 0;
+    }
   }
 
   &__label {
@@ -44,6 +67,7 @@
   }
 
   &__input {
+    width: 100%;
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 16px;
@@ -51,11 +75,19 @@
     color: var(--bg-main);
     border: none;
 
+    @include mobile {
+      font-size: 12px;
+    }
+
     &::placeholder {
       font-family: var(--font-family);
-      font-size: 16;
+      font-size: 16px;
       line-height: 130%;
-      color: 7B7B7B;
+      color: #7B7B7B;
+
+      @include mobile {
+        font-size: 12px;
+      }
     }
 
     &:focus-visible {
@@ -79,6 +111,11 @@
     justify-content: start;
     cursor: pointer;
 
+    & img {
+      width: 20px;
+      height: 20px;
+    }
+
     & .form-field__label {
       display: block;
       flex-shrink: 0;
@@ -87,6 +124,10 @@
       line-height: 130%;
       color: var(--white);
       cursor: pointer;
+
+      @include mobile {
+        font-size: 12px;
+      }
     }
   }
 
