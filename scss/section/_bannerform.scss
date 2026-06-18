@@ -44,6 +44,9 @@
   &__content {
     max-width: 580px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   &__form {
@@ -63,5 +66,50 @@
     font-weight: 400;
     font-size: 20px;
     line-height: 130%;
+  }
+
+  & .messanges {
+    justify-content: start;
+    margin-top: auto;
+    gap: 8px;
+  }
+
+  & .messanges__link {
+    width: 75px;
+    height: 75px;
+    background-color: var(--accent-light-green);
+
+    &:first-child {
+      background-color: var(--accent-green);
+    }
+
+    &:last-child {
+      background-color: var(--accent-dark-green);
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+      transition: transform var(--transition-300);
+    }
+
+    &:hover img{
+      transform: scale(1.3);
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus img{
+      transform: scale(1.3);
+    }
+  }
+
+  & .messanges__link--vk {
+      img {
+        width: 26px;
+        height: 16px;
+      }
   }
 }

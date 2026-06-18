@@ -82,21 +82,16 @@
     & .form-field__label {
       display: block;
       flex-shrink: 0;
-      order: 2;
       font-weight: 400;
       font-size: 16px;
       line-height: 130%;
       color: var(--white);
       cursor: pointer;
     }
-
-    & .wpcf7-form-control-wrap {
-      visibility: hidden;
-      order: 3;
-    }
   }
 
   & .wpcf7-not-valid-tip {
-    font-size: 12px;
+    position: absolute;
+    font-size: 10px;
   }
 }

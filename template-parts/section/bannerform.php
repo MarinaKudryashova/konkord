@@ -10,6 +10,7 @@
   $bannerform_descr = get_field('bannerform_descr', 'option');
   $bannerform_shortcode = get_field('bannerform_shortcode', 'option');
   $bannerform_messanges = get_field('bannerform_messanges', 'option');
+  $messanges = get_field('messengers_list', 'options');
 
   $bannerform_img_url = get_field('bannerform_img', 'option');
   $bannerform_img = $bannerform_img_url 
@@ -49,6 +50,16 @@
       <?php endif; ?>
 
       <!-- Мессенджеры тут-->
+       <?php if($messanges) : ?>
+						<ul class="bannerform__messanges messanges" title="messanges">
+							<?php foreach($messanges as $li) : ?>
+								<a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="messanges__link <?php if($li["value"] == 'vk') : ?>messanges__link--vk<?php endif; ?>" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
+									<img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="16" height="16" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
+								</a>
+							</li>
+							<?php endforeach;	?>
+						</ul>
+					<?php endif; ?>
     </div>
 
 
