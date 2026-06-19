@@ -27,6 +27,13 @@ function custom_acf_options() {
 		));
 
 		acf_add_options_sub_page(array(
+			"page_title"  => __("Отзывы", 'konkord'),
+			"menu_title"  => __("Отзывы", 'konkord'),
+			"parent_slug" => "site_settings",
+			"menu_slug"   => "site_settings_reviews",
+		));
+		
+		acf_add_options_sub_page(array(
 			"page_title"  => __("Формы", 'konkord'),
 			"menu_title"  => __("Формы", 'konkord'),
 			"parent_slug" => "site_settings",
