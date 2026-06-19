@@ -9,6 +9,7 @@
   $promo_descr = get_field('promo_descr', $page_id);
   $promo_img_url = get_field('promo_bgimg', $page_id);
   $promo_img = $promo_img_url ? get_image_versions($promo_img_url) : '#';
+  $promo_video = get_field('promo_video', $page_id);
 ?>
 
 <section class="promo sec-offset sec-light">
@@ -23,12 +24,10 @@
       <p class="promo__descr" data-aos="fade-up" data-aos-delay="150"><?php echo esc_html($promo_descr); ?></p>
       <?php endif; ?>
       
-      <picture class="promo__picture" data-aos="fade-up" data-aos-delay="50">
-        <?php if($promo_img["webp_1x"]) : ?>
-          <source srcset="<?php echo esc_url($promo_img["webp_1x"]); ?>" type="image/webp">
-        <?php endif; ?>
-        <img src="<?php echo esc_url($promo_img["original_1x"]); ?>" class="image" width="651" height="545" alt="">
-      </picture>
+      <div class="promo__video">
+        <video src="<?php echo esc_url($promo_video); ?>" playsinline autoplay <?php if($promo_img["original_1x"]) :?>poster="<?php echo esc_url($promo_img["original_1x"]); ?>"<?php endif; ?> preload="metadata" muted loop></video>
+      </div>
+
 
       <?php /*-- Кнопка с формой --*/ ?>
 			<button type="button" 

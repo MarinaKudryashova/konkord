@@ -14,6 +14,7 @@ import "./components/file-attachment";
 // import "./components/showmore";
 
 // import "./components/topbtn";
+import "./components/map";
 import "./components/modal";
 import "./components/cookie-notice";
 import "./components/slider-thumbs";
