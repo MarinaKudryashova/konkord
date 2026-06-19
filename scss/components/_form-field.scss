@@ -140,6 +140,19 @@
         font-size: 12px;
       }
     }
+
+    & .wpcf7-not-valid-tip {
+      position: absolute;
+      font-size: 12px;
+      width: 400px;
+      left: 7px;
+      bottom: -30px;
+
+      @include mobile {
+        width: 250px;
+        bottom: -23px;
+      }
+    }
   }
 
 }

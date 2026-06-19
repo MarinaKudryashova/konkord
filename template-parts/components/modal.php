@@ -71,6 +71,21 @@ $modalsend_img_mobile = $modalsend_img_url_mobile
         <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg?v=2#close"></use>
       </svg>
     </button>
+    <div class="bannerform__bg">
+    <picture class="bannerform__picture">
+      <?php if (!empty($modalsend_img_mobile['webp_1x'])) : ?>
+        <source media="(max-width: 576px)" srcset="<?php echo esc_url($modalsend_img_mobile['webp_1x']); ?>" type="image/jpg">
+        <?php endif; ?>
+        <?php if (!empty($modalsend_img_mobile['original_1x'])) : ?>
+        <source media="(max-width: 576px)" srcset="<?php echo esc_url($modalsend_img_mobile['original_1x']); ?>" type="image/jpg">
+        <?php endif; ?>
+
+        <?php if (!empty($modalsend_img['webp_1x'])) : ?>
+        <source srcset="<?php echo esc_url($modalsend_img['webp_1x']); ?>" type="image/webp">
+        <?php endif; ?>
+        <img class="bannerform__img" src="<?php echo esc_url($modalsend_img['original_1x']); ?>" width="1443" height="534" alt="Фото" aria-hidden="true" loading="lazy">
+      </picture>
+    </div>
     <div class="graph-modal__content message-success">
       <?php if(!empty($modalsend_title)) : ?>
        <h2 class="message-success__title"><?php echo esc_html($modalsend_title); ?></h2>
