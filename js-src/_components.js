@@ -12,7 +12,7 @@ import "./components/animation";
 // import "./components/message";
 // import "./components/showmore";
 
-// import "./components/modal";
 // import "./components/topbtn";
+import "./components/modal";
 import "./components/cookie-notice";
 import "./components/slider-thumbs";

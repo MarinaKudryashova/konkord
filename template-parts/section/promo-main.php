@@ -33,8 +33,7 @@
       <?php /*-- Кнопка с формой --*/ ?>
 			<button type="button" 
               class="promo__callback ui-btn"
-              data-graph-path="modal-leadform" data-aos="fade-up" data-aos-delay="300"
-              data-graph-path="modal-leadform">
+              data-graph-path="modal-leadform" data-aos="fade-up" data-aos-delay="300">
         Узнать стоимость
       </button>
     </div>
