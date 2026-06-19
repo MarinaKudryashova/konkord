@@ -13,6 +13,7 @@ import "./components/animation";
 // import "./components/showmore";
 
 // import "./components/topbtn";
+import "./components/map";
 import "./components/modal";
 import "./components/cookie-notice";
 import "./components/slider-thumbs";

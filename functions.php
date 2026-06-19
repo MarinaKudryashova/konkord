@@ -149,6 +149,9 @@ function konkord_styles_and_scripts() {
 
 	// скрипт навигации	
 	wp_enqueue_script( 'konkord-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $ver, true );
+	if (is_page_template('page-contacts.php')) {
+		wp_enqueue_script('js-maps', 'https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU', array(), $ver, 'defer');
+	}
 
 	// основные скрипты темы	
 	wp_enqueue_script( 'js-main', $js_path . 'main.min.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
