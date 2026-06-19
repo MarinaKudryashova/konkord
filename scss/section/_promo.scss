@@ -153,4 +153,53 @@
       }
     }
   }
+
+  &__video {
+    position: absolute;
+    top: 80px;
+    left: 55%;
+    z-index: -1;
+
+    @include desktop-xl {
+      left: auto;
+      right: 0;
+    }
+
+    @media (max-width: 1330px) {
+      top: auto;
+      bottom: 75px;
+    }
+
+    @include tablet {
+      bottom: 25px;
+    }
+
+    @include tablet-md {
+      position: static;
+    }
+
+    @include mobile {
+      margin: 0 -12px;
+    }
+
+    & video {
+      border: none;
+      max-width: 622px;
+      aspect-ratio: 623 / 545;
+      mix-blend-mode: multiply;
+
+      @media (max-width: 1330px) {
+        max-width: 530px;
+      }
+
+      @media (max-width: 930px) {
+        max-width: 450px;
+      }
+
+      @include tablet-md {
+        width: 100%;
+        max-width: unset;
+      }
+    }
+  }
 }
