@@ -87,8 +87,6 @@
 					$department_phones = $department_sales["phone"];
 					$department_tel_arr = explode(PHP_EOL, $department_phones);
 					$department_tel_arr_href = preg_replace('![^0-9]+!', '', $department_tel_arr);
-
-					// var_dump($department_tel_arr_href);
 				?>
 				<div class="department">
 					<?php if($department_sales["name"]): ?>

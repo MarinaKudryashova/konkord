@@ -75,12 +75,6 @@ function custom_add_form_tag_img_handler( $tag ) {
  * Регистрируем кастомный тег [img]
  */
 function custom_add_form_tag_img() {
-    if ( function_exists( 'wpcf7_add_shortcode' ) ) {
-        wpcf7_add_shortcode( 'img', 'custom_add_form_tag_img_handler' );
-    }
-    
-    if ( function_exists( 'wpcf7_add_form_tag' ) ) {
-        wpcf7_add_form_tag( 'img', 'custom_add_form_tag_img_handler' );
-    }
+   wpcf7_add_form_tag( 'img', 'custom_add_form_tag_img_handler' );
 }
 add_action( 'wpcf7_init', 'custom_add_form_tag_img' );
