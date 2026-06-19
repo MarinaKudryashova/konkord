@@ -34,9 +34,14 @@
     }
   }
 
-  &:hover {
-    border-color: var(--input-color-hover);
-  }
+    &:hover {
+      border-color: var(--input-color-hover);       
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--input-color-hover);
+    }
 
   &:focus-visible {
     outline: none;
@@ -125,6 +130,10 @@
     justify-content: start;
     cursor: pointer;
 
+    &:hover label {
+      color: var(--accent-green);
+    }
+
     & img {
       width: 20px;
       height: 20px;
@@ -132,12 +141,13 @@
 
     & .form-field__label {
       display: block;
-      flex-shrink: 0;
       font-weight: 400;
       font-size: 16px;
       line-height: 130%;
       color: var(--white);
       cursor: pointer;
+      transition: color var(--transition-300);
+      word-break: break-all;
 
       @include mobile {
         font-size: 12px;
@@ -145,8 +155,4 @@
     }
   }
 
-  & .wpcf7-not-valid-tip {
-    position: absolute;
-    font-size: 10px;
-  }
 }

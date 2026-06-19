@@ -1,31 +1,18 @@
 form,
 .form {
-  &__control {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
+   &__control {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+   }
 
-  .wpcf7 & .wpcf7-response-output {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    z-index: 100;
-    border: 1px solid var(--grey-light);
-    border-radius: 15px;
-    padding: 24px;
-    max-width: 375px;
-    color: var(--black);
-    background-color: var(--white);
-    opacity: 0;
-    animation:
-      fadeIn 0.5s ease-out forwards,
-      fadeOut 0;
-  }
-
-  .wpcf7 &.invalid .wpcf7-response-output,
-  .wpcf7 &.failed .wpcf7-response-output {
-    border-color: var(--accent);
-    opacity: 1;
-  }
+   & .wpcf7 form.invalid .wpcf7-response-output {
+      position: fixed;
+      padding: 20px;
+      margin: 0;
+      border-radius: 5px;
+      border: 1px solid var(--accent-green);
+      right: 20px;
+      bottom: 20px;
+   }
 }

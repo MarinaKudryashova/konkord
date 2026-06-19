@@ -8,6 +8,7 @@ import "./components/video";
 import "./components/search";
 import "./components/burger";
 import "./components/animation";
+import "./components/file-attachment";
 
 // import "./components/message";
 // import "./components/showmore";
