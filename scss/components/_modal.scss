@@ -8,16 +8,29 @@
     width: 670px;
     background-color: var(--bg-main);
 
+    @include tablet {
+      padding: 40px;
+    }
+
     @include tablet-md {
       padding: 24px;
-      max-width: 375px;
+      max-width: 80%;
       width: unset;
+    }
+
+    @include mobile {
+      max-width: 375px;
+    }
+
+    @include mobile-xs {
+      max-width: 100%;
     }
   }
 
   &__header {
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
     gap: 8px;
     margin-bottom: 24px;
   }
@@ -40,6 +53,11 @@
       stroke: var(--grey-1);
       stroke-width: 1.1px;
       transition: stroke var(--transition-300);
+
+      @include mobile {
+        width: 24px;
+        height: 24px;
+      }
     }
 
     &:focus-visible,
@@ -62,10 +80,22 @@
     font-size: 32px;
     line-height: 100%;
     color: var(--white);
+
+    @include tablet-md {
+      font-size: 28px;
+    }
+
+    @include mobile {
+      font-size: 20px;
+    }
   }
 
   & .form__btn {
     width: 100%;
+
+    @include mobile-xs {
+      font-size: 14px;
+    }
   }
 
   & .form__content {

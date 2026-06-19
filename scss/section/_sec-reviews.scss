@@ -2,9 +2,31 @@
   &__title {
     text-align: center;
   }
+
   &__widgets {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
     gap: 20px;
+
+    @include tablet-md {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  &__widget-map,
+  &__widget-reviews {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+  }
+
+  &__widget-map iframe,
+  &__widget-reviews iframe {
+    aspect-ratio: 1 / 1;
+    height: 100%;
+    border: none;
+    border-radius: 5px;
   }
 }
