@@ -46,15 +46,17 @@ $modalsend_img_mobile = $modalsend_img_url_mobile
   </div>
 
   <div class="graph-modal__container" role="dialog" aria-modal="true" data-graph-target="modalform">
-    <button class="btn-reset js-modal-close graph-modal__close" aria-label="Закрыть модальное окно">
-      <svg>
-        <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#close"></use>
-      </svg>
-    </button>
     <div class="graph-modal__content form">
-      <?php if(!empty($modalform_title)) : ?>
-       <h2 class="form__title"><?php echo esc_html($modalform_title); ?></h2>
-      <?php endif; ?>
+      <div class="graph-modal__header">
+        <?php if(!empty($modalform_title)) : ?>
+        <h2 class="form__title"><?php echo esc_html($modalform_title); ?></h2>
+        <?php endif; ?>
+        <button class="btn-reset js-modal-close graph-modal__close" aria-label="Закрыть модальное окно">
+          <svg>
+            <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#close"></use>
+          </svg>
+        </button>
+      </div>
 
       <?php if(!empty($modalform_shortcode)) : ?>
        <?php echo do_shortcode($modalform_shortcode); ?>

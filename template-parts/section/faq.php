@@ -23,7 +23,7 @@
   }
 ?>
 
-<section class="faq" itemscope itemtype="https://schema.org/FAQPage">
+<section class="<?php echo esc_attr($faq_class); ?>" itemscope itemtype="https://schema.org/FAQPage">
   <div class="container">
     <div class="faq__heading">
       <?php if($block_title) : ?>
