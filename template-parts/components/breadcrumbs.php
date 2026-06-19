@@ -24,7 +24,7 @@ if (function_exists('yoast_breadcrumb')) {
     $position = 1;
     ?>
     
-    <ul class="breadcrumbs container" itemscope itemtype="https://schema.org/BreadcrumbList" data-aos="fade-up">
+    <ul class="breadcrumbs container" itemscope itemtype="https://schema.org/BreadcrumbList">
         <!-- Главная -->
         <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
             <a class="breadcrumbs__link" href="<?php echo esc_url($page_main_url); ?>" title="Главная" itemprop="item">

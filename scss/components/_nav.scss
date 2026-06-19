@@ -2,7 +2,7 @@
   --navlink: var(--white);
   --navlink-current: var(--accent-green);
   --navlink-hover: var(--accent-green);
-  --submenu-bg: var(--black);
+  --submenu-bg: var(--bg-main);
 
   color: var(--white);
 
@@ -178,8 +178,8 @@
     flex-direction: column;
     gap: 4px;
     margin: 9px 0 0;
-    border: 1px solid var(--white);
-    border-radius: 24px;
+    // border: 1px solid var(--grey-2);
+    border-radius: 5px;
     padding: 16px 16px 24px;
     width: max-content;
     min-width: 240px;
