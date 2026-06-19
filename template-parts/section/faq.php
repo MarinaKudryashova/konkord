@@ -31,7 +31,7 @@
       <?php endif; ?>
 
       <?php /*-- Кнопка с формой --*/ ?>
-			<button type="button" class="faq__callback ui-btn" data-graph-path="modal-leadform" data-aos="fade-up">Задать вопрос</button>
+			<button type="button" class="faq__callback ui-btn" data-graph-path="modalform" data-aos="fade-up">Задать вопрос</button>
     </div>
 
     <div class="faq__inner" data-aos="fade-up">

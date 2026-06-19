@@ -219,8 +219,8 @@
 
 	<?php wp_footer(); ?>
 
-	<?php //get_template_part("template-parts/components/modal"); ?>
 	<?php //get_template_part("template-parts/components/topbtn"); ?>
+	<?php get_template_part("template-parts/components/modal"); ?>
 	<?php get_template_part("template-parts/components/cookie-notice"); ?>
 
 </body>

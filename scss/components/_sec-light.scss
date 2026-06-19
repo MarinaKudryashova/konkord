@@ -2,6 +2,8 @@
   --sec-bg: var(--bg-light);
   --sec-color: var(--black);
 
+  position: relative;
+  z-index: 3;
   padding: 120px 0;
   color: var(--sec-color);
   background-color: var(--sec-bg);
