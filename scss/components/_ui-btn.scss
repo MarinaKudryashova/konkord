@@ -54,6 +54,10 @@
   @include hover {
     background-color: var(--btn-bg-hover);
   }
+  &:focus-visible {
+    outline: none;
+    background-color: var(--btn-bg-hover);
+  }
   &:active {
     background-color: var(--btn-bg-active);
     transform: scale(99.5%);

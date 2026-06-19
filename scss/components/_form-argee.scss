@@ -147,13 +147,13 @@
 
   & .wpcf7-not-valid-tip {
     position: absolute;
-    top: calc(100% + 0.33em);
+    top: calc(100% + 0.8em);
     // bottom: -1.33em;
     left: 0;
-    font-weight: 400;
+    font-weight: 700;
     font-size: 0.72em;
     line-height: 110%;
-    color: var(--argee-error);
+    color: #C54A4A;
     z-index: 2;
   }
 }

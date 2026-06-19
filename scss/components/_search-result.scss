@@ -12,8 +12,26 @@
       gap: 10px;
    }
 
-   &:hover svg {
-      background-color: var(--accent-light-green);
+   &:hover { 
+      .search-result__title {
+         color: var(--accent-green);
+      }
+
+      svg {
+         background-color: var(--accent-light-green);
+      }
+   }
+
+   &:focus { 
+      outline: none;
+
+      .search-result__title {
+         color: var(--accent-green);
+      }
+
+      svg {
+         background-color: var(--accent-light-green);
+      }
    }
 
    &__content {
@@ -28,6 +46,7 @@
       font-weight: 700;
       font-size: 20px;
       line-height: 130%;
+      transition: color var(--transition-300);
 
       @include tablet-md {
          font-size: 18px;
