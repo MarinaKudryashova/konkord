@@ -5,14 +5,18 @@ form,
       flex-direction: column;
       gap: 16px;
    }
+}
 
-   & .wpcf7 form.invalid .wpcf7-response-output {
-      position: fixed;
-      padding: 20px;
-      margin: 0;
-      border-radius: 5px;
-      border: 1px solid var(--accent-green);
-      right: 20px;
-      bottom: 20px;
-   }
+.wpcf7 form.invalid .wpcf7-response-output {
+   position: fixed !important;
+   right: 20px;
+   bottom: 20px;
+   width: 300px;
+   padding: 20px;
+   margin: 0;
+   border-radius: 12px;
+   border: 1px solid var(--white);
+   line-height: 130%;
+   background-color: var(--bg-dark-grey);
+   z-index: 10;
 }

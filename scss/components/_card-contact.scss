@@ -107,6 +107,7 @@
    &__city {
       display: flex;
       align-items: start;
+      justify-content: space-between;
       gap: 40px;
 
       @include mobile-xs {
@@ -139,6 +140,7 @@
       list-style: none;
       margin: 0;
       padding: 0;
+      flex-shrink: 0;
 
       @media (max-width: 680px) {
          columns: 2;

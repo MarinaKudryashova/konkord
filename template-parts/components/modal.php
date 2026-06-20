@@ -87,24 +87,26 @@ $modalsend_img_mobile = $modalsend_img_url_mobile
       </picture>
     </div>
     <div class="graph-modal__content message-success">
-      <?php if(!empty($modalsend_title)) : ?>
-       <h2 class="message-success__title"><?php echo esc_html($modalsend_title); ?></h2>
-      <?php endif; ?>
 
-      <?php if(!empty($modalsend_descr)) : ?>
-       <p class="message-success__text"><?php echo esc_html($modalsend_descr); ?></p>
-      <?php endif; ?>
-      <!-- Мессенджеры тут-->
-      <?php if($modalsend_messanges && $messanges && is_array($messanges)) : ?>
-        <ul class="bannerform__messanges messanges" title="messanges">
-          <?php foreach($messanges as $li) : ?>
-            <a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="messanges__link <?php if($li["value"] == 'vk') : ?>messanges__link--vk<?php endif; ?>" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
-              <img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="16" height="16" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
-            </a>
-          </li>
-          <?php endforeach;	?>
-        </ul>
-			<?php endif; ?>
+      <div class="message-success__content">
+        <?php if(!empty($modalsend_title)) : ?>
+         <h2 class="message-success__title"><?php echo esc_html($modalsend_title); ?></h2>
+        <?php endif; ?>
+        <?php if(!empty($modalsend_descr)) : ?>
+         <p class="message-success__text"><?php echo esc_html($modalsend_descr); ?></p>
+        <?php endif; ?>
+        <!-- Мессенджеры тут-->
+        <?php if($modalsend_messanges && $messanges && is_array($messanges)) : ?>
+          <ul class="bannerform__messanges messanges" title="messanges">
+            <?php foreach($messanges as $li) : ?>
+              <a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="messanges__link <?php if($li["value"] == 'vk') : ?>messanges__link--vk<?php endif; ?>" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
+                <img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="16" height="16" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
+              </a>
+            </li>
+            <?php endforeach;	?>
+          </ul>
+              <?php endif; ?>
+      </div>
       <?php if($modalsend_logo) : ?>
         <a href="<?php bloginfo('url'); ?>" class="header__logo logo">
           <img class="logo__img" src="<?php echo get_field('site_logo', 'option') ?>" alt="Logo <?php bloginfo('name'); ?>" width="214" height="40">
