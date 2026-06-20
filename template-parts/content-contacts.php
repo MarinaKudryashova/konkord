@@ -48,7 +48,6 @@
   $company_requisite_ip_5 = get_field('company_requisite_ip_5', 'option');
   $company_requisite_ltd = get_field('company_requisite_ltd', 'option');
 
-//   var_dump($company_branch_office_phone_branch);
 ?>
 <section class="<?php echo esc_attr($sec_class); ?>">
    <div class="sec-contacts__container container">
