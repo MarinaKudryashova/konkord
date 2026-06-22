@@ -1,5 +1,6 @@
 .sec-title {
-  --title-color: var(--white);
+  --title-color: currentColor;
+  // --title-color: var(--white);
   --title-mb: 40px;
   --title-position: left;
   margin-top: 0;
@@ -11,12 +12,33 @@
   text-align: var(--title-position);
   color: var(--title-color);
 
+  &--column {
+    flex-direction: column;
+  }
+
+  @include desktop {
+    font-size: 54px;
+  }
+
+  @include tablet {
+    font-size: 48px;
+  }
+
+  @include tablet-lg {
+    font-size: 44px;
+  }
+
+  @include tablet-md {
+    margin-bottom: 32px;
+    font-size: 40px;
+  }
+
   @include mobile {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   @include mobile-xs {
-    --title-mb: 34px;
+    --title-mb: 24px;
     font-size: 24px;
   }
 

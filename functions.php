@@ -70,10 +70,10 @@ add_action( 'init', 'konkord_load_textdomain' );
  *
  * @global int $content_width
  */
-// function konkord_content_width() {
-// 	$GLOBALS['content_width'] = apply_filters( 'konkord_content_width', 640 );
-// }
-// add_action( 'after_setup_theme', 'konkord_content_width', 0 );
+function konkord_content_width() {
+	$GLOBALS['content_width'] = apply_filters( 'konkord_content_width', 800 );
+}
+add_action( 'after_setup_theme', 'konkord_content_width', 0 );
 
 /**
  * Register widget area.
@@ -149,6 +149,9 @@ function konkord_styles_and_scripts() {
 
 	// скрипт навигации	
 	wp_enqueue_script( 'konkord-navigation', get_template_directory_uri() . '/js/navigation.js', array(), $ver, true );
+	if (is_page_template('page-contacts.php')) {
+		wp_enqueue_script('js-maps', 'https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU', array(), $ver, 'defer');
+	}
 
 	// основные скрипты темы	
 	wp_enqueue_script( 'js-main', $js_path . 'main.min.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
@@ -173,6 +176,7 @@ function get_placeholder_image() {
     ];
 }
 
+
 /**
  * THEME EXTRAS
  */
@@ -184,7 +188,7 @@ require_once get_template_directory() . '/inc/post-options.php';
 require_once get_template_directory() . '/inc/BEM_Walker_Nav_Menu.php';
 require_once get_template_directory() . '/inc/Footer_Menu_Walker.php';
 
-// require_once get_template_directory() . '/inc/theme-form-cf7.php';
+require_once get_template_directory() . '/inc/theme-form-cf7.php';
 
 /**
  * Post types & taxonomies

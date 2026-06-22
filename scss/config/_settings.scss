@@ -16,11 +16,14 @@ html {
 }
 
 .page__body {
+  --body-bg: var(--bg-main);
+  --body-color: var(--white);
   margin: 0;
   min-width: 320px;
   min-height: 100%;
   font-size: 15px;
-  color: var(--text);
+  color: var(--body-color);
+  background-color: var(--body-bg);
 }
 
 .page__container {
@@ -42,5 +45,35 @@ a {
 
 .main {
   flex: 1 0 auto;
-  padding-top: 85px;
+  padding-top: 145px;
+
+  @include tablet-md {
+    padding-top: 152px;
+  }
+
+  @include mobile {
+    padding-top: 128px;
+  }
+}
+
+.not-found {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 130%;
+  color: var(--white);
+
+  @include mobile {
+    font-size: 16px;
+  }
+}
+
+.dis-scroll {
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  overscroll-behavior: none;
 }

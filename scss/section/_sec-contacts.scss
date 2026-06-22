@@ -1,0 +1,70 @@
+.sec-contacts {
+   &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+   }
+
+   &__map {
+      height: 100%;
+      background-color: var(--grey-1);
+      border-radius: 8px;
+
+      @include tablet-lg {
+         min-height: 450px;
+      }
+
+      @include tablet-md {
+         min-height: 343px;
+      }
+   }
+
+   &__address {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 8px;
+
+      @include tablet-lg {
+         display: flex;
+         flex-direction: column;
+      }
+
+      &--production {
+         @include tablet-lg {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+         }
+
+         @media (max-width: 680px) {
+            display: flex;
+            flex-direction: column;
+         }
+         
+         & .sec-contacts__map {
+            grid-row: span 2;
+            grid-column: 2 / 3;
+
+            @include tablet-lg {
+               grid-row: 2 / 3;
+               grid-column: span 2;
+            }
+         }
+
+         & .card-contact--requisities {
+            grid-row: 2 / 3;
+
+            @include tablet-lg {
+               grid-row: 1 / 2;
+               grid-column: 2 / 3;
+            }
+         }
+
+         & .card-contact {
+            @include tablet-lg {
+               display: flex;
+               flex-direction: column;
+            }
+         }
+      }
+   }
+}

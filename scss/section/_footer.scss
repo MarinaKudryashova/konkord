@@ -1,139 +1,236 @@
 .footer {
-  padding-top: 40px;
-  padding-bottom: 20px;
+  padding: 0 0 60px;
 
-  @include tablet {
-    padding-top: 20px;
+  @include tablet-md {
+    padding: 40px 0;
   }
 
   &__container {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(5, auto);
+    gap: 4px;
 
-    @include tablet {
-      grid-template-columns: repeat(6, 1fr);
+    // @media (max-width: 1006px) {
+    //   grid-template-columns: repeat(2, auto);
+    // }
+
+    @include tablet-lg {
+      grid-template-columns: repeat(2, auto);
     }
-    @include mobile {
-      grid-template-columns: repeat(2, 1fr);
+
+    @include tablet-md {
+      display: flex;
+      flex-direction: column;
     }
+
+    // @include tablet-lg {
+    //   display: flex;
+    //   flex-direction: column;
+    // }
+  }
+
+  &__company {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 28px;
+    grid-column: span 2;
+
+    @include desktop {
+      grid-column: 1 / 3;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    @include tablet-lg {
+      grid-column: span 2;
+    }
+
+    // @media (max-width: 1006px) {
+    //   margin-bottom: 35px;
+    //   grid-column: span 3;
+    // }
   }
 
   &__logo {
-    display: inline-block;
+    height: 40px;
+    flex-shrink: 0;
 
-    img {
-      aspect-ratio: 242 / 80;
+    @include desktop {
+      height: auto;
+      width: 70%;
+    }
 
-      @include mobile {
-        aspect-ratio: 365 / 120;
+    @include tablet-lg {
+      width: 50%;
+    }
+
+    @include tablet-md {
+      width: 80%;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+
+    & img {
+      @include desktop {
         width: 100%;
       }
-    }
-
-    &--desktop {
-      margin-bottom: 32px;
-
-      @include mobile {
-        display: none;
-      }
-    }
-
-    &--mobile {
-      display: none;
-
-      @include mobile {
-        grid-column: 2 span;
-        display: inline-block;
-      }
-    }
-  }
-
-  &__info {
-    grid-column: 3 span;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    @include mobile {
-      grid-column: 2 span;
-      order: 2;
-      flex-direction: column-reverse;
-      gap: 30px;
-    }
-  }
-
-  &__copyright {
-    margin: 0;
-    max-width: 200px;
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 105%;
-    color: var(--white-60);
-  }
-
-  &__policies {
-    margin-top: auto;
-    max-width: 240px;
-
-    @include mobile {
-      max-width: 100%;
-    }
-
-    &.footer-menu {
-      gap: 10px;
-    }
-
-    & .footer-menu__link {
-      --link-color: var(--white-60);
-
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 105%;
-    }
-  }
-
-  &__menu {
-    grid-column: 3 span;
-    padding-top: 23px;
-
-    @include mobile {
-      grid-column: 2 span;
-      padding-top: 0;
     }
   }
 
   &__contacts {
-    grid-column: 6 span;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 40px;
-    padding-top: 23px;
+    grid-row: 2 / 3;
+    grid-column: span 2;
 
     @include desktop {
-      gap: 40px 20px;
+      grid-column: 3 / 6;
+      grid-row: 1 / 2;
     }
-    @include tablet {
-      gap: 30px 20px;
-      padding-top: 0;
+
+    @include tablet-lg {
+      grid-column: span 2;
+      grid-row: unset;
     }
+
+    // @media (max-width: 1006px) {
+    //   grid-row: 2 / 4;
+    //   grid-column: span 3;
+    // }
+  }
+
+  &__descr {
+    max-width: 180px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 100%;
+
+    @include desktop {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    @include tablet-lg {
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--accent-green);
+      font-size: 14px;
+      letter-spacing: 0.2px;
+    }
+
     @include mobile {
-      grid-column: 2 span;
+      font-size: 12px;
     }
 
-    & .contacts {
-      width: calc(50% - 40px / 2);
+    @media (max-width: 425px) {
+      font-size: 11px;
+    }
+  }
 
-      @include desktop {
-        width: calc(50% - 20px / 2);
-      }
-      @include mobile {
-        width: 100%;
-      }
+  &__menu {
+    grid-column: span 5;
+    align-self: baseline;
+    padding: 30px;
+    border-radius: 6px;
+    background-color: var(--bg-dark-grey);
+    color: var(--white);
+
+    // @include desktop {
+    //   grid-column: span 5;
+    //   margin-right: 0;
+    // }
+
+    @include tablet-lg {
+      grid-column: span 2;
     }
-    & .contacts__value {
-      max-width: 260px;
+
+    // @media (max-width: 1106px) {
+    //   padding: 24px;
+    //   grid-column: span 3;
+    // }
+
+    // @media (max-width: 1006px) {
+    //   margin-right: 0;
+    // }
+
+    // @media (max-width: 900px) {
+    //   grid-column: span 5;
+    // }
+
+    @include tablet-md {
+      margin-right: 0;
+      margin-bottom: 12px;
     }
+
+    @include mobile {
+      padding: 16px;
+    }
+  }
+
+  &__policies {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    // gap: 2px;
+    // max-width: 231px;
+    max-width: 100%;
+      flex-direction: row;
+      gap: 4px 16px;
+      grid-column: span 5;
+      margin-top: 5px;
+
+    @include tablet-lg {
+      grid-column: span 2;
+      // display: block;
+      // columns: 2;
+    }
+
+    // @media (max-width: 1106px) {
+    //   grid-column: span 2;
+    //   max-width: unset;
+    // }
+
+    // @media (max-width: 1106px) {
+    //   margin-left: 20px;
+    // }
+
+    // @media (max-width: 900px) {
+    //   margin-left: 0;
+    //   grid-column: span 5;
+    //   display: grid;
+    //   grid-template-columns: repeat(2, 1fr);
+    // }
+
+
+
+    @include tablet-md {
+      align-items: center;
+      flex-direction: column;
+      display: flex;
+    }
+
+    & .footer-menu__link {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 100%;
+    color: var(--grey-1);
+    text-decoration: underline;
+    transition: color var(--transition-300);
+
+    @include mobile {
+      font-size: 12px;
+    }
+
+    &:hover {
+      color: var(--white);
+    }
+
+    &:focus {
+      outline: none;
+      color: var(--white);
+    }
+  }
   }
 }

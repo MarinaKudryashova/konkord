@@ -1,5 +1,5 @@
 <?php 
-  $page_id = $args["id"]  ?? 0;
+  $page_id = $args["page_id"]  ?? 0;
   $card_id = $args["slide"] ?? null;
   $card_title = get_the_title($card_id);
   $card_url = get_permalink($card_id) ?: '#';
@@ -19,7 +19,7 @@
       <h3 class="card-news__title"><?php echo esc_html($card_title); ?></h3>
     <?php endif; ?>
     <?php if($card_excerpt) : ?>
-    <div class="card-news__excerpt"><?php echo esc_html($card_excerpt); ?></div>
+    <div class="card-news__excerpt is-clamp" style="--lines:8;"><?php echo esc_html($card_excerpt); ?></div>
     <?php endif; ?>
   </div>
 </a>

@@ -1,0 +1,159 @@
+// У тебя опечатка в классе :))
+
+.form-argee {
+  --argee-ff: var(--font-family);
+  --argee-fw: 100;
+  --argee-fz: 12px;
+  --argee-lh: 110%;
+  --argee-color: var(--white);
+  --argee-pl: calc(var(--argee-size) + 16px);
+  --argee-size: 15px;
+  --argee-border-radius: 2px;
+  --argee-border-color: var(--accent-green);
+  --argee-hover-color: var(--accent-green-20);
+  --argee-checked-color: var(--accent-green);
+  --argee-error: var(--red);
+
+  & label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    & span.wpcf7-list-item-label {
+      position: relative;
+      padding-left: var(--argee-pl);
+      font-family: var(--argee-ff);
+      font-weight: var(--argee-fw);
+      font-size: var(--argee-fz);
+      line-height: var(--argee-lh);
+      min-height: var(--argee-size);
+      color: var(--argee-color);
+      transition: color var(--transition-300);
+
+      @include mobile {
+        --agree-fz: 10px;
+      }
+
+      & a {
+        position: relative;
+        z-index: 2;
+        font-weight: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+        transition: color var(--transition-300);
+        text-decoration: none;
+
+        -webkit-text-decoration-line: underline;
+        text-decoration-line: underline;
+        -webkit-text-decoration-style: solid;
+        text-decoration-style: solid;
+        -webkit-text-decoration-color: currentColor;
+        text-decoration-color: currentColor;
+        text-decoration-thickness: 0.5px;
+        text-underline-offset: 1px;
+        -webkit-text-decoration-skip-ink: none;
+        text-decoration-skip-ink: none;
+
+        &:focus {
+          outline: none;
+          color: var(--accent-green);
+        }
+
+        @include hover {
+          color: var(--accent-green);
+        }
+      }
+    }
+
+    & span.wpcf7-list-item-label::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      margin-right: var(--argee-pl);
+      border: 1px solid var(--argee-border-color);
+      border-radius: var(--argee-border-radius);
+      width: var(--argee-size);
+      height: var(--argee-size);
+      background-color: transparent;
+      box-sizing: border-box;
+      transition:
+        border-color var(--transition-300),
+        background-color var(--transition-300);
+      cursor: pointer;
+    }
+
+    & span.wpcf7-list-item-label::after {
+      content: "";
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      flex: none;
+      width: 12px;
+      height: 11px;
+      background-image: url("data:image/svg+xml,%3Csvg width='14' height='12' viewBox='0 0 14 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 6.50006L4.68078 9.77186C5.12056 10.1628 5.80115 10.0914 6.1502 9.61765L12.5 1.00006' stroke='white' stroke-width='2' stroke-linecap='round' /%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: 14px 12px;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity var(--transition-300),
+        visible var(--transition-300);
+    }
+
+    & input[type="checkbox"] {
+      outline: none;
+    }
+
+    & input[type="checkbox"]:focus-visible + span.wpcf7-list-item-label::before {
+      border-color: var(--argee-checked-color);
+      background-color: var(--argee-hover-color);
+    }
+
+    & input[type="checkbox"]:hover + span.wpcf7-list-item-label::before {
+      border-color: var(--argee-checked-color);
+      background-color: var(--argee-hover-color);
+    }
+
+    & input[type="checkbox"]:checked + span.wpcf7-list-item-label::before {
+      border-color: var(--argee-checked-color);
+      background-color: var(--argee-checked-color);
+    }
+
+    & input[type="checkbox"]:checked + span.wpcf7-list-item-label::after {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  & input[type="checkbox"],
+  &__input {
+    position: absolute;
+    inset: 0;
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+    display: none;
+  }
+
+  & .wpcf7-list-item {
+    display: block;
+    margin: 0;
+  }
+
+  & .wpcf7-not-valid-tip {
+    position: absolute;
+    top: calc(100% + 0.8em);
+    // bottom: -1.33em;
+    left: 0;
+    font-weight: 700;
+    font-size: 0.72em;
+    line-height: 110%;
+    color: #C54A4A;
+    z-index: 2;
+  }
+}

@@ -9,7 +9,7 @@
  * @package konkord
  */
 
-$messanges = get_field('messengers_list', 'options'); /*-- Мессенджеры --*/
+$messanges = get_field('header_messengers_list', 'options'); /*-- Мессенджеры --*/
 
 ?>
 <!doctype html>
@@ -82,7 +82,7 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 				?>
 				<div class="header__action">
 					<?php /*-- Электронная почта --*/ ?>
-					<div class="header__contacts">
+					<div class="header__contacts header__contacts--email">
 						<a class="header__link ui-link" href="mailto:<?php echo get_field('company_mail', 'option') ?>"><?php echo get_field('company_mail', 'option') ?></a>
 					</div>
 					<div class="header__contacts">
@@ -90,7 +90,7 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 						<?php if(!empty($phone[0]) && is_array($phone)) : ?>
 						<a href="tel:<?php echo $phone_href[0]; ?>" class="header__link header__phone ui-link" aria-label="Позвонить нам">
 							<svg>
-								<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#icon-phone"></use>
+								<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
 							</svg>
 							<span><?php echo $phone[0]; ?></span>
 						</a>
@@ -115,11 +115,14 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 				</div>
 				
 				<?php /*-- Кнопка бургер --*/ ?>
-				<div class="header__burger">
-					<button class="burger" aria-label="Открыть меню" aria-expanded="false" data-burger>
-						<span class="burger__line"></span>
-					</button>
-				</div>
+				<button class="header__burger" data-burger>
+					<!-- <button class="burger" aria-label="Открыть меню" aria-expanded="false" data-burger> -->
+						<!-- <span class="burger__line"></span> -->
+						<svg>
+							<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#burger"></use>
+						</svg>
+					<!-- </button> -->
+				</button>
 				<?php /*-- Навигация --*/ ?>
 				<div class="header__nav">
 					<nav class="nav" title="main navigation" data-menu>
@@ -141,16 +144,21 @@ $messanges = get_field('messengers_list', 'options'); /*-- Мессенджер�
 								'walker'          => new BEM_Walker_Nav_Menu(),
 							] );
 						?>
+						<button class="nav__close-btn" data-close-burger type="button">
+							<svg class="ui-btn__icon">
+								<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#close"></use>
+							</svg>
+						</button>
 					</nav>
 				</div>
 								
 				<?php /*-- Поиск --*/ ?>
 				<div class="header__searchbar searchbar">
-					<!-- <button class="searchbar__btn searchbar__btn--open ui-btn ui-btn--icon" type="button" aria-label="открыть форму поиска">
+					<button class="searchbar__btn searchbar__btn--open ui-btn ui-btn--icon" type="button" aria-label="открыть форму поиска">
 						<svg class="ui-btn__icon">
-							<use xlink:href="<?php //echo get_template_directory_uri();?>/img/sprite.svg#search"></use>
+							<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#search"></use>
 						</svg>
-					</button> -->
+					</button>
 					<?php get_search_form(); ?>
 				</div>
   		</div>

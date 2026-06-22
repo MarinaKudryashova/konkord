@@ -37,5 +37,11 @@
     "swiper": "^12.1.3",
     "webpack": "^5.65.0",
     "webpack-stream": "^7.0.0"
+  },
+  "dependencies": {
+    "aos": "^2.3.4",
+    "fslightbox": "^3.7.5",
+    "graph-modal": "^1.0.7",
+    "tabs": "^0.2.0"
   }
 }

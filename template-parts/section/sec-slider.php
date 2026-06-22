@@ -1,8 +1,13 @@
 <?php 
-  $page_id = $args["id"];
+  $page_id = $args["page_id"];
   $sec_name = $args["name"];
-  $sec_bg = $args["bg"] ?? 'light';
-  $slider_class = 'sec-slider sec-offset';
+  $sec_bg = $args["bg"] ?? '';
+  $sec_is_last = $args["lastblock"];
+
+  $slider_class = 'sec-slider';
+  if($sec_is_last != 1) {
+    $slider_class .= ' sec-offset';
+  }
   if ($sec_bg) {
       $slider_class .= ' sec-slider--' . esc_attr($sec_bg);
   }
@@ -12,15 +17,14 @@
 
   $slider_title = get_field($title_field, $page_id);
   $slider_list  = get_field($list_field, $page_id);
-
 ?>
 
 <?php if(is_array($slider_list)) : ?>
 
-<section class="<?php echo esc_attr($slider_class); ?>" data-id="<?php echo $sec_name; ?>">
+<section class="<?php echo esc_attr($slider_class); ?>" data-id="<?php echo $sec_name; ?>" id="<?php echo $sec_name; ?>">
   <div class="container">
 
-    <div class="sec-slider__heading">
+    <div class="sec-slider__heading" data-aos="fade-up">
 
       <?php if ($slider_title) : ?>
       <h2 class="sec-slider__title sec-title"><?php echo esc_html($slider_title) ?></h2>
@@ -43,17 +47,20 @@
       <div class="swiper-wrapper">
   
         <?php foreach($slider_list as $index => $slide) : ?>
-        <div class="swiper-slide">
+        <div class="swiper-slide" data-aos="fade-up" data-aos-duration="600" data-aos-delay="<?php echo $index*100 + 50; ?>">
           <?php
             switch ($sec_name) {
               case 'sec-fotogallery':
-                get_template_part('template-parts/components/card-fotogallery', null, ['id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
+                get_template_part('template-parts/components/card-fotogallery', null, ['page_id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
                 break;
               case 'sec-employees':
-                get_template_part('template-parts/components/card-employee', null, ['id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
+                get_template_part('template-parts/components/card-employee', null, ['page_id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
                 break;
               case 'sec-news':
-                get_template_part('template-parts/components/card-news', null, ['id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
+                get_template_part('template-parts/components/card-news', null, ['page_id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
+                break;
+              case 'sec-category':
+                get_template_part('template-parts/components/card-category', null, ['page_id' => $page_id, 'block' => $sec_name, 'slide' => $slide]);
                 break;
             }
           ?>

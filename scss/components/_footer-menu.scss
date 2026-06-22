@@ -1,54 +1,26 @@
 .footer-menu {
-  @include list-reset;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-  &__item {
-    &--has-children {
-      position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 4px;
-      width: 100%;
-    }
+  @include desktop {
+    flex-wrap: wrap;
+    gap: 20px 21px;
+    justify-content: space-evenly;
   }
 
-  &__link {
-    font-weight: 400;
-    font-size: 15px;
-    line-height: 130%;
+  @include mobile {
+    justify-content: center;
+    gap: 20px 26px;
   }
 
-  &__toggle {
-    @include btn-reset;
-    display: flex;
-    color: var(--navlink);
-    cursor: pointer;
-    transition: color var(--transition-300);
-
-    & svg {
-      width: 10px;
-      height: 10px;
-      fill: currentColor;
-      user-select: none;
-      pointer-events: none;
-      transition: transform var(--transition-300);
-    }
-  }
-
-  &__submenu {
-    @include list-reset;
-    width: 100%;
-    margin-top: 5px;
-
-    & .footer-menu__link {
-      --link-color: var(--white-60);
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 105%;
+  & .ui-link {
+    @include mobile {
+      font-size: 12px;
     }
   }
 }

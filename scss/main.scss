@@ -8,33 +8,77 @@
 // Глобальные стили
 @import "global/visually-hidden";
 @import "global/container";
+@import "global/is-clamp";
 
 // Компоненты
 @import "components/nav";
 @import "components/burger";
+@import "components/breadcrumbs";
 @import "components/ui-btn";
 @import "components/ui-link";
 @import "components/messanges";
-@import "components/search";
+@import "components/searchform";
+@import "components/searchbar";
+@import "components/search-result";
 @import "components/sec-offset";
 @import "components/sec-title";
+@import "components/sec-light";
 @import "components/ui-card";
 @import "components/contacts";
+@import "components/card-services-cat";
+@import "components/card-benefits";
+@import "components/card-fotogallery";
+@import "components/card-employee"; //карточка сотрудника
+@import "components/card-steps";
+@import "components/card-news";
+@import "components/card-contact";
+@import "components/gallery-card";
+@import "components/contacts";
+@import "components/department";
+@import "components/layout-catalog";
+@import "components/error-404";
+@import "components/tabs";
+@import "components/form";
+@import "components/form-argee";
+@import "components/form-field";
+@import "components/modal";
+@import "components/message-success";
 // @import "components/topbtn";
 // @import "components/social";
 // @import "components/textcontent";
 @import "components/cookie-notice";
+@import "components/pagination";
+@import "components/post-news";
 
 // Секции
 @import "section/header";
 @import "section/promo";
-
-@import "section/sec-slider";
-@import "components/card-news";
-
+@import "section/sec-services-cat";
 @import "section/why-benefits";
+@import "section/sec-slider";
+@import "section/steps";
+@import "section/videoblock";
+@import "section/sec-reviews";
+@import "section/bannerform";
 @import "section/faq";
-@import "section/banner-form";
+@import "section/about";
+@import "section/layout";
+@import "section/page-search";
+@import "section/sec-contacts";
 
-// @import "components/footer-menu";
-// @import "section/footer";
+@import "components/footer-contacts";
+@import "components/footer-menu";
+@import "section/footer";
+
+// Новости
+@import "section/news";
+
+// Каталог
+@import "section/sec-services";
+@import "components/categories-nav";
+@import "components/service-card";
+
+// Услуга
+@import "section/single-services";
+@import "components/benefits";
+@import "components/ss-variant";

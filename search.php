@@ -11,43 +11,33 @@ get_header();
 ?>
 
 	<main class="main">
-
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'konkord' ), '<span>' . get_search_query() . '</span>' );
-					?>
+		<div class="page-search sec-light sec-offset">
+			<div class="container">
+				<?php get_template_part("template-parts/components/breadcrumbs"); ?>
+				
+				<h1 class="page-search__title sec-title">
+					<?php printf( esc_html__( 'Результаты поиска: %s', 'konkord' ), '<span>' . get_search_query() . '</span>' ); ?>
 				</h1>
-			</header><!-- .page-header -->
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
+				<?php if ( have_posts() ) : ?>
+				<ul class="page-search__list">
+					<?php while ( have_posts() ) : the_post();  ?>
+						<li class="page-search__item">
+							<?php get_template_part( 'template-parts/content', 'search' ); ?>
+						</li>
+					<?php endwhile; ?>
+				</ul>
+				<?php else : ?>
+					<div class="page-search__none">
+						<p>
+							<?php esc_html_e( 'Похоже, мы не можем найти то, что вы ищете.', 'konkord' ); ?>
+						</p>
+						<a href="#" class="page-search__link ui-btn">На главную</a>
+						<a href="#" class="page-search__link ui-btn">В каталог</a>
+					</div>
+				<?php endif; ?>
+			</div>
+	</main>
 
 <?php
-get_sidebar();
 get_footer();

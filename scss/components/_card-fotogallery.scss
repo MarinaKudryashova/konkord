@@ -1,0 +1,34 @@
+.card-fotogallery {
+
+   &__link {
+      height: 100%;
+      overflow: hidden;
+      border-radius: 15px;
+      
+
+      &:hover img {
+         transform: scale(1.05);
+      }
+
+      &:focus-visible {
+         outline-offset: var(--outline-offset);
+         outline: 2px solid var(--outline-color);
+      }
+
+
+
+      & img {
+         width: 100%;
+         height: 100%;
+         aspect-ratio: 1 / 1;
+         transform: scale(1);
+         transition: transform var(--transition-500);
+         // Антиразмытие
+         will-change: transform;
+         backface-visibility: hidden;
+         -webkit-font-smoothing: antialiased;
+         transform: translateZ(0);
+         -webkit-transform: translateZ(0);
+      }
+   }
+}

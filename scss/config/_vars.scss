@@ -6,6 +6,7 @@
   /* Colors */
   /* ------------------------------------ */
   --accent-green: #82be3c; //--cvet
+  --accent-green-20: rgba(130, 190, 60, 0.2);
   --accent-dark-green: #407253; //--dop
   --accent-light-green: #accb4a; //--dop-2
   --black: #232924; //--chernyy
@@ -15,11 +16,11 @@
   --bg-light: #f6f6f6; //--plashka-belaya
   --grey-1: #969696; //--seryy-na-chernom
   --grey-2: #898989; //--seryy-na-belom
+  --grey-3: #ededed; //--tochki-linii
+  --outline-color: #4f6ffe;
+  --outline-offset: 4px;
 
-  --body-bg: var(--black);
-  --text: var(--white);
-
-  /* Animaition */
+  /* Animation */
   /* ------------------------------------ */
   --transition-300: 0.3s ease-in-out;
   --transition-500: 0.5s linear;

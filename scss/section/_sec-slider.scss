@@ -1,56 +1,88 @@
 .sec-slider {
-  --sec-bg: var(--bg-main);
-  --sec-color: var(--white);
+  // --sec-bg: var(--body-bg);
+  // --sec-color: var(--body-color);
+  overflow: clip;
 
-  &--light {
-    --sec-bg: var(--bg-light);
-    --sec-color: var(--black);
+  // &--light {
+  //   --sec-bg: var(--bg-light);
+  //   --sec-color: var(--black);
+  // }
+
+  // &[data-id="sec-cases"] {
+  //   margin-bottom: 125px;
+  // }
+
+  // &[data-id="sec-cases"] {
+  //   & .sec-slider__content {
+  //     @media (max-width: 630px) {
+  //       flex-direction: column;
+  //       gap: 16px;
+  //       margin-bottom: 16px;
+  //     }
+  //   }
+  // }
+
+  // &[data-id="company-media"] {
+  //   & .sec-slider__heading {
+  //     justify-content: center;
+
+  //     @include tablet {
+  //       justify-content: space-between;
+  //     }
+  //   }
+  //   & .sec-slider__nav {
+  //     display: none;
+
+  //     @include tablet {
+  //       display: flex;
+  //     }
+  //   }
+  //   & .swiper {
+  //     padding: 0;
+  //     margin: 0;
+
+  //     @include tablet {
+  //     }
+  //   }
+  //   & .swiper-wrapper {
+  //     flex-wrap: wrap;
+  //     transform: none;
+  //     gap: 20px;
+
+  //     @include tablet {
+  //       flex-wrap: nowrap;
+  //       transform: translateZ(0);
+  //       gap: 0;
+  //     }
+  //   }
+
+  //   & .swiper-slide {
+  //     width: calc(100% / 4 - 20px * 2 / 4);
+
+  //     @include tablet {
+  //       width: auto;
+  //       flex-shrink: 0;
+  //     }
+  //   }
+  // }
+
+  &[data-id="sec-fotogallery"] {
+    & .sec-slider__content {
+      padding: 15px 200px;
+      margin: -15px -200px;
+
+      @media (min-width: 1560px) {
+        padding: 15px 0;
+        margin: -15px 0;
+      }
+    }
   }
 
-  &[data-id="sec-cases"] {
-    margin-bottom: 125px;
-  }
-
-  &[data-id="company-media"] {
+  &[data-id="sec-employees"] {
     & .sec-slider__heading {
-      justify-content: center;
-
-      @include tablet {
-        justify-content: space-between;
-      }
-    }
-    & .sec-slider__nav {
-      display: none;
-
-      @include tablet {
-        display: flex;
-      }
-    }
-    & .swiper {
-      padding: 0;
-      margin: 0;
-
-      @include tablet {
-      }
-    }
-    & .swiper-wrapper {
-      flex-wrap: wrap;
-      transform: none;
-      gap: 20px;
-
-      @include tablet {
-        flex-wrap: nowrap;
-        transform: translateZ(0);
-        gap: 0;
-      }
-    }
-
-    & .swiper-slide {
-      width: calc(100% / 3 - 20px * 2 / 3);
-
-      @include tablet {
-        width: auto;
-        flex-shrink: 0;
+      @include mobile {
+        flex-direction: column;
+        align-items: end;
       }
     }
   }
@@ -63,17 +95,33 @@
     margin-bottom: 40px;
 
     @include mobile {
-      margin-bottom: 32px;
+      align-items: center;
+      margin-bottom: 24px;
     }
 
-    #sec-case & {
-      margin-bottom: 46px;
-    }
+    // #sec-case & {
+    //   margin-bottom: 46px;
+    // }
   }
 
   &__title {
+    max-width: 810px;
     margin-bottom: 0;
-    color: var(--sec-color);
+    // color: var(--sec-color);
+    color: currentColor;
+
+    @include tablet {
+      max-width: 750px;
+    }
+
+    @include tablet-lg {
+      max-width: 75%;
+    }
+
+    @media (max-width: 630px) {
+      max-width: 100%;
+      line-height: 110%;
+    }
   }
 
   &__nav {
@@ -101,6 +149,26 @@
       background-color var(--transition-300),
       transform var(--transition-300);
 
+    @include desktop {
+      width: 68px;
+      height: 68px;
+    }
+
+    @include tablet {
+      width: 64px;
+      height: 64px;
+    }
+
+    @include tablet-md {
+      width: 54px;
+      height: 54px;
+    }
+
+    @include mobile {
+      width: 40px;
+      height: 40px;
+    }
+
     &:focus {
       outline: none;
     }
@@ -124,6 +192,16 @@
   &__content {
     padding: 15px;
     margin: -15px;
+    visibility: hidden;
+
+    @media (max-width: 359px) {
+      padding: 0;
+      margin: 0;
+    }
+
+    &.swiper-initialized {
+      visibility: visible;
+    }
 
     & .swiper-slide {
       display: flex;
@@ -131,3 +209,4 @@
     }
   }
 }
+

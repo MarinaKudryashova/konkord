@@ -1,19 +1,262 @@
 .why-benefits {
+
+  &__container {
+    position: relative;
+  }
+
+  & .sec-title {
+    grid-column: 2 / 3;
+    color: var(--accent-green);
+  }
+
   &__list {
     @include list-reset;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: max-content;
+    grid-auto-flow: dense;
+    gap: 23px 20px;
+
+    @include tablet {
+      gap: 20px 18px;
+    }
+
+    @include tablet-md {
+      gap: 16px;
+    }
   }
 
   &__item {
-    width: calc(100% / 4 - 20px * 3 / 4);
+    grid-column: 1/4 span;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 
-    @include desktop {
-      width: calc(100% / 2 - 20px * 1 / 2);
+    @media (max-width: 920px) {
+      grid-column: 1/5 span;
     }
+
+    @media (max-width: 645px) {
+      grid-column: 1/12 span;
+    }
+
+    .card-benefits {
+      height: 100%;
+    }
+  }
+  &__item:first-child,
+  &__item:last-child {
+    grid-column: 5/8 span;
+
+    @media (max-width: 920px) {
+      grid-column: 6/8 span;
+    }
+
+    @media (max-width: 645px) {
+      grid-column: 1/12 span;
+    }
+  }
+
+  &__item:last-child {
+    justify-content: space-between;
+
+    .card-benefits {
+      --benefits-bg: transparent;
+      --benefits-color: currentColor;
+      height: fit-content;
+      max-width: 515px;
+      padding: 17px 0 0;
+
+      @include tablet {
+        max-width: 60%;
+      }
+
+      @include mobile {
+        & .card-benefits__name {
+          font-size: 16px;
+        }
+      }
+
+      @include mobile {
+        max-width: unset;
+        padding: 0;
+      }
+
+      & .card-benefits__name {
+        max-width: 435px;
+
+        @include tablet {
+          max-width: 350px;
+        }
+        @include mobile {
+          max-width: 160px;
+        }
+      }
+    }
+  }
+
+  &__item:nth-child(2) .card-benefits {
+    min-height: 429px;
+
+    @include tablet {
+      min-height: 370px;
+    }
+
+    @media (max-width: 645px) {
+      min-height: unset;
+    }
+  }
+
+  &__item:nth-child(3) .card-benefits {
+    --benefits-bg: var(--black);
+    --benefits-color: var(--white);
+
     @include mobile {
+      margin-bottom: 48px;
+
+      & .card-benefits__name {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__link {
+    min-width: 421px;
+    margin-top: 30px;
+
+    @include tablet-md {
+      min-width: unset;
       width: 100%;
     }
   }
+
+  &__decor-img {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+
+    // animation: plane-enter 0.7s ease-out forwards;
+    // opacity: 0;
+  }
+
+  &__plane-trail {
+    position: absolute;
+    right: -104px;
+    bottom: 17px;
+
+
+    @include desktop {
+      bottom: 35px;
+      right: -72px;
+    }
+
+    @media (max-width: 1094px) {
+      bottom: 60px;
+      right: -112px;
+    }
+
+    @include tablet {
+      bottom: 7px;
+      right: -111px;
+    }
+
+    @media (max-width: 885px) {
+      bottom: 30px;
+      right: -155px;
+    }
+
+    @include tablet-md {
+      bottom: 7px;
+      right: -175px;
+    }
+
+    @media (max-width: 645px) {
+      display: none;
+    }
+
+    &--mobile {
+      display: none;
+
+      @media (max-width: 645px) {
+        position: absolute;
+        display: block;
+        right: -34px;
+        bottom: 189px;
+      }
+
+      @media (max-width: 445px) {
+        right: -10px;
+        bottom: 218px;
+      }
+
+      @media (max-width: 351px) {
+        bottom: 244px;
+      }
+    }
+  }
+
+  &__plane {
+    position: absolute;
+    width: 198px;
+    bottom: 305px;
+    right: 160px;
+
+    @include desktop {
+      width: 170px;
+      bottom: 325px;
+      right: 200px;
+    }
+
+    @media (max-width: 1094px) {
+      bottom: 350px;
+      right: 160px;
+    }
+
+    @include tablet {
+      width: 125px;
+      bottom: 300px;
+      right: 170px;
+    }
+
+    @media (max-width: 885px) {
+      bottom: 325px;
+      right: 130px;
+    }
+
+    @include tablet-md {
+      width: 90px;
+      bottom: 305px;
+      right: 120px;
+    }
+
+    @media (max-width: 645px) {
+      right: 155px;
+      bottom: 220px;
+      width: 100px;
+      transform: rotate(340deg);
+    }
+
+    @media (max-width: 445px) {
+      right: 180px;
+      bottom: 250px;
+    }
+
+    @media (max-width: 351px) {
+      bottom: 278px;
+      width: 90px;
+    }
+  }
 }
+
+// @keyframes plane-enter {
+//   from {
+//     opacity: 0;
+//     transform: translateX(120px);
+//   }
+
+//   to {
+//     opacity: 1;
+//     transform: translateX(0);
+//   }
+// }

@@ -1,0 +1,31 @@
+.sec-light {
+  --sec-bg: var(--bg-light);
+  --sec-color: var(--black);
+
+  position: relative;
+  z-index: 3;
+  padding: 120px 0;
+  color: var(--sec-color);
+  background-color: var(--sec-bg);
+  border-radius: 40px;
+
+  @include desktop {
+    padding: 100px 0;
+  }
+
+  @include tablet {
+    padding: 60px 0;
+  }
+
+  @include mobile {
+    border-radius: 24px;
+  }
+
+  &:has(.breadcrumbs) {
+    padding-top: 40px;
+
+    @include mobile {
+      padding-top: 24px;
+    }
+  }
+}

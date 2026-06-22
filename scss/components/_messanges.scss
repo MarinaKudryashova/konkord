@@ -2,19 +2,20 @@
   --messanges-size: 56px;
   --messanges-size-icon: 16px;
   --messanges-link-bg: var(--bg-dark-grey);
-  --messanges-link-bg-hover: var(--accent-dark-green);
+  --messanges-link-bg-hover: var(--accent-green);
   --messanges-br: 5px;
+
+  @media (max-width: 640px) {
+    --messanges-size: 40px;
+    --messanges-size-icon: 12px;
+  }
 
   @include list-reset;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-
-  @include mobile {
-    gap: 4px;
-  }
+  gap: 4px;
 
   &__link {
     display: flex;
@@ -43,6 +44,13 @@
       width: var(--messanges-size-icon);
       height: var(--messanges-size-icon);
       user-select: none;
+    }
+
+    &--vk {
+      img {
+        width: 22px;
+        height: 14px;
+      }
     }
   }
 }
