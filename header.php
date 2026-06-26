@@ -69,8 +69,8 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 				<div class="header__address">
 					<div class="header__address-text"><?php echo get_field('company_main_office_address-local', 'option') ?></div>
 					<div class="header__switcher">
-						<span class="header__city is-active" data-city="dz">Дзержинск</span>
-						<span class="header__city" data-city="nn">Нижний Новгород</span>
+						<a class="select_geo_city header__city  is-active" data-name-orig="Дзержинск" data-name="dzerzhinsk">Дзержинск</a>
+						<a class="select_geo_city header__city" data-name-orig="Нижний Новгород" data-name="nizhnij-novgorod">Нижний Новгород</a>
 					</div>
 				</div>
 

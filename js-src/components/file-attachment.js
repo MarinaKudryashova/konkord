@@ -1,24 +1,22 @@
-const fileInput = document.getElementById("file-attachment");
-const fileLabel = document.querySelector('label[for="file-attachment');
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".form-field__file").forEach((container, index) => {
+    const fileInput = container.querySelector('input[type="file"]');
+    const fileLabel = container.querySelector(".form-field__label--file");
+    const form = container.closest("form");
 
-// const defaultText = fileLabel.textContent;
+    if (fileInput && fileLabel) {
+      const defaultText = fileLabel.textContent;
 
-// document.addEventListener('DOMContentLoaded', () => {
-//    fileInput.addEventListener('change', () => {
-//      if(fileInput.files.length > 0) {
-//       fileLabel.textContent = fileInput.files[0].name;
-//      } else {
-//       fileLabel.textContent = defaultText;
-//      }
-//    })
-// })
+      fileInput.addEventListener("change", function () {
+        fileLabel.textContent = this.files.length > 0 ? this.files[0].name : defaultText;
+      });
 
-document.addEventListener('DOMContentLoaded', () => {
-   fileInput.addEventListener('change', () => {
-     if(fileInput.files.length > 0) {
-      fileLabel.textContent = fileInput.files[0].name;
-     } else {
-      fileLabel.textContent = defaultText;
-     }
-   })
-})
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          fileInput.value = "";
+          fileLabel.textContent = defaultText;
+        });
+      }
+    }
+  });
+});

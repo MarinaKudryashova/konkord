@@ -38,7 +38,7 @@
           <source srcset="<?php echo esc_url($service_img["webp_1x"]); ?>" type="image/webp">
           <img src="<?php echo esc_url($service_img["original_1x"]); ?>" alt="Услуга: <?php echo $service_title; ?>" width="620" height="504">
         </picture>
-        <button type="button" class="single-services__callback ui-btn" data-graph-path="modal-leadform" data-aos="fade-up" data-aos-delay="200">Заказать печать</button>
+        <button type="button" class="single-services__callback ui-btn" data-graph-path="modal-b24" data-aos="fade-up" data-aos-delay="200">Заказать печать</button>
       </div>
       <picture class="single-services__bgimg" data-aos="fade-up" data-aos-delay="200">
           <source srcset="<?php echo esc_url($service_img["webp_1x"]); ?>" type="image/webp">

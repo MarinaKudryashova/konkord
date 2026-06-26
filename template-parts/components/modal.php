@@ -117,4 +117,18 @@ $modalsend_img_mobile = $modalsend_img_url_mobile
       <!-- <p class="message-success__text">Ваши данные успешно отправлены.</p> -->
     </div>
   </div>
+
+  <div class="graph-modal__container" role="dialog" aria-modal="true" data-graph-target="modal-b24">
+    <div class="graph-modal__content form">
+        <div class="graph-modal__header">
+            <h2 class="form__title">Заказать печать</h2>
+            <button class="btn-reset js-modal-close graph-modal__close" aria-label="Закрыть модальное окно">
+                <svg>
+                    <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#close"></use>
+                </svg>
+            </button>
+        </div>
+        <div id="b24-form-container"></div>
+    </div>
+  </div>
 </div>

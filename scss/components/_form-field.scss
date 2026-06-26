@@ -34,14 +34,14 @@
     }
   }
 
-    &:hover {
-      border-color: var(--input-color-hover);       
-    }
+  &:hover {
+    border-color: var(--input-color-hover);
+  }
 
-    &:focus {
-      outline: none;
-      border-color: var(--input-color-hover);
-    }
+  &:focus {
+    outline: none;
+    border-color: var(--input-color-hover);
+  }
 
   &:focus-visible {
     outline: none;
@@ -168,4 +168,8 @@
     }
   }
 
+  & .wpcf7-not-valid-tip {
+    position: absolute;
+    font-size: 0.8em;
+  }
 }

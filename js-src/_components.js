@@ -1,4 +1,4 @@
-import "./components/menu-dropdown";
+import "./components/active-city";
 import "./components/accordion";
 import "./components/init-slider"; // инициализация Swiper
 import "./components/sec-slider";
@@ -9,11 +9,6 @@ import "./components/search";
 import "./components/burger";
 import "./components/animation";
 import "./components/file-attachment";
-
-// import "./components/message";
-// import "./components/showmore";
-
-// import "./components/topbtn";
 import "./components/map";
 import "./components/modal";
 import "./components/cookie-notice";
