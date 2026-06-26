@@ -155,6 +155,7 @@ function konkord_styles_and_scripts() {
 
 	// основные скрипты темы	
 	wp_enqueue_script( 'js-main', $js_path . 'main.min.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
+	// wp_enqueue_script( 'bitrix24-form', $js_path . 'bitrix24-form.js', array(),  $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
 	
 	// Локализация для JS
 	wp_localize_script('konkord-main', 'konkord_ajax', array(

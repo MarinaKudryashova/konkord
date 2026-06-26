@@ -14,7 +14,7 @@
 ?>
 <section class="<?php echo esc_attr($sec_class); ?>">
   <div class="sec-reviews__container container">
-    <?php if($sec_reviews_title && !is_page('reviews')) : ?>
+    <?php if($sec_reviews_title && !is_page('reviews') && !is_page('otzyvy')) : ?>
       <h2 class="sec-reviews__title sec-title" data-aos="fade-up"><?php echo $sec_reviews_title; ?></h2>
     <?php endif; ?>
 

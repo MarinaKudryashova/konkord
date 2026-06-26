@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   const mapContainerArr = document.querySelectorAll(".sec-contacts__map");
 
-  console.log(mapContainerArr);
-
   if (mapContainerArr) {
     mapContainerArr.forEach((mapContainer) => {
       if (!mapContainer) {
