@@ -116,12 +116,9 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 				
 				<?php /*-- Кнопка бургер --*/ ?>
 				<button class="header__burger" data-burger>
-					<!-- <button class="burger" aria-label="Открыть меню" aria-expanded="false" data-burger> -->
-						<!-- <span class="burger__line"></span> -->
-						<svg>
-							<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#burger"></use>
-						</svg>
-					<!-- </button> -->
+					<svg>
+						<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#burger"></use>
+					</svg>
 				</button>
 				<?php /*-- Навигация --*/ ?>
 				<div class="header__nav">

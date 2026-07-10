@@ -48,8 +48,6 @@ function konkord_setup() {
 			'script',
 		)
 	);
-	// Add theme support for selective refresh for widgets.
-	// add_theme_support( 'customize-selective-refresh-widgets' );
 }
 add_action( 'after_setup_theme', 'konkord_setup' );
 
@@ -75,25 +73,6 @@ function konkord_content_width() {
 }
 add_action( 'after_setup_theme', 'konkord_content_width', 0 );
 
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-// function konkord_widgets_init() {
-// 	register_sidebar(
-// 		array(
-// 			'name'          => esc_html__( 'Sidebar', 'konkord' ),
-// 			'id'            => 'sidebar-1',
-// 			'description'   => esc_html__( 'Add widgets here.', 'konkord' ),
-// 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-// 			'after_widget'  => '</section>',
-// 			'before_title'  => '<h2 class="widget-title">',
-// 			'after_title'   => '</h2>',
-// 		)
-// 	);
-// }
-// add_action( 'widgets_init', 'konkord_widgets_init' );
 
 /**
  * ОТКЛЮЧЕНИЕ КОММЕНТАРИЕВ ПОЛНОСТЬЮ
@@ -155,7 +134,6 @@ function konkord_styles_and_scripts() {
 
 	// основные скрипты темы	
 	wp_enqueue_script( 'js-main', $js_path . 'main.min.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
-	// wp_enqueue_script( 'bitrix24-form', $js_path . 'bitrix24-form.js', array(),  $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
 	
 	// Локализация для JS
 	wp_localize_script('konkord-main', 'konkord_ajax', array(
@@ -188,7 +166,7 @@ require_once get_template_directory() . '/inc/the_picture_element.php'; // От�
 require_once get_template_directory() . '/inc/post-options.php';
 require_once get_template_directory() . '/inc/BEM_Walker_Nav_Menu.php';
 require_once get_template_directory() . '/inc/Footer_Menu_Walker.php';
-
+// require_once get_template_directory() . '/inc/BEM_Yoast_Breadcrumb.php';
 require_once get_template_directory() . '/inc/theme-form-cf7.php';
 
 /**

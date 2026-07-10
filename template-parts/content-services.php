@@ -6,7 +6,7 @@ $page_title = $page_id ? get_the_title($page_id) : 'Услуги';
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 $current_cat = get_query_var('services_category');
 
-$args = array(
+$post_args = array(
     'post_type' => 'services',
     'post_status' => 'publish',
     'posts_per_page' => get_services_per_page(),
@@ -17,7 +17,7 @@ $args = array(
 
 // Добавляем фильтр по категории из ЧПУ
 if(!empty($current_cat)) {
-    $args['tax_query'] = array(
+    $post_args['tax_query'] = array(
         array(
             'taxonomy' => 'services_category',
             'field' => 'slug',
@@ -26,7 +26,8 @@ if(!empty($current_cat)) {
     );
 }
 
-$services_query = new WP_Query($args);
+$services_query = new WP_Query($post_args);
+// echo var_dump($services_query);
 $page_slug = get_post_field('post_name', $page_id);
 ?>
 
@@ -37,7 +38,7 @@ $page_slug = get_post_field('post_name', $page_id);
     <h1 class="sec-services__title sec-title" data-aos="fade-up"><?php echo esc_html($page_title); ?></h1>
 
     <div class="sec-services__content">
-      <?php if($services_query->have_posts()) : ?>
+      
       <!-- Навигация по категориям с ЧПУ ссылками -->
       <div class="sec-services__nav categories-nav" data-aos="fade-up" data-aos-delay="200">
         <ul class="categories-nav__list">
@@ -67,6 +68,7 @@ $page_slug = get_post_field('post_name', $page_id);
       </div>
       
       <!-- Список услуг -->
+      <?php if($services_query->have_posts()) : ?>
       <ul class="sec-services__list">
         <?php $index = 0; ?>
         <?php while($services_query->have_posts()) : $services_query->the_post(); ?>
