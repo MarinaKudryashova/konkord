@@ -27,6 +27,10 @@
   }
 
   &__title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 0.25em;
     margin-bottom: 32px;
 
     @include tablet-lg {
@@ -39,6 +43,21 @@
 
     @include mobile {
       margin-bottom: 8px;
+    }
+
+    b {
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 130%;
+      color: var(--accent-green);
+
+      @include tablet-lg {
+        font-size: 20px;
+      }
+
+      @include tablet-md {
+        font-size: 16px;
+      }
     }
   }
 
@@ -183,9 +202,83 @@
       }
     }
     .special__descr {
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 130%;
+      color: var(--black);
+
+      @include tablet {
+        font-size: 18px;
+      }
+
+      @include tablet-md {
+        font-size: 16px;
+      }
+
       p {
-        margin: 0;
-        font-weight: 400;
+        margin-top: 0.75em;
+        margin-bottom: 1.2em;
+      }
+
+      p:first-child {
+        margin-top: 0;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      strong {
+        font-weight: 700;
+      }
+
+      & ol,
+      & ul {
+        margin: 0 0 1.2em;
+        padding: 0 0 0 32px;
+      }
+
+      & p > a,
+      & a {
+        color: var(--accent-green);
+        text-decoration: underline;
+        cursor: pointer;
+        transition: color var(--transition-300);
+
+        @include hover {
+          color: var(--accent-dark-green);
+        }
+
+        &:focus-visible,
+        &:active {
+          outline: none;
+          color: var(--accent-dark-green);
+        }
+      }
+
+      h2,
+      h3,
+      h4 {
+        font-weight: 700;
+        margin-top: 0.75em;
+        margin-bottom: 0.75em;
+      }
+
+      h2 {
+        font-size: 32px;
+        line-height: 100%;
+        color: var(--black);
+
+        @include tablet {
+          font-size: 24px;
+        }
+
+        @include tablet-md {
+          font-size: 20px;
+        }
+      }
+
+      h3 {
         font-size: 20px;
         line-height: 130%;
         color: var(--black);
@@ -198,11 +291,31 @@
           font-size: 16px;
         }
       }
-      p:not(:last-child) {
-        margin-bottom: 1.2em;
+
+      h4 {
+        font-size: 18px;
+        line-height: 130%;
+        color: var(--black);
+
+        @include tablet {
+          font-size: 16px;
+        }
+
+        @include tablet-md {
+          font-size: 14px;
+        }
       }
-      strong {
-        font-weight: 700;
+
+      p:has(strong + ul),
+      p:has(strong + ol) {
+        margin-bottom: 0;
+      }
+
+      p:has(+ ul),
+      p:has(+ ol),
+      strong:has(+ ul),
+      strong:has(+ ol) {
+        margin-bottom: 0;
       }
     }
   }

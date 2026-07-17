@@ -8,7 +8,9 @@
   }
   
   $service_title = get_the_title($page_id);
+  $service_heading_addition = get_field('heading_addition', $page_id);
   $service_shortdescr = get_the_content($page_id);
+  $service_btn_text = get_field('service_btn_text', $page_id) ?: 'Заказать';
 
   $service_img_url = get_the_post_thumbnail_url($page_id, 'full');
   $service_img = $service_img_url 
@@ -19,6 +21,7 @@
 	$ss_variant_gallery = get_field('services_gallery', $page_id);
 	$ss_variant_title = get_field('services_descr_title', $page_id);
 	$ss_variant_descr = get_field('services_descr_text', $page_id);
+  $ss_variant_btn_text = get_field('services_descr_btn_text', $page_id) ?: 'Рассчитать стоимость';
 
   $ss_benefit = get_field('benefits', $page_id);
   
@@ -31,14 +34,14 @@
   <div class="single-services__container container">
     <div class="single-services__heading sec-offset">
       <div class="single-services__content">
-        <h1 class="single-services__title sec-title" data-aos="fade-up"><?php echo $service_title; ?></h1>
+        <h1 class="single-services__title sec-title" data-aos="fade-up"><?php echo wp_kses_post($service_title); ?><?php if($service_heading_addition):?><b><?php echo wp_kses_post($service_heading_addition);?></b><?php endif;?></h1>
         <div class="single-services__shortdescr" data-aos="fade-up" data-aos-delay="200"><?php echo wp_kses_post($service_shortdescr); ?></div>
         <!-- Картинка на мобильных -->
         <picture class="single-services__bgimg single-services__bgimg--mobile">
           <source srcset="<?php echo esc_url($service_img["webp_1x"]); ?>" type="image/webp">
           <img src="<?php echo esc_url($service_img["original_1x"]); ?>" alt="Услуга: <?php echo $service_title; ?>" width="620" height="504">
         </picture>
-        <button type="button" class="single-services__callback ui-btn" data-graph-path="modal-leadform" data-aos="fade-up" data-aos-delay="200">Заказать печать</button>
+        <button type="button" class="single-services__callback ui-btn" data-graph-path="modal-leadform" data-aos="fade-up" data-aos-delay="200"><?php echo $service_btn_text; ?></button>
       </div>
       <picture class="single-services__bgimg" data-aos="fade-up" data-aos-delay="200">
           <source srcset="<?php echo esc_url($service_img["webp_1x"]); ?>" type="image/webp">
@@ -87,7 +90,9 @@
         <?php if($ss_variant_descr) : ?>
           <div class="ss-variant__descr"><?php echo wp_kses_post($ss_variant_descr); ?></div>
         <?php endif; ?>
-        <button type="button" class="ss-variant__callback ui-btn" data-graph-path="modal-leadform">рассчитать стоимость тиража</button>
+        <button type="button" class="ss-variant__callback ui-btn" data-graph-path="modal-leadform">
+          <?php echo esc_html($ss_variant_btn_text); ?>          
+        </button>
       </div>
     </div>
     <?php endif; ?>
