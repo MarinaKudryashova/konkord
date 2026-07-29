@@ -22,9 +22,10 @@
       <!-- Самолетик -->
     <div class="why-benefits__decor-img" aria-hidden="true" data-aos="fade-left" data-aos-duration="600" data-aos-delay="900">
       <img class="why-benefits__plane" src="<?php echo get_template_directory_uri();?>/img/svg/plane.svg" alt="" width="198" height="103">
-      <img class="why-benefits__plane-trail" src="<?php echo get_template_directory_uri();?>/img/svg/plane-trail.svg" alt="" width="341" height="296">
+      <img class="why-benefits__plane-trail" src="<?php echo get_template_directory_uri();?>/img/svg/plane-trail-2.svg" alt="" width="341" height="296">
       <img class="why-benefits__plane-trail why-benefits__plane-trail--mobile" src="<?php echo get_template_directory_uri();?>/img/svg/plane-trail-mobile.svg" alt="" width="212" height="45">
     </div>
+
 
     <?php if(!empty($sec_why_list) && is_array($sec_why_list)) : ?>
     <ul class="why-benefits__list">

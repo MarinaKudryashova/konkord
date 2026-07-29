@@ -153,7 +153,7 @@
 							</li>
 							<?php endforeach; ?>
 							<li class="department__item">
-								<a href="emailto:<?php echo esc_html($employee_email); ?>" class="department__phone">
+								<a href="mailto:<?php echo esc_html($employee_email); ?>" class="department__phone">
 									<svg>
 										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#email"></use>
 									</svg>

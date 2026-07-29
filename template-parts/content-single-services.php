@@ -62,9 +62,11 @@
                 $image_alt = esc_attr($image['alt']);
               ?>
                 <div class="swiper-slide">
-                  <picture class="slider-thumbs-main__img">
-                    <img src="<?php echo $image_url; ?>" width="526" height="526" alt="<?php echo $image_alt; ?>" itemprop="image">
-                  </picture>
+                  <a data-fslightbox="ss-variant-gallery-<?php echo $page_id ?>" data-caption="" href="<?php echo $image_url; ?>" class="slider-thumbs-main__link">
+                    <picture class="slider-thumbs-main__img">
+                      <img src="<?php echo $image_url; ?>" width="526" height="526" alt="<?php echo $image_alt; ?>" itemprop="image">
+                    </picture>
+                  </a>
                 </div>
               <?php endforeach; ?>
             </div>
