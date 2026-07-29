@@ -5,6 +5,7 @@
   width: fit-content;
   margin: 40px auto 0;
 
+  .page-numbers,
   &__link {
     display: flex;
     align-items: center;
@@ -19,6 +20,8 @@
     background-color: var(--grey-3);
     transition: background-color var(--transition-300);
   }
+  
+  .page-numbers.current,
   &__link.current {
     color: var(--white);
     background-color: var(--accent-green);

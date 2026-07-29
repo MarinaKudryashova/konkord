@@ -48,8 +48,6 @@ function konkord_setup() {
 			'script',
 		)
 	);
-	// Add theme support for selective refresh for widgets.
-	// add_theme_support( 'customize-selective-refresh-widgets' );
 }
 add_action( 'after_setup_theme', 'konkord_setup' );
 
@@ -75,25 +73,6 @@ function konkord_content_width() {
 }
 add_action( 'after_setup_theme', 'konkord_content_width', 0 );
 
-/**
- * Register widget area.
- *
- * @link https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
- */
-// function konkord_widgets_init() {
-// 	register_sidebar(
-// 		array(
-// 			'name'          => esc_html__( 'Sidebar', 'konkord' ),
-// 			'id'            => 'sidebar-1',
-// 			'description'   => esc_html__( 'Add widgets here.', 'konkord' ),
-// 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
-// 			'after_widget'  => '</section>',
-// 			'before_title'  => '<h2 class="widget-title">',
-// 			'after_title'   => '</h2>',
-// 		)
-// 	);
-// }
-// add_action( 'widgets_init', 'konkord_widgets_init' );
 
 /**
  * ОТКЛЮЧЕНИЕ КОММЕНТАРИЕВ ПОЛНОСТЬЮ
@@ -155,14 +134,22 @@ function konkord_styles_and_scripts() {
 
 	// основные скрипты темы	
 	wp_enqueue_script( 'js-main', $js_path . 'main.min.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
-	// wp_enqueue_script( 'bitrix24-form', $js_path . 'bitrix24-form.js', array(),  $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
 	
 	// Локализация для JS
 	wp_localize_script('konkord-main', 'konkord_ajax', array(
 		'ajax_url' => admin_url('admin-ajax.php'),
 		'nonce' => wp_create_nonce('konkord_nonce'),
-		'theme_url' => get_template_directory_uri()
+		'theme_url' => get_template_directory_uri(),
+
+		// Добавляем параметры для бесконечной загрузки услуг
+		'services'   => array(
+				'per_page'    => get_services_per_page(),
+				'initial_page'=> 1,
+				'max_pages'   => 0, // будет заполнено на странице услуг
+		)
 	));
+
+	wp_enqueue_script( 'js-services-load-more', $js_path . 'services-load-more.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
 }
 add_action( 'wp_enqueue_scripts', 'konkord_styles_and_scripts' );
 
@@ -177,6 +164,8 @@ function get_placeholder_image() {
     ];
 }
 
+add_filter( 'wpseo_output_open_graph', '__return_false' );
+
 
 /**
  * THEME EXTRAS
@@ -188,7 +177,7 @@ require_once get_template_directory() . '/inc/the_picture_element.php'; // От�
 require_once get_template_directory() . '/inc/post-options.php';
 require_once get_template_directory() . '/inc/BEM_Walker_Nav_Menu.php';
 require_once get_template_directory() . '/inc/Footer_Menu_Walker.php';
-
+// require_once get_template_directory() . '/inc/BEM_Yoast_Breadcrumb.php';
 require_once get_template_directory() . '/inc/theme-form-cf7.php';
 
 /**
@@ -225,4 +214,82 @@ require get_template_directory() . '/inc/customizer.php';
  */
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
+}
+
+/**
+ * AJAX обработчик для подгрузки услуг
+ */
+add_action('wp_ajax_load_more_services', 'load_more_services_callback');
+add_action('wp_ajax_nopriv_load_more_services', 'load_more_services_callback');
+
+function load_more_services_callback() {
+    // Проверка nonce
+    if (!wp_verify_nonce($_POST['nonce'], 'konkord_nonce')) {
+        wp_send_json_error('Invalid nonce');
+        return;
+    }
+
+    $page = intval($_POST['page']);
+    $cat_slug = sanitize_text_field($_POST['cat_slug'] ?? '');
+    $page_id = intval($_POST['page_id'] ?? 0);
+    $per_page = intval(get_services_per_page());
+
+    $args = array(
+        'post_type' => 'services',
+        'post_status' => 'publish',
+        'posts_per_page' => $per_page,
+        'paged' => $page,
+        'orderby' => 'menu_order',
+        'order' => 'ASC'
+    );
+
+    if (!empty($cat_slug)) {
+        $args['tax_query'] = array(
+            array(
+                'taxonomy' => 'services_category',
+                'field' => 'slug',
+                'terms' => $cat_slug
+            )
+        );
+    }
+
+    $query = new WP_Query($args);
+    $html = '';
+
+    if ($query->have_posts()) {
+        ob_start();
+        while ($query->have_posts()) {
+            $query->the_post();
+            // Используем ту же функцию рендеринга, что и в основном шаблоне
+            render_service_item(get_the_ID());
+        }
+        $html = ob_get_clean();
+    }
+    wp_reset_postdata();
+
+    wp_send_json_success(array(
+        'html' => $html,
+        'max_pages' => $query->max_num_pages,
+        'current_page' => $page
+    ));
+}
+
+/**
+ * Функция для рендеринга одного элемента услуги
+ */
+function render_service_item($post_id) {
+    $title = get_the_title($post_id);
+    $url = get_permalink($post_id) ?: '#';
+    $thumbnail_url = get_the_post_thumbnail_url($post_id);
+    $img_data = $thumbnail_url ? get_image_versions($thumbnail_url) : get_placeholder_image();
+    ?>
+		<a class="service-card" href="<?php echo esc_url($url); ?>"
+				aria-label="Перейти в услугу «<?php echo esc_html($title); ?>»">
+				<h3 class="service-card__title"><?php echo esc_html($title); ?></h3>
+				<picture class="service-card__img">
+						<source srcset="<?php echo esc_url($img_data['webp_1x']); ?>" type="image/webp">
+						<img src="<?php echo esc_url($img_data['original_1x']); ?>" width="360" height="354" alt="<?php echo esc_html($title); ?>">
+				</picture>
+		</a>
+    <?php
 }

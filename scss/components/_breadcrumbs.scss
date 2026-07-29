@@ -1,10 +1,10 @@
 .breadcrumbs {
-   margin-bottom: 70px;
-   list-style: none;
-   display: flex;
-   flex-wrap: wrap;
-   align-items: center;
-   gap: 0 15px;
+  margin-bottom: 70px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 15px;
 
   @include desktop {
     margin-bottom: 50px;
@@ -15,7 +15,7 @@
   }
 
   @include mobile {
-    margin-bottom: 8px;
+    margin-bottom: 20px;
   }
 
   &__item {

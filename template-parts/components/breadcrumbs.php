@@ -3,9 +3,10 @@
  * Шаблон "хлебных крошек"
 */
 
-if (function_exists('yoast_breadcrumb')) {
-    yoast_breadcrumb();
-} else {
+// if (function_exists('yoast_breadcrumb')) {
+    // yoast_breadcrumb('<ul class="breadcrumbs container">', '</ul>');
+    // do_action('bem_yoast_breadcrumb');
+// } else {
     $page_main_id = get_option('page_on_front');
     $page_main_url = get_permalink($page_main_id);
     $page_main_title = get_the_title($page_main_id);
@@ -182,4 +183,4 @@ if (function_exists('yoast_breadcrumb')) {
         <?php endif; ?>
     </ul>
     
-<?php } ?>
+<?php //} ?>
