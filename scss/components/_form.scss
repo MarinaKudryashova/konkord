@@ -7,8 +7,8 @@ form,
   }
 }
 
-.wpcf7 form.failed .wpcf7-response-output,
-.wpcf7 form.invalid .wpcf7-response-output {
+.wpcf7 form.failed .wpcf7-response-output {
+  // display: none;
   position: fixed;
   right: 20px;
   bottom: 20px;
@@ -21,7 +21,7 @@ form,
   background-color: var(--bg-dark-grey);
   z-index: 9999;
 }
-
+.wpcf7 form.invalid .wpcf7-response-output,
 .wpcf7 form.sent .wpcf7-response-output {
   display: none;
 }

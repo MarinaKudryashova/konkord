@@ -20,6 +20,49 @@
   $employee_phone = get_field('employee_phone', $employee_id);
   $employee_phone = explode(PHP_EOL, $employee_phone);
   $employee_phone_href = preg_replace('![^0-9]+!', '', $employee_phone);
+
+  $messengers = [
+    'max' => [
+      'icon' => 'max.svg',
+      'label' => 'Свяжитесь с нами в Максе',
+      'class' => 'messanges__link__accent',
+      'base_url' => 'https://max.ru/'
+    ],
+    'telegram' => [
+      'icon' => 'telegram.svg',
+      'label' => 'Свяжитесь с нами в Telegram',
+      'class' => '',
+      'base_url' => 'https://t.me/'
+    ]
+  ];
+
+  $employee_messanges = get_field('employee_messanges', $employee_id);
+  if (!empty($employee_messanges) && is_array($employee_messanges)) {
+    foreach ($employee_messanges as $key => $value) {
+      $value = trim($value);
+      
+      if (isset($messengers[$key])) {
+        $base_url = $messengers[$key]['base_url'];
+        if (strpos($value, $base_url) === 0) {
+          $clean_value = substr($value, strlen($base_url));
+          $clean_value = trim($clean_value, '/');
+          
+          if (!empty($clean_value)) {
+            $employee_messanges[$key] = $value;
+          } else {
+            unset($employee_messanges[$key]);
+          }
+        } else {
+          if (!empty($value)) {
+            $employee_messanges[$key] = $value;
+          } else {
+            unset($employee_messanges[$key]);
+          }
+        }
+      }
+    }
+  }
+
 ?>
 
 <div class="card-employee">
@@ -61,16 +104,18 @@
     <p class="card-employee__position"><?php echo esc_html($employee_position); ?></p>
     <?php endif; ?>
   </div>
+
+  <?php if(!empty($employee_messanges) && is_array($employee_messanges)) : ?>
   <ul class="card-employee__messanges messanges">
-    <li class="messanges__item">
-        <a href="#" class="messanges__link messanges__link__accent" aria-label="Свяжитесь с нами в Максе" target="_blank">
-          <img src="<?php echo get_template_directory_uri();?>/img/icon/max.svg" alt="Иконка Макс" width="22" height="22">
-        </a>
-    </li>
-    <li>
-        <a href="#" class="messanges__link" aria-label="Свяжитесь с нами в Telegram" target="_blank">
-          <img src="<?php echo get_template_directory_uri();?>/img/icon/telegram.svg" alt="Иконка Телеграм" width="22" height="22">
-        </a>
-    </li>
+    <?php foreach($messengers as $key => $messenger) : ?>
+      <?php if(!empty($employee_messanges[$key])) : ?>
+      <li class="messanges__item">
+          <a href="<?php echo esc_url($employee_messanges[$key]); ?>" class="messanges__link <?php echo esc_attr($messenger['class']); ?>" aria-label="<?php echo esc_attr($messenger['label']); ?>" target="_blank">
+            <img src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_attr($messenger['icon']); ?>" alt="<?php echo esc_attr($messenger['label']); ?>" width="22" height="22">
+          </a>
+      </li>
+      <?php endif; ?>
+    <?php endforeach; ?>
   </ul>
+  <?php endif; ?>
 </div>

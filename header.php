@@ -69,7 +69,7 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 				<div class="header__address">
 					<div class="header__address-text"><?php echo get_field('company_main_office_address-local', 'option') ?></div>
 					<div class="header__switcher">
-						<a class="select_geo_city header__city  is-active" data-name-orig="Дзержинск" data-name="dzerzhinsk">Дзержинск</a>
+						<a class="select_geo_city header__city  is-active" data-name-orig="Дзержинск" data-name="zerzhinsk">Дзержинск</a>
 						<a class="select_geo_city header__city" data-name-orig="Нижний Новгород" data-name="nizhnij-novgorod">Нижний Новгород</a>
 					</div>
 				</div>
@@ -116,12 +116,9 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 				
 				<?php /*-- Кнопка бургер --*/ ?>
 				<button class="header__burger" data-burger>
-					<!-- <button class="burger" aria-label="Открыть меню" aria-expanded="false" data-burger> -->
-						<!-- <span class="burger__line"></span> -->
-						<svg>
-							<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#burger"></use>
-						</svg>
-					<!-- </button> -->
+					<svg>
+						<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#burger"></use>
+					</svg>
 				</button>
 				<?php /*-- Навигация --*/ ?>
 				<div class="header__nav">

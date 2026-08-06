@@ -1,75 +1,89 @@
 .textredactor {
-   font-family: var(--font-family);
+  font-family: var(--font-family);
 
-   & h3 {
-      font-family: inherit;
-      font-size: 24px;
-      line-height: 110%;
-      font-weight: 400;
-      margin: 70px 0 30px 0; 
-   }
+  & h3 {
+    font-family: inherit;
+    font-size: 24px;
+    line-height: 110%;
+    font-weight: 400;
+    margin: 70px 0 30px 0;
+  }
 
-   & h3:first-of-type {
-      margin-top: 0;
-   }
+  & h3:first-of-type {
+    margin-top: 0;
+  }
 
-   & p {
-      font-family: inherit;
-      font-weight: 400;
-      line-height: 130%;
-      font-size: 15px;
-      margin: 10px 0;
-   }
+  & p {
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+    margin: 0.75em 0;
+  }
 
-   & p:first-of-type {
-      margin-top: 0;
-   }
+  & p:first-of-type {
+    margin-top: 0;
+  }
 
-   & a {
-      color: var(--accent-green);
-      text-decoration: underline;
-   }
+  & p > a,
+  & a {
+    color: var(--accent-green);
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color var(--transition-300);
 
-   & ul {
-      list-style-type: none;
-      padding-left: 20px;
-   }
+    @include hover {
+      color: var(--accent-dark-green);
+    }
 
-   & li {
-      position: relative;
+    &:focus-visible,
+    &:active {
+      outline: none;
+      color: var(--accent-dark-green);
+    }
+  }
 
-      &::before {
-         content: "—";
-         position: absolute;
-         left: -1.2em;
-      }
-   }
+  & ul {
+    list-style-type: none;
+    padding-left: 20px;
+  }
 
-   & .table-wrapper {
-      border-radius: 5px;
-      overflow: auto;
-      border: 1px solid var(--accent-green);
-      background: transparent;
-   }
+  & li {
+    position: relative;
 
-   & table {
-      width: 100%;
-      border-collapse: collapse;
-   }
+    &::before {
+      content: "—";
+      position: absolute;
+      left: -1.2em;
+    }
+  }
 
-   & th, td {
-      border: 1px solid var(--accent-green);
-      padding: 15px;
-      font-weight: 400;
-      font-size: 15px;
-      text-align: left;
-   }
+  & .table-wrapper {
+    border-radius: 5px;
+    overflow: auto;
+    border: 1px solid var(--accent-green);
+    background: transparent;
+  }
 
-   & td:not(:first-child) {
-      border-left: none;
-   }
+  & table {
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-   & tr:not(:first-child) td  {
-      border-top: none;
-   }
+  & th,
+  td {
+    border: 1px solid var(--accent-green);
+    padding: 15px;
+    font-weight: 400;
+    font-size: 15px;
+    text-align: left;
+  }
+
+  & td:not(:first-child) {
+    border-left: none;
+  }
+
+  & tr:not(:first-child) td {
+    border-top: none;
+  }
 }
