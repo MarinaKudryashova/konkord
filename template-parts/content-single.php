@@ -33,7 +33,14 @@
           <img src="<?php echo esc_url($news_img["original_1x"]); ?>" alt="Фотофон страницы" width="1160" height="476" aria-hidden="true">
       </picture>
       <h1 class="post-news__title"><?php echo $news_title; ?></h1>
+      <div class="post-news__date">
+        <svg>
+          <use xlink:href="<?php echo esc_url(get_template_directory_uri()); ?>/img/sprite.svg#calendar"></use>
+        </svg>
+        <span><?php echo get_the_date( 'F j, Y'); ?></span>
+      </div>
     </div>
+
     
     <div class="post-news__content">
       <?php the_content(); ?>
@@ -64,8 +71,6 @@
 
       </div>
       <?php endif; ?>
-
     </div>
-
   </div>
 </section>
