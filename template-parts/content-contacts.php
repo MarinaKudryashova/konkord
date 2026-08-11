@@ -54,7 +54,7 @@
       <h1 class="sec-contacts__title sec-title" data-aos="fade-up"><?php echo get_the_title($page_id); ?></h1>
       <div class="sec-contacts__content">
          <!-- Офис -->
-         <div class="sec-contacts__address" data-aos="fade-up" data-aos-once="false" data-aos-delay="400">
+         <div class="sec-contacts__address" data-aos="fade-up" data-aos-once="false">
             <div class="card-contact">
                <picture class="card-contact__img">
                   <source srcset="<?php echo esc_url($main_office_img["webp_1x"]); ?>" type="image/webp">

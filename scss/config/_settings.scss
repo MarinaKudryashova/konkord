@@ -55,8 +55,12 @@ a {
     padding-top: 152px;
   }
 
-  @include mobile {
+  @media (max-width: 640px) {
     padding-top: 128px;
+  }
+
+  @include mobile {
+    padding-top: 114px;
   }
 }
 

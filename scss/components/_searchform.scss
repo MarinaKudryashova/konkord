@@ -15,9 +15,8 @@
   background-color: var(--bg-main);
   transition: all var(--transition-300);
 
-  @media (max-width: 510px) {
+  @include tablet-md {
     position: absolute;
-    // top: 56px;
     right: 0;
     left: 16px;
     right: 16px;
@@ -29,16 +28,16 @@
     transform: translateX(-200px);
   }
 
+  @media (max-width: 640px) {
+    --search-size: 40px;
+  }
+
   @include mobile {
     --search-size-icon: 12px;
   }
 
-  // @include mobile-xs {
-  //   top: 60px;
-  // }
-
   &.is-open {
-    @media (max-width: 510px) {
+    @include tablet-md {
       opacity: 1;
       visibility: visible;
       pointer-events: auto;
@@ -55,15 +54,15 @@
     padding-right: var(--search-size);
     background-color: var(--search-bg);
 
-    @media (max-width: 640px) {
-      padding: 8.5px var(--search-padding);
-      padding-right: 0;
+    @include tablet-md {
+      width: 100%;
+      height: var(--search-size);
+      padding-left: calc(8px + var(--search-size));
     }
 
-    @media (max-width: 510px) {
-      width: 100%;
-      height: 40px;
-      padding-left: 48px;
+    @media (max-width: 640px) {
+      padding: 8.5px calc(8px + var(--search-size));
+      padding-right: 0;
     }
   }
 
@@ -191,13 +190,13 @@
     align-items: center;
     justify-content: center;
     border-radius: var(--search-br);
-    width: 40px;
-    height: 40px;
+    width: var(--search-size);
+    height: var(--search-size);
     background-color: var(--search-bg);
     cursor: pointer;
     transition: background-color var(--transition-300);
 
-    @media (max-width: 510px) {
+    @include tablet-md {
       display: flex;
     }
 

@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 if ( !is_admin() ) return;
 
  
-new WPSL_Thumb;
 class WPSL_Thumb {
 
 	/**
@@ -25,13 +24,230 @@ class WPSL_Thumb {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
 		add_action( 'admin_print_footer_scripts', array( $this, 'add_scripts' ) );
 	}
+
+		
+	/**
+	 * Add scripts only on product list
+	 */
+	public function add_scripts() {
+		// проверку на существование функции
+		if ( !function_exists('get_current_screen') ) {
+			return;
+		}
+		
+		$current_screen = get_current_screen();
+		if ( !$current_screen || !in_array( $current_screen->post_type, $this->post_types() ) ) {
+			return;
+		}
+		
+		if ( !current_user_can( 'edit_posts' ) ) {
+			return;
+		}
+		?>
+		<script>
+		(function( $ ) {
+			'use strict';
+			/* global wp, console */
+			var file_frame, post_id, nonce, wpsl_thumb;
+
+			jQuery(document).on('click', '.choose-image', function( event ){
+				post_id = $(this).parents('tr:first').attr('id').replace( 'post-', '' );
+				nonce = $(this).data('nonce');
+				wpsl_thumb = $(this).parents( '.wpsl-thumb' );
+
+				/**
+				 * If an instance of file_frame already exists, then we can open it
+				 * rather than creating a new instance.
+				 */
+				if ( undefined !== file_frame ) {
+					file_frame.open();
+					return false;
+				}
+
+				/**
+				 * If we're this far, then an instance does not exist, so we need to
+				 * create our own.
+				 *
+				 * Here, use the wp.media library to define the settings of the Media
+				 * Uploader implementation by setting the title and the upload button
+				 * text. We're also not allowing the user to select more than one image.
+				 */
+				file_frame = wp.media.frames.file_frame = wp.media({
+					title:    '<?php _e( 'Browse or upload an image', 'plugin_name' ); ?>',
+					button:   {
+						text: '<?php _e( 'Set thumbnail', 'plugin_name' ); ?>'
+					},
+					multiple: false
+				});
+
+				/**
+				 * Setup an event handler for what to do when an image has been
+				 * selected.
+				 */
+				file_frame.on( 'select', function() {
+					var image_data = file_frame.state().get( 'selection' ).first().toJSON();
+					var thumbnail = image_data.sizes.thumbnail;
+
+					if( wpsl_thumb.hasClass( 'no-image' ) ) {
+						wpsl_thumb.removeClass( 'no-image' );
+
+						var link = wpsl_thumb.find('a.choose-image');
+						link.html('').clone().insertAfter(link);
+
+						var thumbnail_image = $('<img>').attr({
+							width: thumbnail.width,
+							height : thumbnail.height,
+							class : 'attachment-thumbnail wp-post-image',
+							src : thumbnail.url,
+							alt : image_data.alt
+						});
+						
+						wpsl_thumb.find('a.choose-image:first').html( thumbnail_image );
+					} else {
+						wpsl_thumb.find('.attachment-thumbnail').attr( 'src', thumbnail.url );
+					}
+
+					$.post( ajaxurl, {
+						_ajax_nonce: nonce,
+						post_id : post_id,
+						thumbnail_id : image_data.id,
+						action: 'set-post-thumbnail'
+					});
+				});
+				file_frame.open();
+
+				return false;
+			});
+
+			$(document).on( 'click', '.remove-image', function() {
+				wpsl_thumb = $(this).parents( '.wpsl-thumb' );
+				nonce = $(this).data('nonce');
+				var url = $(this).attr('href');
+				var post_id = parseInt( wpsl_thumb.parents('tr:first').attr('id').replace( 'post-', '' ) );
+
+				wpsl_thumb.addClass( 'no-image' );
+
+				var choose_image = $('<a>').attr({
+					href : url,
+					'data-nonce' : nonce,
+					class : 'choose-image'
+				}).html("<i class='dashicons dashicons-plus'></i></a>");
+
+				wpsl_thumb.find('.image-box').html(choose_image);
+
+				$.post( ajaxurl, {
+					_ajax_nonce: nonce,
+					post_id : post_id,
+					thumbnail_id : -1,
+					action: 'set-post-thumbnail'
+				});
+				return false;
+			});
+
+		})( jQuery );
+		</script>
+		<?php
+	}
+	
+	/**
+	 * Add scripts only on product list
+	 */
+	public function add_styles() {
+		// проверка на существование функции
+		if ( !function_exists('get_current_screen') ) {
+			return;
+		}
+		
+		$current_screen = get_current_screen();
+		if ( !$current_screen || !in_array( $current_screen->post_type, $this->post_types() ) ) {
+			return;
+		}
+		
+		if ( !current_user_can( 'edit_posts' ) ) {
+			return;
+		}
+		?>
+		<style>
+		.manage-column.column-_post_thumbnail {
+			width: 90px;
+			text-align: center;
+		}
+		._post_thumbnail.column-_post_thumbnail {
+			overflow:visible;
+		}
+		.wpsl-thumb {
+			position:relative;
+			opacity: 1 !important;
+		}
+		.wpsl-thumb:hover .remove-image{
+			display: block;
+		}
+		.wpsl-thumb .image-box a{
+			float:left;
+		}
+		.wpsl-thumb .image-box a img {
+			max-width:90px;
+			max-height:76px;
+			float:left;
+		}
+		.wpsl-thumb.no-image a.choose-image {
+			display:block;
+			height:76px;
+			width:90px;
+			border:1px dashed #e1e1e1;
+			text-align:center;
+			background-color: #fff;
+			padding: 9px 0;
+			box-sizing: border-box;
+			color:#e1e1e1;
+			-webkit-transition: all .1s ease-in;
+			   -moz-transition: all .1s ease-in;
+					transition: all .1s ease-in;
+		}
+		.wpsl-thumb.no-image a.choose-image:hover {
+			color:#0074a2;
+			border-color: #0074a2;
+		}
+		.wpsl-thumb.no-image a.choose-image .dashicons {
+			transition:none;
+			-webkit-transition: none;
+			font-size: 30px;
+			width: 30px;
+			height: 30px;
+		}
+		.wpsl-thumb.no-image .remove-image{
+			display:none;
+		}
+		.wpsl-thumb .remove-image{
+			position: absolute;
+			right: 0;
+			top: 0;
+			font-size:11px;
+			color: #aaa;
+			display: none;
+			background-color: #ff0000;
+		}
+		.wpsl-thumb .remove-image:hover {
+			background-color: #da0909;
+		}
+		.wpsl-thumb .remove-image .dashicons {
+			font-size:10px;
+			width: 16px;
+			height: 16px;
+			float: left;
+			line-height: 16px;
+			color: #fff;
+		}
+		</style>
+		<?php
+	}
 	
 	/**
 	 * Post types
 	 */
 	public function post_types() {
-		$post_types = get_post_types( array( 'public' => true ) );
-		$post_types = array( 'post', 'services', 'employees');
+		// $post_types = get_post_types( array( 'public' => true ) );
+		$post_types = array( 'post' );
 		return $post_types;
 	}
 
@@ -107,199 +323,7 @@ class WPSL_Thumb {
 			<?php
 		}
 	}
-	
-	/**
-	 * Add scripts only on product list
-	 */
-	public function add_scripts() {
-		if ( current_user_can( 'edit_posts' ) && in_array( get_current_screen()->post_type, $this->post_types() )  ) {
-			?>
-			<script>
-			(function( $ ) {
-				'use strict';
-				/* global wp, console */
-				var file_frame, post_id, nonce, wpsl_thumb;
 
-				jQuery(document).on('click', '.choose-image', function( event ){
-					post_id = $(this).parents('tr:first').attr('id').replace( 'post-', '' );
-					nonce = $(this).data('nonce');
-					wpsl_thumb = $(this).parents( '.wpsl-thumb' );
-
-					/**
-					 * If an instance of file_frame already exists, then we can open it
-					 * rather than creating a new instance.
-					 */
-					if ( undefined !== file_frame ) {
-						file_frame.open();
-						return false;
-					}
-
-					/**
-					 * If we're this far, then an instance does not exist, so we need to
-					 * create our own.
-					 *
-					 * Here, use the wp.media library to define the settings of the Media
-					 * Uploader implementation by setting the title and the upload button
-					 * text. We're also not allowing the user to select more than one image.
-					 */
-					file_frame = wp.media.frames.file_frame = wp.media({
-						title:    '<?php _e( 'Browse or upload an image', 'konkord' ); ?>',
-						button:   {
-							text: '<?php _e( 'Set thumbnail', 'konkord' ); ?>'
-						},
-						multiple: false
-					});
-
-					/**
-					 * Setup an event handler for what to do when an image has been
-					 * selected.
-					 */
-					file_frame.on( 'select', function() {
-						var image_data = file_frame.state().get( 'selection' ).first().toJSON();
-						var thumbnail = image_data.sizes.thumbnail;
-
-						if( wpsl_thumb.hasClass( 'no-image' ) ) {
-							wpsl_thumb.removeClass( 'no-image' );
-
-							var link = wpsl_thumb.find('a.choose-image');
-							link.html('').clone().insertAfter(link);
-
-							var thumbnail_image = $('<img>').attr({
-								width: thumbnail.width,
-								height : thumbnail.height,
-								class : 'attachment-thumbnail wp-post-image',
-								src : thumbnail.url,
-								alt : image_data.alt
-							})
-							
-							wpsl_thumb.find('a.choose-image:first').html( thumbnail_image );
-						} else {
-							wpsl_thumb.find('.attachment-thumbnail').attr( 'src', thumbnail.url );
-						}
-
-						$.post( ajaxurl, {
-							_ajax_nonce: nonce,
-							post_id : post_id,
-							thumbnail_id : image_data.id,
-							action: 'set-post-thumbnail'
-						})
-					});
-					// Now display the actual file_frame
-					file_frame.open();
-
-					return false;
-				});
-
-				$(document).on( 'click', '.remove-image', function() {
-					wpsl_thumb = $(this).parents( '.wpsl-thumb' );
-					nonce = $(this).data('nonce');
-					var url = $(this).attr('href');
-					var post_id = parseInt( wpsl_thumb.parents('tr:first').attr('id').replace( 'post-', '' ) );
-
-					wpsl_thumb.addClass( 'no-image' );
-
-					var choose_image = $('<a>').attr({
-						href : url,
-						'data-nonce' : nonce,
-						class : 'choose-image'
-					}).html("<i class='dashicons dashicons-plus'></i></a>")
-
-					wpsl_thumb.find('.image-box').html(choose_image);
-
-					$.post( ajaxurl, {
-						_ajax_nonce: nonce,
-						post_id : post_id,
-						thumbnail_id : -1,
-						action: 'set-post-thumbnail'
-					})
-					return false;
-				})
-
-			})( jQuery );
-			</script>
-			<?php
-		}
-	}
-	
-	/**
-	 * Add scripts only on product list
-	 */
-	public function add_styles() {
-		if ( current_user_can( 'edit_posts' ) && in_array( get_current_screen()->post_type, $this->post_types() ) ) {
-			echo '<style>';
-			echo '
-			.manage-column.column-_post_thumbnail {
-				width: 90px;
-				text-align: center;
-			}
-			._post_thumbnail.column-_post_thumbnail {
-				overflow:visible;
-			}
-			.wpsl-thumb {
-				position:relative;
-				opacity: 1 !important;
-			}
-			.wpsl-thumb:hover .remove-image{
-				display: block;
-			}
-			.wpsl-thumb .image-box a{
-				float:left;
-			}
-			.wpsl-thumb .image-box a img {
-				max-width:90px;
-				max-height:76px;
-				float:left;
-			}
-			.wpsl-thumb.no-image a.choose-image {
-				display:block;
-				height:76px;
-				width:90px;
-				border:1px dashed #e1e1e1;
-				text-align:center;
-				background-color: #fff;
-				padding: 9px 0;
-				box-sizing: border-box;
-				color:#e1e1e1;
-				-webkit-transition: all .1s ease-in;
-				   -moz-transition: all .1s ease-in;
-						transition: all .1s ease-in;
-			}
-			.wpsl-thumb.no-image a.choose-image:hover {
-				color:#0074a2;
-				border-color: #0074a2;
-			}
-			.wpsl-thumb.no-image a.choose-image .dashicons {
-				transition:none;
-				-webkit-transition: none;
-				font-size: 30px;
-				width: 30px;
-				height: 30px;
-			}
-			.wpsl-thumb.no-image .remove-image{
-				display:none;
-			}
-			.wpsl-thumb .remove-image{
-				position: absolute;
-				right: 0;
-				top: 0;
-				font-size:11px;
-				color: #aaa;
-				display: none;
-				background-color: #ff0000;
-			}
-			.wpsl-thumb .remove-image:hover {
-				background-color: #da0909;
-			}
-			.wpsl-thumb .remove-image .dashicons {
-				font-size:10px;
-				width: 16px;
-				height: 16px;
-				float: left;
-				line-height: 16px;
-				color: #fff;
-			}
-			';
-			echo '</style>';
-		}
-	}
 }
+
+new WPSL_Thumb();

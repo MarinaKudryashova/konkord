@@ -68,8 +68,15 @@
 					<?php $messanges = get_field('messengers_list', 'options'); ?>
 					<?php if($messanges) : ?>
 						<ul class="footer-contacts__messanges messanges" title="messanges">
-							<?php foreach($messanges as $li) : ?>
-								<a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="messanges__link <?php if($li["value"] == 'vk') : ?>messanges__link--vk<?php endif; ?>" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
+							<?php foreach($messanges as $li) : 
+								$class = 'messanges__link';
+								if($li["value"] == 'vk') {
+										$class = 'messanges__link messanges__link--vk';
+								} elseif($li["value"] == 'whatsapp') {
+										$class = 'messanges__link messanges__link--whatsapp';
+								}
+								?>
+								<a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="<?php esc_attr_e($class); ?>" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
 									<img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="16" height="16" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
 								</a>
 							</li>
