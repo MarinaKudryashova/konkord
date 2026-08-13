@@ -71,50 +71,53 @@ $modalsend_img_mobile = $modalsend_img_url_mobile
         <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg?v=2#close"></use>
       </svg>
     </button>
-    <div class="bannerform__bg">
-    <picture class="bannerform__picture">
-      <?php if (!empty($modalsend_img_mobile['webp_1x'])) : ?>
-        <source media="(max-width: 576px)" srcset="<?php echo esc_url($modalsend_img_mobile['webp_1x']); ?>" type="image/jpg">
-        <?php endif; ?>
-        <?php if (!empty($modalsend_img_mobile['original_1x'])) : ?>
-        <source media="(max-width: 576px)" srcset="<?php echo esc_url($modalsend_img_mobile['original_1x']); ?>" type="image/jpg">
-        <?php endif; ?>
-
-        <?php if (!empty($modalsend_img['webp_1x'])) : ?>
-        <source srcset="<?php echo esc_url($modalsend_img['webp_1x']); ?>" type="image/webp">
-        <?php endif; ?>
-        <img class="bannerform__img" src="<?php echo esc_url($modalsend_img['original_1x']); ?>" width="1443" height="534" alt="Фото" aria-hidden="true" loading="lazy">
-      </picture>
-    </div>
-    <div class="graph-modal__content message-success">
-
-      <div class="message-success__content">
-        <?php if(!empty($modalsend_title)) : ?>
-         <h2 class="message-success__title"><?php echo esc_html($modalsend_title); ?></h2>
-        <?php endif; ?>
-        <?php if(!empty($modalsend_descr)) : ?>
-         <p class="message-success__text"><?php echo esc_html($modalsend_descr); ?></p>
-        <?php endif; ?>
-        <!-- Мессенджеры тут-->
-        <?php if($modalsend_messanges && $messanges && is_array($messanges)) : ?>
-          <ul class="bannerform__messanges messanges" title="messanges">
-            <?php foreach($messanges as $li) : ?>
-              <a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="messanges__link <?php if($li["value"] == 'vk') : ?>messanges__link--vk<?php endif; ?>" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
-                <img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="16" height="16" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
-              </a>
-            </li>
-            <?php endforeach;	?>
-          </ul>
-              <?php endif; ?>
-      </div>
-      <?php if($modalsend_logo) : ?>
-        <a href="<?php bloginfo('url'); ?>" class="header__logo logo">
-          <img class="logo__img" src="<?php echo get_field('site_logo', 'option') ?>" alt="Logo <?php bloginfo('name'); ?>" width="214" height="40">
-        </a>
+    <div class="graph-modal__content">
+      <?php if(!empty($modalsend_title)) : ?>
+        <h2 class="form__title"><?php echo esc_html($modalsend_title); ?></h2>
       <?php endif; ?>
 
-      <!-- <h3 class="message-success__title">Спасибо</h3> -->
-      <!-- <p class="message-success__text">Ваши данные успешно отправлены.</p> -->
+      <div class="bannerform__bg">
+        <picture class="bannerform__picture">
+          <?php if (!empty($modalsend_img_mobile['webp_1x'])) : ?>
+          <source media="(max-width: 576px)" srcset="<?php echo esc_url($modalsend_img_mobile['webp_1x']); ?>" type="image/jpg">
+          <?php endif; ?>
+          <?php if (!empty($modalsend_img_mobile['original_1x'])) : ?>
+          <source media="(max-width: 576px)" srcset="<?php echo esc_url($modalsend_img_mobile['original_1x']); ?>" type="image/jpg">
+          <?php endif; ?>
+
+          <?php if (!empty($modalsend_img['webp_1x'])) : ?>
+          <source srcset="<?php echo esc_url($modalsend_img['webp_1x']); ?>" type="image/webp">
+          <?php endif; ?>
+          <img class="bannerform__img" src="<?php echo esc_url($modalsend_img['original_1x']); ?>" width="1443" height="534" alt="Фото" aria-hidden="true" loading="lazy">
+        </picture>
+      </div>
+
+      <div class="message-success">
+        <div class="message-success__content">
+          <?php if(!empty($modalsend_title)) : ?>
+          <h2 class="message-success__title"><?php echo esc_html($modalsend_title); ?></h2>
+          <?php endif; ?>
+          <?php if(!empty($modalsend_descr)) : ?>
+          <p class="message-success__text"><?php echo esc_html($modalsend_descr); ?></p>
+          <?php endif; ?>
+          <!-- Мессенджеры тут-->
+          <?php if($modalsend_messanges && $messanges && is_array($messanges)) : ?>
+            <ul class="bannerform__messanges messanges" title="messanges">
+              <?php foreach($messanges as $li) : ?>
+                <a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="messanges__link <?php if($li["value"] == 'vk') : ?>messanges__link--vk<?php endif; ?>" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
+                  <img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="16" height="16" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
+                </a>
+              </li>
+              <?php endforeach;	?>
+            </ul>
+                <?php endif; ?>
+        </div>
+        <?php if($modalsend_logo) : ?>
+          <a href="<?php bloginfo('url'); ?>" class="header__logo logo">
+            <img class="logo__img" src="<?php echo get_field('site_logo', 'option') ?>" alt="Logo <?php bloginfo('name'); ?>" width="214" height="40">
+          </a>
+        <?php endif; ?>
+      </div>
     </div>
   </div>
 </div>

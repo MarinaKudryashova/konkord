@@ -15,8 +15,12 @@
 
 	$news_banner_text = get_field('news-banner_text', $page_id);
 	$news_banner_email = get_field('news-banner_email', $page_id);
-	$news_banner_phone = get_field('news-banner_phone', $page_id);
-	$news_banner_phone_href = preg_replace('![^0-9]+!', '', $news_banner_phone);
+	$news_banner_phone = trim(get_field('news-banner_phone', $page_id));
+  if (strpos($news_banner_phone, '+') === 0) {
+		$news_banner_phone_href = preg_replace('/[^0-9+]/', '', $news_banner_phone);
+	} else {
+		$news_banner_phone_href = preg_replace('/[^0-9]/', '', $news_banner_phone);
+	}
 ?>
 
 <section class="post-news">
@@ -64,7 +68,7 @@
             <svg>
               <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
             </svg>
-            <span><?php echo $news_banner_phone; ?></span>
+            <span><?php echo esc_html($news_banner_phone); ?></span>
           </a>
           <?php endif; ?>
         </div>
