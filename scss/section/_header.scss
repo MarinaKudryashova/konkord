@@ -125,6 +125,7 @@
       width: 100%;
       opacity: 0;
       visibility: hidden;
+      background-color: rgba(0, 0, 0, 0.64);
       -webkit-transition:
         opacity var(--transition-300),
         visibility var(--transition-300);
@@ -396,6 +397,11 @@
 
   &__searchbar {
     margin-left: auto;
+    max-width: 236px;
+
+    @include desktop {
+      max-width: auto;
+    }
 
     @include tablet {
       width: auto;

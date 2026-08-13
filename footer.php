@@ -92,8 +92,17 @@
 				<?php 
 					$department_sales = get_field('department_sales', 'option');
 					$department_phones = $department_sales["phone"];
-					$department_tel_arr = explode(PHP_EOL, $department_phones);
-					$department_tel_arr_href = preg_replace('![^0-9]+!', '', $department_tel_arr);
+					$department_tel_arr = array_filter(array_map('trim', explode(PHP_EOL, $department_phones)));
+					$department_tel_arr_href = array();
+					if(!empty($department_tel_arr)) {
+						foreach($department_tel_arr as $tel) {
+							if (strpos(trim($tel), '+') === 0) {
+								$department_tel_arr_href[] = preg_replace('/[^0-9+]/', '', $tel);
+							} else {
+								$department_tel_arr_href[] = preg_replace('/[^0-9]/', '', $tel);
+							}
+						}
+					}
 				?>
 				<div class="department">
 					<?php if($department_sales["name"]): ?>
@@ -108,7 +117,7 @@
 								<svg>
 									<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
 								</svg>
-								<span><?php echo esc_html($department_tel_arr[$ind]); ?></span>
+								<span><?php echo esc_html($tel); ?></span>
 							</a>
 						</li>
 						<?php endforeach; ?>
@@ -141,8 +150,17 @@
 						$employee_email = get_field('employee_email', $employee_id);
 						
 						$employee_phones = get_field('employee_phone', $employee_id);
-						$employee_phone_arr = explode(PHP_EOL, $employee_phones);
-						$employee_phone_href = preg_replace('![^0-9]+!', '', $employee_phone_arr);
+						$employee_phone_arr = array_filter(array_map('trim', explode(PHP_EOL, $employee_phones)));
+						$employee_phone_href = array();
+						if(!empty($employee_phone_arr)) {
+							foreach($employee_phone_arr as $tel) {
+								if (strpos(trim($tel), '+') === 0) {
+									$employee_phone_href[] = preg_replace('/[^0-9+]/', '', $tel);
+								} else {
+									$employee_phone_href[] = preg_replace('/[^0-9]/', '', $tel);
+								}
+							}
+						}
 						?>
 					<div class="department__worker">
 						<span class="department__name"><?php echo esc_html($employee_name); ?></span>
@@ -155,7 +173,7 @@
 									<svg>
 										<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
 									</svg>
-									<span><?php echo esc_html($employee_phone_arr[$ind]); ?></span>
+									<span><?php echo esc_html($tel); ?></span>
 								</a>
 							</li>
 							<?php endforeach; ?>
@@ -224,7 +242,6 @@
 
 	<?php wp_footer(); ?>
 
-	<?php //get_template_part("template-parts/components/topbtn"); ?>
 	<?php get_template_part("template-parts/components/modal"); ?>
 	<?php get_template_part("template-parts/components/cookie-notice"); ?>
 

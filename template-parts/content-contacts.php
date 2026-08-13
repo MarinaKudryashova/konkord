@@ -21,12 +21,30 @@
   $company_branch_office_city = get_field('company_branch_office_city', 'option');
 
   $main_office_phones = get_field('department_sales_phone', 'option');
-  $main_office_tel_arr = explode(PHP_EOL, $main_office_phones);
-  $main_office_tel_arr_href = preg_replace('![^0-9]+!', '', $main_office_tel_arr);
+  $main_office_tel_arr = array_filter(array_map('trim', explode(PHP_EOL, $main_office_phones)));
+  $main_office_tel_arr_href = array();
+  if(!empty($main_office_tel_arr)) {
+    foreach($main_office_tel_arr as $tel) {
+      if (strpos(trim($tel), '+') === 0) {
+        $main_office_tel_arr_href[] = preg_replace('/[^0-9+]/', '', $tel);
+      } else {
+        $main_office_tel_arr_href[] = preg_replace('/[^0-9]/', '', $tel);
+      }
+    }
+  }
 
   $company_branch_office_phones_branch = get_field('department_sales_phone_branch', 'option');
-  $company_branch_office_tel_arr = explode(PHP_EOL, $company_branch_office_phones_branch);
-  $company_branch_office_tel_arr_href = preg_replace('![^0-9]+!', '', $company_branch_office_tel_arr);
+  $company_branch_office_tel_arr = array_filter(array_map('trim', explode(PHP_EOL, $company_branch_office_phones_branch)));
+  $company_branch_office_tel_arr_href = array();
+  if(!empty($company_branch_office_tel_arr)) {
+    foreach($company_branch_office_tel_arr as $tel) {
+      if (strpos(trim($tel), '+') === 0) {
+        $company_branch_office_tel_arr_href[] = preg_replace('/[^0-9+]/', '', $tel);
+      } else {
+        $company_branch_office_tel_arr_href[] = preg_replace('/[^0-9]/', '', $tel);
+      }
+    }
+  }
 
   $main_office_map = get_field('company_main_office_map_center', 'option');
   
@@ -54,7 +72,7 @@
       <h1 class="sec-contacts__title sec-title" data-aos="fade-up"><?php echo get_the_title($page_id); ?></h1>
       <div class="sec-contacts__content">
          <!-- Офис -->
-         <div class="sec-contacts__address" data-aos="fade-up" data-aos-once="false">
+         <div class="sec-contacts__address" data-aos="fade-up">
             <div class="card-contact">
                <picture class="card-contact__img">
                   <source srcset="<?php echo esc_url($main_office_img["webp_1x"]); ?>" type="image/webp">
@@ -99,7 +117,7 @@
                               <svg>
                                  <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
                               </svg>
-                              <span><?php echo esc_html($main_office_tel_arr[$ind]); ?></span>
+                              <span><?php echo esc_html($tel); ?></span>
                            </a>
                         </li>
                         <?php endforeach; ?>                        
@@ -116,7 +134,7 @@
                               <svg>
                                  <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
                               </svg>
-                              <span><?php echo esc_html($company_branch_office_tel_arr[$ind]); ?></span>
+                              <span><?php echo esc_html($tel); ?></span>
                            </a>
                         </li>
                         <?php endforeach; ?> 
@@ -133,7 +151,7 @@
          </div>
 
          <!-- Производство -->
-         <div class="sec-contacts__address sec-contacts__address--production" data-aos="fade-up" data-aos-once="false">
+         <div class="sec-contacts__address sec-contacts__address--production" data-aos="fade-up">
             <div class="card-contact">
                <?php if($company_manufacture_city && $company_manufacture_address_local) : ?>
                <div class="card-contact__address">
