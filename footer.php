@@ -125,7 +125,7 @@
 					<?php endif; ?>
 
 					<?php if($department_sales["email"]): ?>
-					<a href="emailto:<?php echo $department_sales["email"]; ?>" class="department__email"><?php echo $department_sales["email"]; ?></a>
+					<a href="mailto:<?php echo $department_sales["email"]; ?>" class="department__email"><?php echo $department_sales["email"]; ?></a>
 					<?php endif; ?>
 				</div>
 

@@ -17,8 +17,6 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="<?php bloginfo( 'name' ); ?> - <?php bloginfo('description'); ?>">
-
 
   <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri();?>/favicon/apple-touch-icon.png">
 	<meta name="apple-mobile-web-app-title" content="<?php bloginfo( 'name' ); ?>" />
