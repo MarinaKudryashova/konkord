@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
         mod.classList.remove("graph-modal-open");
         mod.classList.remove("animate-open");
       });
-      new GraphModal().open("modal-send");
+      setTimeout(() => {
+        new GraphModal().open("modal-send");
+      }, 300);
     },
     false,
   );

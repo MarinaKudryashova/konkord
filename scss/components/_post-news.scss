@@ -65,6 +65,20 @@
     }
   }
 
+  &__date {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--white);
+    z-index: 10;
+
+    svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+  }
+
   &__content {
     max-width: 800px;
     margin: 0 auto;

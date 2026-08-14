@@ -50,6 +50,22 @@
       img {
         width: 22px;
         height: 14px;
+
+        @media (max-width: 640px) {
+          width: 18px;
+          height: 12px;
+        }
+      }
+    }
+    &--whatsapp {
+      img {
+        width: 18px;
+        height: 18px;
+
+        @media (max-width: 640px) {
+          width: 14px;
+          height: 14px;
+        }
       }
     }
   }

@@ -19,7 +19,7 @@
 
       <?php /* == Общие требования == */ ?>
       <?php if (!empty($layout_requirements_list)) : ?>
-      <div class="layout__requirements" data-aos="fade-up" data-aos-delay="200">
+      <div class="layout__requirements" data-aos="fade-up" data-aos-delay="100">
         <?php if (!empty($layout_requirements_title)) : ?>
         <h3 class="layout__subtitle"><?php echo $layout_requirements_title; ?></h3>
         <?php endif; ?>
@@ -44,7 +44,7 @@
         $block_type = $block["type"];
         $block_items = $block["item"];
         ?>
-      <div class="layout__services layout-catalog" data-aos-once="false" data-aos="fade-up" data-aos-delay="200">
+      <div class="layout__services layout-catalog" data-aos-once="false" data-aos="fade-up" data-aos-delay="100">
          <div class="layout-catalog__heading">
             <?php if (!empty($block_title)) : ?>
             <h3 class="layout-catalog__title layout__subtitle"><?php echo esc_html($block_title); ?></h3>

@@ -39,13 +39,13 @@
          <h1 class="about__title" data-aos="fade-up"><?php echo $about_title; ?><br> Конкорд</h1>
          <?php /* == Краткое описание == */ ?>
           <?php if (!empty( $about_short_descr)): ?>
-            <p class="about__descr" data-aos="fade-up" data-aos-delay="200"><?php echo $about_short_descr; ?></p>
+            <p class="about__descr" data-aos="fade-up" data-aos-delay="100"><?php echo $about_short_descr; ?></p>
           <?php endif; ?>
       </div>
 
       <?php /* == Цитата == */ ?>
       <?php if (!empty($about_qoute)): ?>
-      <div class="about__quote" data-aos="fade-up">
+      <div class="about__quote" data-aos="fade-up" data-aos-delay="100">
          <blockquote><?php echo $about_qoute; ?></blockquote>
          <img class="about__icon" loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/quotation.svg" width="88" height="57" alt="" aria-hidden="true">
          <img class="about__icon about__icon--right" loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/quotation.svg" width="88" height="57" alt="" aria-hidden="true">
@@ -64,7 +64,7 @@
         ? get_image_versions($step_img_url)
         : get_placeholder_image();
         ?>
-         <li class="about__gallery-item about-gallery" data-aos="fade-up" data-aos-once="false" data-aos-duration="600" data-aos-delay="<?php echo $ids*100 + 50; ?>">
+         <li class="about__gallery-item about-gallery" data-aos="fade-up" data-aos-once="false" data-aos-duration="400" data-aos-delay="100">
            <?php if($step_type === 'img') : ?>
                <?php /*-- Изображение --*/ ?>
             <a data-fslightbox="about-gallery-<?php echo $page_id ?>" data-caption="" href="<?php echo $step_img_url ?>" class="about-gallery__link">

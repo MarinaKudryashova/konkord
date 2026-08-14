@@ -15,8 +15,12 @@
 
 	$news_banner_text = get_field('news-banner_text', $page_id);
 	$news_banner_email = get_field('news-banner_email', $page_id);
-	$news_banner_phone = get_field('news-banner_phone', $page_id);
-	$news_banner_phone_href = preg_replace('![^0-9]+!', '', $news_banner_phone);
+	$news_banner_phone = trim(get_field('news-banner_phone', $page_id));
+  if (strpos($news_banner_phone, '+') === 0) {
+		$news_banner_phone_href = preg_replace('/[^0-9+]/', '', $news_banner_phone);
+	} else {
+		$news_banner_phone_href = preg_replace('/[^0-9]/', '', $news_banner_phone);
+	}
 ?>
 
 <section class="post-news">
@@ -33,7 +37,14 @@
           <img src="<?php echo esc_url($news_img["original_1x"]); ?>" alt="Фотофон страницы" width="1160" height="476" aria-hidden="true">
       </picture>
       <h1 class="post-news__title"><?php echo $news_title; ?></h1>
+      <div class="post-news__date">
+        <svg>
+          <use xlink:href="<?php echo esc_url(get_template_directory_uri()); ?>/img/sprite.svg#calendar"></use>
+        </svg>
+        <span><?php echo get_the_date( 'F j, Y'); ?></span>
+      </div>
     </div>
+
     
     <div class="post-news__content">
       <?php the_content(); ?>
@@ -57,15 +68,13 @@
             <svg>
               <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
             </svg>
-            <span><?php echo $news_banner_phone; ?></span>
+            <span><?php echo esc_html($news_banner_phone); ?></span>
           </a>
           <?php endif; ?>
         </div>
 
       </div>
       <?php endif; ?>
-
     </div>
-
   </div>
 </section>
