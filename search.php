@@ -32,8 +32,8 @@ get_header();
 						<p>
 							<?php esc_html_e( 'Похоже, мы не можем найти то, что вы ищете.', 'konkord' ); ?>
 						</p>
-						<a href="#" class="page-search__link ui-btn">На главную</a>
-						<a href="#" class="page-search__link ui-btn">В каталог</a>
+						<a href="<?php bloginfo('url'); ?>" class="page-search__link ui-btn">На главную</a>
+						<a href="<?php bloginfo('url'); ?>/katalog/" class="page-search__link ui-btn">В каталог</a>
 					</div>
 				<?php endif; ?>
 			</div>

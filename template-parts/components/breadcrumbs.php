@@ -51,7 +51,15 @@
             if(!empty($service_categories) && !is_wp_error($service_categories)) {
                 // Берем первую категорию
                 $category = $service_categories[0];
-                $category_url = $page_services_url ? $page_services_url . $category->slug . '/' : get_term_link($category);
+                // ИСПРАВЛЕНО: ссылка на категорию ведет на /services-category/nazvanie/
+                $full_path = get_category_full_path($category);
+                $category_url = home_url('/services-category/' . $full_path . '/');
+                
+                // Добавляем город, если есть
+                $city = get_geo_city_from_query();
+                if(!empty($city)) {
+                    $category_url = home_url('/' . $city . '/services-category/' . $full_path . '/');
+                }
                 ?>
                 <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <a class="breadcrumbs__link" href="<?php echo esc_url($category_url); ?>" title="<?php echo esc_attr($category->name); ?>" itemprop="item">

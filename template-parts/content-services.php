@@ -5,6 +5,7 @@ $page_title = $page_id ? get_the_title($page_id) : 'Услуги';
 // Только ЧПУ, без GET-параметров
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 $current_cat = get_query_var('services_category');
+$current_city = get_geo_city_from_query(); 
 
 $post_args = array(
     'post_type' => 'services',
@@ -15,6 +16,7 @@ $post_args = array(
     'order' => 'ASC'
 );
 
+// Фильтр по категории
 if(!empty($current_cat)) {
     $post_args['tax_query'] = array(
         array(
@@ -35,7 +37,6 @@ wp_add_inline_script('js-main', '
         konkord_ajax.services.max_pages = ' . intval($max_pages) . ';
         konkord_ajax.services.page_id = ' . intval($page_id) . ';
         konkord_ajax.services.cat_slug = "' . esc_js($current_cat) . '";
-        console.log("konkord_ajax.services обновлён:", konkord_ajax.services);
     } else {
         console.warn("konkord_ajax не определён!");
     }
@@ -66,7 +67,10 @@ wp_add_inline_script('js-main', '
           
           foreach($categories as $cat) :
             $active = ($current_cat == $cat->slug) ? 'is-active' : '';
-            $url = home_url('/' . $page_slug . '/' . $cat->slug . '/');
+            // ИСПРАВЛЕНО: ссылки на категории ведут на /services-category/nazvanie/
+            // Получаем полный путь для вложенных категорий
+            $full_path = get_category_full_path($cat);
+            $url = build_geo_url('services-category/' . $full_path, $current_city);
           ?>
             <li class="categories-nav__item">
               <a href="<?php echo esc_url($url); ?>" class="categories-nav__link <?php echo $active; ?>">
