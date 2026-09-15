@@ -132,11 +132,34 @@ function konkord_styles_and_scripts() {
 		wp_enqueue_script('js-maps', 'https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU', array(), $ver, 'defer');
 	}
 
+	if ( is_front_page() ) {
+		wp_enqueue_script(
+			'promo-video',
+			$js_path . 'promo-video.min.js',
+			array(),
+			$ver,
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
+		);
+	}
+
 	// основные скрипты темы	
 	wp_enqueue_script( 'js-main', $js_path . 'main.min.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
+	wp_enqueue_script(
+		'js-lazy-iframe',
+		$js_path . 'lazy-iframe.js',
+		array(),
+		$ver,
+		array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		)
+	);
 	
 	// Локализация для JS
-	wp_localize_script('konkord-main', 'konkord_ajax', array(
+	wp_localize_script('js-main', 'konkord_ajax', array(
 		'ajax_url' => admin_url('admin-ajax.php'),
 		'nonce' => wp_create_nonce('konkord_nonce'),
 		'theme_url' => get_template_directory_uri(),
@@ -149,9 +172,44 @@ function konkord_styles_and_scripts() {
 		)
 	));
 
-	wp_enqueue_script( 'js-services-load-more', $js_path . 'services-load-more.js', array(), $ver, array( 'in_footer' => true, 'strategy' => 'defer'));
+	// jQuery-скрипт только на каталоге услуг (тема на фронте без jQuery не зависит)
+	if ( is_post_type_archive( 'services' ) || is_singular( 'services' ) || is_tax( 'services_category' ) ) {
+		wp_enqueue_script(
+			'js-services-load-more',
+			$js_path . 'services-load-more.js',
+			array( 'jquery' ),
+			$ver,
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'konkord_styles_and_scripts' );
+
+/**
+ * Web app manifest (PWA icons). Favicon-иконки остаются в <head> —
+ * manifest не нужен для отображения favicon в браузере.
+ * Перенос в footer убирает его из critical request chain (GTmetrix).
+ */
+add_action( 'wp_footer', function () {
+	printf(
+		'<link rel="manifest" href="%s/favicon/site.webmanifest">' . "\n",
+		esc_url( get_template_directory_uri() )
+	);
+}, 1 );
+
+/**
+ * CF7 CSS не блокирует first paint: print → all после load (стандартный трюк).
+ */
+add_filter( 'style_loader_tag', function ( $html, $handle ) {
+	if ( 'contact-form-7' === $handle || 'belingo-geo' === $handle ) {
+		$html = str_replace( "media='all'", "media='print' onload=\"this.media='all'\"", $html );
+		$html = str_replace( 'media="all"', 'media="print" onload="this.media=\'all\'"', $html );
+	}
+	return $html;
+}, 10, 2 );
 
 /**
  * Заглушкка для изображений
@@ -166,6 +224,15 @@ function get_placeholder_image() {
 
 add_filter( 'wpseo_output_open_graph', '__return_false' );
 
+add_action('wp_default_scripts', function ($scripts) {
+    if (!is_admin() && isset($scripts->registered['jquery'])) {
+        $scripts->registered['jquery']->deps = array_diff(
+            $scripts->registered['jquery']->deps,
+            array('jquery-migrate')
+        );
+    }
+});
+
 
 /**
  * THEME EXTRAS
@@ -179,6 +246,8 @@ require_once get_template_directory() . '/inc/BEM_Walker_Nav_Menu.php';
 require_once get_template_directory() . '/inc/Footer_Menu_Walker.php';
 // require_once get_template_directory() . '/inc/BEM_Yoast_Breadcrumb.php';
 require_once get_template_directory() . '/inc/theme-form-cf7.php';
+require_once get_template_directory() . '/inc/geo-utils.php';
+require_once get_template_directory() . '/inc/defer-analytics.php';
 
 /**
  * Post types & taxonomies
@@ -277,19 +346,26 @@ function load_more_services_callback() {
 /**
  * Функция для рендеринга одного элемента услуги
  */
-function render_service_item($post_id) {
+function render_service_item($post_id, $index = 0) {
     $title = get_the_title($post_id);
     $url = get_permalink($post_id) ?: '#';
     $thumbnail_url = get_the_post_thumbnail_url($post_id);
     $img_data = $thumbnail_url ? get_image_versions($thumbnail_url) : get_placeholder_image();
+    $img_mobile = konkord_resolve_mobile_sources( $img_data );
+    $loading_attr = ($index >= 3) ? 'loading="lazy"' : '';
     ?>
 		<a class="service-card" href="<?php echo esc_url($url); ?>"
 				aria-label="Перейти в услугу «<?php echo esc_html($title); ?>»">
 				<h3 class="service-card__title"><?php echo esc_html($title); ?></h3>
 				<picture class="service-card__img">
+						<?php konkord_picture_mobile_sources( $img_mobile ); ?>
+						<?php if ( ! empty( $img_data['webp_1x'] ) ) : ?>
 						<source srcset="<?php echo esc_url($img_data['webp_1x']); ?>" type="image/webp">
-						<img src="<?php echo esc_url($img_data['original_1x']); ?>" width="360" height="354" alt="<?php echo esc_html($title); ?>">
+						<?php endif; ?>
+						<img <?php echo $loading_attr; ?> src="<?php echo esc_url($img_data['original_1x']); ?>" width="360" height="354" alt="<?php echo esc_html($title); ?>">
 				</picture>
 		</a>
     <?php
 }
+
+add_filter( 'xmlrpc_enabled', '__return_false' );

@@ -169,6 +169,22 @@
         border-bottom: 1px solid var(--grey-1);
       }
     }
+
+    & a:not(.post-news__email, .post-news__phone) {
+      color: var(--accent-green);
+      cursor: pointer;
+      transition: color var(--transition-300);
+
+      @include hover {
+        color: var(--accent-dark-green);
+      }
+
+      &:focus-visible,
+      &:active {
+        outline: none;
+        color: var(--accent-dark-green);
+      }
+    }
   }
 
   &__banner {

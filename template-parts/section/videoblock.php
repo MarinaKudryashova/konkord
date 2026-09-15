@@ -35,13 +35,19 @@
     <?php endif; ?>
     <?php if($videoblock_video_url || $videoblock_preview) :?>
 
-    <div class="videoblock__content" data-aos="fade-up" data-aos-delay="400">
+    <div class="videoblock__content" data-aos="fade-up" data-aos-delay="200">
       <button class="btn-reset videoblock__play" aria-label="Play video">
         <svg>
           <use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg?v=2.0#play"></use>
         </svg>
       </button>
-      <video src="<?php echo esc_url($videoblock_video_url); ?>" class="videoblock__video" <?php if($videoblock_preview) :?>poster="<?php echo esc_url( $videoblock_preview); ?>"<?php endif; ?>  preload="metadata"></video>
+      <video
+        class="videoblock__video"
+        preload="none"
+        playsinline
+        <?php if ($videoblock_preview) : ?>poster="<?php echo esc_url($videoblock_preview); ?>"<?php endif; ?>
+        <?php if ($videoblock_video_url) : ?>data-src="<?php echo esc_url($videoblock_video_url); ?>"<?php endif; ?>
+      ></video>
     </div>
       <?php endif; ?> 
 

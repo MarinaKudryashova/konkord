@@ -7,159 +7,159 @@ add_action( 'init', 'theme_register_services_category');
 
 // Register new Taxonomy Категории услуг
 function theme_register_services_category(){
-	
-	$labels = array(
-		'name'              => _x( 'Категории услуг', 'taxonomy general name', 'konkord' ),
-		'singular_name'     => _x( 'Категория услуги', 'taxonomy singular name', 'konkord' ),
-		'search_items'      => 'Поиск категории',
-		'all_items'         => 'Все категории',
-		'view_item '        => 'Посмотреть категорию',
-		'edit_item'         => 'Редактировать категорию',
-		'update_item'       => 'Обновить категорию',
-		'add_new_item'      => 'Добавить новую категорию',
-		'new_item_name'     => 'Новая категория',
-		'menu_name'         => 'Категории услуг',
-	);
-	
-	$args = array (
-		'label'                 => 'Категории услуг', 
-		'labels'                => $labels,
-		'description'           => '', 
-		'public'                => true,
-		'hierarchical'			=> true,
-		'show_in'     		    => true,
-		'show_in_menu'          => true,
-		'show_in_nav_menus'     => true,
-		'show_admin_column'     => true,
-		'show_in_quick_edit'	=> true,
-		'rewrite'               => array(
-				'slug' => 'services-category',
-				'with_front' => false,
-				'hierarchical' => true
-		),
-	);
-	
-	register_taxonomy( 'services_category', [ 'services' ], $args );
+    
+    $labels = array(
+        'name'              => _x( 'Категории услуг', 'taxonomy general name', 'konkord' ),
+        'singular_name'     => _x( 'Категория услуги', 'taxonomy singular name', 'konkord' ),
+        'search_items'      => 'Поиск категории',
+        'all_items'         => 'Все категории',
+        'view_item '        => 'Посмотреть категорию',
+        'edit_item'         => 'Редактировать категорию',
+        'update_item'       => 'Обновить категорию',
+        'add_new_item'      => 'Добавить новую категорию',
+        'new_item_name'     => 'Новая категория',
+        'menu_name'         => 'Категории услуг',
+    );
+    
+    $args = array (
+        'label'                 => 'Категории услуг', 
+        'labels'                => $labels,
+        'description'           => '', 
+        'public'                => true,
+        'hierarchical'          => true,
+        'show_in'               => true,
+        'show_in_menu'          => true,
+        'show_in_nav_menus'     => true,
+        'show_admin_column'     => true,
+        'show_in_quick_edit'    => true,
+        'rewrite'               => array(
+            'slug' => 'services-category',
+            'with_front' => false,
+            'hierarchical' => true
+        ),
+    );
+    
+    register_taxonomy( 'services_category', [ 'services' ], $args );
 }
 
 // Register new Taxonomy Характеристики услуг
 function register_services_features_taxonomy() {
-	$labels = array(
-		'name'              => _x( 'Характеристики услуг', 'taxonomy general name', 'konkord' ),
-		'singular_name'     => _x( 'Характеристика услуги', 'taxonomy singular name', 'konkord' ),
-		'search_items'      => 'Поиск характеристик',
-		'all_items'         => 'Все характеристики',
-		'view_item'         => 'Посмотреть характеристику',
-		'edit_item'         => 'Редактировать характеристику',
-		'update_item'       => 'Обновить характеристику',
-		'add_new_item'      => 'Добавить новую характеристику',
-		'new_item_name'     => 'Новая характеристика',
-		'menu_name'         => 'Характеристики услуг',
-		'popular_items'     => 'Популярные характеристики',
-		'separate_items_with_commas' => 'Разделяйте характеристики запятыми',
-		'add_or_remove_items' => 'Добавить или удалить характеристики',
-		'choose_from_most_used' => 'Выберите из часто используемых',
-		'not_found'         => 'Характеристики не найдены',
-	);
+    $labels = array(
+        'name'              => _x( 'Характеристики услуг', 'taxonomy general name', 'konkord' ),
+        'singular_name'     => _x( 'Характеристика услуги', 'taxonomy singular name', 'konkord' ),
+        'search_items'      => 'Поиск характеристик',
+        'all_items'         => 'Все характеристики',
+        'view_item'         => 'Посмотреть характеристику',
+        'edit_item'         => 'Редактировать характеристику',
+        'update_item'       => 'Обновить характеристику',
+        'add_new_item'      => 'Добавить новую характеристику',
+        'new_item_name'     => 'Новая характеристика',
+        'menu_name'         => 'Характеристики услуг',
+        'popular_items'     => 'Популярные характеристики',
+        'separate_items_with_commas' => 'Разделяйте характеристики запятыми',
+        'add_or_remove_items' => 'Добавить или удалить характеристики',
+        'choose_from_most_used' => 'Выберите из часто используемых',
+        'not_found'         => 'Характеристики не найдены',
+    );
 
-	$args = array(
-		'label'                 => 'Характеристики услуг',
-		'labels'                => $labels,
-		'public'                => true,
-		'publicly_queryable'    => true,
-		'hierarchical'          => false, 
-		'show_ui'               => true,
-		'show_in_menu'          => true,
-		'show_in_nav_menus'     => true,
-		'show_in_rest'          => true,
-		'show_tagcloud'         => true,
-		'show_in_quick_edit'    => true,
-		'show_admin_column'     => true,
-		'rewrite'               => array(
-			'slug' => 'services-feature',
-			'with_front' => false,
-		),
-	);
+    $args = array(
+        'label'                 => 'Характеристики услуг',
+        'labels'                => $labels,
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'hierarchical'          => false, 
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_nav_menus'     => true,
+        'show_in_rest'          => true,
+        'show_tagcloud'         => true,
+        'show_in_quick_edit'    => true,
+        'show_admin_column'     => true,
+        'rewrite'               => array(
+            'slug' => 'services-feature',
+            'with_front' => false,
+        ),
+    );
 
-	register_taxonomy( 'services_feature', array( 'services' ), $args );
+    register_taxonomy( 'services_feature', array( 'services' ), $args );
 }
 
 // Create new Custom Post Type
 function services_register_post_types(){
 
-	$labels = array(
-		'name'                  => _x( 'Услуги', 'Post Type General Name', 'konkord' ),
-		'singular_name'         => _x( 'Услуга', 'Post Type Singular Name', 'konkord' ),
-		'menu_name'             => __( 'Услуги', 'konkord' ),
-		'name_admin_bar'        => __( 'Услуга', 'konkord' ),
-		'add_new_item'          => __( 'Добавить новую услугу', 'konkord' ),
-		'add_new'               => __( 'Добавить услугу', 'konkord' ),
-		'new_item'              => __( 'Новая услуга', 'konkord' ),
-		'edit_item'             => __( 'Редактировать услугу', 'konkord' ),
-		'view_item'             => __( 'Посмотреть услугу', 'konkord' ),
-		'view_items'            => __( 'Посмотреть все услуги', 'konkord' ),
-		'search_items'          => __( 'Поиск услуги', 'konkord' ),
-		'not_found'             => __( 'Не найдено', 'konkord' ),
-		'not_found_in_trash'    => __( 'В корзине не найдено', 'konkord' ),
-		'uploaded_to_this_item' => __( 'Загружено изображение услуги', 'konkord' ),
-		'featured_image'        => __( 'Изображение услуги', 'konkord' ),
-		'set_featured_image'    => __( 'Установить изображение услуги', 'konkord' ),
-		'remove_featured_image' => __( 'Удалить изображение услуги', 'konkord' ),
-		'use_featured_image'    => __( 'Использовать как изображение услуги', 'konkord' ),
-	);
+    $labels = array(
+        'name'                  => _x( 'Услуги', 'Post Type General Name', 'konkord' ),
+        'singular_name'         => _x( 'Услуга', 'Post Type Singular Name', 'konkord' ),
+        'menu_name'             => __( 'Услуги', 'konkord' ),
+        'name_admin_bar'        => __( 'Услуга', 'konkord' ),
+        'add_new_item'          => __( 'Добавить новую услугу', 'konkord' ),
+        'add_new'               => __( 'Добавить услугу', 'konkord' ),
+        'new_item'              => __( 'Новая услуга', 'konkord' ),
+        'edit_item'             => __( 'Редактировать услугу', 'konkord' ),
+        'view_item'             => __( 'Посмотреть услугу', 'konkord' ),
+        'view_items'            => __( 'Посмотреть все услуги', 'konkord' ),
+        'search_items'          => __( 'Поиск услуги', 'konkord' ),
+        'not_found'             => __( 'Не найдено', 'konkord' ),
+        'not_found_in_trash'    => __( 'В корзине не найдено', 'konkord' ),
+        'uploaded_to_this_item' => __( 'Загружено изображение услуги', 'konkord' ),
+        'featured_image'        => __( 'Изображение услуги', 'konkord' ),
+        'set_featured_image'    => __( 'Установить изображение услуги', 'konkord' ),
+        'remove_featured_image' => __( 'Удалить изображение услуги', 'konkord' ),
+        'use_featured_image'    => __( 'Использовать как изображение услуги', 'konkord' ),
+    );
   
-	$args = array(
-		'label'                 => __( 'Услуги', 'konkord' ),
-		'labels'                => $labels,
-		'description'           => __( 'Все услуги', 'konkord' ),
-		'public'                => true,
-		'publicly_queryable'    => true,
-		'rewrite' 				=> array(
-			'slug' => 'services',
-			'with_front' => false,
-			'pages' => true,
-		),
-		'show_ui'               => true,
-		'show_in_menu'          => true,
-		'show_in_admin_bar'     => true,
-		'show_in_nav_menus'     => true,
-		'menu_position'         => 4,
-		'menu_icon'             => 'dashicons-book',
-		'supports'              => array('title', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes', 'editor'),
-		'taxonomies'            => array('services_category', 'services_feature'),
-		'has_archive'           => false,
-	);
-	
-	register_post_type( 'services', $args );
+    $args = array(
+        'label'                 => __( 'Услуги', 'konkord' ),
+        'labels'                => $labels,
+        'description'           => __( 'Все услуги', 'konkord' ),
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'rewrite'               => array(
+            'slug' => 'services',
+            'with_front' => false,
+            'pages' => true,
+        ),
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'show_in_admin_bar'     => true,
+        'show_in_nav_menus'     => true,
+        'menu_position'         => 4,
+        'menu_icon'             => 'dashicons-book',
+        'supports'              => array('title', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes', 'editor'),
+        'taxonomies'            => array('services_category', 'services_feature'),
+        'has_archive'           => 'services',
+    );
+    
+    register_post_type( 'services', $args );
 }
 
 // Добавление фильтра по категориям в админке
 function services_true_taxonomy_filter() {
-	global $typenow;
-	
-	if( $typenow == 'services' ) {
-		$taxes = array('services_category');
-		
-		foreach ($taxes as $tax) {
-			$current_tax = isset( $_GET[$tax] ) ? $_GET[$tax] : '';
-			$tax_obj = get_taxonomy($tax);
-			$tax_name = mb_strtolower($tax_obj->labels->name);
-			$terms = get_terms(array(
-				'taxonomy' => $tax,
-				'hide_empty' => false,
-			));
-			
-			if(count($terms) > 0) {
-				echo "<select name='$tax' id='$tax' class='postform'>";
-				echo "<option value=''>Все $tax_name</option>";
-				
-				foreach ($terms as $term) {
-					echo '<option value='. $term->slug . (($current_tax == $term->slug) ? ' selected="selected"' : '') . '>' . $term->name .' (' . $term->count .')</option>'; 
-				}
-				echo "</select>";
-			}
-		}
-	}
+    global $typenow;
+    
+    if( $typenow == 'services' ) {
+        $taxes = array('services_category');
+        
+        foreach ($taxes as $tax) {
+            $current_tax = isset( $_GET[$tax] ) ? $_GET[$tax] : '';
+            $tax_obj = get_taxonomy($tax);
+            $tax_name = mb_strtolower($tax_obj->labels->name);
+            $terms = get_terms(array(
+                'taxonomy' => $tax,
+                'hide_empty' => false,
+            ));
+            
+            if(count($terms) > 0) {
+                echo "<select name='$tax' id='$tax' class='postform'>";
+                echo "<option value=''>Все $tax_name</option>";
+                
+                foreach ($terms as $term) {
+                    echo '<option value='. $term->slug . (($current_tax == $term->slug) ? ' selected="selected"' : '') . '>' . $term->name .' (' . $term->count .')</option>'; 
+                }
+                echo "</select>";
+            }
+        }
+    }
 }
  
 add_action( 'restrict_manage_posts', 'services_true_taxonomy_filter' );
@@ -202,7 +202,7 @@ function services_settings_page_callback() {
         <h1>Настройки услуг</h1>
         
         <div class="notice notice-info">
-            <p><strong>Как настроить:</strong> Создайте страницу &rarr; назначьте ей шаблон "Каталог услуг" &rarr; выберите её выше &rarr; сохраните настройки &rarr; обновите постоянные ссылки.</p>
+            <p><strong>Как настроить:</strong> Создайте страницу &rarr; выберите её выше &rarr; сохраните настройки &rarr; обновите постоянные ссылки.</p>
         </div>
         
         <form method="post" action="">
@@ -213,7 +213,7 @@ function services_settings_page_callback() {
                     <th scope="row">
                         <label for="page_for_services">Страница записей услуг</label>
                     </th>
-                    <tr>
+                    <td>
                         <?php
                         wp_dropdown_pages(array(
                             'name' => 'page_for_services',
@@ -239,7 +239,7 @@ function services_settings_page_callback() {
                                id="services_per_page" 
                                value="<?php echo $services_per_page; ?>" 
                                min="1"
-                               max="50"
+                               max="1000"
                                class="small-text">
                         <p class="description">Количество услуг, отображаемых на одной странице</p>
                     </td>
@@ -286,7 +286,7 @@ function customizer_services_settings($wp_customize) {
         'label'       => 'Услуг на странице',
         'section'     => 'services_archive_section',
         'type'        => 'number',
-        'input_attrs' => array('min' => 1, 'max' => 50),
+        'input_attrs' => array('min' => 1, 'max' => 1000),
     ));
 }
 
@@ -302,24 +302,7 @@ function get_services_per_page() {
 }
 
 /**
- * 5. Форсируем использование archive-services.php для страницы услуг
- */
-add_filter('template_include', 'force_archive_template_for_services');
-function force_archive_template_for_services($template) {
-    $services_page_id = get_services_page_id();
-    
-    if($services_page_id && is_page($services_page_id)) {
-        $archive_template = locate_template('archive-services.php');
-        if($archive_template) {
-            return $archive_template;
-        }
-    }
-    
-    return $template;
-}
-
-/**
- * 6. Перенаправляем /services на выбранную страницу
+ * 5. Перенаправляем /services на выбранную страницу
  */
 add_action('template_redirect', 'redirect_services_archive_to_page');
 function redirect_services_archive_to_page() {
@@ -333,7 +316,7 @@ function redirect_services_archive_to_page() {
 }
 
 /**
- * 7. Добавляем подпись "— Страница записей услуг" в списке страниц
+ * 6. Добавляем подпись "— Страница записей услуг" в списке страниц
  */
 add_filter('display_post_states', 'add_services_page_state', 10, 2);
 function add_services_page_state($post_states, $post) {
@@ -347,7 +330,7 @@ function add_services_page_state($post_states, $post) {
 }
 
 /**
- * 8. Показываем уведомление при редактировании архивной страницы
+ * 7. Показываем уведомление при редактировании архивной страницы
  */
 add_action('admin_notices', 'services_page_edit_notice');
 function services_page_edit_notice() {
@@ -375,9 +358,8 @@ function services_page_edit_notice() {
 }
 
 /**
- * 9. Скрываем секцию "Атрибуты страницы" для страницы услуг
+ * 8. Скрываем секцию "Атрибуты страницы" для страницы услуг
  */
-
 add_action('admin_head-post.php', 'hide_page_attributes_for_services');
 add_action('admin_head-post-new.php', 'hide_page_attributes_for_services');
 function hide_page_attributes_for_services() {
@@ -390,7 +372,6 @@ function hide_page_attributes_for_services() {
     if($services_page_id && $post->ID == $services_page_id) {
         ?>
         <style>
-            /* Скрываем всю секцию "Атрибуты страницы" */
             .postbox-container .postbox:has(.post-attributes-label-wrapper),
             #pageparentdiv,
             .editor-post-status .components-panel__row:has(.editor-post-parent) {
@@ -402,7 +383,7 @@ function hide_page_attributes_for_services() {
 }
 
 /**
- * 10. Принудительно устанавливаем шаблон для страницы услуг
+ * 9. Принудительно устанавливаем шаблон для страницы услуг
  */
 add_action('save_post', 'force_template_for_services_page', 10, 2);
 function force_template_for_services_page($post_id, $post) {
@@ -418,44 +399,7 @@ function force_template_for_services_page($post_id, $post) {
 }
 
 /**
- * 11. Добавляем ЧПУ для категорий на странице каталога
- */
-add_action('init', 'add_pretty_services_category_rewrite_rules');
-function add_pretty_services_category_rewrite_rules() {
-    $services_page_id = get_services_page_id();
-    
-    if($services_page_id) {
-        $page_slug = get_post_field('post_name', $services_page_id);
-        
-        if($page_slug) {
-            add_rewrite_tag('%services_category%', '([^&]+)');
-            
-            // /katalog/etiketki/
-            add_rewrite_rule(
-                '^' . $page_slug . '/([^/]+)/?$',
-                'index.php?page_id=' . $services_page_id . '&services_category=$matches[1]',
-                'top'
-            );
-            
-            // /katalog/etiketki/page/2/
-            add_rewrite_rule(
-                '^' . $page_slug . '/([^/]+)/page/([0-9]+)/?$',
-                'index.php?page_id=' . $services_page_id . '&services_category=$matches[1]&paged=$matches[2]',
-                'top'
-            );
-            
-            // /katalog/page/2/
-            add_rewrite_rule(
-                '^' . $page_slug . '/page/([0-9]+)/?$',
-                'index.php?page_id=' . $services_page_id . '&paged=$matches[1]',
-                'top'
-            );
-        }
-    }
-}
-
-/**
- * 12. Добавляем services_category в query vars
+ * 10. Добавляем services_category в query vars
  */
 add_filter('query_vars', 'add_services_category_query_var');
 function add_services_category_query_var($vars) {
@@ -464,25 +408,46 @@ function add_services_category_query_var($vars) {
 }
 
 /**
- * 13. Перенаправляем стандартные страницы категорий на ЧПУ
+ * 11. Функция для получения полного пути категории
+ * (используется в навигации по категориям)
  */
-add_action('template_redirect', 'redirect_services_category_to_pretty_url');
-function redirect_services_category_to_pretty_url() {
-    if(is_tax('services_category')) {
-        $services_page_id = get_services_page_id();
-        $category = get_queried_object();
-        
-        if($services_page_id && $category) {
-            $page_slug = get_post_field('post_name', $services_page_id);
-            $pretty_url = home_url('/' . $page_slug . '/' . $category->slug . '/');
-            wp_redirect($pretty_url, 301);
-            exit;
+function get_category_full_path($term) {
+    $path = '';
+    $ancestors = get_ancestors($term->term_id, 'services_category', 'taxonomy');
+    
+    if (!empty($ancestors)) {
+        $ancestors = array_reverse($ancestors);
+        foreach ($ancestors as $ancestor_id) {
+            $ancestor = get_term($ancestor_id, 'services_category');
+            if ($ancestor && !is_wp_error($ancestor)) {
+                $path .= $ancestor->slug . '/';
+            }
         }
     }
+    
+    $path .= $term->slug;
+    return $path;
 }
 
 /**
- * 14. Заменяем ссылки категорий в меню на ЧПУ
+ * 12. ПРИНУДИТЕЛЬНО ИСПОЛЬЗУЕМ archive-services.php ДЛЯ СТРАНИЦЫ УСЛУГ
+ */
+add_filter('template_include', 'force_archive_template_for_services_page');
+function force_archive_template_for_services_page($template) {
+    $services_page_id = get_services_page_id();
+    
+    if($services_page_id && is_page($services_page_id)) {
+        $archive_template = locate_template('archive-services.php');
+        if($archive_template) {
+            return $archive_template;
+        }
+    }
+    
+    return $template;
+}
+
+/**
+ * 13. Заменяем ссылки категорий в меню на ЧПУ с учетом города
  */
 add_filter('nav_menu_link_attributes', 'change_category_links_to_pretty_url', 10, 3);
 function change_category_links_to_pretty_url($atts, $item, $args) {
@@ -492,7 +457,14 @@ function change_category_links_to_pretty_url($atts, $item, $args) {
             $services_page_id = get_services_page_id();
             if($services_page_id) {
                 $page_slug = get_post_field('post_name', $services_page_id);
-                $atts['href'] = home_url('/' . $page_slug . '/' . $term->slug . '/');
+                $full_path = get_category_full_path($term);
+                
+                $city = get_geo_city_from_query();
+                if(!empty($city)) {
+                    $atts['href'] = home_url('/' . $city . '/' . $page_slug . '/' . $full_path . '/');
+                } else {
+                    $atts['href'] = home_url('/' . $page_slug . '/' . $full_path . '/');
+                }
             }
         }
     }

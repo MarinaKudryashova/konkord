@@ -1,11 +1,10 @@
 <?php
   $page_id = $args["page_id"];
-  $sec_name = $args["name"]["value"];
-  $sec_is_last = $args["lastblock"];
+  $sec_name = $args["name"]["value"] ?? '';
   $sec_is_last = (int) $args["lastblock"] ?? 0;
 
   $sec_class = 'why-benefits';
-  if($sec_is_last != 1) {
+  if($sec_is_last !== 1) {
     $sec_class .= ' sec-offset';
   }
   
@@ -15,6 +14,9 @@
   $sec_why_title = get_field($field_title, $page_id);
   $sec_why_list = get_field($field_list, $page_id);
 
+  if (empty($sec_why_list) || !is_array($sec_why_list)) {
+      return;
+  }
 ?>
 <section class="<?php echo esc_attr($sec_class); ?>">
 
@@ -34,11 +36,13 @@
         $benefit_text = $benefit["text"];
 
         $total_items = count($sec_why_list);
-        $item_type = match(true) {
-            $ids == 0 => 'first',
-            $ids == $total_items - 1 => 'last',
-            default => 'middle'
-        };
+        if ($ids == 0) {
+            $item_type = 'first';
+        } elseif ($ids == $total_items - 1) {
+            $item_type = 'last';
+        } else {
+            $item_type = 'middle';
+        }
         ?>
         <li class="why-benefits__item" data-aos="fade-up" data-aos-duration="500" data-aos-delay="<?php echo $ids*200+80; ?>">
           <?php if($item_type === 'first' && $sec_why_title) : ?>

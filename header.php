@@ -17,17 +17,13 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 <head>
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="<?php bloginfo( 'name' ); ?> - <?php bloginfo('description'); ?>">
-
 
   <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri();?>/favicon/apple-touch-icon.png">
-	<meta name="apple-mobile-web-app-title" content="<?php bloginfo( 'name' ); ?>" />
-	<link rel="icon" type="image/png" href="<?php echo get_template_directory_uri();?>/favicon-96x96.png" sizes="96x96" />
-	<link rel="icon" type="image/svg+xml" href="<?php echo get_template_directory_uri();?>/favicon.svg" />
-	<link rel="shortcut icon" href="<?php echo get_template_directory_uri();?>/favicon.ico" />
+  <meta name="apple-mobile-web-app-title" content="<?php bloginfo( 'name' ); ?>" />
+  <link rel="icon" type="image/svg+xml" href="<?php echo get_template_directory_uri();?>/img/favicon.svg" />
+  <link rel="shortcut icon" href="<?php echo get_template_directory_uri();?>/favicon/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri();?>/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri();?>/favicon/favicon-16x16.png">
-  <link rel="manifest" href="<?php echo get_template_directory_uri();?>/favicon/site.webmanifest">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="<?php echo esc_attr(get_bloginfo('name')); ?>">
@@ -47,11 +43,8 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
     content="<?php bloginfo( 'name' ); ?> - <?php bloginfo('description'); ?>">
   <meta name="twitter:image" content="<?php echo get_template_directory_uri();?>/img/site-preview.jpg">
 
-  <link rel="preload" href="<?php echo get_template_directory_uri();?>/fonts/Manrope-Light.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="<?php echo get_template_directory_uri();?>/fonts/Manrope-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="<?php echo get_template_directory_uri();?>/fonts/Manrope-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="<?php echo get_template_directory_uri();?>/fonts/Manrope-Bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="<?php echo get_template_directory_uri();?>/fonts/Manrope-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
 
   <?php wp_head(); ?>
 </head>
@@ -128,7 +121,7 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 				</div>
 				
 				<?php /*-- Кнопка бургер --*/ ?>
-				<button class="header__burger" data-burger>
+				<button class="header__burger" data-burger type="button" aria-label="открыть меню">
 					<svg>
 						<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#burger"></use>
 					</svg>

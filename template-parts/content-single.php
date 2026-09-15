@@ -8,14 +8,12 @@
     ? get_image_versions($news_img_url)
     : get_placeholder_image();
 
-  $news_img_mobile_url = get_field('page_img_mobile', $page_id);
-  $news_img_mobile = $news_img_mobile_url 
-    ? get_image_versions($news_img_mobile_url)
-    : $news_img;
+  $news_img_mobile_url = get_field( 'page_img_mobile', $page_id );
+  $news_img_mobile     = konkord_resolve_mobile_sources( $news_img, $news_img_mobile_url );
 
 	$news_banner_text = get_field('news-banner_text', $page_id);
 	$news_banner_email = get_field('news-banner_email', $page_id);
-	$news_banner_phone = trim(get_field('news-banner_phone', $page_id));
+	$news_banner_phone = trim( (string) ( get_field('news-banner_phone', $page_id) ?: '' ) );
   if (strpos($news_banner_phone, '+') === 0) {
 		$news_banner_phone_href = preg_replace('/[^0-9+]/', '', $news_banner_phone);
 	} else {
@@ -27,14 +25,9 @@
   <div class="post-news__container container">
     <div class="post-news__heading">
       <picture class="post-news__bgimg">
-          <?php if (!empty( $news_img_mobile['webp_1x'])): ?>
-          <source media="(max-width: 576px)" srcset="<?php echo esc_url( $news_img_mobile['webp_1x']); ?>" type="image/webp">
-          <?php endif; ?>
-          <?php if (!empty( $news_img_mobile['original_1x'])): ?>
-          <source media="(max-width: 576px)" srcset="<?php echo esc_url( $news_img_mobile['original_1x']); ?>" type="image/jpg">
-          <?php endif; ?>
+          <?php konkord_picture_mobile_sources( $news_img_mobile ); ?>
           <source srcset="<?php echo esc_url($news_img["webp_1x"]); ?>" type="image/webp">
-          <img src="<?php echo esc_url($news_img["original_1x"]); ?>" alt="Фотофон страницы" width="1160" height="476" aria-hidden="true">
+          <img loading="lazy" src="<?php echo esc_url($news_img["original_1x"]); ?>" alt="Фотофон страницы" width="1160" height="476" aria-hidden="true">
       </picture>
       <h1 class="post-news__title"><?php echo $news_title; ?></h1>
       <div class="post-news__date">

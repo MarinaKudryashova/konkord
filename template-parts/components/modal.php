@@ -20,10 +20,8 @@ $modalsend_img = $modalsend_img_url
   ? get_image_versions($modalsend_img_url)
   : get_placeholder_image();
 
-$modalsend_img_url_mobile = get_field('modalsend_img_mobile', 'option');
-$modalsend_img_mobile = $modalsend_img_url_mobile 
-  ? get_image_versions($modalsend_img_url_mobile)
-  : $modalsend_img;
+$modalsend_img_url_mobile = get_field( 'modalsend_img_mobile', 'option' );
+$modalsend_img_mobile     = konkord_resolve_mobile_sources( $modalsend_img, $modalsend_img_url_mobile );
 ?>
 
 <div class="graph-modal">
@@ -78,17 +76,12 @@ $modalsend_img_mobile = $modalsend_img_url_mobile
 
       <div class="bannerform__bg">
         <picture class="bannerform__picture">
-          <?php if (!empty($modalsend_img_mobile['webp_1x'])) : ?>
-          <source media="(max-width: 576px)" srcset="<?php echo esc_url($modalsend_img_mobile['webp_1x']); ?>" type="image/jpg">
-          <?php endif; ?>
-          <?php if (!empty($modalsend_img_mobile['original_1x'])) : ?>
-          <source media="(max-width: 576px)" srcset="<?php echo esc_url($modalsend_img_mobile['original_1x']); ?>" type="image/jpg">
-          <?php endif; ?>
+          <?php konkord_picture_mobile_sources( $modalsend_img_mobile ); ?>
 
           <?php if (!empty($modalsend_img['webp_1x'])) : ?>
           <source srcset="<?php echo esc_url($modalsend_img['webp_1x']); ?>" type="image/webp">
           <?php endif; ?>
-          <img class="bannerform__img" src="<?php echo esc_url($modalsend_img['original_1x']); ?>" width="1443" height="534" alt="Фото" aria-hidden="true" loading="lazy">
+          <img loading="lazy" class="bannerform__img" src="<?php echo esc_url($modalsend_img['original_1x']); ?>" width="1443" height="534" alt="Фото" aria-hidden="true" loading="lazy">
         </picture>
       </div>
 
@@ -114,7 +107,7 @@ $modalsend_img_mobile = $modalsend_img_url_mobile
         </div>
         <?php if($modalsend_logo) : ?>
           <a href="<?php bloginfo('url'); ?>" class="header__logo logo">
-            <img class="logo__img" src="<?php echo get_field('site_logo', 'option') ?>" alt="Logo <?php bloginfo('name'); ?>" width="214" height="40">
+            <img loading="lazy" class="logo__img" src="<?php echo get_field('site_logo', 'option') ?>" alt="Logo <?php bloginfo('name'); ?>" width="214" height="40">
           </a>
         <?php endif; ?>
       </div>

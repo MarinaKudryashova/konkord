@@ -13,10 +13,8 @@
     ? get_image_versions($about_img_url)
     : get_placeholder_image();
 
-  $about_img_mobile_url = get_field('page_img_mobile', $page_id);
-  $about_img_mobile = $about_img_mobile_url 
-    ? get_image_versions($about_img_mobile_url)
-    : $about_img;
+  $about_img_mobile_url = get_field( 'page_img_mobile', $page_id );
+  $about_img_mobile     = konkord_resolve_mobile_sources( $about_img, $about_img_mobile_url );
   $about_short_descr = get_field('about_short_descr', $page_id);
   $about_qoute = get_field('about_qoute', $page_id);
   $about_gallery_steps = get_field('about_gallery_steps', $page_id);
@@ -27,12 +25,7 @@
    <div class="about__container container">
       <div class="about__heading">
          <picture class="about__bgimg">
-            <?php if (!empty( $about_img_mobile['webp_1x'])): ?>
-            <source media="(max-width: 576px)" srcset="<?php echo esc_url( $about_img_mobile['webp_1x']); ?>" type="image/webp">
-            <?php endif; ?>
-            <?php if (!empty( $about_img_mobile['original_1x'])): ?>
-            <source media="(max-width: 576px)" srcset="<?php echo esc_url( $about_img_mobile['original_1x']); ?>" type="image/jpg">
-            <?php endif; ?>
+            <?php konkord_picture_mobile_sources( $about_img_mobile ); ?>
             <source srcset="<?php echo esc_url($about_img["webp_1x"]); ?>" type="image/webp">
             <img src="<?php echo esc_url($about_img["original_1x"]); ?>" alt="Фотофон страницы" width="1160" height="476" aria-hidden="true">
          </picture>
@@ -63,12 +56,14 @@
         $step_img = $step_img_url 
         ? get_image_versions($step_img_url)
         : get_placeholder_image();
+        $step_img_mobile = konkord_resolve_mobile_sources( $step_img );
         ?>
          <li class="about__gallery-item about-gallery" data-aos="fade-up" data-aos-once="false" data-aos-duration="400" data-aos-delay="100">
            <?php if($step_type === 'img') : ?>
                <?php /*-- Изображение --*/ ?>
             <a data-fslightbox="about-gallery-<?php echo $page_id ?>" data-caption="" href="<?php echo $step_img_url ?>" class="about-gallery__link">
               <picture class="about-gallery__img">
+                <?php konkord_picture_mobile_sources( $step_img_mobile ); ?>
                 <?php if($step_img["webp_1x"]) : ?>
                   <source srcset="<?php echo esc_url($step_img["webp_1x"]); ?>" type="image/webp">
                 <?php endif; ?>

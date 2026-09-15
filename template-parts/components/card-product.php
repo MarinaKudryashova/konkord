@@ -24,6 +24,7 @@ $car_price = $car->get_price_html();
 // Изображение
 $car_thumbnail_id = $car->get_image_id();
 $car_thumbnail = get_image_versions($car_thumbnail_id, 'full');
+$car_thumbnail_mobile = konkord_resolve_mobile_sources( $car_thumbnail );
 $car_thumbnail_alt = !empty($car_thumbnail["alt"]) ? $car_thumbnail["alt"] : sprintf(__('Изображение товара %s', 'primasnab'), $car_title);
 
 // Миниатюра товара с кастомным плейсхолдером(по умолчанию от Woocomerce)
@@ -37,15 +38,16 @@ $car_fallback_img_id = attachment_url_to_postid($car_fallback_img_url);
   <?php /*-- Изображение --*/ ?>
   <?php if(has_post_thumbnail($car_id)) : ?>
   <picture class="product-card__view">
+    <?php konkord_picture_mobile_sources( $car_thumbnail_mobile ); ?>
     <?php if(isset($car_thumbnail['webp_1x']) && !empty($car_thumbnail['webp_1x'])) : ?>
     <source srcset="<?php echo esc_url($car_thumbnail["webp_1x"]); ?>" type="image/webp">
     <?php endif; ?>
-    <img class="product-card__img" src="<?php echo esc_url($car_thumbnail["original_1x"]); ?>"
+    <img loading="lazy" class="product-card__img" src="<?php echo esc_url($car_thumbnail["original_1x"]); ?>"
       itemprop="image" alt="<?php echo esc_attr($car_thumbnail_alt); ?>" width="400" height="350">
   </picture>
   <?php else : ?>
   <div class="product-card__view">
-    <img class="product-card__img" src="<?php echo esc_url($car_fallback_img_url); ?>" itemprop="image"
+    <img loading="lazy" class="product-card__img" src="<?php echo esc_url($car_fallback_img_url); ?>" itemprop="image"
       alt="<?php echo esc_attr('Изображения товара нет', 'primasnab') ?>" width="400" height="350">
   </div>
   <?php endif; ?>

@@ -15,11 +15,12 @@
   $block_list = get_field($list_field, $page_id);
 
   $faq_img_url = get_field('faq_img', $page_id);
-  $faq_img = get_image_versions($faq_img_url);
+  $faq_img = $faq_img_url ? get_image_versions( $faq_img_url ) : null;
 
-  if($faq_img) {
-    $faq_img_mobile_url = get_field('faq_img_mobile', $page_id);
-    $faq_img_mobile = $faq_img_mobile_url ? get_image_versions($faq_img_mobile_url) : $faq_img;
+    $faq_img_mobile = null;
+  if ( $faq_img ) {
+    $faq_img_mobile_url = get_field( 'faq_img_mobile', $page_id );
+    $faq_img_mobile     = konkord_resolve_mobile_sources( $faq_img, $faq_img_mobile_url );
   }
 ?>
 
@@ -38,13 +39,8 @@
 
       <?php if($faq_img) : ?>
         <picture class="faq__img">
-          <?php if($faq_img["webp_1x"]) : ?>
-            <?php if (!empty( $faq_img_mobile['webp_1x'])): ?>
-          <source media="(max-width: 768px)" srcset="<?php echo esc_url( $faq_img_mobile['webp_1x']); ?>" type="image/webp">
-          <?php endif; ?>
-          <?php if (!empty( $faq_img_mobile['original_1x'])): ?>
-            <source media="(max-width: 768px)" srcset="<?php echo esc_url( $faq_img_mobile['original_1x']); ?>" type="image/jpg">
-          <?php endif; ?>
+          <?php konkord_picture_mobile_sources( $faq_img_mobile, '(max-width: 768px)' ); ?>
+          <?php if ( ! empty( $faq_img["webp_1x"] ) ) : ?>
             <source srcset="<?php echo esc_url($faq_img["webp_1x"]); ?>" type="image/webp">
           <?php endif; ?>
           <img src="<?php echo esc_url($faq_img["original_1x"]); ?>" width="550" height="1035" alt="" aria-hidden="true">

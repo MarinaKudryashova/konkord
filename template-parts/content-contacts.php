@@ -12,6 +12,7 @@
   $main_office_img = $main_office_img_url 
       ? get_image_versions($main_office_img_url)
       : get_placeholder_image();
+  $main_office_img_mobile = konkord_resolve_mobile_sources( $main_office_img );
 
   $main_office_map_link = get_field('company_main_office_map_link', 'option');
   $main_office_city = get_field('company_main_office_city', 'option');
@@ -55,10 +56,12 @@
   $company_manufacture_img_1 = $company_manufacture_img_url_1 
       ? get_image_versions($company_manufacture_img_url_1)
       : get_placeholder_image();
+  $company_manufacture_img_1_mobile = konkord_resolve_mobile_sources( $company_manufacture_img_1 );
   $company_manufacture_img_url_2 = get_field('company_manufacture_photo_2', 'option');
   $company_manufacture_img_2 = $company_manufacture_img_url_2 
       ? get_image_versions($company_manufacture_img_url_2)
       : get_placeholder_image();
+  $company_manufacture_img_2_mobile = konkord_resolve_mobile_sources( $company_manufacture_img_2 );
   $company_manufacture_map_link = get_field('company_manufacture_map_link', 'option');
   $company_manufacture_timework = get_field('company_manufacture_timework', 'option');
   $company_manufacture_map = get_field('company_manufacture_map_center', 'option');
@@ -75,6 +78,7 @@
          <div class="sec-contacts__address" data-aos="fade-up">
             <div class="card-contact">
                <picture class="card-contact__img">
+                  <?php konkord_picture_mobile_sources( $main_office_img_mobile ); ?>
                   <source srcset="<?php echo esc_url($main_office_img["webp_1x"]); ?>" type="image/webp">
                   <img src="<?php echo esc_url($main_office_img["original_1x"]); ?>" alt="Фотография офиса" width="336" height="214">
                </picture>
@@ -156,7 +160,7 @@
                <?php if($company_manufacture_city && $company_manufacture_address_local) : ?>
                <div class="card-contact__address">
                   <span class="card-contact__title">
-                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon/map-pin.svg" alt="" width="24" height="24" aria-hidden="true">
+                     <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icon/map-pin.svg" alt="" width="24" height="24" aria-hidden="true">
                      <span>Адрес производства</span>
                   </span>
                   <span class="card-contact__value">г. <?php echo esc_html($company_manufacture_city); ?>, <?php echo esc_html($company_manufacture_address_local); ?></span>
@@ -170,7 +174,7 @@
                <?php if($company_manufacture_timework) : ?>
                <div class="card-contact__workHours">
                   <span class="card-contact__title">
-                     <img src="<?php echo get_template_directory_uri(); ?>/img/icon/clock.svg" alt="" width="24" height="24" aria-hidden="true">
+                     <img loading="lazy" src="<?php echo get_template_directory_uri(); ?>/img/icon/clock.svg" alt="" width="24" height="24" aria-hidden="true">
                      <span>Режим работы производства</span>
                   </span>
                   <span class="card-contact__value"><?php echo esc_html($company_manufacture_timework); ?></span>
@@ -180,15 +184,17 @@
                <div class="card-contact__gallery">
                   <?php if($company_manufacture_img_1 && is_array($company_manufacture_img_1)) : ?>
                   <picture class="card-contact__img">
+                     <?php konkord_picture_mobile_sources( $company_manufacture_img_1_mobile ); ?>
                      <source srcset="<?php echo esc_url($company_manufacture_img_1["webp_1x"]); ?>" type="image/webp">
-                     <img src="<?php echo esc_url($company_manufacture_img_1["original_1x"]); ?>" alt="Фотография офиса" width="164" height="101">
+                     <img loading="lazy" src="<?php echo esc_url($company_manufacture_img_1["original_1x"]); ?>" alt="Фотография офиса" width="164" height="101">
                   </picture>
                   <?php endif; ?>
 
                   <?php if($company_manufacture_img_2 && is_array($company_manufacture_img_2)) : ?>
                   <picture class="card-contact__img">
+                     <?php konkord_picture_mobile_sources( $company_manufacture_img_2_mobile ); ?>
                      <source srcset="<?php echo esc_url($company_manufacture_img_2["webp_1x"]); ?>" type="image/webp">
-                     <img src="<?php echo esc_url($company_manufacture_img_2["original_1x"]); ?>" alt="Фотография офиса" width="164" height="101">
+                     <img loading="lazy" src="<?php echo esc_url($company_manufacture_img_2["original_1x"]); ?>" alt="Фотография офиса" width="164" height="101">
                   </picture>
                   <?php endif; ?>
                </div>

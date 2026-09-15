@@ -9,7 +9,17 @@
   $promo_descr = get_field('promo_descr', $page_id);
   $promo_img_url = get_field('promo_bgimg', $page_id);
   $promo_img = $promo_img_url ? get_image_versions($promo_img_url) : '#';
+
   $promo_video = get_field('promo_video', $page_id);
+  $promo_video_webm = get_field('promo_video_webm', $page_id);
+  $poster_url = '';
+  if ($promo_img) {
+    $poster_url = !empty($promo_img['webp_1x']) 
+      ? $promo_img['webp_1x'] 
+      : (!empty($promo_img['original_1x']) 
+        ? $promo_img['original_1x'] 
+        : '');
+  }
 ?>
 
 <section class="promo sec-offset sec-light">
@@ -23,11 +33,23 @@
       <?php if(!empty($promo_descr)) : ?>
       <p class="promo__descr" data-aos="fade-up" data-aos-delay="150"><?php echo esc_html($promo_descr); ?></p>
       <?php endif; ?>
-      
-      <div class="promo__video">
-        <video src="<?php echo esc_url($promo_video); ?>" playsinline autoplay <?php if($promo_img["original_1x"]) :?>poster="<?php echo esc_url($promo_img["original_1x"]); ?>"<?php endif; ?> preload="metadata" muted loop></video>
-      </div>
 
+      <?php if ($promo_video || $promo_video_webm || $poster_url) : ?>
+      <div class="promo__video" data-aos="fade-up" data-aos-delay="150">
+        <video
+          id="promoVideo"
+          playsinline
+          muted
+          loop
+          preload="none"
+          aria-hidden="true"
+          tabindex="-1"
+          <?php if ($poster_url) : ?>poster="<?php echo esc_url($poster_url); ?>"<?php endif; ?>
+          <?php if ($promo_video_webm) : ?>data-src-webm="<?php echo esc_url($promo_video_webm); ?>"<?php endif; ?>
+          <?php if ($promo_video) : ?>data-src-mp4="<?php echo esc_url($promo_video); ?>"<?php endif; ?>
+        ></video>
+      </div>
+      <?php endif; ?>
 
       <?php /*-- Кнопка с формой --*/ ?>
 			<button type="button" 
