@@ -4,7 +4,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
   const playBtn = document.querySelector(".videoblock__play");
 
   if (video) {
+    const ensureSrc = () => {
+      const src = video.getAttribute("data-src");
+      if (src && !video.getAttribute("src")) {
+        video.src = src;
+        video.load();
+      }
+    };
+
     playBtn.addEventListener("click", () => {
+      ensureSrc();
       videoBox.classList.add("played");
       video.play();
       video.controls = true;

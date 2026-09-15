@@ -30,6 +30,7 @@
         $step_img = $step_img_url 
         ? get_image_versions($step_img_url)
         : get_placeholder_image();
+        $step_img_mobile = konkord_resolve_mobile_sources( $step_img );
         ?>
         <li class="steps__item" data-aos="fade-up" data-aos-offset="0" data-aos-duration="500" data-aos-delay="<?php echo $ids*100 + 50; ?>">
           <?php if($step_type === 'text') : ?>
@@ -41,6 +42,7 @@
           <?php if($step_type === 'img') : ?>
             <?php /*-- Изображение --*/ ?>
             <picture class="steps__img">
+              <?php konkord_picture_mobile_sources( $step_img_mobile ); ?>
               <?php if($step_img["webp_1x"]) : ?>
                 <source srcset="<?php echo esc_url($step_img["webp_1x"]); ?>" type="image/webp">
               <?php endif; ?>

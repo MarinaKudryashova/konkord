@@ -18,3 +18,12 @@
     --sec-mb: 60px;
   }
 }
+
+/* Below-fold: browser may skip rendering until near viewport (design unchanged). */
+.videoblock,
+.bannerform,
+.sec-reviews__widgets,
+[data-lazy-section] {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 640px;
+}

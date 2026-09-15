@@ -19,13 +19,13 @@
     <?php endif; ?>
 
     <?php if($sec_reviews_widget_map && $sec_reviews_widget_reviews) : ?>
-    <div class="sec-reviews__widgets">
+    <div class="sec-reviews__widgets" data-lazy-section>
       <?php if($sec_reviews_widget_map) : ?>
-      <div class="sec-reviews__widget-map"><?php echo $sec_reviews_widget_map; ?></div>
+      <div class="sec-reviews__widget-map"><?php echo konkord_lazy_iframes_html( $sec_reviews_widget_map ); ?></div>
       <?php endif; ?>
 
       <?php if($sec_reviews_widget_reviews) : ?>
-      <div class="sec-reviews__widget-reviews"><?php echo $sec_reviews_widget_reviews; ?></div>
+      <div class="sec-reviews__widget-reviews"><?php echo konkord_lazy_iframes_html( $sec_reviews_widget_reviews ); ?></div>
       <?php endif; ?>
     </div>
     <?php endif; ?>

@@ -13,3 +13,4 @@ import "./components/map";
 import "./components/modal";
 import "./components/cookie-notice";
 import "./components/slider-thumbs";
+import "./components/lazy-iframe";

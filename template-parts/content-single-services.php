@@ -16,7 +16,10 @@
   $service_img = $service_img_url 
     ? get_image_versions($service_img_url)
     : get_placeholder_image();
-
+  $service_img_mobile_url = get_field( 'page_img_mobile', $page_id );
+  $service_img_mobile     = konkord_resolve_mobile_sources( $service_img, $service_img_mobile_url );
+  // Отдельный mobile-блок в вёрстке — берём меньший файл как src.
+  $service_img_for_mobile = $service_img_mobile ?: $service_img;
 
 	$ss_variant_gallery = get_field('services_gallery', $page_id);
 	$ss_variant_title = get_field('services_descr_title', $page_id);
@@ -38,14 +41,19 @@
         <div class="single-services__shortdescr" data-aos="fade-up" data-aos-delay="200"><?php echo wp_kses_post($service_shortdescr); ?></div>
         <!-- Картинка на мобильных -->
         <picture class="single-services__bgimg single-services__bgimg--mobile">
-          <source srcset="<?php echo esc_url($service_img["webp_1x"]); ?>" type="image/webp">
-          <img src="<?php echo esc_url($service_img["original_1x"]); ?>" alt="Услуга: <?php echo $service_title; ?>" width="620" height="504">
+          <?php if ( ! empty( $service_img_for_mobile['webp_1x'] ) ) : ?>
+          <source srcset="<?php echo esc_url($service_img_for_mobile["webp_1x"]); ?>" type="image/webp">
+          <?php endif; ?>
+          <img loading="lazy" src="<?php echo esc_url($service_img_for_mobile["original_1x"]); ?>" alt="Услуга: <?php echo $service_title; ?>" width="620" height="504">
         </picture>
         <button type="button" class="single-services__callback ui-btn" data-graph-path="modal-leadform" data-aos="fade-up" data-aos-delay="200"><?php echo $service_btn_text; ?></button>
       </div>
       <picture class="single-services__bgimg" data-aos="fade-up" data-aos-delay="200">
+          <?php konkord_picture_mobile_sources( $service_img_mobile ); ?>
+          <?php if ( ! empty( $service_img['webp_1x'] ) ) : ?>
           <source srcset="<?php echo esc_url($service_img["webp_1x"]); ?>" type="image/webp">
-          <img src="<?php echo esc_url($service_img["original_1x"]); ?>" alt="Услуга: <?php echo $service_title; ?>" width="620" height="504">
+          <?php endif; ?>
+          <img loading="lazy" src="<?php echo esc_url($service_img["original_1x"]); ?>" alt="Услуга: <?php echo $service_title; ?>" width="620" height="504">
       </picture>
     </div>
 
@@ -58,13 +66,19 @@
             <div class="swiper-wrapper">
               <?php 
               foreach ($ss_variant_gallery as $image) :
-                $image_url = esc_url($image['url']);
-                $image_alt = esc_attr($image['alt']);
+                $gallery_img = get_image_versions( $image );
+                $gallery_mobile = konkord_resolve_mobile_sources( $gallery_img );
+                $image_url = esc_url( $gallery_img['original_1x'] ?: ( $image['url'] ?? '' ) );
+                $image_alt = esc_attr( $image['alt'] ?? '' );
               ?>
                 <div class="swiper-slide">
                   <a data-fslightbox="ss-variant-gallery-<?php echo $page_id ?>" data-caption="" href="<?php echo $image_url; ?>" class="slider-thumbs-main__link">
                     <picture class="slider-thumbs-main__img">
-                      <img src="<?php echo $image_url; ?>" width="526" height="526" alt="<?php echo $image_alt; ?>" itemprop="image">
+                      <?php konkord_picture_mobile_sources( $gallery_mobile ); ?>
+                      <?php if ( ! empty( $gallery_img['webp_1x'] ) ) : ?>
+                      <source srcset="<?php echo esc_url( $gallery_img['webp_1x'] ); ?>" type="image/webp">
+                      <?php endif; ?>
+                      <img loading="lazy" src="<?php echo $image_url; ?>" width="526" height="526" alt="<?php echo $image_alt; ?>" itemprop="image">
                     </picture>
                   </a>
                 </div>
@@ -74,10 +88,18 @@
           <div class="swiper slider-thumbs-navs slider">
             <div class="swiper-wrapper">
               <?php 
-              foreach ($ss_variant_gallery as $image) : ?>
+              foreach ($ss_variant_gallery as $image) :
+                $nav_img = get_image_versions( $image, 'medium' );
+                if ( empty( $nav_img['original_1x'] ) ) {
+                  $nav_img = get_image_versions( $image );
+                }
+              ?>
                 <div class="swiper-slide">
                   <picture class="slider-thumbs-navs__img">
-                    <img src="<?php echo esc_url($image['url']); ?>" width="93" height="93" alt="<?php echo esc_attr($image['alt']); ?>" itemprop="image">
+                    <?php if ( ! empty( $nav_img['webp_1x'] ) ) : ?>
+                    <source srcset="<?php echo esc_url( $nav_img['webp_1x'] ); ?>" type="image/webp">
+                    <?php endif; ?>
+                    <img loading="lazy" src="<?php echo esc_url( $nav_img['original_1x'] ?: ( $image['url'] ?? '' ) ); ?>" width="93" height="93" alt="<?php echo esc_attr( $image['alt'] ?? '' ); ?>" itemprop="image">
                   </picture>
                 </div>
               <?php endforeach; ?>
