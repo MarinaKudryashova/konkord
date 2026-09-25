@@ -158,7 +158,15 @@
             </li>
             
         <?php elseif (is_category()) : ?>
-            <!-- Архив категории блога -->
+            <!-- Архив рубрики новостей -->
+            <?php if ($page_blog_url) : ?>
+            <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                <a class="breadcrumbs__link" href="<?php echo esc_url($page_blog_url); ?>" title="<?php echo esc_attr($page_blog_title); ?>" itemprop="item">
+                    <span itemprop="name"><?php echo esc_html($page_blog_title); ?></span>
+                    <meta itemprop="position" content="<?php echo $position++; ?>">
+                </a>
+            </li>
+            <?php endif; ?>
             <li class="breadcrumbs__item breadcrumbs__item--current" aria-current="page" itemprop="itemListElement"
                 itemscope itemtype="https://schema.org/ListItem">
                 <span itemprop="name"><?php echo esc_html(single_cat_title('', false)); ?></span>

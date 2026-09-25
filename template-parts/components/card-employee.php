@@ -6,7 +6,7 @@
 
   $employee_thumbnail_url = get_the_post_thumbnail_url($employee_id);
   $employee_img = $employee_thumbnail_url 
-      ? get_image_versions($employee_thumbnail_url)
+      ? get_image_versions( $employee_thumbnail_url, 'large' )
       : get_placeholder_image();
 
   $employee_img_mobile_url = get_field( 'employee_img_mobile', $employee_id );
@@ -16,17 +16,8 @@
   $employee_email = get_field('employee_email', $employee_id);
 
   $employee_phone = get_field('employee_phone', $employee_id);
-  $employee_phone_arr = array_filter(array_map('trim', explode(PHP_EOL, $employee_phone)));
-  $employee_phone_href = array();
-  if(!empty($employee_phone_arr)) {
-    foreach($employee_phone_arr as $tel) {
-      if (strpos(trim($tel), '+') === 0) {
-        $employee_phone_href[] = preg_replace('/[^0-9+]/', '', $tel);
-      } else {
-        $employee_phone_href[] = preg_replace('/[^0-9]/', '', $tel);
-      }
-    }
-  }
+  $employee_phone_arr = konkord_split_phone_list( $employee_phone );
+  $employee_phone_href = array_map( 'konkord_phone_href', $employee_phone_arr );
 
   $messengers = [
     'max' => [
@@ -112,7 +103,7 @@
     <?php foreach($messengers as $key => $messenger) : ?>
       <?php if(!empty($employee_messanges[$key])) : ?>
       <li class="messanges__item">
-          <a href="<?php echo esc_url($employee_messanges[$key]); ?>" class="messanges__link <?php echo esc_attr($messenger['class']); ?>" aria-label="<?php echo esc_attr($messenger['label']); ?>" target="_blank">
+          <a href="<?php echo esc_url($employee_messanges[$key]); ?>" target="_blank" rel="noopener noreferrer" class="messanges__link <?php echo esc_attr($messenger['class']); ?>" aria-label="<?php echo esc_attr($messenger['label']); ?>">
             <img src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_attr($messenger['icon']); ?>" alt="<?php echo esc_attr($messenger['label']); ?>" width="22" height="22">
           </a>
       </li>

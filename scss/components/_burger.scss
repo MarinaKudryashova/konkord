@@ -1,8 +1,6 @@
 .burger {
   --burger-width: 17px;
   --burger-height: 17px;
-  // --burger-line-height: 1.5px;
-  // --burger-line-color: var(--white);
 
   position: relative;
   z-index: 100;
@@ -17,27 +15,6 @@
   color: var(--burger-line-color);
   background-color: transparent;
   cursor: pointer;
-
-  // &::before,
-  // &::after {
-  //   content: "";
-  //   position: absolute;
-  //   left: 0;
-  //   width: 100%;
-  //   height: var(--burger-line-height);
-  //   background-color: currentColor;
-  //   transition:
-  //     transform var(--transition-300),
-  //     top var(--transition-300);
-  // }
-
-  // &::before {
-  //   top: 0;
-  // }
-
-  // &::after {
-  //   top: calc(100% - var(--burger-line-height) / 2);
-  // }
 
   &__line {
     position: absolute;

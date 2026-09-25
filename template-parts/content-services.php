@@ -86,12 +86,14 @@ wp_add_inline_script('js-main', '
       <ul class="sec-services__list" id="services-list">
         <?php $index = 0; ?>
         <?php while($services_query->have_posts()) : $services_query->the_post(); ?>
-          <?php 
-          $delay = 400 + $index++ * 100;
+          <?php
+          // В ряду: 1-я, 2-я, 3-я с короткой паузой. Следующий ряд — когда доскроллили, не через 1.5 с от меню.
+          $delay = ( $index % 3 ) * 80;
           ?>
-          <li class="sec-services__item" data-aos="fade-up" data-aos-anchor=".sec-services__nav" data-aos-delay="<?php echo $delay; ?>"> 
-            <?php render_service_item(get_the_ID()); ?>
+          <li class="sec-services__item" data-aos="fade-up" data-aos-delay="<?php echo (int) $delay; ?>">
+            <?php render_service_item( get_the_ID(), $index ); ?>
           </li>
+        <?php $index++; ?>
         <?php endwhile; ?>
       </ul>
 

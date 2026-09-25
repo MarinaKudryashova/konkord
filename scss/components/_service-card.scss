@@ -49,6 +49,11 @@
     color: currentColor;
     pointer-events: none;
     transition: color var(--transition-300);
+   /* перенос длинных слов */
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    overflow-wrap: break-word;
 
     @include tablet-lg {
       padding: 24px 24px 0 24px;

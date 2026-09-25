@@ -115,12 +115,20 @@
     }
 
     @include mobile {
-      grid-row: auto;
+      grid-row: auto;      
     }
 
     @media (max-width: 425px) {
       grid-row: 4;
       grid-column: span 2;
+    }
+
+    & .messanges {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+    & .messanges__item {
+      width: calc(100% / 4 - 4px * 3 / 4);
     }
 
     & .messanges__link {

@@ -1,7 +1,15 @@
 .news {
-  // .news__container
-  // &__container {
-  // }
+  &__nav {
+    margin-bottom: 40px;
+  }
+
+  .not-found {
+    color: var(--black);
+  }
+
+  .categories-nav__link {
+    background-color: var(--white);
+  }
 
   &__list {
     @include list-reset;

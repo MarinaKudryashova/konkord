@@ -7,8 +7,8 @@
     $card_name = $card_obj->name;
     $card_link = get_term_link($card_obj);
     $card_img_url = get_field('services_category_img', 'term_' . $card_obj->term_id);
-    $card_mg = $card_img_url 
-      ? get_image_versions($card_img_url)
+    $card_mg = $card_img_url
+      ? get_image_versions( $card_img_url, 'large' )
       : get_placeholder_image();
     $card_img_url_mobile = get_field( 'services_category_img_mobile', 'term_' . $card_obj->term_id );
     $card_img_mobile     = konkord_resolve_mobile_sources( $card_mg, $card_img_url_mobile );

@@ -28,7 +28,7 @@
         $step_text = $step["text"];
         $step_img_url = $step["img"];
         $step_img = $step_img_url 
-        ? get_image_versions($step_img_url)
+        ? get_image_versions( $step_img_url, 'large' )
         : get_placeholder_image();
         $step_img_mobile = konkord_resolve_mobile_sources( $step_img );
         ?>

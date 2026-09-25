@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Отключаем только слишком тяжёлые стандартные размеры.
- * medium_large (768px) оставляем — удобен для mobile/tablet srcset без отдельного ACF-мобильного поля.
+ * Отключаем только сверхбольшие служебные размеры WP.
+ * large (1024) — десктоп-карточки; medium_large (768) — мобилка 2x.
  */
 add_filter( 'intermediate_image_sizes', 'disable_default_image_sizes' );
 function disable_default_image_sizes( $sizes ) {
-	$disabled_sizes = array( 'large', '1536x1536', '2048x2048' );
+	$disabled_sizes = array( '1536x1536', '2048x2048' );
 	return array_diff( $sizes, $disabled_sizes );
 }
 
 /**
- * Явно регистрируем полезный размер, если тема/ядро его убрали.
+ * Явно регистрируем medium_large, если тема/ядро его убрали.
  */
 add_action(
 	'after_setup_theme',

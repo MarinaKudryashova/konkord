@@ -49,11 +49,6 @@
          gap: 16px;
       }
 
-      // @media (max-width: 1006px) {
-      //    display: grid;
-      //    grid-template-columns: repeat(2, 1fr);
-      // }
-
       @media (max-width: 900px) {
          display: flex;
          flex-direction: column;
@@ -191,10 +186,6 @@
          grid-column: span 1;
          grid-row: auto;
       }
-
-      // @media (max-width: 1006px) {
-      //    grid-row: 3 / 4;
-      // }
 
       @include mobile {
          gap: 16px;

@@ -15,8 +15,8 @@
 			<div class="footer__container container">
 
 				<div class="footer__company">
-					<a href="<?php bloginfo('url'); ?>" class="footer__logo footer__logo--mobile" itemprop="url">
-						<img src="<?php echo get_field('site_logo', 'option') ?>" alt="Logo <?php bloginfo('name'); ?>" width="214" height="40" itemprop="logo image">
+					<a href="<?php bloginfo('url'); ?>" class="footer__logo footer__logo--mobile">
+						<img src="<?php echo get_field('site_logo', 'option') ?>" alt="Logo <?php bloginfo('name'); ?>" width="214" height="40">
 					</a>
 					<?php if(get_field('site_logo_text', 'option')):?>
 					<p class="footer__descr"><?php echo get_field('site_logo_text', 'option'); ?></p>
@@ -65,24 +65,11 @@
 
 
 					<?php /*-- Мессенджеры --*/ ?>
-					<?php $messanges = get_field('messengers_list', 'options'); ?>
-					<?php if($messanges) : ?>
-						<ul class="footer-contacts__messanges messanges" title="messanges">
-							<?php foreach($messanges as $li) : 
-								$class = 'messanges__link';
-								if($li["value"] == 'vk') {
-										$class = 'messanges__link messanges__link--vk';
-								} elseif($li["value"] == 'whatsapp') {
-										$class = 'messanges__link messanges__link--whatsapp';
-								}
-								?>
-								<a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="<?php esc_attr_e($class); ?>" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
-									<img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="16" height="16" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
-								</a>
-							</li>
-							<?php endforeach;	?>
-						</ul>
-					<?php endif; ?>
+					<?php
+					get_template_part( 'template-parts/components/messanges', null, array(
+						'class' => 'footer-contacts__messanges messanges',
+					) );
+					?>
 
 					<?php $company_link_map = get_field('company_map_link', 'option') ? get_field('company_map_link', 'option') : '#';?>
 					<a href="<?php echo esc_url($company_link_map); ?>" class="footer-contacts__link" target="_blank" rel="noopener noreferrer">Яндекс Карты</a>
@@ -92,17 +79,8 @@
 				<?php 
 					$department_sales = get_field('department_sales', 'option');
 					$department_phones = $department_sales["phone"];
-					$department_tel_arr = array_filter(array_map('trim', explode(PHP_EOL, $department_phones)));
-					$department_tel_arr_href = array();
-					if(!empty($department_tel_arr)) {
-						foreach($department_tel_arr as $tel) {
-							if (strpos(trim($tel), '+') === 0) {
-								$department_tel_arr_href[] = preg_replace('/[^0-9+]/', '', $tel);
-							} else {
-								$department_tel_arr_href[] = preg_replace('/[^0-9]/', '', $tel);
-							}
-						}
-					}
+					$department_tel_arr = konkord_split_phone_list( $department_phones );
+					$department_tel_arr_href = array_map( 'konkord_phone_href', $department_tel_arr );
 				?>
 				<div class="department">
 					<?php if($department_sales["name"]): ?>
@@ -141,26 +119,13 @@
 					<?php endif; ?>
 
 					<?php foreach($department_corporate_employees_ids as $employee_id) :
-						$employee_full_name = get_the_title($employee_id);
-						if(!empty($employee_full_name)) {
-							$employee_name_parts = explode(' ', $employee_full_name);
-							$employee_name = end($employee_name_parts);
-						}
+						$employee_name = get_the_title($employee_id);
 
 						$employee_email = get_field('employee_email', $employee_id);
 						
 						$employee_phones = get_field('employee_phone', $employee_id);
-						$employee_phone_arr = array_filter(array_map('trim', explode(PHP_EOL, $employee_phones)));
-						$employee_phone_href = array();
-						if(!empty($employee_phone_arr)) {
-							foreach($employee_phone_arr as $tel) {
-								if (strpos(trim($tel), '+') === 0) {
-									$employee_phone_href[] = preg_replace('/[^0-9+]/', '', $tel);
-								} else {
-									$employee_phone_href[] = preg_replace('/[^0-9]/', '', $tel);
-								}
-							}
-						}
+						$employee_phone_arr = konkord_split_phone_list( $employee_phones );
+						$employee_phone_href = array_map( 'konkord_phone_href', $employee_phone_arr );
 						?>
 					<div class="department__worker">
 						<span class="department__name"><?php echo esc_html($employee_name); ?></span>

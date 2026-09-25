@@ -14,11 +14,7 @@
 	$news_banner_text = get_field('news-banner_text', $page_id);
 	$news_banner_email = get_field('news-banner_email', $page_id);
 	$news_banner_phone = trim( (string) ( get_field('news-banner_phone', $page_id) ?: '' ) );
-  if (strpos($news_banner_phone, '+') === 0) {
-		$news_banner_phone_href = preg_replace('/[^0-9+]/', '', $news_banner_phone);
-	} else {
-		$news_banner_phone_href = preg_replace('/[^0-9]/', '', $news_banner_phone);
-	}
+	$news_banner_phone_href = konkord_phone_href( $news_banner_phone );
 ?>
 
 <section class="post-news">

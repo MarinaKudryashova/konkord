@@ -76,7 +76,6 @@
     line-height: var(--search-lh);
     letter-spacing: 0;
     color: var(--search-color);
-    // caret-color: var(--search-color-placeholder); // Цвет курсора (каретки) при вводе
 
     &::placeholder {
       font-weight: inherit;

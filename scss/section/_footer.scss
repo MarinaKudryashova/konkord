@@ -10,10 +10,6 @@
     grid-template-columns: repeat(5, auto);
     gap: 4px;
 
-    // @media (max-width: 1006px) {
-    //   grid-template-columns: repeat(2, auto);
-    // }
-
     @include tablet-lg {
       grid-template-columns: repeat(2, auto);
     }
@@ -22,11 +18,6 @@
       display: flex;
       flex-direction: column;
     }
-
-    // @include tablet-lg {
-    //   display: flex;
-    //   flex-direction: column;
-    // }
   }
 
   &__company {
@@ -46,11 +37,6 @@
     @include tablet-lg {
       grid-column: span 2;
     }
-
-    // @media (max-width: 1006px) {
-    //   margin-bottom: 35px;
-    //   grid-column: span 3;
-    // }
   }
 
   &__logo {
@@ -94,11 +80,6 @@
       grid-column: span 2;
       grid-row: unset;
     }
-
-    // @media (max-width: 1006px) {
-    //   grid-row: 2 / 4;
-    //   grid-column: span 3;
-    // }
   }
 
   &__descr {
@@ -137,27 +118,9 @@
     background-color: var(--bg-dark-grey);
     color: var(--white);
 
-    // @include desktop {
-    //   grid-column: span 5;
-    //   margin-right: 0;
-    // }
-
     @include tablet-lg {
       grid-column: span 2;
     }
-
-    // @media (max-width: 1106px) {
-    //   padding: 24px;
-    //   grid-column: span 3;
-    // }
-
-    // @media (max-width: 1006px) {
-    //   margin-right: 0;
-    // }
-
-    // @media (max-width: 900px) {
-    //   grid-column: span 5;
-    // }
 
     @include tablet-md {
       margin-right: 0;
@@ -173,37 +136,15 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    // gap: 2px;
-    // max-width: 231px;
     max-width: 100%;
-      flex-direction: row;
-      gap: 4px 16px;
-      grid-column: span 5;
-      margin-top: 5px;
+    flex-direction: row;
+    gap: 4px 16px;
+    grid-column: span 5;
+    margin-top: 5px;
 
     @include tablet-lg {
       grid-column: span 2;
-      // display: block;
-      // columns: 2;
     }
-
-    // @media (max-width: 1106px) {
-    //   grid-column: span 2;
-    //   max-width: unset;
-    // }
-
-    // @media (max-width: 1106px) {
-    //   margin-left: 20px;
-    // }
-
-    // @media (max-width: 900px) {
-    //   margin-left: 0;
-    //   grid-column: span 5;
-    //   display: grid;
-    //   grid-template-columns: repeat(2, 1fr);
-    // }
-
-
 
     @include tablet-md {
       align-items: center;

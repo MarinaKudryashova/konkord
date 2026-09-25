@@ -23,7 +23,7 @@ $car_price = $car->get_price_html();
 
 // Изображение
 $car_thumbnail_id = $car->get_image_id();
-$car_thumbnail = get_image_versions($car_thumbnail_id, 'full');
+$car_thumbnail = get_image_versions( $car_thumbnail_id, 'large' );
 $car_thumbnail_mobile = konkord_resolve_mobile_sources( $car_thumbnail );
 $car_thumbnail_alt = !empty($car_thumbnail["alt"]) ? $car_thumbnail["alt"] : sprintf(__('Изображение товара %s', 'primasnab'), $car_title);
 

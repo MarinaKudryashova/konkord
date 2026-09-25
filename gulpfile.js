@@ -32,12 +32,14 @@ const paths = {
     src: "./scss/**/*.scss",
     main: "./scss/main.scss",
     vendor: "./scss/vendor.scss",
+    aos: "./scss/aos.scss",
     dest: "./css/",
   },
 
   // JS - теперь исходники в js-src, результат в js
   js: {
     src: "./js-src/main.js", // Исходники из папки js-src
+    aos: "./js-src/aos.js",
     components: "./js-src/components/**/*.js", // Компоненты там же
     vendor: "./js-src/vendor/**/*.js",
     dest: "./js/", // Результат в папку js
@@ -67,8 +69,10 @@ const clean = () => {
   return del([
     "./css/*.css",
     "./css/*.css.map",
-    "./js/main.min.js", // Только результат сборки
-    "./js/main.min.js.map", // Только результат сборки
+    "./js/main.min.js",
+    "./js/main.min.js.map",
+    "./js/aos.min.js",
+    "./js/aos.min.js.map",
     "./img/sprite.svg",
   ]);
 };
@@ -120,7 +124,7 @@ const svgSprites = () => {
 
 // Компиляция SCSS (DEV режим)
 const styles = () => {
-  return src([paths.scss.vendor, paths.scss.main])
+  return src([paths.scss.vendor, paths.scss.aos, paths.scss.main])
     .pipe(
       plumber(
         notify.onError({
@@ -146,7 +150,7 @@ const styles = () => {
 
 // Компиляция SCSS (BACKEND режим - без sourcemaps)
 const stylesBackend = () => {
-  return src([paths.scss.vendor, paths.scss.main])
+  return src([paths.scss.vendor, paths.scss.aos, paths.scss.main])
     .pipe(
       plumber(
         notify.onError({
@@ -167,6 +171,41 @@ const stylesBackend = () => {
     .pipe(browserSync.stream());
 };
 
+const webpackJsModule = {
+  rules: [
+    {
+      test: /\.m?js$/,
+      exclude: /node_modules/,
+      use: {
+        loader: "babel-loader",
+        options: {
+          presets: [
+            [
+              "@babel/preset-env",
+              {
+                targets: "defaults",
+              },
+            ],
+          ],
+        },
+      },
+    },
+  ],
+};
+
+const getWebpackConfig = (mode, withSourceMap) => ({
+  mode,
+  entry: {
+    "main.min": "./js-src/main.js",
+    "aos.min": "./js-src/aos.js",
+  },
+  output: {
+    filename: "[name].js",
+  },
+  module: webpackJsModule,
+  devtool: withSourceMap ? "source-map" : false,
+});
+
 // Сборка JS (WEBPACK + BABEL) - читаем из js-src, пишем в js
 const scripts = () => {
   return src(paths.js.src)
@@ -179,43 +218,14 @@ const scripts = () => {
       ),
     )
     .pipe(gulpif(!isProd && !isBackend, sourcemaps.init()))
-    .pipe(
-      webpackStream({
-        mode: isProd ? "production" : "development",
-        output: {
-          filename: paths.js.outputName, // main.min.js
-        },
-        module: {
-          rules: [
-            {
-              test: /\.m?js$/,
-              exclude: /node_modules/,
-              use: {
-                loader: "babel-loader",
-                options: {
-                  presets: [
-                    [
-                      "@babel/preset-env",
-                      {
-                        targets: "defaults",
-                      },
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-        },
-        devtool: !isProd && !isBackend ? "source-map" : false,
-      }),
-    )
+    .pipe(webpackStream(getWebpackConfig(isProd ? "production" : "development", !isProd && !isBackend)))
     .on("error", function (err) {
       console.error("WEBPACK ERROR", err);
       this.emit("end");
     })
     .pipe(gulpif(isProd, uglify()))
     .pipe(gulpif(!isProd && !isBackend, sourcemaps.write(".")))
-    .pipe(dest(paths.js.dest)) // Сохраняем в папку js
+    .pipe(dest(paths.js.dest))
     .pipe(browserSync.stream());
 };
 
@@ -230,36 +240,7 @@ const scriptsBackend = () => {
         }),
       ),
     )
-    .pipe(
-      webpackStream({
-        mode: "development",
-        output: {
-          filename: paths.js.outputName, // main.min.js
-        },
-        module: {
-          rules: [
-            {
-              test: /\.m?js$/,
-              exclude: /node_modules/,
-              use: {
-                loader: "babel-loader",
-                options: {
-                  presets: [
-                    [
-                      "@babel/preset-env",
-                      {
-                        targets: "defaults",
-                      },
-                    ],
-                  ],
-                },
-              },
-            },
-          ],
-        },
-        devtool: false,
-      }),
-    )
+    .pipe(webpackStream(getWebpackConfig("development", false)))
     .on("error", function (err) {
       console.error("WEBPACK ERROR", err);
       this.emit("end");
@@ -293,7 +274,7 @@ const watchFiles = () => {
 
   // Следим за изменениями в js-src
   watch(paths.scss.src, styles);
-  watch([paths.js.src, paths.js.components], scripts); // Теперь следим за js-src
+  watch([paths.js.src, paths.js.aos, paths.js.components], scripts);
   watch(paths.svg.src, svgSprites);
   watch(paths.images.src, series(images, webpImages));
   watch(paths.php.src).on("change", browserSync.reload);

@@ -10,7 +10,7 @@
   $contacts_title = get_the_title($page_id);
   $main_office_img_url = get_field('company_main_office_photo', 'option');
   $main_office_img = $main_office_img_url 
-      ? get_image_versions($main_office_img_url)
+      ? get_image_versions( $main_office_img_url, 'large' )
       : get_placeholder_image();
   $main_office_img_mobile = konkord_resolve_mobile_sources( $main_office_img );
 
@@ -22,30 +22,12 @@
   $company_branch_office_city = get_field('company_branch_office_city', 'option');
 
   $main_office_phones = get_field('department_sales_phone', 'option');
-  $main_office_tel_arr = array_filter(array_map('trim', explode(PHP_EOL, $main_office_phones)));
-  $main_office_tel_arr_href = array();
-  if(!empty($main_office_tel_arr)) {
-    foreach($main_office_tel_arr as $tel) {
-      if (strpos(trim($tel), '+') === 0) {
-        $main_office_tel_arr_href[] = preg_replace('/[^0-9+]/', '', $tel);
-      } else {
-        $main_office_tel_arr_href[] = preg_replace('/[^0-9]/', '', $tel);
-      }
-    }
-  }
+  $main_office_tel_arr = konkord_split_phone_list( (string) $main_office_phones );
+  $main_office_tel_arr_href = array_map( 'konkord_phone_href', $main_office_tel_arr );
 
   $company_branch_office_phones_branch = get_field('department_sales_phone_branch', 'option');
-  $company_branch_office_tel_arr = array_filter(array_map('trim', explode(PHP_EOL, $company_branch_office_phones_branch)));
-  $company_branch_office_tel_arr_href = array();
-  if(!empty($company_branch_office_tel_arr)) {
-    foreach($company_branch_office_tel_arr as $tel) {
-      if (strpos(trim($tel), '+') === 0) {
-        $company_branch_office_tel_arr_href[] = preg_replace('/[^0-9+]/', '', $tel);
-      } else {
-        $company_branch_office_tel_arr_href[] = preg_replace('/[^0-9]/', '', $tel);
-      }
-    }
-  }
+  $company_branch_office_tel_arr = konkord_split_phone_list( (string) $company_branch_office_phones_branch );
+  $company_branch_office_tel_arr_href = array_map( 'konkord_phone_href', $company_branch_office_tel_arr );
 
   $main_office_map = get_field('company_main_office_map_center', 'option');
   
@@ -54,12 +36,12 @@
   $company_manufacture_map_link = get_field('company_manufacture_map_link', 'option');
   $company_manufacture_img_url_1 = get_field('company_manufacture_photo_1', 'option');
   $company_manufacture_img_1 = $company_manufacture_img_url_1 
-      ? get_image_versions($company_manufacture_img_url_1)
+      ? get_image_versions( $company_manufacture_img_url_1, 'large' )
       : get_placeholder_image();
   $company_manufacture_img_1_mobile = konkord_resolve_mobile_sources( $company_manufacture_img_1 );
   $company_manufacture_img_url_2 = get_field('company_manufacture_photo_2', 'option');
   $company_manufacture_img_2 = $company_manufacture_img_url_2 
-      ? get_image_versions($company_manufacture_img_url_2)
+      ? get_image_versions( $company_manufacture_img_url_2, 'large' )
       : get_placeholder_image();
   $company_manufacture_img_2_mobile = konkord_resolve_mobile_sources( $company_manufacture_img_2 );
   $company_manufacture_map_link = get_field('company_manufacture_map_link', 'option');
@@ -92,7 +74,7 @@
                   <?php endif; ?>
                </div>
                <?php if($main_office_map_link) : ?>
-               <a href="<?php echo esc_url($main_office_map_link); ?>" class="card-contact__link ui-btn" target="_blank" rel="nofollow">Проложить маршрут</a>
+               <a href="<?php echo esc_url($main_office_map_link); ?>" class="card-contact__link ui-btn" target="_blank" rel="nofollow noopener noreferrer">Проложить маршрут</a>
                <?php endif; ?>
 
                <?php if($main_office_timework) : ?>
@@ -168,7 +150,7 @@
                <?php endif; ?>
 
                <?php if($company_manufacture_map_link) : ?>
-               <a href="<?php echo esc_url($company_manufacture_map_link); ?>" class="card-contact__link ui-btn" target="_blank" rel="nofollow">Проложить маршрут</a>
+               <a href="<?php echo esc_url($company_manufacture_map_link); ?>" class="card-contact__link ui-btn" target="_blank" rel="nofollow noopener noreferrer">Проложить маршрут</a>
                <?php endif; ?>
 
                <?php if($company_manufacture_timework) : ?>
@@ -219,7 +201,7 @@
                   <div class="tabs__panel tabs__panel--active">
                      <p class="card-contact__requisities"><?php echo wp_kses_post($company_requisite_ip_5["text"]); ?></p>
                      <?php if($company_requisite_ip_5["doc"]) : ?>
-                     <a href="<?php echo esc_url($company_requisite_ip_5["doc"]); ?>" class="card-contact__link ui-btn" target="_blank" rel="nofollow">Скачать реквизиты ип</a>
+                     <a href="<?php echo esc_url($company_requisite_ip_5["doc"]); ?>" class="card-contact__link ui-btn" target="_blank" rel="nofollow noopener noreferrer">Скачать реквизиты ип</a>
                      <?php endif; ?>
                   </div>
                   <?php endif; ?>
@@ -228,7 +210,7 @@
                   <div class="tabs__panel">
                      <p class="card-contact__requisities"><?php echo wp_kses_post($company_requisite_ltd["text"]); ?></p>
                      <?php if($company_requisite_ltd["doc"]) : ?>
-                     <a href="<?php echo esc_url($company_requisite_ltd["doc"]); ?>" class="card-contact__link ui-btn" target="_blank" rel="nofollow">Скачать реквизиты ООО</a>
+                     <a href="<?php echo esc_url($company_requisite_ltd["doc"]); ?>" class="card-contact__link ui-btn" target="_blank" rel="nofollow noopener noreferrer">Скачать реквизиты ООО</a>
                      <?php endif; ?>
                   </div>
                   <?php endif; ?>

@@ -1,7 +1,11 @@
 import GraphModal from "graph-modal";
 
 document.addEventListener("DOMContentLoaded", (event) => {
-  const modal = new GraphModal();
+  const modal = new GraphModal({
+    isOpen: () => {
+      document.dispatchEvent(new CustomEvent("cfycInitEvent"));
+    },
+  });
   let modals = document.querySelectorAll("[data-graph-target]");
 
   document.addEventListener(

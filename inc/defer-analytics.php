@@ -71,8 +71,16 @@ function konkord_defer_analytics_buffer( string $html ): string {
 			$attrs = $m[1];
 			$body  = $m[2];
 
+			// Consent-gated analytics (type=text/plain) — leave in HTML, do not auto-run.
+			if ( preg_match( '#\bdata-cookie-consent\b#i', $attrs ) ) {
+				return $m[0];
+			}
+			if ( preg_match( '#\btype\s*=\s*([\'"])\s*text/plain\s*\1#i', $attrs ) ) {
+				return $m[0];
+			}
+
 			// Skip non-JS script types (JSON-LD, etc.).
-			if ( preg_match( '#\btype\s*=\s*([\'"])(?!text/javascript|application/javascript|module|)([^\'"]*)\1#i', $attrs, $tm ) ) {
+			if ( preg_match( '#\btype\s*=\s*([\'"])([^\'"]*)\1#i', $attrs, $tm ) ) {
 				$type = strtolower( trim( $tm[2] ) );
 				if ( $type !== '' && $type !== 'text/javascript' && $type !== 'application/javascript' && $type !== 'module' ) {
 					return $m[0];

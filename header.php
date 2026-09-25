@@ -9,8 +9,6 @@
  * @package konkord
  */
 
-$messanges = get_field('header_messengers_list', 'options'); /*-- Мессенджеры --*/
-
 ?>
 <!doctype html>
 <html <?php language_attributes(); ?> class="page">
@@ -18,33 +16,23 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
   <meta charset="<?php bloginfo( 'charset' ); ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo get_template_directory_uri();?>/favicon/apple-touch-icon.png">
-  <meta name="apple-mobile-web-app-title" content="<?php bloginfo( 'name' ); ?>" />
-  <link rel="icon" type="image/svg+xml" href="<?php echo get_template_directory_uri();?>/img/favicon.svg" />
-  <link rel="shortcut icon" href="<?php echo get_template_directory_uri();?>/favicon/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo get_template_directory_uri();?>/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo get_template_directory_uri();?>/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="<?php echo esc_url( get_template_directory_uri() . '/favicon/favicon-32x32.png' ); ?>">
+  <link rel="icon" type="image/png" sizes="16x16" href="<?php echo esc_url( get_template_directory_uri() . '/favicon/favicon-16x16.png' ); ?>">
+  <link rel="shortcut icon" href="<?php echo esc_url( get_template_directory_uri() . '/favicon/favicon.ico' ); ?>">
+  <link rel="apple-touch-icon" sizes="180x180" href="<?php echo esc_url( get_template_directory_uri() . '/favicon/apple-touch-icon.png' ); ?>">
+  <meta name="apple-mobile-web-app-title" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="<?php echo esc_attr(get_bloginfo('name')); ?>">
-  <meta property="og:title" content="<?php echo esc_attr(wp_title('|', false, 'right') . get_bloginfo('name')); ?>">
-  <meta property="og:description" content="<?php bloginfo( 'name' ); ?> - <?php bloginfo('description'); ?>">
-  <meta property="og:image" content="<?php echo get_template_directory_uri();?>/img/site-preview.jpg">
-	<meta property="og:image:width" content="1200">
-	<meta property="og:image:height" content="630">
-	<meta property="og:image:type" content="image/jpg">
-	<meta property="og:image:alt" content="<?php echo esc_attr(get_bloginfo('name')); ?>">
-  <meta property="og:url" content="<?php echo esc_url( home_url( '/' ) ); ?>">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="<?php echo esc_url( home_url( '/' ) ); ?>">
-  <meta name="twitter:title" content="<?php bloginfo( 'name' ); ?>">
-  <meta name="twitter:description"
-    content="<?php bloginfo( 'name' ); ?> - <?php bloginfo('description'); ?>">
-  <meta name="twitter:image" content="<?php echo get_template_directory_uri();?>/img/site-preview.jpg">
+  <?php
+	$promo_poster = function_exists( 'konkord_get_promo_poster_url' ) ? konkord_get_promo_poster_url() : '';
+	if ( $promo_poster ) :
+		$poster_type = ( substr( $promo_poster, -5 ) === '.webp' ) ? ' type="image/webp"' : '';
+		?>
+  <link rel="preload" as="image" href="<?php echo esc_url( $promo_poster ); ?>"<?php echo $poster_type; ?> fetchpriority="high">
+	<?php endif; ?>
 
   <link rel="preload" href="<?php echo get_template_directory_uri();?>/fonts/Manrope-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="<?php echo get_template_directory_uri();?>/fonts/Manrope-Bold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="<?php echo get_template_directory_uri();?>/fonts/Manrope-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
 
   <?php wp_head(); ?>
 </head>
@@ -55,29 +43,35 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 		<header class="header">
 			<div class="header__container container" >
 				<?php /*-- Логотип --*/ ?>
-				<a href="<?php bloginfo('url'); ?>" class="header__logo logo">
+				<a href="<?php bloginfo('url'); ?>" class="header__logo logo" aria-label="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 					<img class="logo__img" src="<?php echo get_field('site_logo', 'option') ?>" alt="Logo <?php bloginfo('name'); ?>" width="214" height="40">
 				</a>
 				<?php /*-- Адрес с переключением городов --*/ ?>
 				<div class="header__address">
 					<div class="header__address-text"><?php echo get_field('company_main_office_address-local', 'option') ?></div>
+					<?php
+						$geo_slug = '';
+						if ( function_exists( 'belingoGeo_get_current_city' ) ) {
+							$geo_city = belingoGeo_get_current_city();
+							if ( $geo_city && is_object( $geo_city ) && method_exists( $geo_city, 'get_slug' ) ) {
+								$geo_slug = (string) $geo_city->get_slug();
+							}
+						}
+						$is_nn = ( 'nizhnij-novgorod' === $geo_slug );
+					?>
 					<div class="header__switcher">
-						<a class="select_geo_city header__city  is-active" data-name-orig="Дзержинск" data-name="zerzhinsk">Дзержинск</a>
-						<a class="select_geo_city header__city" data-name-orig="Нижний Новгород" data-name="nizhnij-novgorod">Нижний Новгород</a>
+						<a class="select_geo_city header__city<?php echo $is_nn ? '' : ' is-active'; ?>" data-name-orig="Дзержинск" data-name="dzerzhinsk-2">Дзержинск</a>
+						<a class="select_geo_city header__city<?php echo $is_nn ? ' is-active' : ''; ?>" data-name-orig="Нижний Новгород" data-name="nizhnij-novgorod">Нижний Новгород</a>
 					</div>
 				</div>
 
 				<?php /*-- СТА --*/ ?>
 				<?php
-					$phone_field = get_field('company_tel', 'options');
-					$phone_arr = array_filter(array_map('trim', explode(PHP_EOL, $phone_field)));
-					$phone = $phone_arr[0] ?? '';
-
-					if (strpos(trim($phone), '+') === 0) {
-							$phone_href = preg_replace('/[^0-9+]/', '', $phone);
-					} else {
-							$phone_href = preg_replace('/[^0-9]/', '', $phone);
-					}
+					$header_phone = function_exists( 'konkord_get_header_phone' )
+						? konkord_get_header_phone()
+						: array( 'display' => '', 'href' => '' );
+					$phone      = $header_phone['display'] ?? '';
+					$phone_href = $header_phone['href'] ?? '';
 				?>
 				<div class="header__action">
 					<?php /*-- Электронная почта --*/ ?>
@@ -86,12 +80,12 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 					</div>
 					<div class="header__contacts">
 						<?php /*-- Телефон --*/ ?>
-						<?php if(!empty($phone)) : ?>
-						<a href="tel:<?php echo $phone_href; ?>" class="header__link header__phone ui-link" aria-label="Позвонить нам">
+						<?php if ( ! empty( $phone ) ) : ?>
+						<a href="tel:<?php echo esc_attr( $phone_href ); ?>" class="header__link header__phone ui-link" aria-label="Позвонить нам">
 							<svg>
 								<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#phone"></use>
 							</svg>
-							<span><?php echo $phone; ?></span>
+							<span><?php echo esc_html( $phone ); ?></span>
 						</a>
 						<?php endif; ?>
 						
@@ -100,35 +94,23 @@ $messanges = get_field('header_messengers_list', 'options'); /*-- Мессенд
 					</div>
 
 					<?php /*-- Мессенджеры --*/ ?>
-					<?php if($messanges) : ?>
-						<ul class="header__messanges messanges" title="messanges">
-							<?php foreach($messanges as $li) : 
-								$class = 'messanges__link';
-								if($li["value"] == 'vk') {
-										$class = 'messanges__link messanges__link--vk';
-								} elseif($li["value"] == 'whatsapp') {
-										$class = 'messanges__link messanges__link--whatsapp';
-								}
-								?>
-								<li class="messanges__item">
-								<a href="<?php  echo get_field($li['value'], 'options'); ?>" target="_blank" class="<?php esc_attr_e($class); ?>" aria-label="Свяжитесь с нами в <?php echo $li['label']; ?>">
-									<img loading="lazy" src="<?php echo get_template_directory_uri();?>/img/icon/<?php echo esc_html__($li['value']); ?>.svg" class="messanges__icon" width="16" height="16" alt="иконка <?php  echo $li['label']; ?>" aria-hidden="true">
-								</a>
-							</li>
-							<?php endforeach;	?>
-						</ul>
-					<?php endif; ?>
+					<?php
+					get_template_part( 'template-parts/components/messanges', null, array(
+						'class' => 'header__messanges messanges',
+						'field' => 'header_messengers_list',
+					) );
+					?>
 				</div>
 				
 				<?php /*-- Кнопка бургер --*/ ?>
-				<button class="header__burger" data-burger type="button" aria-label="открыть меню">
+				<button class="header__burger" data-burger type="button" aria-label="открыть меню" aria-expanded="false" aria-controls="site-menu">
 					<svg>
 						<use xlink:href="<?php echo get_template_directory_uri();?>/img/sprite.svg#burger"></use>
 					</svg>
 				</button>
 				<?php /*-- Навигация --*/ ?>
 				<div class="header__nav">
-					<nav class="nav" title="main navigation" data-menu>
+					<nav class="nav" data-menu id="site-menu">
 						<?php
 							wp_nav_menu( [
 								'theme_location'  => 'header',

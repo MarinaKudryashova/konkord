@@ -69,4 +69,18 @@
       }
     }
   }
+
+  &.bannerform__messanges {
+    > li:nth-child(3n + 1) .messanges__link {
+      background-color: var(--accent-green);
+    }
+
+    > li:nth-child(3n + 2) .messanges__link {
+      background-color: var(--accent-light-green);
+    }
+
+    > li:nth-child(3n) .messanges__link {
+      background-color: var(--accent-dark-green);
+    }
+  }
 }

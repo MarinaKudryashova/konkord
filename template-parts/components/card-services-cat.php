@@ -8,15 +8,16 @@
     $services_cat_name = $services_cat_obj->name;
     $services_cat_link = get_term_link($services_cat_obj);
     $services_cat_img_url = get_field('services_category_img', 'term_' . $services_cat_obj->term_id);
-    $services_cat_img = $services_cat_img_url 
-      ? get_image_versions($services_cat_img_url)
+    // Большие карточки (770) — full; обычные — large.
+    $services_cat_positions = [3, 9, 13, 19];
+    $is_big = in_array($services_cat_index, $services_cat_positions, true);
+    $desk_size = $is_big ? 'full' : 'large';
+    $services_cat_img = $services_cat_img_url
+      ? get_image_versions( $services_cat_img_url, $desk_size )
       : get_placeholder_image();
     $services_cat_img_url_mobile = get_field( 'services_category_img_mobile', 'term_' . $services_cat_obj->term_id );
     $services_cat_img_mobile     = konkord_resolve_mobile_sources( $services_cat_img, $services_cat_img_url_mobile );
 
-    // Большие карточки
-    $services_cat_positions = [3, 9, 13, 19];
-    $is_big = in_array($services_cat_index, $services_cat_positions);
     if($is_big) {
         $img_width = 770;
         $img_height = 354;

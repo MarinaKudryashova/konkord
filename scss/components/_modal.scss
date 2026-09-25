@@ -122,7 +122,6 @@
   & .messanges__link {
     width: 75px;
     height: 75px;
-    background-color: var(--accent-light-green);
 
     @include tablet-lg {
       width: 64px;
@@ -137,14 +136,6 @@
     @include mobile {
       width: 40px;
       height: 40px;
-    }
-
-    &:first-child {
-      background-color: var(--accent-green);
-    }
-
-    &:last-child {
-      background-color: var(--accent-dark-green);
     }
 
     img {
@@ -245,21 +236,10 @@
   }
 
   &__content[data-graph-target="modal-send"] {
-    // min-height: 500px;
-    // width: 980px;
-    // border-radius: 5px;
-    // overflow: hidden;
-
     @include tablet {
       display: flex;
       flex-direction: column;
-      // max-width: 90%;
-      // width: unset;
     }
-
-    // @include mobile {
-    //   max-width: 100%;
-    // }
 
     & .messanges {
       @include tablet {

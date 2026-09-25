@@ -16,12 +16,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const closeBurger = () => {
     btnBurger?.classList.remove("is-open");
     menu?.classList.remove("is-open");
+    btnBurger?.setAttribute("aria-expanded", "false");
+    btnBurger?.setAttribute("aria-label", "открыть меню");
     enableScroll();
   };
 
   const openBurger = () => {
     btnBurger?.classList.add("is-open");
     menu?.classList.add("is-open");
+    btnBurger?.setAttribute("aria-expanded", "true");
+    btnBurger?.setAttribute("aria-label", "закрыть меню");
     disableScroll();
   }
 
@@ -36,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Закрытие по клику на ссылку
   menuLinks.forEach((link) => {
     link.addEventListener("click", () => {
-      e.preventDefault();
       closeBurger();
     });
   });

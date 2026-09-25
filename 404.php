@@ -11,7 +11,7 @@ get_header();
 
 $error_img_field = get_field('error-404_img', 'option');
 $error_img = $error_img_field
-	? get_image_versions( $error_img_field )
+	? get_image_versions( $error_img_field, 'large' )
 	: array(
 		'original_1x' => get_template_directory_uri() . '/img/404.png',
 		'webp_1x'     => '',

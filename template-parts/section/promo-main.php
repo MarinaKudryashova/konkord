@@ -12,6 +12,17 @@
 
   $promo_video = get_field('promo_video', $page_id);
   $promo_video_webm = get_field('promo_video_webm', $page_id);
+  if ( empty( $promo_video_webm ) ) {
+    $promo_webm_file = get_template_directory() . '/promo_webm/07232.webm';
+    if ( is_readable( $promo_webm_file ) ) {
+      $promo_video_webm = get_template_directory_uri() . '/promo_webm/07232.webm';
+    }
+  }
+  $promo_catalog = get_field('promo_catalog', $page_id);
+  $promo_catalog_btn = get_field('promo_catalog_btn', $page_id);
+  if ( empty( $promo_catalog_btn ) ) {
+    $promo_catalog_btn = 'Скачать каталог';
+  }
   $poster_url = '';
   if ($promo_img) {
     $poster_url = !empty($promo_img['webp_1x']) 
@@ -51,12 +62,13 @@
       </div>
       <?php endif; ?>
 
-      <?php /*-- Кнопка с формой --*/ ?>
-			<button type="button" 
-              class="promo__callback ui-btn"
-              data-graph-path="modal-leadform" data-aos="fade-up" data-aos-delay="150">
-        Узнать стоимость
-      </button>
+      <a href="<?php echo ! empty( $promo_catalog ) ? esc_url( $promo_catalog ) : '#'; ?>"
+         class="promo__callback ui-btn"
+         <?php if ( ! empty( $promo_catalog ) ) : ?>target="_blank" rel="noopener noreferrer"<?php endif; ?>
+         data-aos="fade-up"
+         data-aos-delay="150">
+        <?php echo esc_html( $promo_catalog_btn ); ?>
+      </a>
     </div>
   </div>
 </section>

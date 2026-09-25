@@ -54,8 +54,6 @@ class BEM_Walker_Nav_Menu extends Walker_Nav_Menu {
         $atts['href'] = !empty($item->url) ? $item->url : '';
         $atts['aria-current'] = $item->current ? 'page' : '';
 
-        if ($item->current) $atts['href'] = '';
-
         $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args, $depth);
 
         $attributes = '';

@@ -6,7 +6,7 @@
   $card_url = get_permalink($card_id) ?: '#';
   $thumb_id = get_post_thumbnail_id( $card_id );
   $card_img = $thumb_id
-      ? get_image_versions( $thumb_id, 'full' )
+      ? get_image_versions( $thumb_id, 'large' )
       : get_placeholder_image();
   $card_excerpt = get_field('card-news_text', $card_id);
   $mobile = konkord_resolve_mobile_sources( $card_img );
@@ -17,7 +17,7 @@
     <?php if ( ! empty( $card_img['webp_1x'] ) ) : ?>
     <source srcset="<?php echo esc_url($card_img["webp_1x"]); ?>" type="image/webp">
     <?php endif; ?>
-    <img loading="lazy" decoding="async" src="<?php echo esc_url($card_img["original_1x"]); ?>" width="313" height="216" alt="" aria-hidden="true" sizes="(max-width: 576px) 90vw, 313px">
+    <img loading="lazy" decoding="async" src="<?php echo esc_url($card_img["original_1x"]); ?>" width="313" height="216" alt="" aria-hidden="true">
   </picture>
   <div class="card-news__content">
     <?php /* == Дата публикации == */ ?>

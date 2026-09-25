@@ -141,7 +141,7 @@
   & .messanges__link {
     width: 75px;
     height: 75px;
-    background-color: var(--accent-light-green);
+    background-color: var(--accent-green);
 
     @include tablet-lg {
       width: 64px;
@@ -156,14 +156,6 @@
     @include mobile {
       width: 40px;
       height: 40px;
-    }
-
-    &:first-child {
-      background-color: var(--accent-green);
-    }
-
-    &:last-child {
-      background-color: var(--accent-dark-green);
     }
 
     img {

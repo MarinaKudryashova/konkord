@@ -1,0 +1,34 @@
+// Иконки внутри tel/mailto не должны ловить клик —
+// иначе браузер уходит на sprite.svg (пустая страница / «скачивание»).
+a[href^="tel:"] svg,
+a[href^="mailto:"] svg,
+a[href^="tel:"] img,
+a[href^="mailto:"] img {
+  pointer-events: none;
+}
+
+.copy-contact-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 32px;
+  z-index: 10000;
+  padding: 12px 20px;
+  border-radius: 8px;
+  background: rgba(20, 20, 20, 0.92);
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.3;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+
+  &.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  @include tablet {
+    display: none !important;
+  }
+}

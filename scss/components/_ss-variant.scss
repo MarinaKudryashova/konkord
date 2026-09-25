@@ -231,6 +231,23 @@
     strong {
       font-weight: 700;
     }
+
+    a {
+      color: var(--accent-green);
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color var(--transition-300);
+
+      @include hover {
+        color: var(--accent-dark-green);
+      }
+
+      &:focus-visible,
+      &:active {
+        outline: none;
+        color: var(--accent-dark-green);
+      }
+    }
   }
 
   &__callback {

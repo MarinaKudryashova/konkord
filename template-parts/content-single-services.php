@@ -42,8 +42,9 @@
         <!-- Картинка на мобильных -->
         <picture class="single-services__bgimg single-services__bgimg--mobile">
           <?php if ( ! empty( $service_img_for_mobile['webp_1x'] ) ) : ?>
-          <source srcset="<?php echo esc_url($service_img_for_mobile["webp_1x"]); ?>" type="image/webp">
+          <source srcset="<?php echo konkord_srcset_1x_2x( $service_img_for_mobile['webp_1x'], $service_img_for_mobile['webp_2x'] ?? '' ); ?>" type="image/webp">
           <?php endif; ?>
+          <source srcset="<?php echo konkord_srcset_1x_2x( $service_img_for_mobile['original_1x'], $service_img_for_mobile['original_2x'] ?? '' ); ?>">
           <img loading="lazy" src="<?php echo esc_url($service_img_for_mobile["original_1x"]); ?>" alt="Услуга: <?php echo $service_title; ?>" width="620" height="504">
         </picture>
         <button type="button" class="single-services__callback ui-btn" data-graph-path="modal-leadform" data-aos="fade-up" data-aos-delay="200"><?php echo $service_btn_text; ?></button>
@@ -66,19 +67,19 @@
             <div class="swiper-wrapper">
               <?php 
               foreach ($ss_variant_gallery as $image) :
-                $gallery_img = get_image_versions( $image );
+                $gallery_img = get_image_versions( $image, 'large' );
                 $gallery_mobile = konkord_resolve_mobile_sources( $gallery_img );
-                $image_url = esc_url( $gallery_img['original_1x'] ?: ( $image['url'] ?? '' ) );
+                $lightbox_url = esc_url( $image['url'] ?? ( $gallery_img['original_1x'] ?? '' ) );
                 $image_alt = esc_attr( $image['alt'] ?? '' );
               ?>
                 <div class="swiper-slide">
-                  <a data-fslightbox="ss-variant-gallery-<?php echo $page_id ?>" data-caption="" href="<?php echo $image_url; ?>" class="slider-thumbs-main__link">
+                  <a data-fslightbox="ss-variant-gallery-<?php echo $page_id ?>" data-caption="" href="<?php echo $lightbox_url; ?>" class="slider-thumbs-main__link">
                     <picture class="slider-thumbs-main__img">
                       <?php konkord_picture_mobile_sources( $gallery_mobile ); ?>
                       <?php if ( ! empty( $gallery_img['webp_1x'] ) ) : ?>
                       <source srcset="<?php echo esc_url( $gallery_img['webp_1x'] ); ?>" type="image/webp">
                       <?php endif; ?>
-                      <img loading="lazy" src="<?php echo $image_url; ?>" width="526" height="526" alt="<?php echo $image_alt; ?>" itemprop="image">
+                      <img loading="lazy" src="<?php echo esc_url( $gallery_img['original_1x'] ); ?>" width="526" height="526" alt="<?php echo $image_alt; ?>" itemprop="image">
                     </picture>
                   </a>
                 </div>

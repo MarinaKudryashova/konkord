@@ -26,7 +26,9 @@
       <div class="about__heading">
          <picture class="about__bgimg">
             <?php konkord_picture_mobile_sources( $about_img_mobile ); ?>
-            <source srcset="<?php echo esc_url($about_img["webp_1x"]); ?>" type="image/webp">
+            <?php if ( ! empty( $about_img['webp_1x'] ) ) : ?>
+            <source srcset="<?php echo esc_url( $about_img['webp_1x'] ); ?>" type="image/webp">
+            <?php endif; ?>
             <img src="<?php echo esc_url($about_img["original_1x"]); ?>" alt="Фотофон страницы" width="1160" height="476" aria-hidden="true">
          </picture>
          <h1 class="about__title" data-aos="fade-up"><?php echo $about_title; ?><br> Конкорд</h1>
@@ -54,14 +56,14 @@
         $step_text = $step["text"];
         $step_img_url = $step["img"];
         $step_img = $step_img_url 
-        ? get_image_versions($step_img_url)
+        ? get_image_versions( $step_img_url, 'large' )
         : get_placeholder_image();
         $step_img_mobile = konkord_resolve_mobile_sources( $step_img );
         ?>
          <li class="about__gallery-item about-gallery" data-aos="fade-up" data-aos-once="false" data-aos-duration="400" data-aos-delay="100">
            <?php if($step_type === 'img') : ?>
-               <?php /*-- Изображение --*/ ?>
-            <a data-fslightbox="about-gallery-<?php echo $page_id ?>" data-caption="" href="<?php echo $step_img_url ?>" class="about-gallery__link">
+               <?php /*-- Изображение (lightbox — full URL) --*/ ?>
+            <a data-fslightbox="about-gallery-<?php echo $page_id ?>" data-caption="" href="<?php echo esc_url( $step_img_url ); ?>" class="about-gallery__link">
               <picture class="about-gallery__img">
                 <?php konkord_picture_mobile_sources( $step_img_mobile ); ?>
                 <?php if($step_img["webp_1x"]) : ?>

@@ -1,70 +1,5 @@
 .sec-slider {
-  // --sec-bg: var(--body-bg);
-  // --sec-color: var(--body-color);
   overflow: clip;
-
-  // &--light {
-  //   --sec-bg: var(--bg-light);
-  //   --sec-color: var(--black);
-  // }
-
-  // &[data-id="sec-cases"] {
-  //   margin-bottom: 125px;
-  // }
-
-  // &[data-id="sec-cases"] {
-  //   & .sec-slider__content {
-  //     @media (max-width: 630px) {
-  //       flex-direction: column;
-  //       gap: 16px;
-  //       margin-bottom: 16px;
-  //     }
-  //   }
-  // }
-
-  // &[data-id="company-media"] {
-  //   & .sec-slider__heading {
-  //     justify-content: center;
-
-  //     @include tablet {
-  //       justify-content: space-between;
-  //     }
-  //   }
-  //   & .sec-slider__nav {
-  //     display: none;
-
-  //     @include tablet {
-  //       display: flex;
-  //     }
-  //   }
-  //   & .swiper {
-  //     padding: 0;
-  //     margin: 0;
-
-  //     @include tablet {
-  //     }
-  //   }
-  //   & .swiper-wrapper {
-  //     flex-wrap: wrap;
-  //     transform: none;
-  //     gap: 20px;
-
-  //     @include tablet {
-  //       flex-wrap: nowrap;
-  //       transform: translateZ(0);
-  //       gap: 0;
-  //     }
-  //   }
-
-  //   & .swiper-slide {
-  //     width: calc(100% / 4 - 20px * 2 / 4);
-
-  //     @include tablet {
-  //       width: auto;
-  //       flex-shrink: 0;
-  //     }
-  //   }
-  // }
 
   &[data-id="sec-fotogallery"] {
     & .sec-slider__content {
@@ -98,16 +33,11 @@
       align-items: center;
       margin-bottom: 24px;
     }
-
-    // #sec-case & {
-    //   margin-bottom: 46px;
-    // }
   }
 
   &__title {
     max-width: 810px;
     margin-bottom: 0;
-    // color: var(--sec-color);
     color: currentColor;
 
     @include tablet {
@@ -187,6 +117,26 @@
     width: 72px;
     height: 72px;
     user-select: none;
+    
+    @include desktop {
+      width: 68px;
+      height: 68px;
+    }
+
+    @include tablet {
+      width: 64px;
+      height: 64px;
+    }
+
+    @include tablet-md {
+      width: 54px;
+      height: 54px;
+    }
+
+    @include mobile {
+      width: 40px;
+      height: 40px;
+    }
   }
 
   &__content {

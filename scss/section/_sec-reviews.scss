@@ -18,12 +18,21 @@
 
   &__widget-map,
   &__widget-reviews {
+    width: 100%;
     height: 100%;
     aspect-ratio: 1 / 1;
+
+    > div {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+    }
   }
 
   &__widget-map iframe,
   &__widget-reviews iframe {
+    width: 100%;
     aspect-ratio: 1 / 1;
     height: 100%;
     border: none;

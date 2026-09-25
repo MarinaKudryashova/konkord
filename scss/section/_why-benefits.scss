@@ -135,9 +135,6 @@
     inset: 0;
     pointer-events: none;
     z-index: 10;
-
-    // animation: plane-enter 0.7s ease-out forwards;
-    // opacity: 0;
   }
 
   &__plane-trail {
@@ -248,15 +245,3 @@
     }
   }
 }
-
-// @keyframes plane-enter {
-//   from {
-//     opacity: 0;
-//     transform: translateX(120px);
-//   }
-
-//   to {
-//     opacity: 1;
-//     transform: translateX(0);
-//   }
-// }

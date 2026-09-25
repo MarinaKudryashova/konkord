@@ -2,7 +2,6 @@
 
 // Услуги services
 add_action( 'init', 'services_register_post_types' );
-add_action( 'init', 'register_services_features_taxonomy' );
 add_action( 'init', 'theme_register_services_category');
 
 // Register new Taxonomy Категории услуг
@@ -27,7 +26,6 @@ function theme_register_services_category(){
         'description'           => '', 
         'public'                => true,
         'hierarchical'          => true,
-        'show_in'               => true,
         'show_in_menu'          => true,
         'show_in_nav_menus'     => true,
         'show_admin_column'     => true,
@@ -40,48 +38,6 @@ function theme_register_services_category(){
     );
     
     register_taxonomy( 'services_category', [ 'services' ], $args );
-}
-
-// Register new Taxonomy Характеристики услуг
-function register_services_features_taxonomy() {
-    $labels = array(
-        'name'              => _x( 'Характеристики услуг', 'taxonomy general name', 'konkord' ),
-        'singular_name'     => _x( 'Характеристика услуги', 'taxonomy singular name', 'konkord' ),
-        'search_items'      => 'Поиск характеристик',
-        'all_items'         => 'Все характеристики',
-        'view_item'         => 'Посмотреть характеристику',
-        'edit_item'         => 'Редактировать характеристику',
-        'update_item'       => 'Обновить характеристику',
-        'add_new_item'      => 'Добавить новую характеристику',
-        'new_item_name'     => 'Новая характеристика',
-        'menu_name'         => 'Характеристики услуг',
-        'popular_items'     => 'Популярные характеристики',
-        'separate_items_with_commas' => 'Разделяйте характеристики запятыми',
-        'add_or_remove_items' => 'Добавить или удалить характеристики',
-        'choose_from_most_used' => 'Выберите из часто используемых',
-        'not_found'         => 'Характеристики не найдены',
-    );
-
-    $args = array(
-        'label'                 => 'Характеристики услуг',
-        'labels'                => $labels,
-        'public'                => true,
-        'publicly_queryable'    => true,
-        'hierarchical'          => false, 
-        'show_ui'               => true,
-        'show_in_menu'          => true,
-        'show_in_nav_menus'     => true,
-        'show_in_rest'          => true,
-        'show_tagcloud'         => true,
-        'show_in_quick_edit'    => true,
-        'show_admin_column'     => true,
-        'rewrite'               => array(
-            'slug' => 'services-feature',
-            'with_front' => false,
-        ),
-    );
-
-    register_taxonomy( 'services_feature', array( 'services' ), $args );
 }
 
 // Create new Custom Post Type
@@ -126,7 +82,7 @@ function services_register_post_types(){
         'menu_position'         => 4,
         'menu_icon'             => 'dashicons-book',
         'supports'              => array('title', 'thumbnail', 'excerpt', 'custom-fields', 'page-attributes', 'editor'),
-        'taxonomies'            => array('services_category', 'services_feature'),
+        'taxonomies'            => array('services_category'),
         'has_archive'           => 'services',
     );
     
@@ -383,32 +339,7 @@ function hide_page_attributes_for_services() {
 }
 
 /**
- * 9. Принудительно устанавливаем шаблон для страницы услуг
- */
-add_action('save_post', 'force_template_for_services_page', 10, 2);
-function force_template_for_services_page($post_id, $post) {
-    if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
-    if(!current_user_can('edit_post', $post_id)) return;
-    if($post->post_type !== 'page') return;
-    
-    $services_page_id = get_services_page_id();
-    
-    if($services_page_id && $post_id == $services_page_id) {
-        update_post_meta($post_id, '_wp_page_template', 'default');
-    }
-}
-
-/**
- * 10. Добавляем services_category в query vars
- */
-add_filter('query_vars', 'add_services_category_query_var');
-function add_services_category_query_var($vars) {
-    $vars[] = 'services_category';
-    return $vars;
-}
-
-/**
- * 11. Функция для получения полного пути категории
+ * Функция для получения полного пути категории
  * (используется в навигации по категориям)
  */
 function get_category_full_path($term) {
@@ -444,29 +375,4 @@ function force_archive_template_for_services_page($template) {
     }
     
     return $template;
-}
-
-/**
- * 13. Заменяем ссылки категорий в меню на ЧПУ с учетом города
- */
-add_filter('nav_menu_link_attributes', 'change_category_links_to_pretty_url', 10, 3);
-function change_category_links_to_pretty_url($atts, $item, $args) {
-    if(isset($item->object) && $item->object == 'services_category') {
-        $term = get_term($item->object_id, 'services_category');
-        if($term && !is_wp_error($term)) {
-            $services_page_id = get_services_page_id();
-            if($services_page_id) {
-                $page_slug = get_post_field('post_name', $services_page_id);
-                $full_path = get_category_full_path($term);
-                
-                $city = get_geo_city_from_query();
-                if(!empty($city)) {
-                    $atts['href'] = home_url('/' . $city . '/' . $page_slug . '/' . $full_path . '/');
-                } else {
-                    $atts['href'] = home_url('/' . $page_slug . '/' . $full_path . '/');
-                }
-            }
-        }
-    }
-    return $atts;
 }
